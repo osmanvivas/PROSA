@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="d196c873-06ce-4569-bfc5-0790e9c635e3">
+  <descriptionCdata><![CDATA[d196c873-06ce-4569-bfc5-0790e9c635e3.description=<pre>This is an operation that does nothing. It can be used for filtering flow variables by feeding them in as inputs and filtering them on the results tab.\n\nResponses\:\n    success\n    failure\n</pre>
+d196c873-06ce-4569-bfc5-0790e9c635e3.ea63b452-dd91-4753-898e-066efd1798c8.prompt=Es una nueva ejecuci\u00F3n?\:
+]]></descriptionCdata>
+  <annotation>d196c873-06ce-4569-bfc5-0790e9c635e3.description</annotation>
+  <name>Do Nothing With Two Responses</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="ea63b452-dd91-4753-898e-066efd1798c8">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>Field_1</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>d196c873-06ce-4569-bfc5-0790e9c635e3.ea63b452-dd91-4753-898e-066efd1798c8.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <link>
+        <refId>87dae901-1487-41d1-92ed-61a0f224e4f6</refId>
+        <refName>List Yes No</refName>
+      </link>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="fa49697a-906d-430a-ac85-a658cdbaa3cd">
+      <annotation></annotation>
+      <name>New Execution</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="35cad410-f4bd-4d4a-acc1-5d2751131ff8">
+          <annotation></annotation>
+          <name>Field_1</name>
+          <fieldName>Field_1</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <regexEvaluator id="35ec8e2f-7e65-4de9-b160-0af841f3e8c4">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <entireString>false</entireString>
+            <expression>yes</expression>
+            <ignoreCase>true</ignoreCase>
+            <multiLine>false</multiLine>
+            <regType>JAVA</regType>
+          </regexEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="586c21a1-3b72-47c6-9116-6a9dd2cdce72">
+      <annotation></annotation>
+      <name>Re Execution</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>DIAGNOSED</type>
+      <matchRules>
+        <expression id="6220e53d-99ab-4394-8af1-f75aaff6e5b0">
+          <annotation></annotation>
+          <name>Field_1</name>
+          <fieldName>Field_1</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <regexEvaluator id="ead5b238-f685-4434-8b49-bb3dc2ab0d46">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <entireString>false</entireString>
+            <expression>No</expression>
+            <ignoreCase>true</ignoreCase>
+            <multiLine>false</multiLine>
+            <regType>JAVA</regType>
+          </regexEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="4cf2c1f3-1ce6-49bc-b014-dda183c1e6b1">
+      <annotation></annotation>
+      <name>Failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="10b51bce-16df-428a-90a1-5444942362de">
+    <annotation></annotation>
+    <name>returnResult</name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="1f8cc451-88e4-4f23-b997-a11cc75b77d6">
+    <baseIcon>display_report.png</baseIcon>
+    <basePath>Utilities/</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <opRef>
+    <refId>ddd79f22-8b1e-4605-88d5-d912bb2da2b9</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideJRAS}</overrideGroupAlias>
+</operation>
