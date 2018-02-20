@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="7f1758c6-428e-4357-b485-29b3b1131ae6">
+  <descriptionCdata><![CDATA[]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Procesar Ep7 VISA</name>
+  <categories/>
+  <inputs>
+    <staticBinding id="39919daa-c983-4bfd-b0df-8733ae758449">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>FechaEp7</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>171011</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="77fad4ae-a457-4a6e-9b60-2af92c3acbd6">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>BINES</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>457216,457217</value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="7db21a91-27fb-42f8-a441-be5c1919d496">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="5a730b74-4066-49a5-9c56-49d54559967b">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="f09e8a0a-6f6d-43f9-8e6f-7a875bd9a664">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="b758fac6-489a-4cdd-95f9-5535301c18dc">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="e8fab3fb-3b60-4629-8579-7de9a4f44012">
+      <annotation></annotation>
+      <name>Obtener EP7</name>
+      <bounds>
+        <x>0.0</x>
+        <y>0.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="2948032f-608d-4c40-84c1-76cb5ede356e">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="cb5b25e1-7d48-438f-89e3-3eb89dbb9257">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>FechaEp7</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="ea6afd83-32cf-4ceb-8eab-4b2f882dc566">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>0fa3428a-b5a1-4ada-895a-ff2ecfbffb7a</refId>
+          </destination>
+          <source>
+            <refId>e8fab3fb-3b60-4629-8579-7de9a4f44012</refId>
+          </source>
+          <positions>
+            <point>
+              <x>142.0</x>
+              <y>74.0</y>
+            </point>
+            <point>
+              <x>160.0</x>
+              <y>232.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="9217b032-1baa-4b6c-92bd-31cd932a01d0">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>a7bf7d34-8e17-488e-b95b-7769629e479b</refId>
+          </destination>
+          <source>
+            <refId>e8fab3fb-3b60-4629-8579-7de9a4f44012</refId>
+          </source>
+          <positions>
+            <point>
+              <x>50.0</x>
+              <y>34.0</y>
+            </point>
+            <point>
+              <x>205.0</x>
+              <y>142.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>b73ae48c-09f2-4cad-bc13-ed26f0c4e083</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="08c93396-30a2-466c-b63d-1a2ed5929473">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>archivoEP7</contextKey>
+          <expression id="07a07b2c-a9e4-4de9-abd8-13979f8853d3">
+            <annotation></annotation>
+            <name>Result Field: archivoEP7</name>
+            <fieldName>archivoEP7</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="23ccc8ba-667f-4cbe-a733-bb42cd9dfcf3">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>242.0</x>
+        <y>0.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="f254bc02-4a25-4c19-863a-7686d5a491b2">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>23ccc8ba-667f-4cbe-a733-bb42cd9dfcf3</refId>
+          </destination>
+          <source>
+            <refId>23ccc8ba-667f-4cbe-a733-bb42cd9dfcf3</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+    <returnStep id="0fa3428a-b5a1-4ada-895a-ff2ecfbffb7a">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>0.0</x>
+        <y>176.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="b5499d8d-135f-4c40-9586-81510672185b">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>0fa3428a-b5a1-4ada-895a-ff2ecfbffb7a</refId>
+          </destination>
+          <source>
+            <refId>0fa3428a-b5a1-4ada-895a-ff2ecfbffb7a</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments/>
+    </returnStep>
+    <step id="a7bf7d34-8e17-488e-b95b-7769629e479b">
+      <annotation></annotation>
+      <name>ReadFile SubFlujo DAT Files</name>
+      <bounds>
+        <x>155.0</x>
+        <y>108.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="520e17b8-b000-4d68-99e5-7a6e322995e3">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="40f8eca7-55c2-4a1e-962d-a5f1d7f7b9dd">
+          <annotation></annotation>
+          <fromContextKey>archivoEP7</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>File</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="1a30e891-e77b-4f1a-aaac-83a1a5907de3">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Filter</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="e42e3363-e1e0-4f72-b793-0fec109171a2">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>23ccc8ba-667f-4cbe-a733-bb42cd9dfcf3</refId>
+          </destination>
+          <source>
+            <refId>a7bf7d34-8e17-488e-b95b-7769629e479b</refId>
+          </source>
+          <positions>
+            <point>
+              <x>205.0</x>
+              <y>142.0</y>
+            </point>
+            <point>
+              <x>292.0</x>
+              <y>34.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>c5605579-be66-4f68-a2af-b8e4771ac9f6</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="66a7959b-311b-4cc6-8d83-6a91a00a70df">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>EP7Procesado</contextKey>
+          <expression id="633873bc-c9ae-45ce-a934-dcfe4bdf0e75">
+            <annotation></annotation>
+            <name>Result: Leido</name>
+            <fieldName>Leido</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters>
+              <scriptletFilter id="b9fbf0dd-90a1-4113-bc3f-bcc471b95f6a">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="4757b13c-ac74-4b4e-b0a3-8c0eec9c6644">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>if (scriptletInput !== null) {
+var ent=scriptletInput.split(&quot;\n&quot;);
+var salida=&quot;&quot;;
+var ban=false;
+var bines=scriptletContext.get(&quot;BINES&quot;);
+//var bines=&quot;457216,457217&quot;
+bines=bines.split(&quot;,&quot;);
+for(j=0;j&lt;bines.length;j++){
+	//Variable expresion regular
+	var bin=&quot;PROCESSOR: &quot; + bines[j];
+	var regex = new RegExp(bin,&quot;g&quot;);
+
+	for(i=0;i&lt;ent.length;i++){
+ 		if(ent[i].search(/PROCESSOR\:\s.*/g)!=-1){
+ 			ban=false;
+ 		}
+		 if(ent[i].search(regex)!=-1){
+ 			ban=true;
+ 		}
+ 
+	 	if(ban){
+ 			salida+=ent[i]+&quot;\n&quot;;
+ 		}
+	}
+}
+
+
+ 	scriptletResult=salida;
+}</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+              <stripWhitespaceFilter id="5ea7f162-4201-42a5-be34-e21e94740f66">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+              <scriptletFilter id="0e52a23f-b79f-4f88-8951-21f07c287c1b">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="2d5f8893-268c-4707-b94b-d25ebcbc0d7b">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>if (scriptletInput !== null) {
+  var ent=scriptletInput.split(&quot;\n&quot;);
+  var salida=&quot;&quot;;
+  for(i=0;i&lt;ent.length;i++){
+  	li=ent[i].substring(17);
+  	if(li.search(/^20\s\d\d.*/)!=-1){
+  		salida+=li+&quot;\n&quot;;
+  		//salida+=ent[i]+&quot;\n&quot;;
+  	}
+  	
+  }
+  scriptletResult=salida;
+}</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+              <stripWhitespaceFilter id="ad02d7d2-48d1-41d3-9d03-494ff766fbb6">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+              <scriptletFilter id="66dcbfa0-fcf6-4741-bc0b-ca914e6bb019">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="a2ec8283-c6fd-4af9-b66e-5a0ec739dc9e">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>if (scriptletInput !== null) {
+  var ent=scriptletInput.split(&quot;\n&quot;);
+  var salida=&quot;&quot;;
+  for(i=0;i&lt;ent.length;i++){
+  	salida+= ent[i].substring(21,37) + &quot; &quot;+ ent[i].substring(41,53) + &quot; &quot; + ent[i].substring(54,60)+ &quot; &quot; + ent[i].substring(101,115).replace(/\s+/g,&quot;&quot;) + &quot; &quot; + ent[i].substring(120,131).replace(/\s+/g,&quot;&quot;) + &quot; &quot; + ent[i].substring(131,134) + &quot;\n&quot;;
+  }
+  
+  scriptletResult = salida;
+}</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+  </steps>
+  <startSteps>e8fab3fb-3b60-4629-8579-7de9a4f44012</startSteps>
+</flow>

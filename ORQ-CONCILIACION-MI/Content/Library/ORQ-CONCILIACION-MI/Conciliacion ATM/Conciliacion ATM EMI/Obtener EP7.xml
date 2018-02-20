@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="b73ae48c-09f2-4cad-bc13-ed26f0c4e083">
+  <descriptionCdata><![CDATA[b73ae48c-09f2-4cad-bc13-ed26f0c4e083.4d2ad76d-ec0d-4b73-ba70-657663856088.description=<pre>Uses Secure FTP (SFTP) to retrieve a single file from a remote host to a RAS.\n\nInputs\:\nhost - IP address/host name.\nport - The port to connect to on host.\nusername - Remote username.\npassword - Password to authenticate. If using a private key file this will be used as the passphrase for the file.\nprivateKey - Absolute path for private key file for public/private key authentication.\nremoteFile - The Remote file name.\nlocalLocation - The location where file is to be placed on the RAS.\ncharacterSet - The name of the control encoding to use. Examples\: UTF-8, EUC-JP, SJIS.  Default is UTF-8.\ncloseSession - Close the SSH session at completion of operation?  Default value is true.  If false the SSH session can be reused by other SFTP commands in the same flow.  Valid values\: true, false.\n\nResponses\: \nsuccess - Command completed successfully.\nfailure - Command failed.\n\nResult\: \nRemote file will be copied to local system.\n</pre>
+b73ae48c-09f2-4cad-bc13-ed26f0c4e083.5e45345e-4f73-411f-b455-9d8ca0c6fb72.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
+b73ae48c-09f2-4cad-bc13-ed26f0c4e083.7efe8d0e-3326-4ee2-89a0-b84b88390ff1.description=<pre>Uses Secure FTP (SFTP)  to execute the Ls command on a remote host.\n\nInputs\:\nhost - IP address/host name.\nport - The port to connect to on host.\nusername - Remote username.\npassword - Password to authenticate. If using a private key file this will be used as the passphrase for the file.\nprivateKey - Absolute path for private key file for public/private key authentication.\nremotePath - The remote file or directory name.\ncharacterSet - The name of the control encoding to use. Examples\: UTF-8, EUC-JP, SJIS.  Default is UTF-8.\ncloseSession - Close the SSH session at completion of operation?  Default value is true.  If false the SSH session can be reused by other SFTP commands in the same flow.  Valid values\: true, false.\n\nResponses\: \nsuccess - Command completed successfully.\nfailure - Command failed.\n\nResults\: \nreturnResult - The LS listing of a remote path.  Reason for error on failure.\n</pre>
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Obtener EP7</name>
+  <categories/>
+  <inputs>
+    <staticBinding id="6a32f42b-8ce4-4cc6-b5b9-5f01f4cb0485">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>FechaEp7</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>171011</value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="ff74a8c8-a9df-4e4a-8270-718a97f68664">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="d84f743c-24fa-42de-a34d-9d40ed970f21">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="398f5e78-7be2-41f7-a351-54c970f97756">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="1560fd78-7ad2-4798-9370-203917b8aee0">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="7efe8d0e-3326-4ee2-89a0-b84b88390ff1">
+      <annotation>b73ae48c-09f2-4cad-bc13-ed26f0c4e083.7efe8d0e-3326-4ee2-89a0-b84b88390ff1.description</annotation>
+      <name>SFTP Ls EP7</name>
+      <bounds>
+        <x>10.0</x>
+        <y>22.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="71302f92-fdd6-4fd6-969f-8f257ada7257">
+        <baseIcon>folder.png</baseIcon>
+        <basePath>/Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="48e164eb-a2c9-4865-971c-6d557180ddae">
+            <baseIcon>view.png</baseIcon>
+            <basePath>/Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>true</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="42c09ed2-55d9-4ae1-8de7-06067ca7992a">
+          <annotation></annotation>
+          <toContextKey>host</toContextKey>
+          <fromContextKey>IP SFTP T5120</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>host</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="561aa26c-3275-45e5-b5c7-7c6f60bfc072">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>port</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>22</value>
+          <record>false</record>
+        </staticBinding>
+        <identityBinding id="40cf4960-d607-4f28-aa0f-fbc96f207429">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>username</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>7e13bc3d-33bb-4d89-81d6-7baa2ce71c91</refId>
+            <refName>SFTP T5120</refName>
+          </link>
+          <identityAttribute>USERNAME</identityAttribute>
+        </identityBinding>
+        <identityBinding id="b0a812bf-4412-4f50-aef1-3239f19cebba">
+          <annotation></annotation>
+          <toContextKey>password</toContextKey>
+          <fromContextKey>password</fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>ENCRYPTED</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>password</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>7e13bc3d-33bb-4d89-81d6-7baa2ce71c91</refId>
+            <refName>SFTP T5120</refName>
+          </link>
+          <identityAttribute>PASSWORD</identityAttribute>
+        </identityBinding>
+        <staticBinding id="0674929e-ff62-4337-8c70-1b2f2d5ce512">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>remotePath</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/aplic/prod/pmt/pmr/vsa</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="9cb679a0-184e-4efe-9532-671c38522094">
+          <annotation></annotation>
+          <name>done</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>done</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>4d2ad76d-ec0d-4b73-ba70-657663856088</refId>
+          </destination>
+          <source>
+            <refId>7efe8d0e-3326-4ee2-89a0-b84b88390ff1</refId>
+          </source>
+          <positions>
+            <point>
+              <x>60.0</x>
+              <y>56.0</y>
+            </point>
+            <point>
+              <x>440.0</x>
+              <y>184.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>df53e14e-7784-4e05-a681-c01751b2bac7</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="de439be5-e5fb-49b1-b4ac-6a7b8eed35d2">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>ArchivoEp7</contextKey>
+          <expression id="02dab2e9-06b4-41a3-9aab-83ee9ead1f05">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters>
+              <regexFilter id="89707ba8-6a06-4236-b565-0c41c5b65289">
+                <annotation></annotation>
+                <name>Regular Expression</name>
+                <expression>.*ep7${FechaEp7}\_MI.*</expression>
+                <ignoreCase>true</ignoreCase>
+                <regType>JAVA</regType>
+                <entireString>false</entireString>
+                <multiLine>true</multiLine>
+              </regexFilter>
+              <tableFilter id="5e74ed8f-9076-4671-9f7f-7754d1573160">
+                <annotation></annotation>
+                <name>Table</name>
+                <ascending>false</ascending>
+                <columnDelimiter>WHITESPACE</columnDelimiter>
+                <firstRowHeader>false</firstRowHeader>
+                <lineDelimintor>NEWLINE</lineDelimintor>
+                <selectCol>8</selectCol>
+                <selectHeight>1</selectHeight>
+                <selectRow>0</selectRow>
+                <selectWidth>1</selectWidth>
+                <sortColumn>-1</sortColumn>
+                <stripFirstRow>false</stripFirstRow>
+              </tableFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="d061b356-1575-4f43-bbff-0f07d84c92fb">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>457.0</x>
+        <y>13.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="95baef00-3ed1-46b9-8db1-a46a73c42f53">
+        <baseIcon>return_success.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>true</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="c6695594-1a4a-4828-be57-8abaff1a1d41">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>d061b356-1575-4f43-bbff-0f07d84c92fb</refId>
+          </destination>
+          <source>
+            <refId>d061b356-1575-4f43-bbff-0f07d84c92fb</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+    <step id="4d2ad76d-ec0d-4b73-ba70-657663856088">
+      <annotation>b73ae48c-09f2-4cad-bc13-ed26f0c4e083.4d2ad76d-ec0d-4b73-ba70-657663856088.description</annotation>
+      <name>SFTP Get Archivo Incoming</name>
+      <bounds>
+        <x>96.0</x>
+        <y>135.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="f9aa8685-8abd-4982-9ccb-11e5a309ec7f">
+        <baseIcon>document_text.png</baseIcon>
+        <basePath>/Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="bdfbe3e1-ce44-4396-ab16-6be1764a8e4c">
+            <baseIcon>get.png</baseIcon>
+            <basePath>/Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="d125310d-da8a-4d72-895b-343fa5a5d9b4">
+          <annotation></annotation>
+          <toContextKey>host</toContextKey>
+          <fromContextKey>IP SFTP T5120</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>host</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="3dbcdad7-27e6-4df5-bcf8-339a45b17ae1">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>port</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>22</value>
+          <record>false</record>
+        </staticBinding>
+        <identityBinding id="34c3e86c-d81c-4d66-ab5a-6aa1e90d8627">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>username</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>7e13bc3d-33bb-4d89-81d6-7baa2ce71c91</refId>
+            <refName>SFTP T5120</refName>
+          </link>
+          <identityAttribute>USERNAME</identityAttribute>
+        </identityBinding>
+        <identityBinding id="895df1d3-1426-4d8b-9170-0217b7732ac6">
+          <annotation></annotation>
+          <toContextKey>password</toContextKey>
+          <fromContextKey>password</fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>ENCRYPTED</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>password</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>7e13bc3d-33bb-4d89-81d6-7baa2ce71c91</refId>
+            <refName>SFTP T5120</refName>
+          </link>
+          <identityAttribute>PASSWORD</identityAttribute>
+        </identityBinding>
+        <staticBinding id="d8fc8606-c847-414f-9c2c-03dc62bbf4f5">
+          <annotation></annotation>
+          <toContextKey>remoteFile</toContextKey>
+          <fromContextKey>remoteFile</fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>remoteFile</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/aplic/prod/pmt/pmr/vsa/${ArchivoEp7}</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="2427ffbf-ed71-4c94-9ac3-29e00dd4221e">
+          <annotation></annotation>
+          <toContextKey>localLocation</toContextKey>
+          <fromContextKey>localLocation</fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>localLocation</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/aplic/prod/orq/cmi/rpt/ent/</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="7638098b-f796-4bcd-8df3-9ab653365616">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>21c16e2a-8aa0-45c3-b157-dbbb55df37df</refId>
+          </destination>
+          <source>
+            <refId>4d2ad76d-ec0d-4b73-ba70-657663856088</refId>
+          </source>
+          <positions>
+            <point>
+              <x>146.0</x>
+              <y>169.0</y>
+            </point>
+            <point>
+              <x>137.0</x>
+              <y>284.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="a7321db6-d2ff-49d6-b92e-9f2a001509ca">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>5e45345e-4f73-411f-b455-9d8ca0c6fb72</refId>
+          </destination>
+          <source>
+            <refId>4d2ad76d-ec0d-4b73-ba70-657663856088</refId>
+          </source>
+          <positions>
+            <point>
+              <x>146.0</x>
+              <y>169.0</y>
+            </point>
+            <point>
+              <x>556.0</x>
+              <y>149.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>1b25a4e1-bbba-490c-a2e4-de7570beffa5</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="4b0b6b3e-2626-449c-aa86-2aa886077272">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>archivoEP7</contextKey>
+          <expression id="12a79220-96c3-4310-8f6e-6732d61a4ab6">
+            <annotation></annotation>
+            <name>Input: localLocation</name>
+            <fieldName>localLocation</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <scriptletFilter id="0338c104-f073-4541-ae20-36785c7f7c21">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="23cfdfce-b630-4d46-bba5-e35418a7a71a">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>var name=scriptletContext.get(&quot;remoteFile&quot;);
+name=name.split(&quot;/&quot;);
+var len=parseInt(name.length-1);
+name=name[len];
+
+scriptletResult = scriptletInput+name;</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="5b7c5e06-507b-427a-a182-973ca4b5be76">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>archivoEP7</contextKey>
+          <expression id="e3c57b9f-fbdb-4b43-a489-1a903ae59a53">
+            <annotation></annotation>
+            <name>Input: localLocation</name>
+            <fieldName>localLocation</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <scriptletFilter id="6b2864ff-78b2-4009-b858-61eaa630ca8e">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="2cdf6760-9c0e-4aa5-9eeb-56cd7f4d5a70">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>var name=scriptletContext.get(&quot;remoteFile&quot;);
+name=name.split(&quot;/&quot;);
+var len=parseInt(name.length-1);
+name=name[len];
+
+scriptletResult = scriptletInput+name;</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="21c16e2a-8aa0-45c3-b157-dbbb55df37df">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>87.0</x>
+        <y>250.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="a7c9c394-e846-4b9c-8dda-eb9b78468281">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>21c16e2a-8aa0-45c3-b157-dbbb55df37df</refId>
+          </destination>
+          <source>
+            <refId>21c16e2a-8aa0-45c3-b157-dbbb55df37df</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments/>
+    </returnStep>
+    <step id="5e45345e-4f73-411f-b455-9d8ca0c6fb72">
+      <annotation>b73ae48c-09f2-4cad-bc13-ed26f0c4e083.5e45345e-4f73-411f-b455-9d8ca0c6fb72.description</annotation>
+      <name>Check Null</name>
+      <bounds>
+        <x>272.0</x>
+        <y>134.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="26ed4dd1-e20b-47f3-a362-becbe3f7384e">
+        <baseIcon>compare.png</baseIcon>
+        <basePath>Utilities/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="ae2cc731-69dd-4ec0-96ab-cec16afb8063">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>keyName</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>archivoEP7</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="84b61c3d-79c4-46ab-ae0e-1498eafe6590">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>trimSpaces</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>false</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="d937fd33-d9df-4269-b8e9-1acb9da3415b">
+          <annotation></annotation>
+          <name>isNull</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>isNull</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>21c16e2a-8aa0-45c3-b157-dbbb55df37df</refId>
+          </destination>
+          <source>
+            <refId>5e45345e-4f73-411f-b455-9d8ca0c6fb72</refId>
+          </source>
+          <positions>
+            <point>
+              <x>323.0</x>
+              <y>187.0</y>
+            </point>
+            <point>
+              <x>137.0</x>
+              <y>284.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="23db724e-08a5-48ff-a53c-9839d36345a3">
+          <annotation></annotation>
+          <name>notNull</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>notNull</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>d061b356-1575-4f43-bbff-0f07d84c92fb</refId>
+          </destination>
+          <source>
+            <refId>5e45345e-4f73-411f-b455-9d8ca0c6fb72</refId>
+          </source>
+          <positions>
+            <point>
+              <x>323.0</x>
+              <y>187.0</y>
+            </point>
+            <point>
+              <x>507.0</x>
+              <y>47.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>b9997f7f-d19c-4dc6-acc4-fa91a8644a38</refId>
+      </opRef>
+      <assignments/>
+      <throttleSize>0</throttleSize>
+    </step>
+  </steps>
+  <startSteps>7efe8d0e-3326-4ee2-89a0-b84b88390ff1</startSteps>
+</flow>

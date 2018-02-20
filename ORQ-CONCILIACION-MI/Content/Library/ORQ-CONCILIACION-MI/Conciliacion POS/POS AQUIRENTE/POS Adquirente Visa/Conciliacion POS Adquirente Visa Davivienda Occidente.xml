@@ -1,0 +1,2272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="c492b52a-822f-4b49-8a2c-e12a974b2b0b">
+  <descriptionCdata><![CDATA[c492b52a-822f-4b49-8a2c-e12a974b2b0b.0f0a3dad-bb55-4067-8bd1-bacb0f450dfd.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
+c492b52a-822f-4b49-8a2c-e12a974b2b0b.2436ac58-6825-4382-b967-71027423510b.callout=POSRE VS Incoming VISA
+c492b52a-822f-4b49-8a2c-e12a974b2b0b.2503087d-b58a-43a7-a5e0-4f9c914a555d.callout=Filtrar lectura por fid del banco davivienda en este caso.
+c492b52a-822f-4b49-8a2c-e12a974b2b0b.7b164d50-b3e5-494c-a831-124dd7532db3.description=<pre>This operation writes the data from "contents" input to the requested file. The operation can be used to overwrite existing content of the file, append extra lines to it or even create a new file.\n\nInputs\:\n    source -  Full path to file. If the file does not exist it is created first.\n    contents - The content that should be written to the file. This input field can contain more lines, separated by a delimiter. If it contains the new line character (\\n or \\r\\n), but this is not the delimiter, this character will be escaped and written to file.  \nExample\: "This is line no. 01\\nThis is line no. 2\\n" where \\n is the delimiter.\n    delimiter - Specifies the newline delimiter that is used to split the "contents" input field into separate lines that will be further written to the given file.\nExamples\: \\n, \\r\\n, etc\n    characterSet - The character encoding used to write to the file. \nDefault\: UTF-8. \nValid values\: windows-1252, UTF-16, UTF-16BE,  ISO-8859-1, US-ASCII, Shift_JIS etc.\n    overwrite - Specifies whether to overwrite the file or append to it. \nDefault\: true. \nValid values\: true, false or the empty string. If this is left empty, the file will be overwritten.\n\nResults\:\n    returnResult - This is the primary output. It contains the "success" confirmation message if the operation successfully completes, or an exception message otherwise.\n    returnCode - It has the value 0 if the operation successfully completes and 1 otherwise.\n    exception - This contains an exception message if the operation fails.\n\nResponses\:\n    success - File/directory was written successfully.\n    failure - Unable to write to file/directory, empty contents or source.\n\nExamples\:\n1. This is a valid input example for using this operation on Windows\:\n    source\: C\:\\Program Files\\example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n\n2. This is a valid input example for using this operation on Linux\:\n    source\: /root/example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n</pre>
+c492b52a-822f-4b49-8a2c-e12a974b2b0b.86b8d02c-54b2-421d-bd2a-f0ab3ab33809.callout=POSRE hasta aqu\u00ED
+c492b52a-822f-4b49-8a2c-e12a974b2b0b.beff422a-832b-436f-b474-00a01a81587a.description=<pre>Uses Secure FTP (SFTP) to send a file on a RAS to a remote host.  \n\nInputs\:\nhost - IP address/host name.\nport - The port to connect to on host.\nusername - Remote username.\npassword - Password to authenticate. If using a private key file this will be used as the passphrase for the file.\nprivateKey - Absolute path for private key file for public/private key authentication.\nlocalFile - The path to the file on the RAS to be copied remotely using SFTP.\nremoteLocation - The remote location where the file is to be placed.\ncharacterSet - The name of the control encoding to use. Examples\: UTF-8, EUC-JP, SJIS.  Default is UTF-8.\ncloseSession - Close the SSH session at completion of operation?  Default value is true.  If false the SSH session can be reused by other SFTP commands in the same flow.  Valid values\: true, false.\n\nResponses\:\nsuccess - Command completed successfully.\nfailure - Command failed.\n\nResult\:\nLocal file will be copied to Remote system.\n</pre>
+c492b52a-822f-4b49-8a2c-e12a974b2b0b.bfb1feeb-023c-4c51-82bc-9747a79dcbf0.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Conciliacion POS Adquirente Visa Davivienda Occidente</name>
+  <categories/>
+  <inputs>
+    <staticBinding id="fae93f1a-b234-40d9-8d48-c2820c67309b">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>FIID</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>456823</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="99232469-82dd-4ec2-a3a8-127e27d34208">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>NomBanco</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>Davivienda</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="db1b2531-3e31-487f-a237-e17688ffb4c2">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>FIID1</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>H021</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="e3e12052-5fac-4317-b30d-8c19798455bc">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>Buzon Banco</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>MB000623</value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="4e4bbf6b-cc48-413f-aa18-6b0904fada9d">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="c3c4faef-9c94-402d-b3e3-f0135378ecf1">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="5f97ee4e-fb9b-4f2f-a568-1454a2402877">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts>
+    <callout id="86b8d02c-54b2-421d-bd2a-f0ab3ab33809">
+      <text>c492b52a-822f-4b49-8a2c-e12a974b2b0b.86b8d02c-54b2-421d-bd2a-f0ab3ab33809.callout</text>
+      <bounds>
+        <x>122.0</x>
+        <y>494.0</y>
+        <width>117.0</width>
+        <height>38.0</height>
+      </bounds>
+      <layer>-1</layer>
+      <step>
+        <refId>0f0a3dad-bb55-4067-8bd1-bacb0f450dfd</refId>
+      </step>
+    </callout>
+    <callout id="2503087d-b58a-43a7-a5e0-4f9c914a555d">
+      <text>c492b52a-822f-4b49-8a2c-e12a974b2b0b.2503087d-b58a-43a7-a5e0-4f9c914a555d.callout</text>
+      <bounds>
+        <x>345.0</x>
+        <y>372.0</y>
+        <width>173.0</width>
+        <height>37.0</height>
+      </bounds>
+      <layer>-1</layer>
+      <step>
+        <refId>abb3c37c-55ee-43f0-91bf-026e712edf87</refId>
+      </step>
+    </callout>
+    <callout id="2436ac58-6825-4382-b967-71027423510b">
+      <text>c492b52a-822f-4b49-8a2c-e12a974b2b0b.2436ac58-6825-4382-b967-71027423510b.callout</text>
+      <bounds>
+        <x>361.0</x>
+        <y>275.0</y>
+        <width>153.0</width>
+        <height>39.0</height>
+      </bounds>
+      <layer>-1</layer>
+      <step>
+        <refId>7b164d50-b3e5-494c-a831-124dd7532db3</refId>
+      </step>
+    </callout>
+  </callouts>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="6fbc95c3-9114-4e31-939b-e2181dd6db02">
+      <annotation></annotation>
+      <name>Determinar Fechas</name>
+      <bounds>
+        <x>0.0</x>
+        <y>0.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="300db59a-fe05-4865-beb0-79bd084cd61a">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="013ba069-2c9d-468b-9ba8-9e30a134bc65">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>FechaEntrada</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="3bd72057-b6a2-4b44-b42c-87b3df2f6de8">
+          <annotation></annotation>
+          <name>Un Dia</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>Un Dia</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>700c5572-9506-496a-af73-6c42ec48e228</refId>
+          </destination>
+          <source>
+            <refId>6fbc95c3-9114-4e31-939b-e2181dd6db02</refId>
+          </source>
+          <positions>
+            <point>
+              <x>137.0</x>
+              <y>53.0</y>
+            </point>
+            <point>
+              <x>59.0</x>
+              <y>205.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="2da3fe14-51d3-4acb-8a64-4e73dfae7a97">
+          <annotation></annotation>
+          <name>Dos Dias</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>Dos Dias</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>6f557dde-990d-43ff-924a-70e8e31794f3</refId>
+          </destination>
+          <source>
+            <refId>6fbc95c3-9114-4e31-939b-e2181dd6db02</refId>
+          </source>
+          <positions>
+            <point>
+              <x>137.0</x>
+              <y>53.0</y>
+            </point>
+            <point>
+              <x>182.0</x>
+              <y>215.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>bd3afb5d-58f6-40d0-9d77-0b136c8d3f16</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="7b750c37-f0d5-4726-ba2b-88e8636fa9f2">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>FechaAC</contextKey>
+          <expression id="4846319e-cd5c-4dc9-bb17-b677637cc7fb">
+            <annotation></annotation>
+            <name>Result Field: FechaAC</name>
+            <fieldName>FechaAC</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="093af87c-73e2-4627-b762-949b6f00cb27">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>FechaAC01</contextKey>
+          <expression id="fafaabcc-91af-40b5-a2ff-0f8ec4fd4856">
+            <annotation></annotation>
+            <name>Result: hoy</name>
+            <fieldName>hoy</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="c61c806e-c2f1-443d-a098-53db08902739">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>hoy</contextKey>
+          <expression id="f5af31c1-3bd2-4f3c-bc50-af699dc5dec6">
+            <annotation></annotation>
+            <name>Result: hoy</name>
+            <fieldName>hoy</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="30b54c9d-2dc2-4078-bcfb-6fff8f90d7f8">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>ayer</contextKey>
+          <expression id="e6c892b8-48c8-4998-92da-753743dc0911">
+            <annotation></annotation>
+            <name>Result: ayer</name>
+            <fieldName>ayer</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="847193de-5f43-4f43-92b1-688d9acc048e">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>antesAyer</contextKey>
+          <expression id="c0547497-a2dc-4e87-bf7d-3fe5b19bc3e0">
+            <annotation></annotation>
+            <name>Result: antesAyer</name>
+            <fieldName>antesAyer</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="700c5572-9506-496a-af73-6c42ec48e228">
+      <annotation></annotation>
+      <name>Get Archivos Adquirente Visa</name>
+      <bounds>
+        <x>0.0</x>
+        <y>130.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="cd2aab03-0af2-4b01-860a-caff9145d9f4">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="bb57f7ad-399e-4b7c-9a43-bd43c42d9217">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Buzon Banco</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>MB000623</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="9cc9c90e-4f6d-4225-b2e1-41dbdbd3d638">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>true</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>ArchivoIncoming</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>049${hoy}_MI</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="687c75a4-c18f-4bc1-8497-b6490d40710c">
+          <annotation></annotation>
+          <fromContextKey>ayer</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>true</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>FechaArchivo</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="7d1011f9-f5f1-4d5d-80b3-4f07d6034544">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>dosDias</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>false</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="94e5fbbb-edd1-4492-9591-d041606a6f76">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>29412489-63c4-47a3-8407-572b490e23aa</refId>
+          </destination>
+          <source>
+            <refId>700c5572-9506-496a-af73-6c42ec48e228</refId>
+          </source>
+          <positions>
+            <point>
+              <x>50.0</x>
+              <y>98.0</y>
+            </point>
+            <point>
+              <x>50.0</x>
+              <y>263.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>3483a59b-414e-4937-8126-c4dd3eba2384</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="b13718d9-46aa-4795-87b5-09e6a9a5d8d1">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>ArchivoPOSRE</contextKey>
+          <expression id="74753f90-1a55-45cb-9b2c-89425442c60d">
+            <annotation></annotation>
+            <name>Result Field: ArchivoPOSRE</name>
+            <fieldName>ArchivoPOSRE</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="32156f76-18b9-40df-8de7-0d63043570be">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>ArchivoIncoming</contextKey>
+          <expression id="1818d16e-0184-42c9-826b-af2f038425d8">
+            <annotation></annotation>
+            <name>Result Field: ArchivoIncoming</name>
+            <fieldName>ArchivoIncoming</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="0f0a3dad-bb55-4067-8bd1-bacb0f450dfd">
+      <annotation>c492b52a-822f-4b49-8a2c-e12a974b2b0b.0f0a3dad-bb55-4067-8bd1-bacb0f450dfd.description</annotation>
+      <name>Script Separar ventas de disposiciones 13.</name>
+      <bounds>
+        <x>245.0</x>
+        <y>421.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="219a5a43-c67b-4198-ab93-f2880e826c61">
+        <baseIcon>hourglass.png</baseIcon>
+        <basePath>Utilities</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>true</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <scriptlet id="d3aac1fb-b80b-4148-8ee4-1230fc999295">
+        <annotation></annotation>
+        <name>Step Script Separar ventas de disposiciones 13. in Flow Conciliacion POS Adquirente Visa Davivienda Occidente (0f0a3dad-bb55-4067-8bd1-bacb0f450dfd)</name>
+        <script></script>
+        <type>RHINO</type>
+      </scriptlet>
+      <bindings>
+        <staticBinding id="e617f83f-e5e5-4067-b525-f86b8fab695b">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>seconds</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>0</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="19bf390c-045a-45d1-ab5f-e948cafc6f01">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Registros13</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="32843691-317d-4ed9-bd45-77a622590c24">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Registros10</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="ad65aa71-98a5-4c7c-a5a2-bd06ed5233a8">
+          <annotation></annotation>
+          <name>done</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>done</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>abb3c37c-55ee-43f0-91bf-026e712edf87</refId>
+          </destination>
+          <source>
+            <refId>0f0a3dad-bb55-4067-8bd1-bacb0f450dfd</refId>
+          </source>
+          <positions>
+            <point>
+              <x>295.0</x>
+              <y>455.0</y>
+            </point>
+            <point>
+              <x>591.0</x>
+              <y>405.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>d1bbf441-824a-450e-afae-2ddec0e0f35e</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="8952fdac-11ea-45e8-be96-07945f415f1a">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>ResultadosBusqueda</contextKey>
+          <expression id="9c329026-50a6-463c-ac3b-933108190af7">
+            <annotation></annotation>
+            <name>Input: Registros10</name>
+            <fieldName>Registros10</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <scriptletFilter id="9651f365-1c7e-466b-8e5f-0d0881cbc837">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="2aa3e80e-32aa-4a81-9473-a60ef78f2ae7">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>var ent=scriptletInput.split(&quot;\n&quot;);
+var dispoVisa=&quot;&quot;;
+var dispoMaster=&quot;&quot;;
+var ventasVisa=&quot;&quot;;
+var ventasMaster=&quot;&quot;;
+var contvv=contvm=contdv=contdm=0;
+
+	for(i=0;i&lt;ent.length;i++){
+		li=ent[i].split(&quot;,&quot;);
+		if(li[15]==&quot;02&quot;){ //ventas
+			if(li[9].search(/^74/)!=-1){
+				ventasVisa+=ent[i]+&quot;\n&quot;; contvv++;
+			}else{
+				ventasMaster+=ent[i]+&quot;\n&quot;; contvm++;
+			}
+		}else if(li[15]==&quot;01&quot;){//disposiciones
+			if(li[9].search(/^74/)!=-1){
+						dispoVisa+=ent[i]+&quot;\n&quot;; contdv++;
+					}else{
+						dispoMaster+=ent[i]+&quot;\n&quot;; contdm++;
+					}
+		}
+	}
+scriptletResult= &quot;Ventas Visa:\n&quot;+ventasVisa+&quot;\n\nVentas Mastercard:\n&quot;+ventasMaster+&quot;\n\nDisposiciones Visa:\n&quot;+dispoVisa+&quot;\n\nDisposiciones Mastercard:\n&quot;+dispoMaster;</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="abb3c37c-55ee-43f0-91bf-026e712edf87">
+      <annotation></annotation>
+      <name>ReadFile SubFlujo [Incoming]</name>
+      <bounds>
+        <x>241.0</x>
+        <y>300.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="3cadda5f-3515-4900-892c-a10097844a13">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="45d11ae0-1526-4a33-a245-ee3e21cbc89f">
+          <annotation></annotation>
+          <fromContextKey>ArchivoIncoming</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>File</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="5802ed1e-efbf-48ca-b575-c935c3235a98">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Filter</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>${FIID}</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="81dd69b2-9467-432e-9be9-91549409c200">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>7b164d50-b3e5-494c-a831-124dd7532db3</refId>
+          </destination>
+          <source>
+            <refId>abb3c37c-55ee-43f0-91bf-026e712edf87</refId>
+          </source>
+          <positions>
+            <point>
+              <x>291.0</x>
+              <y>334.0</y>
+            </point>
+            <point>
+              <x>631.0</x>
+              <y>298.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>4bc1a997-f980-48e6-9979-37d5d93429f0</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="b1d2eea7-7aa2-4cad-aa3a-3ce6189de46f">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>VSS120N</contextKey>
+          <expression id="50aebe20-4df8-4410-9ec6-aa6afc7500f1">
+            <annotation></annotation>
+            <name>Result: Leido</name>
+            <fieldName>Leido</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters>
+              <scriptletFilter id="18be2cb4-b229-4e75-9bbd-e38d5ea6cb54">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="ab3ca406-b119-44f0-bbf5-8c022522bac8">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>if (scriptletInput !== null) {
+  var ent=scriptletInput.split(&quot;\n&quot;);
+  var salida=&quot;&quot;;
+  ban=false;
+  for(i=0;i&lt;ent.length;i++){
+  	if ((ban==false)&amp;&amp;(ent[i].search(/REPORT\s+ID\:\s+VSS\-120/g)!=-1)){ban=true;}
+  	if ((ban==true)&amp;&amp;(ent[i].search(/END\s+OF\s+VSS\-120\s+REPORT/g)!=-1)){ban=false;}
+  	
+  	if(ban){
+  	salida+=ent[i]+&quot;\n&quot;;
+  	}
+  }
+  scriptletResult=salida;
+}</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+              <stripWhitespaceFilter id="b99b076d-130e-46db-b5cf-1f3768b29b02">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+              <scriptletFilter id="c4183f00-cfb8-4aaa-8c52-ef5d994106f9">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="951200fc-5a9b-4303-8566-52de412e879a">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>if (scriptletInput !== null) {
+	var ent=scriptletInput.split(&quot;\n&quot;);
+	var salida=&quot;&quot;;
+	var countvv=0;
+	var acumvv=0;
+	var countdv=0;
+	var acumdv=0;
+	var countdevv=0;
+	var acumdevv=0;
+	var countrevv=0
+	var acumrevv=0;
+	var countredv=0;
+	var acumredv=0;
+  
+	var ucountvv=0;
+	var uacumvv=0;
+	var ucountdv=0;
+	var uacumdv=0;
+	var ucountdevv=0;
+	var uacumdevv=0;
+	var ucountrevv=0
+	var uacumrevv=0;
+	var ucountredv=0;
+	var uacumredv=0;
+	var ulacumvv=0;
+	var ban=false;
+	var tasaC=0;
+  
+  for(i=0;i&lt;ent.length;i++){
+	if(ent[i].search(/SETTLEMENT\s+CURRENCY\:\s+/g)!=-1){ban=false;}
+	if(ent[i].search(/SETTLEMENT\s+CURRENCY\:\s+USD/g)!=-1){ban=true;}
+	
+	if(!ban){ //local
+		if(ent[i].search(/\s+ORIGINAL\s+SALE\s+/g)!=-1){ //ventas
+			countvv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+			acumvv+=parseFloat(ent[i].substring(110,130).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+		}
+		if(ent[i].search(/TOTAL\s+MERCHANDISE\s+CREDIT/g)!=-1){//Devoluciones
+			countdevv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+			acumdevv+=parseFloat(ent[i].substring(110,130).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+		}
+		if(ent[i].search(/ORIGINAL\s+ADVANCE/g)!=-1){ //Dispo
+  	  		countdv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  		acumdv+=parseFloat(ent[i].substring(110,130).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	}
+		if(ent[i].search(/ORIGINALSALERVRSL/g)!=-1){ //Reverso de venta
+  	  	  	countrevv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	  	acumrevv+=parseFloat(ent[i].substring(110,130).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	  	  	}
+		if(ent[i].search(/ORIGINALADVANCERVRSL/g)!=-1){ //Reverso dispo
+  	  	  	 countredv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	  	 acumredv+=parseFloat(ent[i].substring(110,130).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	  	  	}
+	}
+	else{ //USD
+		if(ent[i].search(/\s+ORIGINAL\s+SALE\s+/g)!=-1){ //ventas
+  		ucountvv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  		uacumvv+=parseFloat(ent[i].substring(110,130).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+		ulacumvv+=parseFloat(ent[i].substring(90,108).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+		}
+		if(ent[i].search(/TOTAL\s+MERCHANDISE\s+CREDIT/g)!=-1){//Devoluciones
+  		ucountdevv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  		uacumdevv+=parseFloat(ent[i].substring(110,130).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+		}
+		if(ent[i].search(/ORIGINAL\s+ADVANCE/g)!=-1){ //Dispo
+  	  	ucountdv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	uacumdv+=parseFloat(ent[i].substring(110,130).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	}
+		if(ent[i].search(/ORIGINALSALERVRSL/g)!=-1){ //Reverso de venta
+  	  	 ucountrevv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	 uacumrevv+=parseFloat(ent[i].substring(90,110).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+		}
+		if(ent[i].search(/ORIGINALADVANCERVRSL/g)!=-1){ //Reverso dispo
+  	  	 ucountredv+=parseInt(ent[i].substring(75,90).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+  	  	 uacumredv+=parseFloat(ent[i].substring(90,110).replace(/\s+/g,&quot;&quot;).replace(/\,/g,&quot;&quot;));
+		}
+	}
+   }
+ 
+  //LOCAL
+  salida=&quot;TRX Ventas: &quot;+countvv +&quot;\nAcumulador Ventas: &quot;+acumvv;
+  salida+=&quot;\n\nTRX devoluciones: &quot;+countdevv +&quot;\nAcumulador devoluciones: &quot;+acumdevv;
+  salida+=&quot;\n\nTRX Dispo: &quot;+countdv +&quot;\nAcumulador Dispo: &quot;+acumdv;
+  salida+=&quot;\n\nTRX Reverso de venta: &quot;+countrevv +&quot;\nAcumulador Reversos de Ventas: &quot;+acumrevv;
+  salida+=&quot;\n\nTRX Reverso de dispo: &quot;+countredv +&quot;\nAcumulador Reversos de dispo: &quot;+acumredv;
+  //USD
+  salida+=&quot;\n\nTRX Ventas USD: &quot;+ucountvv +&quot;\nAcumulador Ventas USD: &quot;+uacumvv;
+  salida+=&quot;\n\nTRX devoluciones USD: &quot;+ucountdevv +&quot;\nAcumulador devoluciones USD: &quot;+uacumdevv;
+  salida+=&quot;\n\nTRX Dispo USD: &quot;+ucountdv +&quot;\nAcumulador Ventas USD: &quot;+uacumdv;
+  salida+=&quot;\n\nTRX Reverso de venta USD: &quot;+ucountrevv +&quot;\nAcumulador Reversos de Ventas USD: &quot;+uacumrevv;
+  salida+=&quot;\n\nTRX Reverso de dispo USD: &quot;+ucountredv +&quot;\nAcumulador Reversos de dispo USD: &quot;+uacumredv; 
+  tasaC=ulacumvv/uacumvv;
+  salida+=&quot;\n\nTasa de cambio: &quot;+ tasaC;
+  
+  scriptletResult=salida;
+  	scriptletContext.putGlobal(&quot;incotxusdventas&quot;,countvv);
+    scriptletContext.putGlobal(&quot;incousdventas&quot;,acumvv);
+    scriptletContext.putGlobal(&quot;incotxusddispo&quot;,countdv);
+    scriptletContext.putGlobal(&quot;incousdispo&quot;,acumdv);
+    scriptletContext.putGlobal(&quot;CantidadDevoluciones&quot;,countdevv);
+    scriptletContext.putGlobal(&quot;MontoDevoluciones&quot;,acumdevv);
+    scriptletContext.putGlobal(&quot;incotxusdventasRV&quot;,countrevv);
+    scriptletContext.putGlobal(&quot;incousdventasRV&quot;,acumrevv);
+    scriptletContext.putGlobal(&quot;incotxusddispoRV&quot;,countredv);
+    scriptletContext.putGlobal(&quot;incousdispoRV&quot;,acumredv);
+	
+	scriptletContext.putGlobal(&quot;incotxusdventasU&quot;,ucountvv);
+    scriptletContext.putGlobal(&quot;incousdventasU&quot;,uacumvv);
+    scriptletContext.putGlobal(&quot;incotxusddispoU&quot;,ucountdv);
+    scriptletContext.putGlobal(&quot;incousdispoU&quot;,uacumdv);
+    scriptletContext.putGlobal(&quot;CantidadDevolucionesU&quot;,ucountdevv);
+    scriptletContext.putGlobal(&quot;MontoDevolucionesU&quot;,uacumdevv);
+    scriptletContext.putGlobal(&quot;incotxusdventasRVU&quot;,ucountrevv);
+    scriptletContext.putGlobal(&quot;incousdventasRVU&quot;,uacumrevv);
+    scriptletContext.putGlobal(&quot;incotxusddispoRVU&quot;,ucountredv);
+    scriptletContext.putGlobal(&quot;incousdispoRVU&quot;,uacumredv);
+    scriptletContext.putGlobal(&quot;TasaDeCambio&quot;,tasaC);
+}</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="e76ad6de-7e3c-4e0c-810e-596577208368">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>Contador</contextKey>
+          <expression id="b3577b4e-a391-491d-94f3-4794bb7b5beb">
+            <annotation></annotation>
+            <name>Result: Leido</name>
+            <fieldName>Leido</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters>
+              <countLinesFilter id="5d247797-e581-4585-b506-5303301858e0">
+                <annotation></annotation>
+                <name>Line Count</name>
+              </countLinesFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="928d8ca4-1287-421d-b1f2-ffa289b481a3">
+      <annotation></annotation>
+      <name>ReadFile SubFlujo [Registros 13]</name>
+      <bounds>
+        <x>0.0</x>
+        <y>548.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="a18ef913-b70a-43a9-89ab-e98e8f8c0120">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="347ff4e8-3f36-43bf-b6fa-fba98b32db4e">
+          <annotation></annotation>
+          <fromContextKey>ArchivoPOSRE</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>File</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="4833a9f7-dcb4-49fa-86b7-3f789f986529">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Filter</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>13${ayer}${FIID1}</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="0ad766d6-a06f-4149-9c75-f2f721df80c8">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>bfb1feeb-023c-4c51-82bc-9747a79dcbf0</refId>
+          </destination>
+          <source>
+            <refId>928d8ca4-1287-421d-b1f2-ffa289b481a3</refId>
+          </source>
+          <positions>
+            <point>
+              <x>156.0</x>
+              <y>265.0</y>
+            </point>
+            <point>
+              <x>295.0</x>
+              <y>590.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>4bc1a997-f980-48e6-9979-37d5d93429f0</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="8c49755c-aaa0-48d8-8b9e-b780aaf6e483">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>salida</contextKey>
+          <expression id="4237f95d-d45a-4e87-a90b-c0a940d624b5">
+            <annotation></annotation>
+            <name>Result: Leido</name>
+            <fieldName>Leido</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="c7eda981-bb3d-4bf8-a1a2-1f5d8793ed8f">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>Contador</contextKey>
+          <expression id="db569601-caa3-4380-98f4-c9235c8bf71f">
+            <annotation></annotation>
+            <name>Result: Contador</name>
+            <fieldName>Contador</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="f15426a4-f998-4c32-a26b-f491445a68b9">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>Registros13</contextKey>
+          <expression id="f4075258-fac4-43d8-ad77-edcdebd744a6">
+            <annotation></annotation>
+            <name>Result Field: sinfiltrar</name>
+            <fieldName>sinfiltrar</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters>
+              <stripWhitespaceFilter id="f48eab1f-5d00-4e1d-96b1-7a9afe17cd1b">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+              <scriptletFilter id="2a255d3d-dc94-4167-b6e8-066b917d47ed">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="8a4a7af7-9628-418e-ad9f-0db0a63285a0">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>var ent=scriptletInput.split(&quot;\n&quot;);
+var salida=&quot;&quot;;
+
+ for(i=0;i&lt;ent.length;i++){
+ var linea=ent[i].replace(/^\s/,&quot;&quot;);
+ var secuencia=linea.substring(0,7);
+ var tipo_registro=linea.substring(7,8);
+ var sub_tipo=linea.substring(8,9);
+ var fecha_dato=linea.substring(9,15);
+ var fiid_entidad=linea.substring(15,19);
+ var num_prosa=linea.substring(19,24);
+ var afiliacion=linea.substring(24,39);
+ var indi_null=linea.substring(39,40);
+ var id_terminal=linea.substring(40,48);
+ var referencia=linea.substring(56,79);
+ salida+=secuencia+&quot;,&quot;+tipo_registro+&quot;,&quot;+sub_tipo+&quot;,&quot;+fecha_dato+&quot;,&quot;+fiid_entidad+&quot;,&quot;+num_prosa+&quot;,&quot;+afiliacion+&quot;,&quot;+indi_null+&quot;,&quot;+id_terminal+&quot;,&quot;+referencia;
+ if(sub_tipo==&quot;0&quot;){
+ 	var cuenta= linea.substring(79,95);
+ 	var naturaleza= linea.substring(98,99);
+ 	var marca_produ=linea.substring(99,101);
+ 	var fiid_emis=linea.substring(101,105); //VISA
+ 	var entidad_prosa=linea.substring(105,110);
+ 	var clave_txn=linea.substring(110,112);
+ 	var impor_original=linea.substring(112,125);
+ 	impor_original=impor_original.replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var impor_consumo=linea.substring(125,138).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var cod_moneda=linea.substring(138,141);
+ 	var fecha_consu=linea.substring(141,147);
+ 	var hora_consu=linea.substring(147,153);
+ 	var autorizacion=linea.substring(153,159);
+ 	var entry_mode=linea.substring(161,164);
+ 	var capac_term=linea.substring(164,165);
+ 	var comerc_elec=linea.substring(165,166);
+ 	var routing=&quot;&quot;; //viene siempre en vacio?
+ 	var cvv=&quot;&quot;; //viene siempre vacio?
+ 	var ind_com_ele=linea.substring(168,169);
+ 	var aut_coll_ind=&quot;&quot;; //siempre vacio?
+ 	var ucaf_aav=&quot;&quot;; //simpre vacio?
+ 	var pagos_diferidos=linea.substring(171,173);
+ 	var num_pagos_dif=linea.substring(173,175);
+ 	var tipo_pag_dif=linea.substring(175,177);
+ 	var indi_medio_aces=linea.substring(177,179);
+ 	var fuente=linea.substring(179,183); 
+ 	var in_ti_com_des=linea.substring(183,184);
+ 	var varlor_com_des=linea.substring(184,188).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var impor_com_des=linea.substring(188,196).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var iva_com_des=linea.substring(196,204).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var id_tipo_cuo_camb=linea.substring(204,205);
+ 	var valor_cuo_incamb=linea.substring(205,209).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var impo_cuo_incamb=linea.substring(209,217).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var iva_cuo_intcamb=linea.substring(217,225).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var id_tipo_sore=linea.substring(225,226);
+ 	var itbms=linea.substring(226,230).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var ref_itbm=linea.substring(230,238).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var neto_depos=linea.substring(238,246).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var id_multicore=linea.substring(246,255).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var suc_inter_red=linea.substring(255,256);
+ 	var inf_cont_inter=linea.substring(256.261);
+ 	
+ 	salida+=&quot;,&quot;+cuenta+&quot;,&quot;+naturaleza+&quot;,&quot;+marca_produ+&quot;,&quot;+fiid_emis+&quot;,&quot;+entidad_prosa+&quot;,&quot;+clave_txn+&quot;,&quot;+impor_original+&quot;,&quot;+impor_consumo+&quot;,&quot;+cod_moneda+&quot;,&quot;+fecha_consu+&quot;,&quot;+hora_consu+&quot;,&quot;+autorizacion;
+ 	salida+=&quot;,&quot;+entry_mode+&quot;,&quot;+capac_term+&quot;,&quot;+comerc_elec+&quot;,&quot;+routing+&quot;,&quot;+cvv+&quot;,&quot;+ind_com_ele+&quot;,&quot;+aut_coll_ind+&quot;,&quot;+ucaf_aav+&quot;,&quot;+pagos_diferidos+&quot;,&quot;+num_pagos_dif+&quot;,&quot;+tipo_pag_dif+&quot;,&quot;+indi_medio_aces+&quot;,&quot;;
+ 	salida+=fuente+&quot;,&quot;+in_ti_com_des+&quot;,&quot;+varlor_com_des+&quot;,&quot;+impor_com_des+&quot;,&quot;+iva_com_des+&quot;,&quot;+id_tipo_cuo_camb+&quot;,&quot;+valor_cuo_incamb+&quot;,&quot;+impo_cuo_incamb+&quot;,&quot;+iva_cuo_intcamb+&quot;,&quot;+id_tipo_sore+&quot;,&quot;+itbms+&quot;,&quot;;
+ 	salida+=ref_itbm+&quot;,&quot;+neto_depos+&quot;,&quot;+id_multicore+&quot;,&quot;+suc_inter_red+&quot;,&quot;+inf_cont_inter+&quot;\n&quot;;
+ 	
+ }else if(sub_tipo==&quot;3&quot;){
+ 	var impor_venta=linea.substring(79,91);
+ 	var impuesto=linea.substring(91,103);
+ 	var descuento=linea.substring(103,107);
+ 	var monto_desc=linea.substring(107,119);
+ 	var monto_total=linea.substring(119,131);
+ 	var factor_impu=linea.substring(131,135);
+ 	var monto_impu=linea.substring(135,145);
+ 	
+ 	salida+=&quot;,&quot;+impor_venta+&quot;,&quot;+impuesto+&quot;,&quot;+descuento+&quot;,&quot;+monto_desc+&quot;,&quot;+monto_total+&quot;,&quot;+factor_impu+&quot;,&quot;+monto_impu+&quot;\n&quot;;
+ }
+ 
+ 
+ 
+ }
+ scriptletResult=salida;</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+              <stripWhitespaceFilter id="a7589562-8b09-4da9-bd6f-09fa494feefa">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+              <scriptletFilter id="22f499f2-32ef-4f09-b802-53c9f79e3781">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="ff26d5b4-a1c8-49c0-b5f5-c6553b8ca9b2">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>//Buscar los codigo de registro 02 en los tipo 13. posicion 9 del vector.
+var ent=scriptletInput.split(&quot;\n&quot;);
+var salida=&quot;&quot;;
+
+//separar los 10 de los 13
+var reg10=&quot;&quot;;
+var reg13=&quot;&quot;;
+for(i=0;i&lt;ent.length;i++){
+ linea=ent[i].split(&quot;,&quot;);
+ if(linea[2]==&quot;0&quot;){reg10+=ent[i]+&quot;\n&quot;;}else if(linea[2]==&quot;3&quot;){reg13+=ent[i]+&quot;\n&quot;;}
+}
+
+var reg13salida=reg13;
+//buscar los 02 en los 13
+//No usado por ahora
+/*
+reg10=reg10.split(&quot;\n&quot;);
+reg13=reg13.split(&quot;\n&quot;);
+var reg13e=&quot;&quot;;//registros 13 si encontrados.
+var reg10no=&quot;&quot;;
+var reg10e=&quot;&quot;;
+for(i=0;i&lt;reg10.length;i++){
+	linea10=reg10[i].split(&quot;,&quot;);
+	if(linea10[12]==&quot;02&quot;){
+	 ban=false;
+		for(j=0;j&lt;reg13.length;j++){
+			linea13=reg13[j].split(&quot;,&quot;);
+			if(linea13[9]==linea10[9]){
+				reg13e+=reg13[j]+&quot;\n&quot;;
+				reg10e+=reg10[i]+&quot;\n&quot;;
+				ban=true;
+				break;
+			}
+		}
+		if(!ban){reg10no+=reg10[i]+&quot;\n&quot;;}
+	}
+}
+
+//falta determinar sobras de 13
+var reg13no=&quot;&quot;;
+var reg13eF=reg13e;
+reg13e=reg13e.split(&quot;\n&quot;);
+
+for(i=0;i&lt;reg13.length;i++){
+	linea13a=reg13[i];
+	ban=false;
+	for(j=0;j&lt;reg13e.length;j++){
+		linea13b=reg13e[j];
+		
+		if(linea13a==linea13b){ban=true; }//encontrado}
+	}
+	if(!ban){reg13no+=reg13[i]+&quot;\n&quot;;}//ventas}
+}
+
+scriptletContext.putGlobal(&quot;ListadoVentas&quot;,reg13no);
+scriptletContext.putGlobal(&quot;Listado10en&quot;,reg10e);
+scriptletContext.putGlobal(&quot;Listado13en&quot;,reg13eF);
+*/
+scriptletResult=reg13salida;</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+              <stripWhitespaceFilter id="05396b14-8044-4ebb-a1fd-a1113dad49c4">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="bfb1feeb-023c-4c51-82bc-9747a79dcbf0">
+      <annotation>c492b52a-822f-4b49-8a2c-e12a974b2b0b.bfb1feeb-023c-4c51-82bc-9747a79dcbf0.description</annotation>
+      <name>Script Separar ventas de disposiciones 10.</name>
+      <bounds>
+        <x>245.0</x>
+        <y>556.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="51f64be6-72c0-43a2-b788-55f92149c564">
+        <baseIcon>hourglass.png</baseIcon>
+        <basePath>Utilities</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>true</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <scriptlet id="190f1627-92a4-4e06-8870-dbccce9c4920">
+        <annotation></annotation>
+        <name>Step Script Separar ventas de disposiciones 10. in Flow Conciliacion POS Adquirente Visa Davivienda Occidente (bfb1feeb-023c-4c51-82bc-9747a79dcbf0)</name>
+        <script>//visa posre
+var totaltrx= parseInt(parseInt(scriptletContext.get(&quot;contVV&quot;))+parseInt(scriptletContext.get(&quot;contDV&quot;)));
+var totalmone=parseFloat(parseFloat(scriptletContext.get(&quot;acumvv&quot;))+parseFloat(scriptletContext.get(&quot;acumdv&quot;)));
+scriptletContext.putGlobal(&quot;postxtotal&quot;,totaltrx);
+scriptletContext.putGlobal(&quot;posmonedatotal&quot;,totalmone);</script>
+        <type>RHINO</type>
+      </scriptlet>
+      <bindings>
+        <staticBinding id="89cad098-c7b1-413e-81c1-356ee937dd22">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>seconds</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>0</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="8fcb089a-37a1-482b-ad14-39f7b3344938">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Registros13</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="70e8dc98-2b60-47a5-a1c8-8bb1199d8a14">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Registros10</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="b97ddb79-9ecc-4fac-9030-d24ab6a05425">
+          <annotation></annotation>
+          <name>done</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>done</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>0f0a3dad-bb55-4067-8bd1-bacb0f450dfd</refId>
+          </destination>
+          <source>
+            <refId>bfb1feeb-023c-4c51-82bc-9747a79dcbf0</refId>
+          </source>
+          <positions>
+            <point>
+              <x>218.0</x>
+              <y>430.0</y>
+            </point>
+            <point>
+              <x>287.0</x>
+              <y>295.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>d1bbf441-824a-450e-afae-2ddec0e0f35e</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="216f40d8-40c8-479b-8473-9f53c4b20e3f">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>ResultadosBusqueda</contextKey>
+          <expression id="34ffb2bc-562b-4a61-ac35-65f992d86b26">
+            <annotation></annotation>
+            <name>Input: Registros10</name>
+            <fieldName>Registros10</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <scriptletFilter id="255beaea-972e-4369-9b32-6001470d1cbe">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="ced1c293-14a6-4d18-872b-3addc0aebdb3">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>var ent=scriptletInput.split(&quot;\n&quot;);
+var dispoVisa=&quot;&quot;;
+var dispoMaster=&quot;&quot;;
+var ventasVisa=&quot;&quot;;
+var ventasMaster=&quot;&quot;;
+var contvv=contvm=contdv=contdm=contdevov=contdevom=contrevdv=contrevdm=contdrevvv=contdrevvm=0;
+var acumvv=acumvm=acumdv=acumdm=0;
+
+//posibles tipos de transacciones
+	for(i=0;i&lt;ent.length;i++){
+		li=ent[i].split(&quot;,&quot;);
+		if(li[15]==&quot;01&quot;){ //ventas
+			if(li[9].search(/^74/)!=-1){
+				ventasVisa+=ent[i]+&quot;\n&quot;; contvv++;
+			}else{
+				ventasMaster+=ent[i]+&quot;\n&quot;; contvm++;
+			}
+		}else if(li[15]==&quot;02&quot;){//disposiciones
+			if(li[9].search(/^74/)!=-1){
+				dispoVisa+=ent[i]+&quot;\n&quot;; contdv++;
+			}else{
+				dispoMaster+=ent[i]+&quot;\n&quot;; contdm++;
+			}
+		}else if(li[15]==&quot;21&quot;){//Devoluciones
+			if(li[9].search(/^74/)!=-1){
+				devoVisa+=ent[i]+&quot;\n&quot;; contdevov++;
+			}else{
+				devoMaster+=ent[i]+&quot;\n&quot;; contdevom++;
+			}
+			
+		}else if(li[15]==&quot;26&quot;){//Reverso de Devoluciones
+			if(li[9].search(/^74/)!=-1){
+				reveDevVisa+=ent[i]+&quot;\n&quot;; contrevdv++;
+			}else{
+				reveDevMaster+=ent[i]+&quot;\n&quot;; contrevdm++;
+			}
+		}else if(li[15]==&quot;25&quot;){//Reverso de Venta
+			if(li[9].search(/^74/)!=-1){
+				reveDevVisa+=ent[i]+&quot;\n&quot;; contdrevvv++;
+			}else{
+				reveVenMaster+=ent[i]+&quot;\n&quot;; contdrevvm++;
+			}
+		
+		}
+	}
+scriptletResult= &quot;Ventas Visa:&quot;+contvv+&quot;\n&quot;+ventasVisa+&quot;\n\nVentas Mastercard:&quot;+contvm+&quot;\n&quot;+ventasMaster+&quot;\n\nDisposiciones Visa:&quot;+contdv+&quot;\n&quot;+dispoVisa+&quot;\n\nDisposiciones Mastercard:&quot;+contdm+&quot;\n&quot;+dispoMaster+&quot;\n\n&quot;+contdevov+&quot;\n\n&quot;+contdevom+&quot;\n\n&quot;+contrevdv+&quot;\n\n&quot;+contrevdm+&quot;\n\n&quot;+contdrevvv+&quot;\n\n&quot;+contdrevvm;
+scriptletContext.putGlobal(&quot;VentasVisa&quot;,ventasVisa);
+scriptletContext.putGlobal(&quot;VentasMaster&quot;,ventasMaster);
+scriptletContext.putGlobal(&quot;DispoVisa&quot;,dispoVisa);
+scriptletContext.putGlobal(&quot;DispoMaster&quot;,dispoMaster);
+scriptletContext.putGlobal(&quot;contVV&quot;,contvv);
+scriptletContext.putGlobal(&quot;contVM&quot;,contvm);
+scriptletContext.putGlobal(&quot;contDV&quot;,contdv);
+scriptletContext.putGlobal(&quot;contDM&quot;,contdm);
+
+
+//Identificar con esto los registros en 13 
+var reg13=scriptletContext.get(&quot;Registros13&quot;).split(&quot;\n&quot;);
+var reg13ventasVisa=&quot;&quot;;
+var reg13ventasMaster=&quot;&quot;;
+var reg13dispoVisa=&quot;&quot;;
+var reg13dispoMaster=&quot;&quot;;
+ventasVisa=ventasVisa.split(&quot;\n&quot;);
+ventasMaster=ventasMaster.split(&quot;\n&quot;);
+dispoVisa=dispoVisa.split(&quot;\n&quot;);
+dispoMaster=dispoMaster.split(&quot;\n&quot;);
+var cont13VV=cont13VM=cont13DV=cont13DM=0;
+
+//Recorrer los registros 13 para obtener los acumulados de cantidades
+
+for(i=0;i&lt;ventasVisa.length;i++){
+ lin1=ventasVisa[i].split(&quot;,&quot;);
+ for(j=0;j&lt;reg13.length;j++){
+ 	lin2=reg13[j].split(&quot;,&quot;);
+ 	if(lin1[9]==lin2[9]){reg13ventasVisa+=reg13[j]+&quot;\n&quot;; cont13VV++; acumvv+=parseFloat(lin2[14],10);}
+ }
+}
+for(i=0;i&lt;ventasMaster.length;i++){
+ lin1=ventasMaster[i].split(&quot;,&quot;);
+ for(j=0;j&lt;reg13.length;j++){
+ 	lin2=reg13[j].split(&quot;,&quot;);
+ 	if(lin1[9]==lin2[9]){reg13ventasMaster+=reg13[j]+&quot;\n&quot;; cont13VM++; acumvm+=parseFloat(lin2[14],10);}
+ }
+}
+
+for(i=0;i&lt;dispoVisa.length;i++){
+ lin1=dispoVisa[i].split(&quot;,&quot;);
+ for(j=0;j&lt;reg13.length;j++){
+ 	lin2=reg13[j].split(&quot;,&quot;);
+ 	if(lin1[9]==lin2[9]){reg13dispoVisa+=reg13[j]+&quot;\n&quot;; cont13DV++; acumdv+=parseFloat(lin2[14],10);}
+ }
+}
+
+for(i=0;i&lt;dispoMaster.length;i++){
+ lin1=dispoMaster[i].split(&quot;,&quot;);
+ for(j=0;j&lt;reg13.length;j++){
+ 	lin2=reg13[j].split(&quot;,&quot;);
+ 	if(lin1[9]==lin2[9]){reg13dispoMaster+=reg13[j]+&quot;\n&quot;; cont13DM++; acumdm+=parseFloat(lin2[14],10);}
+ }
+}
+
+scriptletContext.putGlobal(&quot;acumvv&quot;,parseFloat(acumvv/100));
+scriptletContext.putGlobal(&quot;acumvm&quot;,parseFloat(acumvm/100));
+scriptletContext.putGlobal(&quot;acumdv&quot;,parseFloat(acumdv/100));
+scriptletContext.putGlobal(&quot;acumdm&quot;,parseFloat(acumdm/100));
+
+scriptletContext.putGlobal(&quot;Salidareg13&quot;,&quot;Ventas VISA: &quot;+cont13VV+&quot;\n&quot;+reg13ventasVisa+&quot;\n\nVentas Mastercard:&quot;+cont13VM+&quot;\n&quot;+reg13ventasMaster+&quot;\n\nDisposiciones VISA:&quot;+cont13DV+&quot;\n&quot;+reg13dispoVisa+&quot;\n\nDisposiciones Mastercar:&quot;+cont13DM+&quot;\n&quot;+reg13dispoMaster);</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="dad71489-ccab-42e0-972d-5eb4393683a0">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>570.0</x>
+        <y>0.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="30c55d1f-9762-4eff-9cae-246a01d7293f">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>dad71489-ccab-42e0-972d-5eb4393683a0</refId>
+          </destination>
+          <source>
+            <refId>dad71489-ccab-42e0-972d-5eb4393683a0</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+    <step id="6f557dde-990d-43ff-924a-70e8e31794f3">
+      <annotation></annotation>
+      <name>Get Archivos Adquirente Visa</name>
+      <bounds>
+        <x>104.0</x>
+        <y>132.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="6571f5df-29ae-477d-9e6b-ec0c73b5deb3">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Buzon Banco</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>MB000623</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="07190bed-2520-4dd6-bb2f-483f0b3aa307">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>true</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>ArchivoIncoming</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>049${hoy}_MI</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="b71e81e8-c581-44df-a75f-a8c5ae0e2558">
+          <annotation></annotation>
+          <fromContextKey>ayer</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>FechaArchivo</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="e14de086-3aea-49ee-a270-141cc340e698">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>dosDias</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>true</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="9cedfec2-ec70-4317-94a4-3e2d6818f525">
+          <annotation></annotation>
+          <fromContextKey>antesAyer</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>true</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>FechaArchivoAntesayer</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="ca9a9e95-cb2b-4632-8d79-9a7a7e4f035d">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>29412489-63c4-47a3-8407-572b490e23aa</refId>
+          </destination>
+          <source>
+            <refId>6f557dde-990d-43ff-924a-70e8e31794f3</refId>
+          </source>
+          <positions>
+            <point>
+              <x>182.0</x>
+              <y>215.0</y>
+            </point>
+            <point>
+              <x>50.0</x>
+              <y>422.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>3483a59b-414e-4937-8126-c4dd3eba2384</refId>
+      </opRef>
+      <assignments/>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="29412489-63c4-47a3-8407-572b490e23aa">
+      <annotation></annotation>
+      <name>ReadFile SubFlujo [Registros 10]</name>
+      <bounds>
+        <x>0.0</x>
+        <y>356.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="a491aa38-3390-4cb0-9896-0b2ede23f240">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="f4f1a67c-173c-45b4-ace6-215da4b98a5d">
+          <annotation></annotation>
+          <fromContextKey>ArchivoPOSRE</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>File</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="7ab6b596-e34f-46a5-b410-2c727f891094">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Filter</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>10${ayer}${FIID1}</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="8881512a-a91f-43c1-a05a-038f3a0ce29f">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>928d8ca4-1287-421d-b1f2-ffa289b481a3</refId>
+          </destination>
+          <source>
+            <refId>29412489-63c4-47a3-8407-572b490e23aa</refId>
+          </source>
+          <positions>
+            <point>
+              <x>151.0</x>
+              <y>116.0</y>
+            </point>
+            <point>
+              <x>80.0</x>
+              <y>307.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>4bc1a997-f980-48e6-9979-37d5d93429f0</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="26e77d71-3b09-4e6d-804b-1d39ad7ac340">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>salida</contextKey>
+          <expression id="716422b1-4317-42c8-94c1-7eabcf82f927">
+            <annotation></annotation>
+            <name>Result Field: sinfiltrar</name>
+            <fieldName>sinfiltrar</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="e28e795b-5e76-4467-b576-ab4f60b300d3">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>Contador</contextKey>
+          <expression id="08dabca8-e709-4ea0-b7a6-ab8a083d48f4">
+            <annotation></annotation>
+            <name>Result: Contador</name>
+            <fieldName>Contador</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="c6225bdb-3438-4132-91e3-726b2f77be44">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>Registros10</contextKey>
+          <expression id="c50688a0-84ec-4155-876b-a23632243704">
+            <annotation></annotation>
+            <name>Result Field: sinfiltrar</name>
+            <fieldName>sinfiltrar</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters>
+              <stripWhitespaceFilter id="b6ebdac3-6270-4287-a903-335e9bdcb23a">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+              <scriptletFilter id="97b2ef8f-b4ea-43b2-8d28-b8a565911af4">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="36b2b7ff-e4d3-497f-a272-9873fd9f7b84">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>var ent=scriptletInput.split(&quot;\n&quot;);
+var salida=&quot;&quot;;
+
+ for(i=0;i&lt;ent.length;i++){
+ var linea=ent[i].replace(/^\s/,&quot;&quot;);
+ var secuencia=linea.substring(0,7);
+ var tipo_registro=linea.substring(7,8);
+ var sub_tipo=linea.substring(8,9);
+ var fecha_dato=linea.substring(9,15);
+ var fiid_entidad=linea.substring(15,19);
+ var num_prosa=linea.substring(19,24);
+ var afiliacion=linea.substring(24,39);
+ var indi_null=linea.substring(39,40);
+ var id_terminal=linea.substring(40,48);
+ var referencia=linea.substring(56,79);
+ salida+=secuencia+&quot;,&quot;+tipo_registro+&quot;,&quot;+sub_tipo+&quot;,&quot;+fecha_dato+&quot;,&quot;+fiid_entidad+&quot;,&quot;+num_prosa+&quot;,&quot;+afiliacion+&quot;,&quot;+indi_null+&quot;,&quot;+id_terminal+&quot;,&quot;+referencia;
+ if(sub_tipo==&quot;0&quot;){
+ 	var cuenta= linea.substring(79,95);
+ 	var naturaleza= linea.substring(98,99);
+ 	var marca_produ=linea.substring(99,101);
+ 	var fiid_emis=linea.substring(101,105); //VISA
+ 	var entidad_prosa=linea.substring(105,110);
+ 	var clave_txn=linea.substring(110,112);
+ 	var impor_original=linea.substring(112,125);
+ 	impor_original=impor_original.replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var impor_consumo=linea.substring(125,138).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var cod_moneda=linea.substring(138,141);
+ 	var fecha_consu=linea.substring(141,147);
+ 	var hora_consu=linea.substring(147,153);
+ 	var autorizacion=linea.substring(153,159);
+ 	var entry_mode=linea.substring(161,164);
+ 	var capac_term=linea.substring(164,165);
+ 	var comerc_elec=linea.substring(165,166);
+ 	var routing=&quot;&quot;; //viene siempre en vacio?
+ 	var cvv=&quot;&quot;; //viene siempre vacio?
+ 	var ind_com_ele=linea.substring(168,169);
+ 	var aut_coll_ind=&quot;&quot;; //siempre vacio?
+ 	var ucaf_aav=&quot;&quot;; //simpre vacio?
+ 	var pagos_diferidos=linea.substring(171,173);
+ 	var num_pagos_dif=linea.substring(173,175);
+ 	var tipo_pag_dif=linea.substring(175,177);
+ 	var indi_medio_aces=linea.substring(177,179);
+ 	var fuente=linea.substring(179,183); 
+ 	var in_ti_com_des=linea.substring(183,184);
+ 	var varlor_com_des=linea.substring(184,188).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var impor_com_des=linea.substring(188,196).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var iva_com_des=linea.substring(196,204).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var id_tipo_cuo_camb=linea.substring(204,205);
+ 	var valor_cuo_incamb=linea.substring(205,209).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var impo_cuo_incamb=linea.substring(209,217).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var iva_cuo_intcamb=linea.substring(217,225).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var id_tipo_sore=linea.substring(225,226);
+ 	var itbms=linea.substring(226,230).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var ref_itbm=linea.substring(230,238).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var neto_depos=linea.substring(238,246).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var id_multicore=linea.substring(246,255).replace(/A$/,&quot;1&quot;).replace(/B$/,&quot;2&quot;).replace(/C$/,&quot;3&quot;).replace(/D$/,&quot;4&quot;).replace(/E$/,&quot;5&quot;).replace(/F$/,&quot;6&quot;).replace(/G$/,&quot;7&quot;).replace(/H$/,&quot;8&quot;).replace(/I$/,&quot;9&quot;).replace(/\{$/,&quot;0&quot;);
+ 	var suc_inter_red=linea.substring(255,256);
+ 	var inf_cont_inter=linea.substring(256.261);
+ 	
+ 	salida+=&quot;,&quot;+cuenta+&quot;,&quot;+naturaleza+&quot;,&quot;+marca_produ+&quot;,&quot;+fiid_emis+&quot;,&quot;+entidad_prosa+&quot;,&quot;+clave_txn+&quot;,&quot;+impor_original+&quot;,&quot;+impor_consumo+&quot;,&quot;+cod_moneda+&quot;,&quot;+fecha_consu+&quot;,&quot;+hora_consu+&quot;,&quot;+autorizacion;
+ 	salida+=&quot;,&quot;+entry_mode+&quot;,&quot;+capac_term+&quot;,&quot;+comerc_elec+&quot;,&quot;+routing+&quot;,&quot;+cvv+&quot;,&quot;+ind_com_ele+&quot;,&quot;+aut_coll_ind+&quot;,&quot;+ucaf_aav+&quot;,&quot;+pagos_diferidos+&quot;,&quot;+num_pagos_dif+&quot;,&quot;+tipo_pag_dif+&quot;,&quot;+indi_medio_aces+&quot;,&quot;;
+ 	salida+=fuente+&quot;,&quot;+in_ti_com_des+&quot;,&quot;+varlor_com_des+&quot;,&quot;+impor_com_des+&quot;,&quot;+iva_com_des+&quot;,&quot;+id_tipo_cuo_camb+&quot;,&quot;+valor_cuo_incamb+&quot;,&quot;+impo_cuo_incamb+&quot;,&quot;+iva_cuo_intcamb+&quot;,&quot;+id_tipo_sore+&quot;,&quot;+itbms+&quot;,&quot;;
+ 	salida+=ref_itbm+&quot;,&quot;+neto_depos+&quot;,&quot;+id_multicore+&quot;,&quot;+suc_inter_red+&quot;,&quot;+inf_cont_inter+&quot;\n&quot;;
+ 	
+ }else if(sub_tipo==&quot;3&quot;){
+ 	var impor_venta=linea.substring(79,91);
+ 	var impuesto=linea.substring(91,103);
+ 	var descuento=linea.substring(103,107);
+ 	var monto_desc=linea.substring(107,119);
+ 	var monto_total=linea.substring(119,131);
+ 	var factor_impu=linea.substring(131,135);
+ 	var monto_impu=linea.substring(135,145);
+ 	
+ 	salida+=&quot;,&quot;+impor_venta+&quot;,&quot;+impuesto+&quot;,&quot;+descuento+&quot;,&quot;+monto_desc+&quot;,&quot;+monto_total+&quot;,&quot;+factor_impu+&quot;,&quot;+monto_impu+&quot;\n&quot;;
+ }
+ 
+ 
+ 
+ }
+ scriptletResult=salida;</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+              <stripWhitespaceFilter id="5e38973d-0af7-4b8a-b62f-36c249070059">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+              <scriptletFilter id="1d63755e-f530-4498-aa64-8cdbaa9a5ec5">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="8feb742f-75a5-4acf-a124-cdfd7adbb4c1">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>//Buscar los codigo de registro 02 en los tipo 13. posicion 9 del vector.
+var ent=scriptletInput.split(&quot;\n&quot;);
+var salida=&quot;&quot;;
+
+//separar los 10 de los 13
+var reg10=&quot;&quot;;
+var reg13=&quot;&quot;;
+for(i=0;i&lt;ent.length;i++){
+ linea=ent[i].split(&quot;,&quot;);
+ if(linea[2]==&quot;0&quot;){reg10+=ent[i]+&quot;\n&quot;;}else if(linea[2]==&quot;3&quot;){reg13+=ent[i]+&quot;\n&quot;;}
+}
+
+var reg10salida=reg10;
+//buscar los 02 en los 13
+//Dejo esto por si acaso, pero no es usado. 
+/*reg10=reg10.split(&quot;\n&quot;);
+reg13=reg13.split(&quot;\n&quot;);
+var reg13e=&quot;&quot;;//registros 13 si encontrados.
+var reg10no=&quot;&quot;;
+var reg10e=&quot;&quot;;
+for(i=0;i&lt;reg10.length;i++){
+	linea10=reg10[i].split(&quot;,&quot;);
+	if(linea10[12]==&quot;02&quot;){
+	 ban=false;
+		for(j=0;j&lt;reg13.length;j++){
+			linea13=reg13[j].split(&quot;,&quot;);
+			if(linea13[9]==linea10[9]){
+				reg13e+=reg13[j]+&quot;\n&quot;;
+				reg10e+=reg10[i]+&quot;\n&quot;;
+				ban=true;
+				break;
+			}
+		}
+		if(!ban){reg10no+=reg10[i]+&quot;\n&quot;;}
+	}
+}
+
+//falta determinar sobras de 13
+var reg13no=&quot;&quot;;
+var reg13eF=reg13e;
+reg13e=reg13e.split(&quot;\n&quot;);
+
+for(i=0;i&lt;reg13.length;i++){
+	linea13a=reg13[i];
+	ban=false;
+	for(j=0;j&lt;reg13e.length;j++){
+		linea13b=reg13e[j];
+		
+		if(linea13a==linea13b){ban=true; }//encontrado}
+	}
+	if(!ban){reg13no+=reg13[i]+&quot;\n&quot;;}//ventas}
+}
+
+scriptletContext.putGlobal(&quot;ListadoVentas&quot;,reg13no);
+scriptletContext.putGlobal(&quot;Listado10en&quot;,reg10e);
+scriptletContext.putGlobal(&quot;Listado13en&quot;,reg13eF);
+*/
+scriptletResult=reg10salida;</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+              <stripWhitespaceFilter id="cd9f7526-9005-48f8-be9d-1a28bf0c46ee">
+                <annotation></annotation>
+                <name>Strip Whitespace</name>
+              </stripWhitespaceFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="7b164d50-b3e5-494c-a831-124dd7532db3">
+      <annotation>c492b52a-822f-4b49-8a2c-e12a974b2b0b.7b164d50-b3e5-494c-a831-124dd7532db3.description</annotation>
+      <name>Write to File [POSRE VS Incoming]</name>
+      <bounds>
+        <x>245.0</x>
+        <y>156.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="84b6bf65-c70f-40b2-8dce-7b3a3e6e2c89">
+        <baseIcon>document_text.png</baseIcon>
+        <basePath>Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="d418ffef-7d2c-40de-b998-40e4b6463f98">
+            <baseIcon>view.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>true</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="3991b496-e436-4967-855f-8d41a695b764">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>source</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/aplic/prod/orq/cmi/rpt/sal/RPT-ADQ-VISA-${NomBanco}-${FechaAC}.csv</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="cf93c59a-54ca-4cd0-b4ba-26bc189d15ff">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>contents</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>
+,,MERCADOS INTERNACIONALES
+,,Banco: ${NomBanco}				
+,,Operacion Adquirente VISA - POS					
+
+,,REPORTE DE CONCILIACION DE CIFRAS,,Fecha Liquidacion,${FechaAC}
+,,Liquidacion VISA VS Archivo POSRE06					
+
+,,CONCILIACION INCOMING
+
+,,INCOMING VISA,,,,,ArchivoPOSRE06
+,Concepto,Operacon Internacional,,,,Operacion Local,,,Diferencia
+,Concepto,TXs,Importe Dolares,Moneda Local,TXs,Importe Moneda Local,TXs,Importe Moneda Local,TXs,Importe Mondea Local
+,Ventas,${incotxusdventasU},${incousdventasU},=D$22*D14,${incotxusdventas},${incousdventas},${contVV},${acumvv},=ABS(C14+F14-H14),=ABS(E14+G14-I14),
+,Reverso,${incotxusdventasRVU},${incousdventasRVU},=D$22*D15,${incotxusdventasRV},${incousdventasRV},0,0,=ABS(C15+F15-H15),=ABS(E15+G15-I15)
+,Devoluciones,${CantidadDevolucionesU},${MontoDevolucionesU},=D$22*D16,${CantidadDevoluciones},${MontoDevoluciones},0,0,=ABS(C16+F16-H16),=ABS(E16+G16-I16)
+,Reverso,${incotxusddispoRVU},${incousdispoRVU},=D$22*D17,${incotxusddispoRV},${incousdispoRV},0,0,=ABS(C17+F17-H17),=ABS(E17+G17-I17)
+,Disposiciones,${incotxusddispoU},${incousdispoU},=D$22*D18,${incotxusddispo},${incousdispo},${contDV},${acumdv},=ABS(C18+F18-H18),=ABS(E18+G18-I18)
+,Totales,=C14+C15+C16+C17+C18,=D14+D15+D16+D17+D18,=E14+E15+E16+E17+E18,=F14+F15+F16+F17+F18,=G14+G15+G16+G17+G18,=H14+H15+H16+H17+H18,=I14+I15+I16+I17+I18,=ABS(C19+F19-H19),=ABS(E19+G19-I19)
+
+
+,,Tasa de cambio,${TasaDeCambio}
+</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="1c09d8a8-680d-4710-a562-956142858a3e">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>delimiter</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="9151c3ec-c889-46e8-906b-6c784c6cfab2">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>overwrite</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>true</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="adc60ccb-17a3-416e-926e-f991f104ae73">
+          <annotation></annotation>
+          <name>done</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>done</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>beff422a-832b-436f-b474-00a01a81587a</refId>
+          </destination>
+          <source>
+            <refId>7b164d50-b3e5-494c-a831-124dd7532db3</refId>
+          </source>
+          <positions>
+            <point>
+              <x>295.0</x>
+              <y>190.0</y>
+            </point>
+            <point>
+              <x>594.0</x>
+              <y>204.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>af728dc4-d7a0-4e8e-917a-74c188f2e470</refId>
+      </opRef>
+      <assignments/>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="beff422a-832b-436f-b474-00a01a81587a">
+      <annotation>c492b52a-822f-4b49-8a2c-e12a974b2b0b.beff422a-832b-436f-b474-00a01a81587a.description</annotation>
+      <name>SFTP Put</name>
+      <bounds>
+        <x>365.0</x>
+        <y>39.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="11b44224-5aab-40a6-949c-55b2a967c44a">
+        <baseIcon>document_text.png</baseIcon>
+        <basePath>/Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="fa9a6c5b-8009-48df-af11-42f3f84cef2b">
+            <baseIcon>send.png</baseIcon>
+            <basePath>/Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>true</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="bbe19e3b-1570-4331-80cb-ecefa4ba7d2c">
+          <annotation></annotation>
+          <fromContextKey>IP SFTP DominioD SalidaRPT</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>host</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="4c8a7857-2247-4d22-a2b4-f4bd521d53a3">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>port</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>22</value>
+          <record>false</record>
+        </staticBinding>
+        <identityBinding id="d836a7e8-690d-4c3f-b010-d5b8a7ba3aa6">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>username</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>d4c6325e-a7ad-4d27-aa51-07a4ad171d79</refId>
+            <refName>SFTP DominioD SalidaRPT</refName>
+          </link>
+          <identityAttribute>USERNAME</identityAttribute>
+        </identityBinding>
+        <identityBinding id="0ec3dea6-e3bd-46c8-b88f-ce880df89c99">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>ENCRYPTED</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>password</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>d4c6325e-a7ad-4d27-aa51-07a4ad171d79</refId>
+            <refName>SFTP DominioD SalidaRPT</refName>
+          </link>
+          <identityAttribute>PASSWORD</identityAttribute>
+        </identityBinding>
+        <staticBinding id="f76b159b-4f49-44cc-98bc-6e1fdce0f1c2">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>localFile</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/aplic/prod/orq/cmi/rpt/sal/RPT-ADQ-VISA-${NomBanco}-${FechaAC}.csv</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="66acde9b-3358-4366-b6bf-f842700777fa">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>remoteLocation</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/aplic/prod/orq/cmi/rpt/</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="e5d1c555-54ba-4e22-b969-f4c354525dc2">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>closeSession</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>true</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="cc31aad9-4761-4e66-8ef2-4d95ee7b2367">
+          <annotation></annotation>
+          <name>done</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>done</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>dad71489-ccab-42e0-972d-5eb4393683a0</refId>
+          </destination>
+          <source>
+            <refId>beff422a-832b-436f-b474-00a01a81587a</refId>
+          </source>
+          <positions>
+            <point>
+              <x>398.0</x>
+              <y>91.0</y>
+            </point>
+            <point>
+              <x>620.0</x>
+              <y>34.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>d0281620-067b-46b8-8053-965857395cdc</refId>
+      </opRef>
+      <assignments/>
+      <throttleSize>0</throttleSize>
+    </step>
+  </steps>
+  <startSteps>6fbc95c3-9114-4e31-939b-e2181dd6db02</startSteps>
+</flow>

@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="03d9ef9c-79ee-4794-9fc8-c45ec7cdb4b7">
+  <descriptionCdata><![CDATA[03d9ef9c-79ee-4794-9fc8-c45ec7cdb4b7.5d6125fd-5bd4-4eec-a2c4-499d40ab0c43.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
+03d9ef9c-79ee-4794-9fc8-c45ec7cdb4b7.e5eb8c7d-241d-47b0-9777-e6991ceca44c.description=Comparar Stat6 (Secuencia) VS EP7 (Ref Number) 
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Validar Stat7-EP7 Y Determinar Transito</name>
+  <categories/>
+  <inputs>
+    <staticBinding id="141ce932-dd55-4626-8149-82d1cb6bc659">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>FechaArchivoStat7</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>091017</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="2b3901b5-1459-429c-9729-835b464433dd">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>FechaEp7</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>171009</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="8e960f44-7ed4-4eb9-bd9f-38196b4d0740">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>BuzonBanco</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>MB000076</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="f86859ef-f527-41a1-89c2-052c48744ead">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>FIID</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>TAG1</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="4200d60a-e104-4b6a-97e8-af5e2466ccaf">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>BINES</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>457216,457217</value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="5d720d76-c432-44ac-8411-60bdf2d76688">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="60157e0b-a10a-43c8-99a9-75d6a5e4a7f9">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="96da9bc4-0b82-45ca-8253-4e5673fa7d76">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="18d62aff-130a-4678-818b-c8868c8340d2">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="c7065823-d221-4be5-af0c-9ff45d4c484b">
+      <annotation></annotation>
+      <name>Procesar Stat07 VISA</name>
+      <bounds>
+        <x>30.0</x>
+        <y>34.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="583ff10e-6413-43d8-83bb-19472133e806">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="0191f683-3f8f-4b71-9ad8-7811bf3cba58">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>BuzonBanco</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="0dc1a7f9-5c92-41e0-abd3-375232a11576">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>FIID</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="fe78bacf-ef15-4330-92fc-54bd6a2d9e0e">
+          <annotation></annotation>
+          <fromContextKey>FechaArchivoStat7</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>FechaArchivo</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="b15da94f-18f9-42dd-9b3c-619f3392cc6b">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>09c10ff1-3352-43d7-bd96-afe416397369</refId>
+          </destination>
+          <source>
+            <refId>c7065823-d221-4be5-af0c-9ff45d4c484b</refId>
+          </source>
+          <positions>
+            <point>
+              <x>104.0</x>
+              <y>44.0</y>
+            </point>
+            <point>
+              <x>104.0</x>
+              <y>207.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="8eaeab42-3c92-4578-925f-8dc55bc583f1">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>24ca9b75-9bf2-4642-881a-d83eeb200cd0</refId>
+          </destination>
+          <source>
+            <refId>c7065823-d221-4be5-af0c-9ff45d4c484b</refId>
+          </source>
+          <positions>
+            <point>
+              <x>81.0</x>
+              <y>34.0</y>
+            </point>
+            <point>
+              <x>232.0</x>
+              <y>34.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>2b04b1d0-c43d-48b8-b23c-095bc127f0aa</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="c960a56b-4618-40c9-87b0-45851c07ee6a">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>Stat7TotalVISA</contextKey>
+          <expression id="a63e72a4-8ef3-47fa-affe-bdab4bb60fbe">
+            <annotation></annotation>
+            <name>Result Field: Stat7Total VISA</name>
+            <fieldName>Stat7Total VISA</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="b35be868-c790-4f76-a5e4-082db57a6ef6">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>Stat7ProceVISA</contextKey>
+          <expression id="0d1b889d-a6c0-4224-996b-cbfd2d385bfb">
+            <annotation></annotation>
+            <name>Result Field: Stat7ProceVISA</name>
+            <fieldName>Stat7ProceVISA</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="24ca9b75-9bf2-4642-881a-d83eeb200cd0">
+      <annotation></annotation>
+      <name>Procesar Ep7 VISA</name>
+      <bounds>
+        <x>181.0</x>
+        <y>34.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="46174c41-e502-47ab-98f7-8c39f3f1ba61">
+        <baseIcon>flow.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="0bf524f3-aa87-43f1-a7b8-18815e5c238b">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>FechaEp7</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="431d48e1-4486-4a91-8d74-62b5a6b405ff">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>BINES</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="49dbbd41-7851-4091-90db-a2e19a8a5880">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>09c10ff1-3352-43d7-bd96-afe416397369</refId>
+          </destination>
+          <source>
+            <refId>24ca9b75-9bf2-4642-881a-d83eeb200cd0</refId>
+          </source>
+          <positions>
+            <point>
+              <x>274.0</x>
+              <y>66.0</y>
+            </point>
+            <point>
+              <x>104.0</x>
+              <y>207.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="910f8145-c047-4e89-a1ae-83de0b739a7e">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>e5eb8c7d-241d-47b0-9777-e6991ceca44c</refId>
+          </destination>
+          <source>
+            <refId>24ca9b75-9bf2-4642-881a-d83eeb200cd0</refId>
+          </source>
+          <positions>
+            <point>
+              <x>232.0</x>
+              <y>34.0</y>
+            </point>
+            <point>
+              <x>366.0</x>
+              <y>188.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>7f1758c6-428e-4357-b485-29b3b1131ae6</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="04decdea-4e80-47c7-8d24-0cca643c318a">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>EP7Procesado</contextKey>
+          <expression id="b1c58a6b-5ef0-4d4a-bd6e-e7c5e5db0158">
+            <annotation></annotation>
+            <name>Result Field: EP7Procesado</name>
+            <fieldName>EP7Procesado</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="09c10ff1-3352-43d7-bd96-afe416397369">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>53.0</x>
+        <y>207.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="6dff24db-9a7e-45e8-9b26-6d3bf94db994">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>09c10ff1-3352-43d7-bd96-afe416397369</refId>
+          </destination>
+          <source>
+            <refId>09c10ff1-3352-43d7-bd96-afe416397369</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments/>
+    </returnStep>
+    <returnStep id="ffce946b-6c28-4dc8-84f2-b9b005be1e34">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>544.0</x>
+        <y>34.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="9e8137ac-1883-4975-81ba-aa31b289b534">
+        <baseIcon>return_success.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>true</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="5a1f3874-3c8c-4f63-9bc8-3b5fd6040b9e">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>ffce946b-6c28-4dc8-84f2-b9b005be1e34</refId>
+          </destination>
+          <source>
+            <refId>ffce946b-6c28-4dc8-84f2-b9b005be1e34</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+    <step id="e5eb8c7d-241d-47b0-9777-e6991ceca44c">
+      <annotation>03d9ef9c-79ee-4794-9fc8-c45ec7cdb4b7.e5eb8c7d-241d-47b0-9777-e6991ceca44c.description</annotation>
+      <name>Sleep [Buscar Stat7 en ep7]</name>
+      <bounds>
+        <x>323.0</x>
+        <y>34.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="7087f5b9-1340-4e37-8d33-3c4c2e49db2d">
+        <baseIcon>hourglass.png</baseIcon>
+        <basePath>Utilities</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>true</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="62b34cfb-8778-40bd-a401-4e8d93dffba2">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>seconds</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>0</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="09218cbf-070f-41aa-932b-d2f5d285ac09">
+          <annotation></annotation>
+          <fromContextKey>EP7Procesado</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Ep7Registros</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="88c994c6-aeaa-43bc-8a56-c87544863bd3">
+          <annotation></annotation>
+          <fromContextKey>Stat7ProceVISA</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Stat7Registros</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="8bc5a78c-d98a-42aa-89bd-1b184ed06750">
+          <annotation></annotation>
+          <name>done</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>done</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>5d6125fd-5bd4-4eec-a2c4-499d40ab0c43</refId>
+          </destination>
+          <source>
+            <refId>e5eb8c7d-241d-47b0-9777-e6991ceca44c</refId>
+          </source>
+          <positions>
+            <point>
+              <x>373.0</x>
+              <y>68.0</y>
+            </point>
+            <point>
+              <x>601.0</x>
+              <y>318.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>d1bbf441-824a-450e-afae-2ddec0e0f35e</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="f6436584-cf2a-483a-89d8-684e06595a2a">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>JuegaHoy</contextKey>
+          <expression id="e5c2c37f-09d4-40f3-8155-879992c2624b">
+            <annotation></annotation>
+            <name>Input: Stat7Registros</name>
+            <fieldName>Stat7Registros</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <scriptletFilter id="2fd2bae1-1552-48dc-8bd8-1def70c70ecc">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="7a0d3e04-fb20-4b6d-97e9-0e39a03f1afc">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>if (scriptletInput !== null) {
+  var stat7=scriptletInput.split(&quot;\n&quot;);
+  var ep7=scriptletContext.get(&quot;Ep7Registros&quot;).split(&quot;\n&quot;);
+  var salida=&quot;&quot;;
+  var transito=&quot;&quot;;
+  var salep7=&quot;&quot;; 
+  var rever=&quot;&quot;;
+  
+  for(i=0;i&lt;stat7.length;i++){
+  	var ban=false;
+  	if(stat7[i].search(/REVERSAL/g)!=-1){rever+=stat7[i]+&quot;\n&quot;;continue;}
+  	for(j=0;j&lt;ep7.length;j++){
+  	
+  		if(stat7[i].split(&quot;,&quot;)[7]==ep7[j].split(&quot; &quot;)[1]){
+  			ban=true;
+  			salida+=stat7[i]+&quot;\n&quot;;
+  			salep7+=ep7[j]+&quot;\n&quot;;
+  			break;
+  		}
+  	}
+  	if(!ban){transito+=&quot;\nNO ENCONTRADO!!!. &quot;+stat7[i]+&quot;\n&quot;;}
+  }
+  //recorerReversal
+  rever=rever.replace(/\s$/,&quot;&quot;).split(&quot;\n&quot;);
+  for(i=0;i&lt;rever.length;i++){
+  lir=rever[i].split(&quot;,&quot;);
+  if(transito.search(lir[6])!=-1){transito+=rever[i]+&quot;\n&quot;;}
+  else{salida+=rever[i]+&quot;\n&quot;;}
+  }
+  scriptletContext.putGlobal(&quot;JueganEp7&quot;,salep7);
+  scriptletResult=salida;
+}</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+        <flowVariableAssignment id="c9ab0f91-d185-4a08-b47d-a5970bac3505">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>Transito</contextKey>
+          <expression id="d4a735a4-f969-4f40-adbd-0fe2e66c25df">
+            <annotation></annotation>
+            <name>Input: Stat7Registros</name>
+            <fieldName>Stat7Registros</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters>
+              <scriptletFilter id="1579b658-66bb-432a-992f-1272f0a3b51b">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="1758bfa6-d302-430e-b826-88c375bb2513">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>if (scriptletInput !== null) {
+  var stat7=scriptletInput.split(&quot;\n&quot;);
+  var ep7=scriptletContext.get(&quot;Ep7Registros&quot;).split(&quot;\n&quot;);
+  var salida=&quot;&quot;;
+  var transito=&quot;&quot;; 
+  var rever=&quot;&quot;;
+  for(i=0;i&lt;stat7.length;i++){
+  	var ban=false;
+  	if(stat7[i].search(/REVERSAL/g)!=-1){rever+=stat7[i]+&quot;\n&quot;;continue;}
+  	for(j=0;j&lt;ep7.length;j++){
+  	
+  		if(stat7[i].split(&quot;,&quot;)[7]==ep7[j].split(&quot; &quot;)[1]){
+  			ban=true;
+  			salida+=&quot;\n&quot;+stat7[i]+&quot;\n&quot;+ep7[j]+&quot;\n&quot;;
+  			break;
+  		}
+  	}
+  	if(!ban){transito+=stat7[i]+&quot;\n&quot;;}
+  }
+  //recorerReversal
+  rever=rever.replace(/\s$/,&quot;&quot;).split(&quot;\n&quot;);
+  for(i=0;i&lt;rever.length;i++){
+  lir=rever[i].split(&quot;,&quot;);
+  if(transito.search(lir[6])!=-1){transito+=rever[i]+&quot;\n&quot;;}
+  else{salida+=rever[i]+&quot;\n&quot;;}
+  }
+  scriptletResult=transito;
+}</script>
+                  <type>RHINO</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="5d6125fd-5bd4-4eec-a2c4-499d40ab0c43">
+      <annotation>03d9ef9c-79ee-4794-9fc8-c45ec7cdb4b7.5d6125fd-5bd4-4eec-a2c4-499d40ab0c43.description</annotation>
+      <name>Sacar valores de ep7</name>
+      <bounds>
+        <x>439.0</x>
+        <y>149.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="ea913f9e-c8ed-4f55-bed6-6f5b9cc04531">
+        <baseIcon>hourglass.png</baseIcon>
+        <basePath>Utilities</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>true</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="8ec32390-83fa-4774-824c-2b1eb662fd6f">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>seconds</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>0</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="6c360a3e-88e2-42a5-bc0d-302c1673a966">
+          <annotation></annotation>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>JueganEp7</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="b60f1f21-ce33-4525-9402-a80ab3fafc36">
+          <annotation></annotation>
+          <name>done</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>done</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>ffce946b-6c28-4dc8-84f2-b9b005be1e34</refId>
+          </destination>
+          <source>
+            <refId>5d6125fd-5bd4-4eec-a2c4-499d40ab0c43</refId>
+          </source>
+          <positions>
+            <point>
+              <x>511.0</x>
+              <y>179.0</y>
+            </point>
+            <point>
+              <x>594.0</x>
+              <y>68.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>d1bbf441-824a-450e-afae-2ddec0e0f35e</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="e27712cc-385e-406b-bd12-4b24024f7f6e">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_OUTPUT_FIELD</assignmentTargetType>
+          <contextKey>JuegaEp7</contextKey>
+          <expression id="3b7885fb-24f6-47df-b85d-125a517b2d3d">
+            <annotation></annotation>
+            <name>Input: JueganEp7</name>
+            <fieldName>JueganEp7</fieldName>
+            <sourceType>INPUT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+  </steps>
+  <startSteps>c7065823-d221-4be5-af0c-9ff45d4c484b</startSteps>
+</flow>
