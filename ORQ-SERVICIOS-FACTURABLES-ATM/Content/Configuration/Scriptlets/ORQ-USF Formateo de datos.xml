@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scriptlet id="32a5ac6a-bfd2-4474-a6e2-81549ac8df13">
+  <descriptionCdata><![CDATA[]]></descriptionCdata>
+  <annotation></annotation>
+  <name>ORQ-USF Formateo de datos</name>
+  <script>// This template shows how to access operation return data, inputs and context data 
+// and how to set context data, responses and results. 
+ 
+// To get value associated with the context key myContextKey: 
+query_results = scriptletContext.get(&quot;query_results&quot;); 
+queryCount = scriptletContext.get(&quot;queryCount&quot;); 
+fecha_proceso = scriptletContext.get(&quot;fecha_proceso&quot;);
+UIM_MES_FACT = scriptletContext.get(&quot;UIM_MES_FACT&quot;);
+UIM_ANIO_FACT = scriptletContext.get(&quot;UIM_ANIO_FACT&quot;);
+insert2 = scriptletContext.get(&quot;INSERT_SENTENCE2&quot;);
+  
+
+var d = new Date();
+var curr_date = d.getDate();
+var curr_month = d.getMonth()+1;
+var curr_year = d.getFullYear();
+var UIM_FECHA_PROCESO = curr_year+&quot;-&quot;+curr_month+&quot;-&quot;+curr_date;
+
+var insert=&quot;&quot;;
+var insert3=&quot;&quot;;
+var count = 0;
+
+if(queryCount &gt; 0){
+    insert+=&quot;BEGIN\n&quot;; 
+    insert3+=&quot;BEGIN\n&quot;;
+	linea = query_results.split(&quot;\n&quot;);
+	for(i=0; i &lt; linea.length; i++){
+	    count = count +1;
+	    linea_insert = &apos;&apos;;
+	    
+	    linea2 = linea[i].split(&quot;,&quot;);
+	    if(linea2.length &gt; 0){
+	    	
+	    	if(linea2[1]==&quot;MDS1&quot; || linea2[1]==&quot;MDS2&quot; || linea2[1]==&quot;MDS3&quot; || linea2[1]==&quot;MDS4&quot; || linea2[1]==&quot;MDS5&quot; || linea2[1]==&quot;MDS6&quot;){
+	    	 	linea_insert += &quot;&apos;&quot;+linea2[1]+&quot;&apos;,&quot;; //UIM_BAN_CODIGO_BANCO
+	    	 	linea_insert += &quot;&apos;&quot;+linea2[0]+&quot;&apos;,&quot;; //UIM_CODIGO_BANCO
+	    	}else{
+				linea_insert += &quot;&apos;&quot;+linea2[0]+&quot;&apos;,&quot;; //UIM_BAN_CODIGO_BANCO
+				linea_insert += &quot;&apos;&quot;+linea2[1]+&quot;&apos;,&quot;; //UIM_CODIGO_BANCO
+	    	}
+	    	linea_insert += linea2[2]+&quot;,&quot;;      //UIM_RETIROS
+	    	linea_insert += linea2[3]+&quot;,&quot;;      //UIM_CONS
+	    	linea_insert += linea2[4]+&quot;,&quot;;      //UIM_NIPS
+	    	linea_insert += linea2[5]+&quot;,&quot;;      //UIM_VTG
+	    	linea_insert += linea2[6]+&quot;,&quot;;      //UIM_RECH
+	    	linea_insert += linea2[7]+&quot;,&quot;;      //UIM_TOTAL_TNX
+	    	linea_insert += linea2[8]+&quot;,&quot;;      //UIM_IMP_RETIROS
+	    	linea_insert += linea2[9]+&quot;,&quot;;      //UIM_IMP_CONS
+	    	linea_insert += linea2[10]+&quot;,&quot;;     //UIM_IMP_NIPS
+	    	linea_insert += linea2[11]+&quot;,&quot;;     //UIM_IMP_VTG
+	    	linea_insert += linea2[12]+&quot;,&quot;;     //UIM_IMP_RECH
+	    	linea_insert += linea2[13]+&quot;,&quot;;     //UIM_SUBTOTAL
+	    	linea_insert += linea2[14]+&quot;,&quot;;     //UIM_IVA
+	    	linea_insert += linea2[15];         //UIM_TOTAL
+
+		if(count &lt;= 1000){	    
+	    	insert+=&quot;INSERT INTO TBL_RED_USO_INFRA_MENSUAL (UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_RETIROS,UIM_CONS,UIM_NIPS,UIM_VTG,UIM_RECH,UIM_TOTAL_TNX,UIM_IMP_RETIROS,UIM_IMP_CONS,UIM_IMP_NIPS,UIM_IMP_VTG,UIM_IMP_RECH,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT) VALUES (to_date(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;yyyy-mm-dd&apos;),&quot;+linea_insert+&quot;,&quot;+&quot;&apos;UDI&apos;&quot;+&quot;,&quot;+&quot;&apos;FACT INTERBANCARIA&apos;&quot;+&quot;,&quot;+UIM_MES_FACT+&quot;,&quot;+UIM_ANIO_FACT+&quot;);\n&quot;;
+	    	//insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
+	    	//insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+	    }else{
+	    	insert3+=&quot;INSERT INTO TBL_RED_USO_INFRA_MENSUAL (UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_RETIROS,UIM_CONS,UIM_NIPS,UIM_VTG,UIM_RECH,UIM_TOTAL_TNX,UIM_IMP_RETIROS,UIM_IMP_CONS,UIM_IMP_NIPS,UIM_IMP_VTG,UIM_IMP_RECH,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT) VALUES (to_date(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;yyyy-mm-dd&apos;),&quot;+linea_insert+&quot;,&quot;+&quot;&apos;UDI&apos;&quot;+&quot;,&quot;+&quot;&apos;FACT INTERBANCARIA&apos;&quot;+&quot;,&quot;+UIM_MES_FACT+&quot;,&quot;+UIM_ANIO_FACT+&quot;);\n&quot;;
+	    	//insert3 = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
+	        //insert3 = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+	    }
+			insert2+=UIM_FECHA_PROCESO+&apos;,&apos;+linea_insert+&apos;,&apos;+&apos;&quot;UDI&quot;&apos;+&apos;,&apos;+&apos;&quot;FACT INTERBANCARIA&quot;&apos;+&apos;,&apos;+UIM_MES_FACT+&apos;,&apos;+UIM_ANIO_FACT+&apos;\n&apos;;
+						
+		}//fin if
+	} // fin for
+	insert+=&quot;COMMIT;\n&quot;;
+	insert3+=&quot;COMMIT;\n&quot;;
+	insert+=&quot;END;&quot;;
+	insert3+=&quot;END;&quot;;
+} // fin if
+
+
+// Use the context to hold data for use by other steps.  It is also helpful to place information 
+// into the context to examine variables when developing and debugging scriptlets. 
+// For example to place the OutputString information into a context key called &apos;Output&apos;: 
+
+scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
+scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
+scriptletContext.putGlobal(&quot;INSERT_SENTENCE3&quot;, insert3);
+scriptletContext.putGlobal(&quot;CONTADOR&quot;, count);
+// ==========================================================================================</script>
+  <type>NASHORN</type>
+</scriptlet>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scriptlet id="e76d1548-888f-4713-bc63-2c0a2daf1a15">
+  <descriptionCdata><![CDATA[e76d1548-888f-4713-bc63-2c0a2daf1a15.description=Calcula el primer dia y ultimo dia del mes anterior\nOutputs\:\nprimerDia\: Primer dia del mes anterior (Formato\: ddMMyyyy)\nultimoDia\: ultimo dia del mes anterior (Formato\: ddMMyyyy)
+]]></descriptionCdata>
+  <annotation>e76d1548-888f-4713-bc63-2c0a2daf1a15.description</annotation>
+  <name>ORQ-USF Rango_Mes_Anterior</name>
+  <script>/*Obtetiene la fecha actual */
+var date = new Date();
+/*Obtiene el primer dia del mes anterior en formato java*/
+var primerDia = new Date(date.getFullYear(), date.getMonth()-1, 1);
+/*Obtiene el ultimo dia del mes anterior en formato java*/
+var ultimoDia = new Date(date.getFullYear(), date.getMonth(), 0);
+
+var DiaprimerDia=(&apos;0&apos;+primerDia.getDate()).slice(-2); /*Extrae el dia*/
+var MesprimerDia = primerDia.getMonth()+1; /*Extrae el mes (los meses empiezan en cero 0, se debe sumar 1)*/
+var AnioprimerDia = primerDia.getFullYear(); /*Extrae el a&#241;o*/
+var DiaultimoDia=ultimoDia.getDate(); /*Extrae el dia*/
+var MesultimoDia = ultimoDia.getMonth()+1; /*Extrae el mes (los meses empiezan en cero 0, se debe sumar 1)*/
+var AnioultimoDia = ultimoDia.getFullYear(); /*Extrae el a&#241;o*/
+
+/*Genera varible de contexto actual llamada primerDia en formato ddMMyyyy*/
+scriptletContext.put(&quot;primerDia&quot;,AnioprimerDia+&apos;-&apos;+MesprimerDia+&apos;-&apos;+DiaprimerDia);
+
+/*Genera varible de contexto actual llamada ultimoDia en formato ddMMyyyy*/ 
+scriptletContext.put(&quot;ultimoDia&quot;,AnioultimoDia+&apos;-&apos;+MesultimoDia+&apos;-&apos;+DiaultimoDia);</script>
+  <type>NASHORN</type>
+</scriptlet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selectionList id="87dae901-1487-41d1-92ed-61a0f224e4f6">
+  <descriptionCdata><![CDATA[87dae901-1487-41d1-92ed-61a0f224e4f6.description=Boolean selection list that uses yes and no instead of true and false
+]]></descriptionCdata>
+  <annotation>87dae901-1487-41d1-92ed-61a0f224e4f6.description</annotation>
+  <name>ORQ-USF List Yes No</name>
+  <storage>
+    <string>Yes</string>
+    <string>No</string>
+  </storage>
+</selectionList>

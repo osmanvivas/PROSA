@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<regexEvaluator id="abd59686-bf1a-4be5-b704-bc76d22e1390">
+  <descriptionCdata><![CDATA[abd59686-bf1a-4be5-b704-bc76d22e1390.description=Valida que el dato ingrasado sea\: dd-MMM-yyyy\nEjemplo\: 23-sep-2017
+]]></descriptionCdata>
+  <annotation>abd59686-bf1a-4be5-b704-bc76d22e1390.description</annotation>
+  <name>ORQ-USF Fecha Valida</name>
+  <entireString>false</entireString>
+  <expression>\d{2,2}\-\w{3,3}\-\d{4,4}</expression>
+  <ignoreCase>true</ignoreCase>
+  <multiLine>false</multiLine>
+  <regType>JAVA</regType>
+</regexEvaluator>

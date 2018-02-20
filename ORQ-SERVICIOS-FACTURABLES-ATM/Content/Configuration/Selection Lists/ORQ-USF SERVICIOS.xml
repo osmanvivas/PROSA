@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selectionList id="94775a1f-2303-4038-81d9-6ca50adb12af">
+  <descriptionCdata><![CDATA[]]></descriptionCdata>
+  <annotation></annotation>
+  <name>ORQ-USF SERVICIOS</name>
+  <storage>
+    <string>VENTA GENERICA</string>
+    <string>SANCIONES</string>
+    <string>BONIFICACIONES</string>
+    <string>TARJETAS RETENIDAS</string>
+    <string>USO DE INFRAESTRUCTURA</string>
+  </storage>
+</selectionList>
