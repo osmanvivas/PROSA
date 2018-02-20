@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="eb9f2acf-c4bf-4f31-83e3-fae94b7598f6">
+  <descriptionCdata><![CDATA[eb9f2acf-c4bf-4f31-83e3-fae94b7598f6.3f9d663b-933d-4dd7-9443-8035fae0e7c7.prompt=Es una nueva ejecuci\u00F3n?\:
+eb9f2acf-c4bf-4f31-83e3-fae94b7598f6.description=<pre>This is an operation that does nothing. It can be used for filtering flow variables by feeding them in as inputs and filtering them on the results tab.\n\nResponses\:\n    success\n    failure\n</pre>
+]]></descriptionCdata>
+  <annotation>eb9f2acf-c4bf-4f31-83e3-fae94b7598f6.description</annotation>
+  <name>P-54-7090-17 Prompt</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="3f9d663b-933d-4dd7-9443-8035fae0e7c7">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>Field_1</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>eb9f2acf-c4bf-4f31-83e3-fae94b7598f6.3f9d663b-933d-4dd7-9443-8035fae0e7c7.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <link>
+        <refId>87dae901-1487-41d1-92ed-61a0f224e4f6</refId>
+        <refName>P-54-7090-17 List Yes No</refName>
+      </link>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="255f4b0c-12b0-425e-b90f-e58ea57d087f">
+      <annotation></annotation>
+      <name>VENTA GENERICA</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="9de2cf1c-e619-4f52-9705-8055878504f5">
+          <annotation></annotation>
+          <name>Field_1</name>
+          <fieldName>Field_1</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <regexEvaluator id="41f7a72a-1995-4139-842f-adbc9f9c6e8b">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <entireString>false</entireString>
+            <expression>VENTA GENERICA</expression>
+            <ignoreCase>true</ignoreCase>
+            <multiLine>false</multiLine>
+            <regType>JAVA</regType>
+          </regexEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="2c7a3beb-65a7-429f-b7f1-28a2bb7d06fa">
+      <annotation></annotation>
+      <name>BONIFICACIONES</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="d41f9ff3-e5f2-4c35-a1aa-466df1f035bc">
+          <annotation></annotation>
+          <name>Field_1</name>
+          <fieldName>Field_1</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <regexEvaluator id="c5c09c34-0fd1-4531-8004-1484bf4b110a">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <entireString>false</entireString>
+            <expression>BONIFICACIONES</expression>
+            <ignoreCase>true</ignoreCase>
+            <multiLine>false</multiLine>
+            <regType>JAVA</regType>
+          </regexEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="7ad79db2-608f-41f0-b47c-5ee3bc3bfe21">
+      <annotation></annotation>
+      <name>SANCIONES</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="2ee7f6db-f4b3-438c-83e1-aa6ee6f76347">
+          <annotation></annotation>
+          <name>Field_1</name>
+          <fieldName>Field_1</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <regexEvaluator id="98bc97c5-cd26-43f8-a25f-cff0ccd3e504">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <entireString>false</entireString>
+            <expression>SANCIONES</expression>
+            <ignoreCase>true</ignoreCase>
+            <multiLine>false</multiLine>
+            <regType>JAVA</regType>
+          </regexEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="3a6b3253-7ea1-4988-a8de-def22136a2a7">
+      <annotation></annotation>
+      <name>TARJETAS RETENIDAS</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="d8b887fb-5a1f-4d44-a906-ae0eb51c89f8">
+          <annotation></annotation>
+          <name>Field_1</name>
+          <fieldName>Field_1</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <regexEvaluator id="30f2775d-2b5b-4354-a30b-1a52b5643dd5">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <entireString>false</entireString>
+            <expression>TARJETAS RETENIDAS</expression>
+            <ignoreCase>true</ignoreCase>
+            <multiLine>false</multiLine>
+            <regType>JAVA</regType>
+          </regexEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="e0e18c63-736e-4956-8bb9-3e03a35f990b">
+      <annotation></annotation>
+      <name>USO DE INFRAESTRUCTURA</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="f51e6028-3894-4d6e-a5c1-67c998f34198">
+          <annotation></annotation>
+          <name>Field_1</name>
+          <fieldName>Field_1</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <regexEvaluator id="daf9cf81-9f7f-486f-bb85-d3835e342f3a">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <entireString>false</entireString>
+            <expression>USO DE INFRAESTRUCTURA</expression>
+            <ignoreCase>true</ignoreCase>
+            <multiLine>false</multiLine>
+            <regType>JAVA</regType>
+          </regexEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="a959f9eb-9c80-451f-add7-a1248f9cd99a">
+      <annotation></annotation>
+      <name>DEFAULT</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="69e0b48f-991d-4649-8417-40b69977df83">
+    <annotation></annotation>
+    <name>returnResult</name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="d1d07076-8c9f-42d0-acee-1bc9a7df7b5e">
+    <baseIcon>display_report.png</baseIcon>
+    <basePath>Utilities/</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <opRef>
+    <refId>ddd79f22-8b1e-4605-88d5-d912bb2da2b9</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideJRAS}</overrideGroupAlias>
+</operation>
