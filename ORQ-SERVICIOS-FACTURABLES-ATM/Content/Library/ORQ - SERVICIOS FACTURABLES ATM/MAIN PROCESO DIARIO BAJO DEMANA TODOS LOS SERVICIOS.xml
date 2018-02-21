@@ -982,7 +982,7 @@ ${output}</value>
       <userPrompt></userPrompt>
       <scriptlet id="56f22b77-7f6f-455d-8893-c332314795d2">
         <annotation></annotation>
-        <name>Step SELECT ALL EN REDD in Flow P-54-7090-17 MAIN PROCESO DIARIO BAJO DEMANA TODOS LOS SERVICIOS (a28a5fb2-dbf3-4698-bfa2-50c685ff071f)</name>
+        <name>Step SELECT ALL EN REDD in Flow MAIN PROCESO DIARIO BAJO DEMANA TODOS LOS SERVICIOS (a28a5fb2-dbf3-4698-bfa2-50c685ff071f)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -1970,7 +1970,7 @@ FIN DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>INICIO - SERVICIOS FACTURABLES ATM&apos;s - PROCESO DIARIO (${date_report2})</value>
+          <value>FIN - SERVICIOS FACTURABLES ATM&apos;s - PROCESO DIARIO (${date_report2})</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="795c77e7-4de0-407a-b9ce-14af6d15ce94">
