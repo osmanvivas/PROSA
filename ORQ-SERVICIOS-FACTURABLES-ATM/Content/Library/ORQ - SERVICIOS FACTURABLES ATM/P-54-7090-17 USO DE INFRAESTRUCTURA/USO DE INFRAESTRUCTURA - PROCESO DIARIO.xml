@@ -623,7 +623,7 @@ EGLO_EMI;UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_TOTAL_TNX,UID_DESCRIPCION,UID
       <userPrompt></userPrompt>
       <scriptlet id="2f3e72e0-9a16-4710-becc-8c28ec34fd34">
         <annotation></annotation>
-        <name>Step SELECT EN RED in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO DIARIO (551974c3-bd82-411f-ab65-1444765ca861)</name>
+        <name>Step SELECT EN RED in Flow USO DE INFRAESTRUCTURA - PROCESO DIARIO (551974c3-bd82-411f-ab65-1444765ca861)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -1060,7 +1060,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
     </step>
     <returnStep id="e305e75e-cffb-41e2-812b-5171820dfb55">
       <annotation></annotation>
-      <name>Resolved : Error : P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO DIARIO</name>
+      <name>Resolved : P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO DIARIO</name>
       <bounds>
         <x>558.0</x>
         <y>43.0</y>
@@ -1801,7 +1801,7 @@ MDS;UID_BANCO_EMI,UID_BANCO_ADQ,UID_CLAVE_OPERACION,UID_CODIGO_TIPO_MENSAJE,UID_
       <userPrompt></userPrompt>
       <scriptlet id="31db9c17-59ec-4507-b7d3-b2f2d9016031">
         <annotation></annotation>
-        <name>Step SELECT EN RED in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO DIARIO (313e68f1-abf8-4b88-8afe-54c99b458cb4)</name>
+        <name>Step SELECT EN RED in Flow USO DE INFRAESTRUCTURA - PROCESO DIARIO (313e68f1-abf8-4b88-8afe-54c99b458cb4)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
