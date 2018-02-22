@@ -34,7 +34,7 @@
       <record>false</record>
       <validationFormat>
         <refId>abd59686-bf1a-4be5-b704-bc76d22e1390</refId>
-        <refName>P-54-7090-17 Fecha Valida</refName>
+        <refName>ORQ-USF Fecha Valida</refName>
       </validationFormat>
       <prompt></prompt>
       <isMultiSelect>false</isMultiSelect>
@@ -673,7 +673,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
           <record>false</record>
           <link>
             <refId>cc19c728-5387-438f-9270-eb57b1eddf4b</refId>
-            <refName>P-54-7090-17 RED P</refName>
+            <refName>ORQ-USF RED P</refName>
           </link>
           <identityAttribute>USERNAME</identityAttribute>
         </identityBinding>
@@ -692,7 +692,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
           <record>false</record>
           <link>
             <refId>cc19c728-5387-438f-9270-eb57b1eddf4b</refId>
-            <refName>P-54-7090-17 RED P</refName>
+            <refName>ORQ-USF RED P</refName>
           </link>
           <identityAttribute>PASSWORD</identityAttribute>
         </identityBinding>
