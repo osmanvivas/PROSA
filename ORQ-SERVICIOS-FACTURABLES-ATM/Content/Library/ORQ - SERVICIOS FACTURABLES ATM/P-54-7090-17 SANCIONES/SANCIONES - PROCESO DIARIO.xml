@@ -14,7 +14,7 @@
 3d802daa-831c-4440-8ac9-65a1a04e0be8.fa2e9ada-4b6e-44da-931c-28a726ba7512.transition.description=${nombre_query}
 ]]></descriptionCdata>
   <annotation></annotation>
-  <name>P-54-7090-17 Sanciones - Ejecutar Consultas</name>
+  <name>SANCIONES - PROCESO DIARIO</name>
   <categories/>
   <inputs>
     <userInputBinding id="72c8f716-0534-49d3-909f-13e719b0b3e0">
@@ -30,7 +30,7 @@
       <record>false</record>
       <validationFormat>
         <refId>abd59686-bf1a-4be5-b704-bc76d22e1390</refId>
-        <refName>P-54-7090-17 Fecha Valida</refName>
+        <refName>ORQ-USF Fecha Valida</refName>
       </validationFormat>
       <prompt></prompt>
       <isMultiSelect>false</isMultiSelect>
@@ -199,35 +199,6 @@
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="cea93204-654c-42e8-853d-059a53b51b0c">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>8158afdb-bf81-4ccf-867b-a4d77b01fd85</refId>
-          </destination>
-          <source>
-            <refId>5f3d41be-113c-4a49-a9db-aaa643dfb0c2</refId>
-          </source>
-          <positions>
-            <point>
-              <x>264.0</x>
-              <y>132.0</y>
-            </point>
-            <point>
-              <x>121.0</x>
-              <y>407.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
         <transition id="50613810-23eb-4431-b34d-4369c36229c5">
           <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.50613810-23eb-4431-b34d-4369c36229c5.transition.description</annotation>
           <name>success</name>
@@ -250,6 +221,35 @@
             <point>
               <x>121.0</x>
               <y>210.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="b51aacbc-7b56-41ee-b948-23b55d46cf6e">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
+          </destination>
+          <source>
+            <refId>5f3d41be-113c-4a49-a9db-aaa643dfb0c2</refId>
+          </source>
+          <positions>
+            <point>
+              <x>264.0</x>
+              <y>132.0</y>
+            </point>
+            <point>
+              <x>121.0</x>
+              <y>345.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -375,35 +375,6 @@ Codigo72;UID_CODIGO_BANCO,UID_BAN_CODIGO_BANCO,UID_CODIGO_TIPO_MENSAJE,UID_RAZON
             <y>30.830531965420104</y>
           </labelPosition>
         </transition>
-        <transition id="c6ae7998-9aef-4c9d-a888-d1a18c056a22">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>8158afdb-bf81-4ccf-867b-a4d77b01fd85</refId>
-          </destination>
-          <source>
-            <refId>3a2a17d1-dbcc-4d18-af74-29b3a1f036fe</refId>
-          </source>
-          <positions>
-            <point>
-              <x>143.0</x>
-              <y>119.0</y>
-            </point>
-            <point>
-              <x>102.0</x>
-              <y>316.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
         <transition id="ce7a143c-5d30-4f75-9173-ff3cb62b70ad">
           <annotation></annotation>
           <name>no more</name>
@@ -426,6 +397,35 @@ Codigo72;UID_CODIGO_BANCO,UID_BAN_CODIGO_BANCO,UID_CODIGO_TIPO_MENSAJE,UID_RAZON
             <point>
               <x>358.0</x>
               <y>67.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="4beae1be-1b2f-4cfa-9969-67e0e3d06e4d">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
+          </destination>
+          <source>
+            <refId>3a2a17d1-dbcc-4d18-af74-29b3a1f036fe</refId>
+          </source>
+          <positions>
+            <point>
+              <x>121.0</x>
+              <y>210.0</y>
+            </point>
+            <point>
+              <x>121.0</x>
+              <y>345.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -564,7 +564,7 @@ Codigo72;UID_CODIGO_BANCO,UID_BAN_CODIGO_BANCO,UID_CODIGO_TIPO_MENSAJE,UID_RAZON
       <userPrompt></userPrompt>
       <scriptlet id="b8a3c5e8-1f16-4171-9545-697c1de2941d">
         <annotation></annotation>
-        <name>Step SELECT EN RED in Flow P-54-7090-17 Sanciones - Ejecutar Consultas (d225457d-b396-410f-8fc3-f7c83cd381c2)</name>
+        <name>Step SELECT EN RED in Flow SANCIONES - PROCESO DIARIO (d225457d-b396-410f-8fc3-f7c83cd381c2)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -667,7 +667,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
           <record>false</record>
           <link>
             <refId>cc19c728-5387-438f-9270-eb57b1eddf4b</refId>
-            <refName>P-54-7090-17 RED P</refName>
+            <refName>ORQ-USF RED P</refName>
           </link>
           <identityAttribute>USERNAME</identityAttribute>
         </identityBinding>
@@ -686,7 +686,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
           <record>false</record>
           <link>
             <refId>cc19c728-5387-438f-9270-eb57b1eddf4b</refId>
-            <refName>P-54-7090-17 RED P</refName>
+            <refName>ORQ-USF RED P</refName>
           </link>
           <identityAttribute>PASSWORD</identityAttribute>
         </identityBinding>
@@ -842,35 +842,6 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="1d65c1e4-4b05-4cf3-9bf3-d7d72393aff7">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>8158afdb-bf81-4ccf-867b-a4d77b01fd85</refId>
-          </destination>
-          <source>
-            <refId>d225457d-b396-410f-8fc3-f7c83cd381c2</refId>
-          </source>
-          <positions>
-            <point>
-              <x>304.0</x>
-              <y>281.0</y>
-            </point>
-            <point>
-              <x>102.0</x>
-              <y>316.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
         <transition id="62663b5d-9630-4c58-81f7-f696cd468af5">
           <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.62663b5d-9630-4c58-81f7-f696cd468af5.transition.description</annotation>
           <name>success</name>
@@ -893,6 +864,35 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
             <point>
               <x>374.0</x>
               <y>306.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="559bf9ac-1063-40a7-92e6-7a21a849df2c">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
+          </destination>
+          <source>
+            <refId>d225457d-b396-410f-8fc3-f7c83cd381c2</refId>
+          </source>
+          <positions>
+            <point>
+              <x>377.0</x>
+              <y>407.0</y>
+            </point>
+            <point>
+              <x>121.0</x>
+              <y>345.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -1014,7 +1014,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
       <name>Error : failure</name>
       <bounds>
         <x>71.0</x>
-        <y>373.0</y>
+        <y>449.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -1160,35 +1160,6 @@ ${query_results}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="65c8b460-a61f-48cf-8a93-621c79335a25">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>8158afdb-bf81-4ccf-867b-a4d77b01fd85</refId>
-          </destination>
-          <source>
-            <refId>3953d7aa-4ddb-4f13-985c-ae77d15aa75c</refId>
-          </source>
-          <positions>
-            <point>
-              <x>358.0</x>
-              <y>154.0</y>
-            </point>
-            <point>
-              <x>102.0</x>
-              <y>316.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
         <transition id="d8fb83b9-f4b3-49ff-96ee-2cf0f0c82b1c">
           <annotation></annotation>
           <name>success</name>
@@ -1211,6 +1182,35 @@ ${query_results}</value>
             <point>
               <x>121.0</x>
               <y>210.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="f75f34a8-b842-4e3a-bf10-8dfcc46e8fa1">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
+          </destination>
+          <source>
+            <refId>3953d7aa-4ddb-4f13-985c-ae77d15aa75c</refId>
+          </source>
+          <positions>
+            <point>
+              <x>377.0</x>
+              <y>210.0</y>
+            </point>
+            <point>
+              <x>121.0</x>
+              <y>345.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -1440,7 +1440,7 @@ ${query_results}</value>
           <record>false</record>
           <link>
             <refId>8b848fb9-8384-402a-8d3e-8a037c0ee2d7</refId>
-            <refName>P-54-7090-17 RED D</refName>
+            <refName>ORQ-USF RED D</refName>
           </link>
           <identityAttribute>USERNAME</identityAttribute>
         </identityBinding>
@@ -1457,7 +1457,7 @@ ${query_results}</value>
           <record>false</record>
           <link>
             <refId>8b848fb9-8384-402a-8d3e-8a037c0ee2d7</refId>
-            <refName>P-54-7090-17 RED D</refName>
+            <refName>ORQ-USF RED D</refName>
           </link>
           <identityAttribute>PASSWORD</identityAttribute>
         </identityBinding>
@@ -1631,7 +1631,7 @@ ${query_results}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="92285b26-f9f5-4755-886b-ad8e864a7ed3">
+        <transition id="944b4fc3-964a-4acf-8f37-57ac7267e949">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -1640,7 +1640,7 @@ ${query_results}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>8158afdb-bf81-4ccf-867b-a4d77b01fd85</refId>
+            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
           </destination>
           <source>
             <refId>57823033-1f96-4ac4-967b-e154c9c07886</refId>
@@ -1652,7 +1652,7 @@ ${query_results}</value>
             </point>
             <point>
               <x>121.0</x>
-              <y>407.0</y>
+              <y>345.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -1664,6 +1664,159 @@ ${query_results}</value>
       <properties/>
       <opRef>
         <refId>a8dd819d-158a-43c4-9648-f14e561a5381</refId>
+      </opRef>
+      <assignments/>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="231519a8-b690-46b0-a646-e21af7dbd131">
+      <annotation></annotation>
+      <name>Enviar Correo Notificacion</name>
+      <bounds>
+        <x>71.0</x>
+        <y>311.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="7c189383-10c7-40e4-81f2-ca70b1ec9ef3">
+          <annotation></annotation>
+          <fromContextKey>ORQ-USF CORREOS TECNICOS</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>To</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="f9e3b6a3-58d8-4ff8-aebb-f71abbe60c00">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Body</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - PROCESO DIARIO)&lt;br&gt;
+&lt;br&gt;
+MENSAJE DE ERROR:&lt;br&gt;
+${MSG_ERROR}</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="19d57a34-87e0-4554-92d6-a237e02da35c">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Subject</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - PROCESO DIARIO)</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="857b5644-1ec5-4f28-be46-c566af571a1c">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Attachments</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="49102851-cd37-4c81-b3c6-b57146bbe722">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>8158afdb-bf81-4ccf-867b-a4d77b01fd85</refId>
+          </destination>
+          <source>
+            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
+          </source>
+          <positions>
+            <point>
+              <x>121.0</x>
+              <y>345.0</y>
+            </point>
+            <point>
+              <x>121.0</x>
+              <y>483.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="3567c7d8-2e86-4f66-af40-8de330ecef97">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>8158afdb-bf81-4ccf-867b-a4d77b01fd85</refId>
+          </destination>
+          <source>
+            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
+          </source>
+          <positions>
+            <point>
+              <x>121.0</x>
+              <y>345.0</y>
+            </point>
+            <point>
+              <x>146.0</x>
+              <y>405.0</y>
+            </point>
+            <point>
+              <x>146.0</x>
+              <y>423.0</y>
+            </point>
+            <point>
+              <x>121.0</x>
+              <y>483.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>1af33279-42d9-42ae-8eb0-289d96a35f8f</refId>
       </opRef>
       <assignments/>
       <throttleSize>0</throttleSize>
