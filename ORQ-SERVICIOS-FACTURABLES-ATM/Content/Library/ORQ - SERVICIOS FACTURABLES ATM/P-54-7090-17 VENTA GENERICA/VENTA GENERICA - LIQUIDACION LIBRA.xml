@@ -304,12 +304,12 @@ var UIM_FECHA_PROCESO = curr_date+&quot;-&quot;+curr_month+&quot;-&quot;+curr_ye
 var insert=&quot;&quot;;
 var insert2=&quot;&quot;;
 var CV_BANCO=&apos;&apos;;
-var CREDITO=0;
-var DEBITO=0;
-var ACUM_CREDITO=0;
-var ACUM_DEBITO=0;
+var CREDITO=0.0;
+var DEBITO=0.0;
+var ACUM_CREDITO=0.0;
+var ACUM_DEBITO=0.0;
 var TITULO=&apos;&apos;;
-var NETO=0;
+var NETO=0.0;
 var ban=1;
 
 if(queryCount &gt; 0){
@@ -318,20 +318,23 @@ if(queryCount &gt; 0){
 	
 	for(i=0; i &lt; linea.length; i++){
 	    linea2 = linea[i].split(&quot;,&quot;);
+	    CREDITO=0;
+	    DEBITO=0;
+	    NETO=0;
 	    if(linea2.length &gt; 0){
 	    	CV_BANCO = linea2[0];
 	    	CREDITO = parseFloat(linea2[1]);
 	    	DEBITO = parseFloat(linea2[2]);
-	    	if(CREDITO &gt; 0 || DEBITO &gt;0){
-	    	NETO = parseFloat(DEBITO - CREDITO);
-	    	TITULO = &quot;LIQUIDACION ESPECIAL COMISION VENTA GENERICA 2% &quot;+MONTH+&quot; &quot;+UIM_ANIO_FACT;
-	    	ACUM_CREDITO = ACUM_CREDITO + CREDITO;
-	    	ACUM_DEBITO = ACUM_DEBITO + DEBITO;
-	    	insert += &quot;INSERT INTO LIQUIDACIONES (FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE) VALUES (TO_DATE(&apos;&quot;+FECHA_LIQUIDACION+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;N&apos;);\n&quot;;
-			insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
-			insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
-			insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
-			}
+	    	//if(CREDITO != 0 &amp;&amp; DEBITO != 0){
+	    		NETO = CREDITO - DEBITO;
+	    		TITULO = &quot;LIQUIDACION ESPECIAL COMISION VENTA GENERICA 2% &quot;+MONTH+&quot; &quot;+UIM_ANIO_FACT;
+	    		ACUM_CREDITO = ACUM_CREDITO+CREDITO;
+	    		ACUM_DEBITO = ACUM_DEBITO+DEBITO;
+	    		insert += &quot;INSERT INTO LIQUIDACIONES (FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE) VALUES (TO_DATE(&apos;&quot;+FECHA_LIQUIDACION+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;N&apos;);\n&quot;;
+				insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
+				insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
+				insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+			//}
 		  } 
 	} // fin for
 	insert+=&quot;COMMIT;\n&quot;;
@@ -352,6 +355,7 @@ scriptletContext.putGlobal(&quot;ACUM_CREDITO&quot;, ACUM_CREDITO);
 scriptletContext.putGlobal(&quot;ACUM_DEBITO&quot;, ACUM_DEBITO);
 scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
 scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
+scriptletContext.putGlobal(&quot;DIFERENCIA&quot;, (ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2));
 scriptletContext.putGlobal(&quot;BAN&quot;, ban);
 // ===========================================================================================</script>
         <type>RHINO</type>
@@ -517,24 +521,16 @@ scriptletContext.putGlobal(&quot;BAN&quot;, ban);
           <inputSymbol>Command</inputSymbol>
           <listDelimiter>,</listDelimiter>
           <value>SELECT 
-B.CODIGO_BANCO AS CV_BANCO,
+TRIM(B.CODIGO_BANCO) AS CV_BANCO,
    ROUND( NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
     WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-    C.UIM_BAN_CODIGO_BANCO != C.UIM_CODIGO_BANCO AND 
-    C.UIM_BAN_CODIGO_BANCO = B.CODIGO_BANCO AND
-    C.UIM_BAN_CODIGO_BANCO NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;JCB1&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;,&apos;BIC1&apos;,&apos;BNMX&apos;,&apos;B137&apos;) AND
-    C.UIM_CODIGO_BANCO NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;JCB1&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;,&apos;BIC1&apos;,&apos;BNMX&apos;,&apos;B137&apos;) AND
+    TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND
     C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_BAN_CODIGO_BANCO),0),2)  AS CREDITO,
     ROUND(NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
     WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-    C.UIM_CODIGO_BANCO != C.UIM_BAN_CODIGO_BANCO AND 
-    C.UIM_CODIGO_BANCO = B.CODIGO_BANCO AND
-    C.UIM_BAN_CODIGO_BANCO NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;JCB1&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;,&apos;BIC1&apos;,&apos;BNMX&apos;,&apos;B137&apos;) AND
-    C.UIM_CODIGO_BANCO NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;JCB1&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;,&apos;BIC1&apos;,&apos;BNMX&apos;,&apos;B137&apos;) AND
+    TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND
     C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_CODIGO_BANCO),0),2)  AS DEBITO 
-FROM BANCOS B 
-WHERE 
-B.CODIGO_BANCO NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;JCB1&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;,&apos;BIC1&apos;,&apos;BNMX&apos;,&apos;B137&apos;)</value>
+FROM BANCOS B</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="c83af323-c059-48ce-9582-d977df97709d">
@@ -2519,6 +2515,19 @@ FIN EXITOSO DEL PROCESO</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="0942e342-68e7-4f76-8885-9a65fcf343c7">
+        <baseIcon>calendar.png</baseIcon>
+        <basePath>Others/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="9d1fd2af-5229-4c3a-955c-837d3d8ebe89">
+            <baseIcon>view.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -3169,6 +3178,19 @@ FIN EXITOSO DEL PROCESO</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="fe7bf176-b85e-4f96-b393-d958b509e1ca">
+        <baseIcon>calendar.png</baseIcon>
+        <basePath>Others/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="943bf156-8037-4b14-9ab3-7e650e144e93">
+            <baseIcon>Calculator.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -3679,6 +3701,19 @@ FIN EXITOSO DEL PROCESO</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="2bc04435-b401-493a-bec4-33f3a090a61c">
+        <baseIcon>calendar.png</baseIcon>
+        <basePath>Others/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="943bf156-8037-4b14-9ab3-7e650e144e93">
+            <baseIcon>Calculator.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -4247,7 +4282,7 @@ FIN EXITOSO DEL PROCESO</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="d1d73857-70bc-40c0-aef4-c1caa410a539">
+        <transition id="ac7e64cb-ce3e-46aa-b3bd-c22e49180806">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -4256,19 +4291,19 @@ FIN EXITOSO DEL PROCESO</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>cd945792-ed80-4c94-b3a6-1260230b9c63</refId>
+            <refId>9b273812-3ebd-4145-8416-7674f7777847</refId>
           </destination>
           <source>
             <refId>08ba1563-16db-4eb8-906d-c5c9598d040a</refId>
           </source>
           <positions>
             <point>
-              <x>918.0</x>
-              <y>510.0</y>
+              <x>964.0</x>
+              <y>502.0</y>
             </point>
             <point>
-              <x>954.0</x>
-              <y>354.0</y>
+              <x>721.0</x>
+              <y>267.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -4544,35 +4579,6 @@ FIN EXITOSO DEL PROCESO</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="186d777e-8d95-4432-b027-0c41978e9e74">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>cd945792-ed80-4c94-b3a6-1260230b9c63</refId>
-          </destination>
-          <source>
-            <refId>e3382076-227d-4951-ba5c-62f407074b69</refId>
-          </source>
-          <positions>
-            <point>
-              <x>813.0</x>
-              <y>507.0</y>
-            </point>
-            <point>
-              <x>954.0</x>
-              <y>354.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
         <transition id="0f9aca1e-55a5-4965-81ae-24a3574aac64">
           <annotation>2589b59f-398b-421c-b407-d46efe5a469c.0f9aca1e-55a5-4965-81ae-24a3574aac64.transition.description</annotation>
           <name>success</name>
@@ -4595,6 +4601,35 @@ FIN EXITOSO DEL PROCESO</value>
             <point>
               <x>964.0</x>
               <y>502.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="a29306d1-870b-423e-bab7-306cda88206c">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>a611e523-f2a1-4081-91c6-6d0ef817c20e</refId>
+          </destination>
+          <source>
+            <refId>e3382076-227d-4951-ba5c-62f407074b69</refId>
+          </source>
+          <positions>
+            <point>
+              <x>813.0</x>
+              <y>507.0</y>
+            </point>
+            <point>
+              <x>616.0</x>
+              <y>196.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -4770,12 +4805,12 @@ ${INSERT_SENTENCE2}</value>
           </source>
           <positions>
             <point>
-              <x>754.0</x>
-              <y>245.0</y>
+              <x>767.0</x>
+              <y>276.9331984490929</y>
             </point>
             <point>
               <x>616.0</x>
-              <y>196.0</y>
+              <y>213.0</y>
             </point>
           </positions>
           <labelPosition>

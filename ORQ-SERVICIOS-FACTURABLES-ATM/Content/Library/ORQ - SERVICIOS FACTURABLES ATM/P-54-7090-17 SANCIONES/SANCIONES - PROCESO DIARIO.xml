@@ -2,13 +2,13 @@
 <flow id="3d802daa-831c-4440-8ac9-65a1a04e0be8">
   <descriptionCdata><![CDATA[3d802daa-831c-4440-8ac9-65a1a04e0be8.3953d7aa-4ddb-4f13-985c-ae77d15aa75c.description=<pre>This operation writes the data from "contents" input to the requested file. The operation can be used to overwrite existing content of the file, append extra lines to it or even create a new file.\n\nInputs\:\n    source -  Full path to file. If the file does not exist it is created first.\n    contents - The content that should be written to the file. This input field can contain more lines, separated by a delimiter. If it contains the new line character (\\n or \\r\\n), but this is not the delimiter, this character will be escaped and written to file.  \nExample\: "This is line no. 01\\nThis is line no. 2\\n" where \\n is the delimiter.\n    delimiter - Specifies the newline delimiter that is used to split the "contents" input field into separate lines that will be further written to the given file.\nExamples\: \\n, \\r\\n, etc\n    characterSet - The character encoding used to write to the file. \nDefault\: UTF-8. \nValid values\: windows-1252, UTF-16, UTF-16BE,  ISO-8859-1, US-ASCII, Shift_JIS etc.\n    overwrite - Specifies whether to overwrite the file or append to it. \nDefault\: true. \nValid values\: true, false or the empty string. If this is left empty, the file will be overwritten.\n\nResults\:\n    returnResult - This is the primary output. It contains the "success" confirmation message if the operation successfully completes, or an exception message otherwise.\n    returnCode - It has the value 0 if the operation successfully completes and 1 otherwise.\n    exception - This contains an exception message if the operation fails.\n\nResponses\:\n    success - File/directory was written successfully.\n    failure - Unable to write to file/directory, empty contents or source.\n\nExamples\:\n1. This is a valid input example for using this operation on Windows\:\n    source\: C\:\\Program Files\\example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n\n2. This is a valid input example for using this operation on Linux\:\n    source\: /root/example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n</pre>
 3d802daa-831c-4440-8ac9-65a1a04e0be8.3a2a17d1-dbcc-4d18-af74-29b3a1f036fe.description=<pre>This operation iterates through a list of values. It is not recommended to modify the value of the "list" and "separator" inputs during the iteration process.\n\nInputs\:\n    list - The list to iterate through.\n    separator - A delimiter separating the list elements.\nDefault value\: \u2018,\u2019 (comma) \n\nResults\:\n    resultString - The current list element (if the response is "has more").\n\nResponses\:\n    has more - Another value was found in the list and it has been returned.\n    no more - The iterator has gone through the entire list. This response is returned once per list iteration.  A subsequent call to the List iterator operation restarts the list iteration process.\n    failure - The operation completed unsuccessfully.\n\nNote\:\n   The position of the iterator in the list is tracked by each step's unique identifier. Therefore, you can simultaneously iterate through the same list from multiple steps.\n</pre>
+3d802daa-831c-4440-8ac9-65a1a04e0be8.4846cd5a-88d6-4ea5-a891-d757bf012dad.description=<pre>This operation iterates through a list of values. It is not recommended to modify the value of the "list" and "separator" inputs during the iteration process.\n\nInputs\:\n    list - The list to iterate through.\n    separator - A delimiter separating the list elements.\nDefault value\: \u2018,\u2019 (comma) \n\nResults\:\n    resultString - The current list element (if the response is "has more").\n\nResponses\:\n    has more - Another value was found in the list and it has been returned.\n    no more - The iterator has gone through the entire list. This response is returned once per list iteration.  A subsequent call to the List iterator operation restarts the list iteration process.\n    failure - The operation completed unsuccessfully.\n\nNote\:\n   The position of the iterator in the list is tracked by each step's unique identifier. Therefore, you can simultaneously iterate through the same list from multiple steps.\n</pre>
 3d802daa-831c-4440-8ac9-65a1a04e0be8.4f889785-fe3e-417b-9533-22acd949932c.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
-3d802daa-831c-4440-8ac9-65a1a04e0be8.57823033-1f96-4ac4-967b-e154c9c07886.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
+3d802daa-831c-4440-8ac9-65a1a04e0be8.5f17ee61-9e98-4925-97eb-12fcb072148f.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
 3d802daa-831c-4440-8ac9-65a1a04e0be8.5f3d41be-113c-4a49-a9db-aaa643dfb0c2.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
 3d802daa-831c-4440-8ac9-65a1a04e0be8.62663b5d-9630-4c58-81f7-f696cd468af5.transition.description=Filas Retornadas \= ${queryCount}
 3d802daa-831c-4440-8ac9-65a1a04e0be8.6805012d-fe5c-4e77-9426-4233635729ce.transition.description=${queryCount} <\= 0
 3d802daa-831c-4440-8ac9-65a1a04e0be8.97a74ca7-59dc-432d-b553-ad74f96edc5d.transition.description=Registros Eliminados\: ${updateCount}
-3d802daa-831c-4440-8ac9-65a1a04e0be8.9c78fd6a-9840-42c6-8039-165ec59f399b.transition.description=${queryCount} > 0
 3d802daa-831c-4440-8ac9-65a1a04e0be8.c543cf8c-adb8-4573-aaba-c719f0c76f5b.callout=SANCIONES\:\n1. Enlista los querys a ejecutar\n2. Ejecuta los querys en la base de datos RED\n3. Formato los datos para los insert en la base de datos destino\n4. Inserta los datos en la base de datos destino\n5. Escribe archivo .csv con los datos extra\u00EDdos
 3d802daa-831c-4440-8ac9-65a1a04e0be8.d225457d-b396-410f-8fc3-f7c83cd381c2.description=<pre>\nRuns a SQL SELECT query.\nReturns the complete result like the following\:\na<colDelimiter>1<rowDelimiter>b<colDelimiter>2\n\nInputs\:\n    DBServerName - The hostname or ip address of db server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the server.\n    Password -  The password to use when connecting to the server.\n    instance - The name instance of MSSQL Server. Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    colDelimiter - The delimiter to use between columns in resulting table.\nDefault value\: comma (,)\n    rowDelimiter - The delimiter to use between rows in resulting table.\nDefault value\: \\n\n    timeout - Seconds to wait before timing out the SQL command execution.\nDefault value\: 0 \n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. Form more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n\nResults\:\n    returnResult - This is the primary output. Return the list of all the data returned by the query. It is delimited by colDelimiter and rowDelimiter. \n\nResponses\:\n    success - The command was executed successfully. \n    failure - Failed to execute the command. \n\nNote\: \n    SQL statement other than SELECT statement (like INSERT, UPDATE or DELETE) is not supported. In case statements other than SELECT are executed then the operation will fail but the statements might get partially or fully executed in the database.\n    Check the JDBC  folder description for details on how to load database connectors.\n\n</pre>
 3d802daa-831c-4440-8ac9-65a1a04e0be8.d5436fd3-2df5-4d32-bc57-16e535328991.transition.description=FECHA PROCESO \= ${fecha_proceso}
@@ -75,8 +75,8 @@
     <callout id="c543cf8c-adb8-4573-aaba-c719f0c76f5b">
       <text>3d802daa-831c-4440-8ac9-65a1a04e0be8.c543cf8c-adb8-4573-aaba-c719f0c76f5b.callout</text>
       <bounds>
-        <x>346.0</x>
-        <y>35.0</y>
+        <x>510.0</x>
+        <y>597.0</y>
         <width>339.0</width>
         <height>111.0</height>
       </bounds>
@@ -91,11 +91,24 @@
       <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.5f3d41be-113c-4a49-a9db-aaa643dfb0c2.description</annotation>
       <name>Date Parser</name>
       <bounds>
-        <x>350.0</x>
+        <x>349.0</x>
         <y>50.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="48c1e696-7f9c-4807-86d9-6986ab7dde70">
+        <baseIcon>calendar.png</baseIcon>
+        <basePath>Others/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="42059154-198c-43d6-bb4c-0a0f7df84d61">
+            <baseIcon>wrench.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -534,8 +547,8 @@ Codigo72;UID_CODIGO_BANCO,UID_BAN_CODIGO_BANCO,UID_CODIGO_TIPO_MENSAJE,UID_RAZON
       <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.d225457d-b396-410f-8fc3-f7c83cd381c2.description</annotation>
       <name>SELECT EN RED</name>
       <bounds>
-        <x>327.0</x>
-        <y>373.0</y>
+        <x>349.0</x>
+        <y>449.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -583,40 +596,44 @@ var curr_year = d.getFullYear();
 var UID_FECHA_PROCESO = curr_year+&quot;-&quot;+curr_month+&quot;-&quot;+curr_date;
 
 var insert=&quot;&quot;;
-
+var count = 0;
 if(queryCount &gt; 0){
     
     linea = query_results.split(&quot;\n&quot;);
-    insert+=&quot;BEGIN\n&quot;; 
     
 	for(i=0; i &lt; linea.length; i++){
-	    //if(i&gt;0) { insert+=&quot; , &quot;; }
+	    
+		if(count == 0) { insert+=&quot;BEGIN\n&quot;; }
+				
 	    linea_insert = linea[i].replace(&quot; 00:00:00&quot;,&quot;&quot;);
 		
 		if(nombre_query == &apos;RevDesfasado&apos;){
-			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_NUMERO_CUENTA_ACCESO,UID_FH_ENTRADA_B24,UID_DESFASE_SEG,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;);\n&apos;;
+			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_NUMERO_CUENTA_ACCESO,UID_FH_ENTRADA_B24,UID_DESFASE_SEG,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;); \n&apos;;
 		}
 		if(nombre_query == &apos;RevMultiples&apos;){
-			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_ORDEN,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;);\n&apos;;
+			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_ORDEN,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;); \n&apos;;
 		}
 		if(nombre_query == &apos;Codigo72&apos;){
-			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_CODIGO_BANCO,UID_BAN_CODIGO_BANCO,UID_CODIGO_TIPO_MENSAJE,UID_RAZON_RESPUESTA,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_FH_ORIGEN_TRAN,UID_FH_ENTRADA_B24,UID_ORDEN,UID_NUMERO_CUENTA_ACCESO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;);\n&apos;;
+		 	insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_CODIGO_BANCO,UID_BAN_CODIGO_BANCO,UID_CODIGO_TIPO_MENSAJE,UID_RAZON_RESPUESTA,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_FH_ORIGEN_TRAN,UID_FH_ENTRADA_B24,UID_ORDEN,UID_NUMERO_CUENTA_ACCESO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;); \n&apos;;
 		}
+		count++;
 		
+		if(count == 1000) { insert += &quot;|&quot;; count = 0;}
 		
-	insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
-    insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+	insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;); insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+    
 	} // fin for
-	insert+=&quot;COMMIT;\n&quot;;
-	insert+=&quot;END;&quot;;
+	
+	insert += &quot;|&quot;;
+	
 } // fin if
 
 
 // Use the context to hold data for use by other steps.  It is also helpful to place information 
 // into the context to examine variables when developing and debugging scriptlets. 
 // For example to place the OutputString information into a context key called &apos;Output&apos;: 
-scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert); 
-
+scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
+scriptletContext.putGlobal(&quot;CONTADOR&quot;, count);
 // ===========================================================================================</script>
         <type>NASHORN</type>
       </scriptlet>
@@ -1078,7 +1095,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
       <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.3953d7aa-4ddb-4f13-985c-ae77d15aa75c.description</annotation>
       <name>Write to File</name>
       <bounds>
-        <x>327.0</x>
+        <x>349.0</x>
         <y>176.0</y>
       </bounds>
       <layer>-1</layer>
@@ -1274,8 +1291,8 @@ ${query_results}</value>
       <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.d547f35c-91f8-4ccc-8c51-85b5a8055975.description</annotation>
       <name>Evaluate Expression</name>
       <bounds>
-        <x>324.0</x>
-        <y>272.0</y>
+        <x>349.0</x>
+        <y>311.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -1385,8 +1402,8 @@ ${query_results}</value>
             <y>5.271225518145101</y>
           </labelPosition>
         </transition>
-        <transition id="9c78fd6a-9840-42c6-8039-165ec59f399b">
-          <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.9c78fd6a-9840-42c6-8039-165ec59f399b.transition.description</annotation>
+        <transition id="3efca15a-098d-4597-9d36-85139755cb6f">
+          <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
           <linkMode>false</linkMode>
@@ -1394,19 +1411,19 @@ ${query_results}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>57823033-1f96-4ac4-967b-e154c9c07886</refId>
+            <refId>4846cd5a-88d6-4ea5-a891-d757bf012dad</refId>
           </destination>
           <source>
             <refId>d547f35c-91f8-4ccc-8c51-85b5a8055975</refId>
           </source>
           <positions>
             <point>
-              <x>374.0</x>
-              <y>306.0</y>
+              <x>399.0</x>
+              <y>345.0</y>
             </point>
             <point>
-              <x>544.0</x>
-              <y>413.0</y>
+              <x>590.0</x>
+              <y>484.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -1420,319 +1437,6 @@ ${query_results}</value>
         <refId>f61afe20-3c09-490b-8ff7-8540bedc5001</refId>
       </opRef>
       <assignments/>
-      <throttleSize>0</throttleSize>
-    </step>
-    <step id="57823033-1f96-4ac4-967b-e154c9c07886">
-      <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.57823033-1f96-4ac4-967b-e154c9c07886.description</annotation>
-      <name>INSERTS EN REDD</name>
-      <bounds>
-        <x>457.0</x>
-        <y>273.0</y>
-      </bounds>
-      <layer>-1</layer>
-      <hideInbound>false</hideInbound>
-      <addResultToRunContext>false</addResultToRunContext>
-      <isCriticalStep>false</isCriticalStep>
-      <isNonBlocking>false</isNonBlocking>
-      <isParallelStep>false</isParallelStep>
-      <isSingleResponse>false</isSingleResponse>
-      <recordInHistory>false</recordInHistory>
-      <recordRawOutput>true</recordRawOutput>
-      <recordPrimaryOutput>true</recordPrimaryOutput>
-      <checkPointStep>true</checkPointStep>
-      <historyCheckPointStep>true</historyCheckPointStep>
-      <scriptResultStep>false</scriptResultStep>
-      <userPrompt></userPrompt>
-      <bindings>
-        <staticBinding id="8d54d1a0-006c-4d13-8220-096fc9264e85">
-          <annotation></annotation>
-          <fromContextKey>ORQ-USF RED D  IP</fromContextKey>
-          <assignFromContext>true</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>true</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>DBServerName</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value></value>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="c6bc852f-8d45-439a-9f8b-3f4e28957b7e">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>DbType</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value>Oracle</value>
-          <record>false</record>
-        </staticBinding>
-        <identityBinding id="338069b5-18b9-4331-b472-d5ba73950713">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>true</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>Username</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-          <link>
-            <refId>8b848fb9-8384-402a-8d3e-8a037c0ee2d7</refId>
-            <refName>ORQ-USF RED D</refName>
-          </link>
-          <identityAttribute>USERNAME</identityAttribute>
-        </identityBinding>
-        <identityBinding id="a994feb0-02a8-4dd9-a2af-392d03e5b921">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>ENCRYPTED</inputType>
-          <isList>false</isList>
-          <required>true</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>Password</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-          <link>
-            <refId>8b848fb9-8384-402a-8d3e-8a037c0ee2d7</refId>
-            <refName>ORQ-USF RED D</refName>
-          </link>
-          <identityAttribute>PASSWORD</identityAttribute>
-        </identityBinding>
-        <staticBinding id="6877d41e-24d3-4076-ac4c-ea870786a1d7">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>instance</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="b30206db-9181-45f0-917a-6d409a4d271b">
-          <annotation></annotation>
-          <fromContextKey>ORQ-USF RED D PORT</fromContextKey>
-          <assignFromContext>true</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>DBPort</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="35aaa165-156f-432c-843c-97944310651b">
-          <annotation></annotation>
-          <fromContextKey>ORQ-USF RED D SID</fromContextKey>
-          <assignFromContext>true</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>true</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>Database</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value></value>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="8c43f14a-e8fc-4b0d-abf5-a6ccf61ace0a">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>authenticationType</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="d6de1f61-06dc-4cdf-97d9-2902e1ca2293">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>dbClass</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="eb3a892a-c7e6-4fcb-9c8f-096d825aa16d">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>dbURL</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="338f11a5-01cb-4e15-9517-868062eeab84">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>true</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>Command</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value>${INSERT_SENTENCE}</value>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="92abf11b-c1ff-459b-9b3f-8008d3e31296">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>timeout</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value>180000</value>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="a339bd92-959c-451e-86d7-f7bacc7b61b6">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>databasePoolingProperties</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="84adef1e-ba9a-454d-bc75-be8571089d5a">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>resultSetType</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value></value>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="e0aba493-bc97-4bf8-b4a3-64927fa9dd8f">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>resultSetConcurrency</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value></value>
-          <record>false</record>
-        </staticBinding>
-      </bindings>
-      <transitions>
-        <transition id="5d0e7609-eab2-4419-b30b-a35dddcd322e">
-          <annotation></annotation>
-          <name>success</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>success</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>3953d7aa-4ddb-4f13-985c-ae77d15aa75c</refId>
-          </destination>
-          <source>
-            <refId>57823033-1f96-4ac4-967b-e154c9c07886</refId>
-          </source>
-          <positions>
-            <point>
-              <x>507.0</x>
-              <y>307.0</y>
-            </point>
-            <point>
-              <x>377.0</x>
-              <y>210.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
-        <transition id="944b4fc3-964a-4acf-8f37-57ac7267e949">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
-          </destination>
-          <source>
-            <refId>57823033-1f96-4ac4-967b-e154c9c07886</refId>
-          </source>
-          <positions>
-            <point>
-              <x>507.0</x>
-              <y>307.0</y>
-            </point>
-            <point>
-              <x>121.0</x>
-              <y>345.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
-      </transitions>
-      <properties/>
-      <opRef>
-        <refId>a8dd819d-158a-43c4-9648-f14e561a5381</refId>
-      </opRef>
-      <assignments>
-        <flowVariableAssignment id="b9d1e9b7-ed9d-461a-ab34-5644e60b891f">
-          <annotation></annotation>
-          <name>assignment</name>
-          <action>OVERWRITE</action>
-          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
-          <contextKey>MSG_ERROR</contextKey>
-          <expression id="af2c55ab-e2a9-4dc3-9f77-943a5263e9e7">
-            <annotation></annotation>
-            <name>Result Field: returnResult</name>
-            <fieldName>returnResult</fieldName>
-            <sourceType>RAWRESULT</sourceType>
-            <filters>
-              <concat id="3068f3ff-05a1-447a-af72-c02444b581a1">
-                <annotation></annotation>
-                <name>Format</name>
-                <text>INSERCION DE DATOS&lt;br&gt;
-</text>
-                <position>BEGINNING</position>
-              </concat>
-            </filters>
-          </expression>
-        </flowVariableAssignment>
-      </assignments>
       <throttleSize>0</throttleSize>
     </step>
     <step id="231519a8-b690-46b0-a646-e21af7dbd131">
@@ -2221,6 +1925,502 @@ ${MSG_ERROR}</value>
             <annotation></annotation>
             <name>Result Field: updateCount</name>
             <fieldName>updateCount</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="5f17ee61-9e98-4925-97eb-12fcb072148f">
+      <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.5f17ee61-9e98-4925-97eb-12fcb072148f.description</annotation>
+      <name>INSERTS 1 EN REDD</name>
+      <bounds>
+        <x>577.0</x>
+        <y>176.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="7aaaa0e4-00e8-46d5-8c09-be86f57f9059">
+          <annotation></annotation>
+          <fromContextKey>ORQ-USF RED D  IP</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>DBServerName</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="bf76bc03-3cb9-4bc4-a925-bed37e833f4c">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>DbType</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>Oracle</value>
+          <record>false</record>
+        </staticBinding>
+        <identityBinding id="9ddbe988-ff44-458c-8f33-b8fae6ef30e5">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Username</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>8b848fb9-8384-402a-8d3e-8a037c0ee2d7</refId>
+            <refName>ORQ-USF RED D</refName>
+          </link>
+          <identityAttribute>USERNAME</identityAttribute>
+        </identityBinding>
+        <identityBinding id="db687cd8-39e6-4689-a5a9-d8050dc499ca">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>ENCRYPTED</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Password</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <link>
+            <refId>8b848fb9-8384-402a-8d3e-8a037c0ee2d7</refId>
+            <refName>ORQ-USF RED D</refName>
+          </link>
+          <identityAttribute>PASSWORD</identityAttribute>
+        </identityBinding>
+        <staticBinding id="61836049-04ce-4156-810b-9b7912177748">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>instance</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="56d2a9b0-b655-48d4-b580-df1d670f3c26">
+          <annotation></annotation>
+          <fromContextKey>ORQ-USF RED D PORT</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>DBPort</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="da4126dd-10ca-49e7-a7fb-0cad28717748">
+          <annotation></annotation>
+          <fromContextKey>ORQ-USF RED D SID</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Database</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="f46811db-b9eb-487b-a164-0653c0ab3bf9">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>authenticationType</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="077c9288-c886-422f-9dde-f323cdfb7255">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>dbClass</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="48aec2d6-ff14-4277-922b-2c77faf4e9d2">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>dbURL</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="56a38398-4363-4d33-9567-14295a1b022b">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>Command</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>${insert}
+COMMIT;
+END;</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="010b50d5-4833-4054-80d1-99b46b9128a8">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>timeout</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>180000</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="ae7800a1-f20f-472a-ba5b-5e8dbc2ce812">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>databasePoolingProperties</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="18465757-3a4d-4144-9662-f778a80a84f8">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>resultSetType</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="6823493f-301b-4e02-a55f-f693b9e23996">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>resultSetConcurrency</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="18cb3281-2580-4413-a0a0-9f4b18c15dff">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>231519a8-b690-46b0-a646-e21af7dbd131</refId>
+          </destination>
+          <source>
+            <refId>5f17ee61-9e98-4925-97eb-12fcb072148f</refId>
+          </source>
+          <positions>
+            <point>
+              <x>627.0</x>
+              <y>210.0</y>
+            </point>
+            <point>
+              <x>121.0</x>
+              <y>345.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="f3b36701-0f1b-40e4-9248-216dcc1d3c6e">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>4846cd5a-88d6-4ea5-a891-d757bf012dad</refId>
+          </destination>
+          <source>
+            <refId>5f17ee61-9e98-4925-97eb-12fcb072148f</refId>
+          </source>
+          <positions>
+            <point>
+              <x>627.0</x>
+              <y>210.0</y>
+            </point>
+            <point>
+              <x>653.7660312058345</x>
+              <y>269.2332640793017</y>
+            </point>
+            <point>
+              <x>654.2120353610765</x>
+              <y>284.2859043187157</y>
+            </point>
+            <point>
+              <x>631.0</x>
+              <y>345.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>a8dd819d-158a-43c4-9648-f14e561a5381</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="063aca69-5ea6-4591-aa56-2dca43f5bde5">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>MSG_ERROR</contextKey>
+          <expression id="3c933ac5-2977-43cc-ba80-1924b52241ae">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters>
+              <concat id="85785e37-fd46-47ee-a5bc-2ab7064b3ab0">
+                <annotation></annotation>
+                <name>Format</name>
+                <text>INSERCION DE DATOS&lt;br&gt;
+</text>
+                <position>BEGINNING</position>
+              </concat>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="4846cd5a-88d6-4ea5-a891-d757bf012dad">
+      <annotation>3d802daa-831c-4440-8ac9-65a1a04e0be8.4846cd5a-88d6-4ea5-a891-d757bf012dad.description</annotation>
+      <name>List Iterator</name>
+      <bounds>
+        <x>581.0</x>
+        <y>311.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="522bf0e9-1c15-4cfe-a608-d07cb8aee9d0">
+        <baseIcon>wrench.png</baseIcon>
+        <basePath>utilities</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="eabd6339-7eac-4af8-aaa0-74a32183e359">
+            <baseIcon>iterate.png</baseIcon>
+            <basePath>Annotations</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="3a70ca9d-d3ff-4140-85b6-09d48a5eb427">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>list</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>${INSERT_SENTENCE}</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="ccfdc7f8-74fc-4a3c-a367-bfa20f325bf3">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>separator</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>|</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="fc109b29-5818-40a3-931d-7722810bb974">
+          <annotation></annotation>
+          <name>no more</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>no more</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>3953d7aa-4ddb-4f13-985c-ae77d15aa75c</refId>
+          </destination>
+          <source>
+            <refId>4846cd5a-88d6-4ea5-a891-d757bf012dad</refId>
+          </source>
+          <positions>
+            <point>
+              <x>631.0</x>
+              <y>345.0</y>
+            </point>
+            <point>
+              <x>399.0</x>
+              <y>210.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="b452508e-2454-43af-918e-30cc542094ef">
+          <annotation></annotation>
+          <name>has more</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>has more</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>5f17ee61-9e98-4925-97eb-12fcb072148f</refId>
+          </destination>
+          <source>
+            <refId>4846cd5a-88d6-4ea5-a891-d757bf012dad</refId>
+          </source>
+          <positions>
+            <point>
+              <x>631.0</x>
+              <y>345.0</y>
+            </point>
+            <point>
+              <x>627.0</x>
+              <y>210.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="cd0f6b31-9255-4c2f-8250-87e552389afb">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>8158afdb-bf81-4ccf-867b-a4d77b01fd85</refId>
+          </destination>
+          <source>
+            <refId>4846cd5a-88d6-4ea5-a891-d757bf012dad</refId>
+          </source>
+          <positions>
+            <point>
+              <x>631.0</x>
+              <y>345.0</y>
+            </point>
+            <point>
+              <x>121.0</x>
+              <y>483.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>cd75ca75-e64e-4b1e-9fe9-8dbc76f03865</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="b1fb00e7-ffd4-4889-a343-fa7a4813dfa5">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>insert</contextKey>
+          <expression id="5078aea3-2f67-45d0-be86-bb443268c4f2">
+            <annotation></annotation>
+            <name>Result Field: resultString</name>
+            <fieldName>resultString</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters/>
           </expression>

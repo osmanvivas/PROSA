@@ -315,7 +315,7 @@ c3dca70e-1d3f-4cba-ba60-c986d24c903a.d6e97c25-ec36-42b3-8e70-74d605514d3b.callou
       <annotation></annotation>
       <name>Resolved : success</name>
       <bounds>
-        <x>880.0</x>
+        <x>979.0</x>
         <y>145.0</y>
       </bounds>
       <layer>-1</layer>
@@ -401,7 +401,7 @@ c3dca70e-1d3f-4cba-ba60-c986d24c903a.d6e97c25-ec36-42b3-8e70-74d605514d3b.callou
     </returnStep>
     <step id="08f3a9af-783d-4330-b1b8-54fb239bac46">
       <annotation></annotation>
-      <name>Venta Generica - Ejecutar Consultas</name>
+      <name>VTG</name>
       <bounds>
         <x>227.0</x>
         <y>418.0</y>
@@ -523,7 +523,7 @@ c3dca70e-1d3f-4cba-ba60-c986d24c903a.d6e97c25-ec36-42b3-8e70-74d605514d3b.callou
       <annotation>c3dca70e-1d3f-4cba-ba60-c986d24c903a.6e696a49-0565-46e6-9944-534a6affc9ac.description</annotation>
       <name>Write to File</name>
       <bounds>
-        <x>722.0</x>
+        <x>821.0</x>
         <y>15.0</y>
       </bounds>
       <layer>-1</layer>
@@ -719,7 +719,7 @@ ${output}</value>
       <annotation>c3dca70e-1d3f-4cba-ba60-c986d24c903a.0239ae10-6e9d-498d-8f42-6ed0b3ea8fdc.description</annotation>
       <name>Date Parser</name>
       <bounds>
-        <x>722.0</x>
+        <x>821.0</x>
         <y>145.0</y>
       </bounds>
       <layer>-1</layer>
@@ -950,7 +950,7 @@ ${output}</value>
       <annotation>c3dca70e-1d3f-4cba-ba60-c986d24c903a.a28a5fb2-dbf3-4698-bfa2-50c685ff071f.description</annotation>
       <name>SELECT ALL EN REDD</name>
       <bounds>
-        <x>722.0</x>
+        <x>821.0</x>
         <y>311.0</y>
       </bounds>
       <layer>-1</layer>
@@ -1376,7 +1376,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
     </step>
     <step id="2c1b0be3-f313-4bd7-b228-c99cf4ca3bf6">
       <annotation></annotation>
-      <name>P-54-7090-17 Uso De Infraestructura - Ejecutar Consultas</name>
+      <name>UDI</name>
       <bounds>
         <x>383.0</x>
         <y>418.0</y>
@@ -1492,7 +1492,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
     </step>
     <step id="d8f88afd-4872-461a-b26d-0492a38f599c">
       <annotation></annotation>
-      <name>P-54-7090-17 Bonificaciones - Ejecutar Consultas</name>
+      <name>BON</name>
       <bounds>
         <x>562.0</x>
         <y>418.0</y>
@@ -1532,7 +1532,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="6528b95c-051b-4f2e-9f24-a391eab846c3">
+        <transition id="bc157303-41c1-4303-b2a8-28a70cf48f77">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -1541,36 +1541,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>a28a5fb2-dbf3-4698-bfa2-50c685ff071f</refId>
-          </destination>
-          <source>
-            <refId>d8f88afd-4872-461a-b26d-0492a38f599c</refId>
-          </source>
-          <positions>
-            <point>
-              <x>612.0</x>
-              <y>446.0</y>
-            </point>
-            <point>
-              <x>772.0</x>
-              <y>364.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
-        <transition id="0d653db7-7c29-43cf-bd1f-e55910722df0">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>a28a5fb2-dbf3-4698-bfa2-50c685ff071f</refId>
+            <refId>62404419-032b-4a1a-9f88-655567134bc2</refId>
           </destination>
           <source>
             <refId>d8f88afd-4872-461a-b26d-0492a38f599c</refId>
@@ -1581,16 +1552,45 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
               <y>452.0</y>
             </point>
             <point>
-              <x>675.772472565935</x>
-              <y>439.4273414574694</y>
+              <x>788.0</x>
+              <y>452.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="53dc9e26-d275-494c-951b-5dab80dae721">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>62404419-032b-4a1a-9f88-655567134bc2</refId>
+          </destination>
+          <source>
+            <refId>d8f88afd-4872-461a-b26d-0492a38f599c</refId>
+          </source>
+          <positions>
+            <point>
+              <x>612.0</x>
+              <y>452.0</y>
             </point>
             <point>
-              <x>736.0224543772626</x>
-              <y>399.13516612114404</y>
+              <x>672.0</x>
+              <y>477.0</y>
             </point>
             <point>
-              <x>772.0</x>
-              <y>345.0</y>
+              <x>728.0</x>
+              <y>477.0</y>
+            </point>
+            <point>
+              <x>788.0</x>
+              <y>452.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -1907,7 +1907,7 @@ INICIO DEL PROCESO</value>
       <annotation></annotation>
       <name>NOTIFICACION INICIO PROCESO</name>
       <bounds>
-        <x>886.0</x>
+        <x>985.0</x>
         <y>15.0</y>
       </bounds>
       <layer>-1</layer>
@@ -2037,11 +2037,11 @@ FIN DEL PROCESO</value>
               <y>49.0</y>
             </point>
             <point>
-              <x>958.207129249713</x>
+              <x>1057.207129249713</x>
               <y>110.08881575613115</y>
             </point>
             <point>
-              <x>957.7397012427211</x>
+              <x>1056.7397012427211</x>
               <y>120.2164225742889</y>
             </point>
             <point>
@@ -2288,6 +2288,122 @@ FIN DEL PROCESO</value>
           </expression>
         </flowVariableAssignment>
       </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="62404419-032b-4a1a-9f88-655567134bc2">
+      <annotation></annotation>
+      <name>SAN</name>
+      <bounds>
+        <x>738.0</x>
+        <y>418.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="a48b686a-7029-42af-9b23-0fadf1e82f93">
+          <annotation></annotation>
+          <fromContextKey>date_report</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>fecha_reporte</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+          <validationFormat>
+            <refId>abd59686-bf1a-4be5-b704-bc76d22e1390</refId>
+            <refName>ORQ-USF Fecha Valida</refName>
+          </validationFormat>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="a1beb737-211d-4c00-b8a9-600615f106b1">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>a28a5fb2-dbf3-4698-bfa2-50c685ff071f</refId>
+          </destination>
+          <source>
+            <refId>62404419-032b-4a1a-9f88-655567134bc2</refId>
+          </source>
+          <positions>
+            <point>
+              <x>788.0</x>
+              <y>452.0</y>
+            </point>
+            <point>
+              <x>871.0</x>
+              <y>345.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="4caf9481-2504-49ad-a950-c5e0345c220d">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>a28a5fb2-dbf3-4698-bfa2-50c685ff071f</refId>
+          </destination>
+          <source>
+            <refId>62404419-032b-4a1a-9f88-655567134bc2</refId>
+          </source>
+          <positions>
+            <point>
+              <x>788.0</x>
+              <y>452.0</y>
+            </point>
+            <point>
+              <x>844.5287276992417</x>
+              <y>419.9141316978177</y>
+            </point>
+            <point>
+              <x>853.9786130180598</x>
+              <y>407.7317494193414</y>
+            </point>
+            <point>
+              <x>871.0</x>
+              <y>345.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>3d802daa-831c-4440-8ac9-65a1a04e0be8</refId>
+      </opRef>
+      <assignments/>
       <throttleSize>0</throttleSize>
     </step>
   </steps>
