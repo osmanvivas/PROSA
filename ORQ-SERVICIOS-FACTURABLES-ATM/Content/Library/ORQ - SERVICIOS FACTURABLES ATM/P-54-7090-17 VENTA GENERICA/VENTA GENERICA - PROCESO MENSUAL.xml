@@ -550,32 +550,57 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <isPersisted>true</isPersisted>
           <inputSymbol>Command</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SELECT 
-&apos;&quot;&apos;||A.UID_BAN_CODIGO_BANCO||&apos;&quot;&apos;, 
-&apos;&quot;&apos;||A.UID_CODIGO_BANCO||&apos;&quot;&apos;,  
+          <value>WITH TEMPORAL AS ( 
+SELECT 
+A.UID_BAN_CODIGO_BANCO AS ADQUIRIENTE, 
+A.UID_CODIGO_BANCO AS EMISOR,  
 /*TOTAL TNX*/
 SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_TOTAL_TNX       WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0420&apos; THEN (-1)*A.UID_TOTAL_TNX ELSE 0 END) AS TOTAL_TNX, 
-
 /*IMPORTE TOTAL*/
-SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_IMPORTE_TOTAL   WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0420&apos; THEN (-1)*A.UID_IMPORTE_TOTAL ELSE 0 END) AS IMP_TOTAL , 
+SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_IMPORTE_TOTAL   WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0420&apos; THEN (-1)*A.UID_IMPORTE_TOTAL ELSE 0 END) AS IMP_TOTAL
 
-/*COMISION*/
-ROUND((SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_IMPORTE_TOTAL  WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0420&apos; THEN (-1)*A.UID_IMPORTE_TOTAL ELSE 0 END)*(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;VENTA GENERICA&apos; AND B.UIT_ENTIDAD=&apos;GENERAL&apos; AND B.UIT_OPERATIVA=&apos;NACIONAL&apos; AND B.UIT_GRUPO=&apos;COMISION&apos;)),2) AS COMISION, 
-
-/*IVA*/
-ROUND(((SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_IMPORTE_TOTAL WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0420&apos; THEN (-1)*A.UID_IMPORTE_TOTAL ELSE 0 END)*(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;VENTA GENERICA&apos; AND B.UIT_ENTIDAD=&apos;GENERAL&apos; AND B.UIT_OPERATIVA=&apos;NACIONAL&apos; AND B.UIT_GRUPO=&apos;COMISION&apos;))*(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;IVA&apos;)),2) AS IVA, 
-
-/*TOTAL*/
- ROUND(SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_IMPORTE_TOTAL   WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0420&apos; THEN (-1)*A.UID_IMPORTE_TOTAL ELSE 0 END)*(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;VENTA GENERICA&apos; AND B.UIT_ENTIDAD=&apos;GENERAL&apos; AND B.UIT_OPERATIVA=&apos;NACIONAL&apos; AND B.UIT_GRUPO=&apos;COMISION&apos;),2) + 
-ROUND(ROUND(SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_IMPORTE_TOTAL WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0420&apos; THEN (-1)*A.UID_IMPORTE_TOTAL ELSE 0 END)*(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;VENTA GENERICA&apos; AND B.UIT_ENTIDAD=&apos;GENERAL&apos; AND B.UIT_OPERATIVA=&apos;NACIONAL&apos; AND B.UIT_GRUPO=&apos;COMISION&apos;),2) *
-(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;IVA&apos;),2) AS TOTAL
 FROM TBL_RED_USO_INFRA_DIARIO A WHERE 
 TRIM(A.UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;) AND  TRIM(A.UID_CODIGO_BANCO) NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;) AND 
 TRIM(A.UID_SERVICIO) = &apos;VTG&apos; AND 
 TRIM(A.UID_DESCRIPCION) IN (&apos;ORIGINALES&apos;,&apos;REVERSOS&apos;) AND 
 A.UID_FECHA_PROCESO BETWEEN to_date(&apos;${primerDia}&apos;,&apos;yyyy-mm-dd&apos;) AND to_date(&apos;${ultimoDia}&apos;,&apos;yyyy-mm-dd&apos;) 
-GROUP BY A.UID_BAN_CODIGO_BANCO,A.UID_CODIGO_BANCO  
-ORDER BY A.UID_BAN_CODIGO_BANCO,A.UID_CODIGO_BANCO</value>
+GROUP BY A.UID_BAN_CODIGO_BANCO,A.UID_CODIGO_BANCO  ORDER BY A.UID_BAN_CODIGO_BANCO,A.UID_CODIGO_BANCO
+)
+
+SELECT &apos;&quot;&apos;||ADQUIRIENTE||&apos;&quot;&apos;, &apos;&quot;&apos;||EMISOR||&apos;&quot;&apos;, TOTAL_TNX,IMP_TOTAL,
+
+/*COMISION*/
+(
+CASE
+WHEN EMISOR NOT IN (SELECT CODIGO_BANCO FROM BANCOS WHERE CODIGO_BANCO_P = ADQUIRIENTE) AND ADQUIRIENTE &lt;&gt; EMISOR THEN 
+IMP_TOTAL*(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;VENTA GENERICA&apos; AND B.UIT_ENTIDAD=&apos;GENERAL&apos; AND B.UIT_OPERATIVA=&apos;NACIONAL&apos; AND B.UIT_GRUPO=&apos;COMISION&apos;)
+ELSE 0 END
+)
+AS COMISION, 
+
+/*IVA*/
+(
+CASE
+WHEN EMISOR NOT IN (SELECT CODIGO_BANCO FROM BANCOS WHERE CODIGO_BANCO_P = ADQUIRIENTE) AND ADQUIRIENTE &lt;&gt; EMISOR THEN 
+IMP_TOTAL*
+(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;VENTA GENERICA&apos; AND B.UIT_ENTIDAD=&apos;GENERAL&apos; AND B.UIT_OPERATIVA=&apos;NACIONAL&apos; AND B.UIT_GRUPO=&apos;COMISION&apos;)*
+(SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;IVA&apos;)
+ELSE 0 END
+) AS IVA, 
+
+/*TOTAL*/
+(
+CASE
+WHEN EMISOR NOT IN (SELECT CODIGO_BANCO FROM BANCOS WHERE CODIGO_BANCO_P = ADQUIRIENTE) AND ADQUIRIENTE &lt;&gt; EMISOR THEN 
+ (IMP_TOTAL*
+ (SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;VENTA GENERICA&apos; AND B.UIT_ENTIDAD=&apos;GENERAL&apos; AND B.UIT_OPERATIVA=&apos;NACIONAL&apos; AND B.UIT_GRUPO=&apos;COMISION&apos;)) + 
+ (IMP_TOTAL*
+ (SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;VENTA GENERICA&apos; AND B.UIT_ENTIDAD=&apos;GENERAL&apos; AND B.UIT_OPERATIVA=&apos;NACIONAL&apos; AND B.UIT_GRUPO=&apos;COMISION&apos;)*
+ (SELECT B.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS B WHERE B.UIT_OPERACION = &apos;IVA&apos;))
+ELSE 0 END
+) AS TOTAL
+
+FROM TEMPORAL</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="3c73d494-7197-4853-957d-d7129f7eaac0">
@@ -767,6 +792,12 @@ ORDER BY A.UID_BAN_CODIGO_BANCO,A.UID_CODIGO_BANCO</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="86def2d3-16b1-4dec-b92c-ab815feb61da">
+        <baseIcon>return_success.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>true</readOnly>
+        <layers/>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -1751,6 +1782,19 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="e9956634-80b9-4e0d-9c38-f24d87e71ec9">
+        <baseIcon>document_text.png</baseIcon>
+        <basePath>/Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="fa9a6c5b-8009-48df-af11-42f3f84cef2b">
+            <baseIcon>send.png</baseIcon>
+            <basePath>/Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -2421,6 +2465,12 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="3d39286d-59f3-4243-9091-aeafc4c8a47f">
+        <baseIcon>compare.png</baseIcon>
+        <basePath>Utilities/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>

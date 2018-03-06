@@ -340,9 +340,9 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>list</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>RevDesfasado;UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_NUMERO_CUENTA_ACCESO,UID_FH_ENTRADA_B24,UID_DESFASE_SEG,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO;Select &apos;&quot;&apos;||FH_ORIGEN_TRAN||&apos;&quot;&apos;,&apos;&quot;&apos;||CODIGO_ATM||&apos;&quot;&apos;,&apos;&quot;&apos;||NUMERO_SEC_TRANS||&apos;&quot;&apos;,&apos;&quot;&apos;||BAN_CODIGO_BANCO||&apos;&quot;&apos;,&apos;&quot;&apos;||CODIGO_BANCO||&apos;&quot;&apos;,&apos;&quot;&apos;||NUMERO_CUENTA_ACCESO||&apos;&quot;&apos;,&apos;&quot;&apos;||FH_ENTRADA_B24||&apos;&quot;&apos;,DESFASE_SEG,&apos;&quot;Reversos Desfasados&quot;&apos;,&apos;&quot;&apos;||FECHA_CARGA||&apos;&quot;&apos;,&apos;&quot;SAN&quot;&apos; FROM REPO_REVERSOS WHERE FECHA_CARGA = &apos;${fecha_reporte}&apos; AND DESFASE_SEG&gt;900
-RevMultiples;UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_ORDEN,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO;select &apos;&quot;&apos;||FH_ORIGEN_TRAN||&apos;&quot;&apos;,&apos;&quot;&apos;||CODIGO_ATM||&apos;&quot;&apos;,&apos;&quot;&apos;||NUMERO_SEC_TRANS||&apos;&quot;&apos;,ORDEN,&apos;&quot;&apos;||BAN_CODIGO_BANCO||&apos;&quot;&apos;,&apos;&quot;&apos;||CODIGO_BANCO||&apos;&quot;&apos;,&apos;&quot;Reversos Multiples&quot;&apos;,&apos;&quot;&apos;||FECHA_CARGA||&apos;&quot;&apos;,&apos;&quot;SAN&quot;&apos; from reversos_multiples where fecha_carga =&apos;${fecha_reporte}&apos;
-Codigo72;UID_CODIGO_BANCO,UID_BAN_CODIGO_BANCO,UID_CODIGO_TIPO_MENSAJE,UID_RAZON_RESPUESTA,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_FH_ORIGEN_TRAN,UID_FH_ENTRADA_B24,UID_ORDEN,UID_NUMERO_CUENTA_ACCESO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO;SELECT &apos;&quot;&apos;||CODIGO_BANCO||&apos;&quot;&apos;,&apos;&quot;&apos;||BAN_CODIGO_BANCO||&apos;&quot;&apos;,&apos;&quot;&apos;||CODIGO_TIPO_MENSAJE||&apos;&quot;&apos;,&apos;&quot;&apos;||RAZON_RESPUESTA||&apos;&quot;&apos;,&apos;&quot;&apos;||CODIGO_ATM||&apos;&quot;&apos;,&apos;&quot;&apos;||NUMERO_SEC_TRANS||&apos;&quot;&apos;,&apos;&quot;&apos;||FH_ORIGEN_TRAN||&apos;&quot;&apos;,&apos;&quot;&apos;||FH_ENTRADA_B24||&apos;&quot;&apos;,ORDEN,&apos;&quot;&apos;||NUMERO_CUENTA_ACCESO||&apos;&quot;&apos;,&apos;&quot;Codigo 72&quot;&apos;,&apos;&quot;&apos;||FECHA_CARGA||&apos;&quot;&apos;,&apos;&quot;SAN&quot;&apos; FROM TRANSACCIONES WHERE fecha_carga = &apos;${fecha_reporte}&apos; and BAN_CODIGO_BANCO=&apos;B019&apos; AND RAZON_RESPUESTA=&apos;72&apos;</value>
+          <value>RevDesfasado;UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_NUMERO_CUENTA_ACCESO,UID_FH_ENTRADA_B24,UID_DESFASE_SEG,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO;SELECT FH_ORIGEN_TRAN,CODIGO_ATM,NUMERO_SEC_TRANS,BAN_CODIGO_BANCO,CODIGO_BANCO,NUMERO_CUENTA_ACCESO,FH_ENTRADA_B24,DESFASE_SEG,&apos;Reversos Desfasados&apos;,FECHA_CARGA,&apos;SAN&apos; FROM RED.REPO_REVERSOS WHERE FECHA_CARGA = &apos;${fecha_reporte}&apos; AND DESFASE_SEG&gt;900
+RevMultiples;UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_ORDEN,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO;SELECT FH_ORIGEN_TRAN,CODIGO_ATM,NUMERO_SEC_TRANS,ORDEN,BAN_CODIGO_BANCO,CODIGO_BANCO,&apos;Reversos Multiples&apos;,FECHA_CARGA,&apos;SAN&apos; from RED.REVERSOS_MULTIPLES where fecha_carga =&apos;${fecha_reporte}&apos;
+Codigo72;UID_TOTAL_TNX,UID_CODIGO_BANCO,UID_RAZON_RESPUESTA,UID_FECHA_CARGA;SELECT COUNT(*),BAN_CODIGO_BANCO,&apos;72&apos;,FECHA_CARGA FROM RED.TRANSACCIONES WHERE fecha_carga = &apos;${fecha_reporte}&apos; AND RAZON_RESPUESTA IN (&apos;72&apos;) GROUP BY BAN_CODIGO_BANCO,FECHA_CARGA UNION SELECT COUNT(*),BAN_CODIGO_BANCO,&apos;00&apos;,FECHA_CARGA FROM RED.TRANSACCIONES WHERE fecha_carga = &apos;${fecha_reporte}&apos; AND RAZON_RESPUESTA NOT IN (&apos;72&apos;) GROUP BY BAN_CODIGO_BANCO,FECHA_CARGA</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="4ef0d5ec-25db-4dbe-9417-e4ec9c2f5afc">
@@ -606,15 +606,49 @@ if(queryCount &gt; 0){
 		if(count == 0) { insert+=&quot;BEGIN\n&quot;; }
 				
 	    linea_insert = linea[i].replace(&quot; 00:00:00&quot;,&quot;&quot;);
+		linea_insert2=&quot;&quot;;
 		
 		if(nombre_query == &apos;RevDesfasado&apos;){
-			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_NUMERO_CUENTA_ACCESO,UID_FH_ENTRADA_B24,UID_DESFASE_SEG,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;); \n&apos;;
+			linea2 = linea_insert.split(&quot;,&quot;);
+		    linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[0]+&quot;&apos;,&apos;YYYY-MM-DD HH24:MI:SS&apos;),&quot;; /*FH_ORIGEN_TRAN*/
+		    linea_insert2 += &quot;&apos;&quot;+linea2[1]+&quot;&apos;,&quot;; /*CODIGO_ATM*/
+		    linea_insert2 += &quot;&apos;&quot;+linea2[2]+&quot;&apos;,&quot;; /*NUMERO_SEC_TRANS*/
+		    linea_insert2 += &quot;&apos;&quot;+linea2[3]+&quot;&apos;,&quot;;/*BAN_CODIGO_BANCO*/
+		    linea_insert2 += &quot;&apos;&quot;+linea2[4]+&quot;&apos;,&quot;; /*CODIGO_BANCO*/
+		    linea_insert2 += &quot;&apos;&quot;+linea2[5]+&quot;&apos;,&quot;; /*NUMERO_CUENTA_ACCESO*/
+		    linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[6]+&quot;&apos;,&apos;YYYY-MM-DD HH24:MI:SS&apos;),&quot;; /*FH_ENTRADA_B24*/
+		    linea_insert2 += linea2[7]+&quot;,&quot;; /*DESFASE_SEG*/
+		    linea_insert2 += &quot;&apos;&quot;+linea2[8]+&quot;&apos;,&quot;; /*Reversos Desfasados&apos;*/
+		    linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[9]+&quot;&apos;,&apos;YYYY-MM-DD&apos;),&quot;; /*FECHA_CARGA*/
+		    linea_insert2 += &quot;&apos;&quot;+linea2[10]+&quot;&apos;&quot;; /*SAN*/
+		    
+			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_NUMERO_CUENTA_ACCESO,UID_FH_ENTRADA_B24,UID_DESFASE_SEG,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;); \n&apos;;
 		}
 		if(nombre_query == &apos;RevMultiples&apos;){
-			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_ORDEN,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;); \n&apos;;
+			linea2 = linea_insert.split(&quot;,&quot;);
+			linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[0]+&quot;&apos;,&apos;YYYY-MM-DD HH24:MI:SS&apos;),&quot;; /*FH_ORIGEN_TRAN*/
+			linea_insert2 += &quot;&apos;&quot;+linea2[1]+&quot;&apos;,&quot;; /*CODIGO_ATM*/
+			linea_insert2 += &quot;&apos;&quot;+linea2[2]+&quot;&apos;,&quot;; /*NUMERO_SEC_TRANS*/
+			linea_insert2 += linea2[3]+&quot;,&quot;; /*ORDEN*/
+			linea_insert2 += &quot;&apos;&quot;+linea2[4]+&quot;&apos;,&quot;;/*BAN_CODIGO_BANCO*/
+			linea_insert2 += &quot;&apos;&quot;+linea2[5]+&quot;&apos;,&quot;; /*CODIGO_BANCO*/
+			linea_insert2 += &quot;&apos;&quot;+linea2[6]+&quot;&apos;,&quot;; /*Reversos Multiples*/
+			linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[7]+&quot;&apos;,&apos;YYYY-MM-DD&apos;),&quot;; /*FECHA_CARGA*/
+			linea_insert2 += &quot;&apos;&quot;+linea2[8]+&quot;&apos;&quot;; /*SAN*/
+			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_ORDEN,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;); \n&apos;;
 		}
 		if(nombre_query == &apos;Codigo72&apos;){
-		 	insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_CODIGO_BANCO,UID_BAN_CODIGO_BANCO,UID_CODIGO_TIPO_MENSAJE,UID_RAZON_RESPUESTA,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_FH_ORIGEN_TRAN,UID_FH_ENTRADA_B24,UID_ORDEN,UID_NUMERO_CUENTA_ACCESO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert+&apos;); \n&apos;;
+			linea2 = linea_insert.split(&quot;,&quot;);
+			//UID_TOTAL_TNX,UID_CODIGO_BANCO,UID_RAZON_RESPUESTA,UID_FECHA_CARGA
+						
+			linea_insert2 += linea2[0]+&quot;,&quot;; /*UID_TOTAL_TNX*/
+			linea_insert2 += &quot;&apos;&quot;+linea2[1]+&quot;&apos;,&quot;; /*UID_BAN_CODIGO_BANCO*/
+			linea_insert2 += &quot;&apos;NA&apos;,&quot;; /*UID_CODIGO_BANCO*/
+			linea_insert2 += &quot;&apos;&quot;+linea2[2]+&quot;&apos;,&quot;; /*RAZON_RESPUESTA*/
+			linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[3]+&quot;&apos;,&apos;YYYY-MM-DD&apos;),&quot;; /*FECHA_CARGA*/
+			linea_insert2 += &quot;&apos;Codigo 72&apos;,&quot;; /*Codigo 72*/
+			linea_insert2 += &quot;&apos;SAN&apos;&quot;; /*SAN*/
+		 	insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_TOTAL_TNX,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_RAZON_RESPUESTA,UID_FECHA_CARGA,UID_DESCRIPCION,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;); \n&apos;;
 		}
 		count++;
 		

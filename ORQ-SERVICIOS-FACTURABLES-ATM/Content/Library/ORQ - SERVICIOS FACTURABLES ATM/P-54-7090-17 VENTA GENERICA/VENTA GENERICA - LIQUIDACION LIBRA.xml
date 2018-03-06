@@ -325,13 +325,13 @@ if(queryCount &gt; 0){
 	    	CV_BANCO = linea2[0];
 	    	CREDITO = parseFloat(linea2[1]);
 	    	DEBITO = parseFloat(linea2[2]);
+	    	NETO = parseFloat(linea2[3]);
 	    	//if(CREDITO != 0 &amp;&amp; DEBITO != 0){
-	    		NETO = CREDITO - DEBITO;
 	    		TITULO = &quot;LIQUIDACION ESPECIAL COMISION VENTA GENERICA 2% &quot;+MONTH+&quot; &quot;+UIM_ANIO_FACT;
 	    		ACUM_CREDITO = ACUM_CREDITO+CREDITO;
 	    		ACUM_DEBITO = ACUM_DEBITO+DEBITO;
 	    		insert += &quot;INSERT INTO LIQUIDACIONES (FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE) VALUES (TO_DATE(&apos;&quot;+FECHA_LIQUIDACION+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;N&apos;);\n&quot;;
-				insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
+				insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+CREDITO+&quot;,&quot;+DEBITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
 				insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
 				insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
 			//}
@@ -520,17 +520,24 @@ scriptletContext.putGlobal(&quot;BAN&quot;, ban);
           <isPersisted>true</isPersisted>
           <inputSymbol>Command</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SELECT 
-TRIM(B.CODIGO_BANCO) AS CV_BANCO,
-   ROUND( NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-    WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-    TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND
-    C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_BAN_CODIGO_BANCO),0),2)  AS CREDITO,
-    ROUND(NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-    WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-    TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND
-    C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_CODIGO_BANCO),0),2)  AS DEBITO 
-FROM BANCOS B</value>
+          <value>WITH TEMPORAL AS (
+SELECT 
+TRIM(B.CODIGO_BANCO) AS CV_BANCO, CODIGO_BANCO_P,
+   NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+   WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
+   TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND
+   C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_BAN_CODIGO_BANCO),0)  AS CREDITO,
+   NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+   WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
+   TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND
+   C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_CODIGO_BANCO),0)  AS DEBITO
+FROM BANCOS B
+) SELECT A.CV_BANCO, 
+ROUND((A.CREDITO + (SELECT NVL(SUM(D.CREDITO),0) FROM TEMPORAL D WHERE D.CODIGO_BANCO_P=A.CV_BANCO)),2) AS CREDITO, 
+ROUND((A.DEBITO + (SELECT NVL(SUM(D.DEBITO),0) FROM TEMPORAL D WHERE D.CODIGO_BANCO_P=A.CV_BANCO)),2) AS DEBITO, 
+ROUND(((A.CREDITO + (SELECT NVL(SUM(D.CREDITO),0) FROM TEMPORAL D WHERE D.CODIGO_BANCO_P=A.CV_BANCO))),2) -
+ROUND(((A.DEBITO + (SELECT NVL(SUM(D.DEBITO),0) FROM TEMPORAL D WHERE D.CODIGO_BANCO_P=A.CV_BANCO))),2) AS NETO 
+FROM TEMPORAL A WHERE A.CODIGO_BANCO_P IS NULL ORDER BY 1 ASC</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="c83af323-c059-48ce-9582-d977df97709d">
@@ -819,7 +826,7 @@ FROM BANCOS B</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>contents</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE
+          <value>FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,CREDITO_LIQUIDACION,DEBITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE
 ${INSERT_SENTENCE2}</value>
           <record>false</record>
         </staticBinding>
@@ -2321,6 +2328,12 @@ INICIO DEL PROCESO</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="90a5468f-5a1b-4909-84de-5d5f1199c737">
+        <baseIcon>return_failure.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>true</readOnly>
+        <layers/>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -4744,7 +4757,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>contents</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE
+          <value>FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,CREDITO_LIQUIDACION,DEBITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE
 ${INSERT_SENTENCE2}</value>
           <record>false</record>
         </staticBinding>
