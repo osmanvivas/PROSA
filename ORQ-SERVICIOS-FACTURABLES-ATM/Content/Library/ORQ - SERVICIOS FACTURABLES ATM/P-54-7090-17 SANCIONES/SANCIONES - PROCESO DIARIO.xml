@@ -21,7 +21,7 @@
   <inputs>
     <userInputBinding id="72c8f716-0534-49d3-909f-13e719b0b3e0">
       <annotation></annotation>
-      <assignFromContext>false</assignFromContext>
+      <assignFromContext>true</assignFromContext>
       <assignToContext>false</assignToContext>
       <inputType>STRING</inputType>
       <isList>false</isList>
@@ -605,7 +605,7 @@ if(queryCount &gt; 0){
 	    
 		if(count == 0) { insert+=&quot;BEGIN\n&quot;; }
 				
-	    linea_insert = linea[i].replace(&quot; 00:00:00&quot;,&quot;&quot;);
+	    linea_insert = linea[i];
 		linea_insert2=&quot;&quot;;
 		
 		if(nombre_query == &apos;RevDesfasado&apos;){
@@ -619,7 +619,7 @@ if(queryCount &gt; 0){
 		    linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[6]+&quot;&apos;,&apos;YYYY-MM-DD HH24:MI:SS&apos;),&quot;; /*FH_ENTRADA_B24*/
 		    linea_insert2 += linea2[7]+&quot;,&quot;; /*DESFASE_SEG*/
 		    linea_insert2 += &quot;&apos;&quot;+linea2[8]+&quot;&apos;,&quot;; /*Reversos Desfasados&apos;*/
-		    linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[9]+&quot;&apos;,&apos;YYYY-MM-DD&apos;),&quot;; /*FECHA_CARGA*/
+		    linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[9]+&quot;&apos;,&apos;YYYY-MM-DD HH24:MI:SS&apos;),&quot;; /*FECHA_CARGA*/
 		    linea_insert2 += &quot;&apos;&quot;+linea2[10]+&quot;&apos;&quot;; /*SAN*/
 		    
 			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_NUMERO_CUENTA_ACCESO,UID_FH_ENTRADA_B24,UID_DESFASE_SEG,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;); \n&apos;;
@@ -633,7 +633,7 @@ if(queryCount &gt; 0){
 			linea_insert2 += &quot;&apos;&quot;+linea2[4]+&quot;&apos;,&quot;;/*BAN_CODIGO_BANCO*/
 			linea_insert2 += &quot;&apos;&quot;+linea2[5]+&quot;&apos;,&quot;; /*CODIGO_BANCO*/
 			linea_insert2 += &quot;&apos;&quot;+linea2[6]+&quot;&apos;,&quot;; /*Reversos Multiples*/
-			linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[7]+&quot;&apos;,&apos;YYYY-MM-DD&apos;),&quot;; /*FECHA_CARGA*/
+			linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[7]+&quot;&apos;,&apos;YYYY-MM-DD HH24:MI:SS&apos;),&quot;; /*FECHA_CARGA*/
 			linea_insert2 += &quot;&apos;&quot;+linea2[8]+&quot;&apos;&quot;; /*SAN*/
 			insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_FH_ORIGEN_TRAN,UID_CODIGO_ATM,UID_NUMERO_SEC_TRANS,UID_ORDEN,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_DESCRIPCION,UID_FECHA_CARGA,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;); \n&apos;;
 		}
@@ -645,7 +645,7 @@ if(queryCount &gt; 0){
 			linea_insert2 += &quot;&apos;&quot;+linea2[1]+&quot;&apos;,&quot;; /*UID_BAN_CODIGO_BANCO*/
 			linea_insert2 += &quot;&apos;NA&apos;,&quot;; /*UID_CODIGO_BANCO*/
 			linea_insert2 += &quot;&apos;&quot;+linea2[2]+&quot;&apos;,&quot;; /*RAZON_RESPUESTA*/
-			linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[3]+&quot;&apos;,&apos;YYYY-MM-DD&apos;),&quot;; /*FECHA_CARGA*/
+			linea_insert2 += &quot;TO_DATE(&apos;&quot;+linea2[3]+&quot;&apos;,&apos;YYYY-MM-DD  HH24:MI:SS&apos;),&quot;; /*FECHA_CARGA*/
 			linea_insert2 += &quot;&apos;Codigo 72&apos;,&quot;; /*Codigo 72*/
 			linea_insert2 += &quot;&apos;SAN&apos;&quot;; /*SAN*/
 		 	insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_DIARIO (UID_FECHA_PROCESO,UID_TOTAL_TNX,UID_BAN_CODIGO_BANCO,UID_CODIGO_BANCO,UID_RAZON_RESPUESTA,UID_FECHA_CARGA,UID_DESCRIPCION,UID_SERVICIO) VALUES (to_date(&quot;&apos;+fecha_proceso+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;); \n&apos;;
