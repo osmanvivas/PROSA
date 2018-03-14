@@ -19,7 +19,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.ef31cf5c-cbde-41bb-b9a8-3e9083fe6ae0.descri
 d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
 ]]></descriptionCdata>
   <annotation></annotation>
-  <name>SANCIONES - CODIGO 72</name>
+  <name>SANCIONES - DESTINO NO DISPONIBLE</name>
   <categories/>
   <inputs>
     <userInputBinding id="f3ac7421-25bf-4c70-bcd9-18a286aacdab">
@@ -249,7 +249,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <userPrompt></userPrompt>
       <scriptlet id="c2c3a732-46bc-46fb-9f71-fa30decc5171">
         <annotation></annotation>
-        <name>Step Usa Script Rango_Mes_Anterior in Flow SANCIONES - CODIGO 72 (0b14e3f1-d655-41e8-8416-0796a7e4358d)</name>
+        <name>Step Usa Script Rango_Mes_Anterior in Flow SANCIONES - DESTINO NO DISPONIBLE (0b14e3f1-d655-41e8-8416-0796a7e4358d)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>e76d1548-888f-4713-bc63-2c0a2daf1a15</refId>
@@ -345,7 +345,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <userPrompt></userPrompt>
       <scriptlet id="3e911059-70b1-4c66-9dbc-1a6986ffcf1b">
         <annotation></annotation>
-        <name>Step SQL Query All Rows in Flow SANCIONES - CODIGO 72 (eeda54a2-1838-4ee3-ad0a-784acd7767c4)</name>
+        <name>Step SQL Query All Rows in Flow SANCIONES - DESTINO NO DISPONIBLE (eeda54a2-1838-4ee3-ad0a-784acd7767c4)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -588,13 +588,13 @@ ROUND((SUM(CASE WHEN UID_RAZON_RESPUESTA=&apos;72&apos; THEN UID_TOTAL_TNX ELSE 
     WHEN SUM(UID_TOTAL_TNX) BETWEEN 2800001 AND 3000000 THEN (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CUOTA SWITCH 15&apos;)
     WHEN SUM(UID_TOTAL_TNX) BETWEEN 3000001 AND 3200000 THEN (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CUOTA SWITCH 16&apos;)
     WHEN SUM(UID_TOTAL_TNX) BETWEEN 3200001 AND 3400000 THEN (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CUOTA SWITCH 17&apos;)
-    WHEN SUM(UID_TOTAL_TNX) BETWEEN 3400001 AND 3600000 THEN (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CUOTA SWITCH 18&apos;)
+    WHEN SUM(UID_TOTAL_TNX) &gt; 3400000 THEN (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CUOTA SWITCH 18&apos;)
     ELSE 0 END
 ) AS TARIFA_SWITCH
 FROM TBL_RED_USO_INFRA_DIARIO 
 WHERE 
 UID_SERVICIO=&apos;SAN&apos; AND UID_DESCRIPCION=&apos;Codigo 72&apos; AND
-TRIM(UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;) AND
+TRIM(UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;) AND TRIM(UID_CODIGO_BANCO) NOT IN (SELECT C.CODIGO_BANCO FROM RED.BANCOS C WHERE C.CODIGO_BANCO_P=UID_BAN_CODIGO_BANCO) AND 
 UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;YYYY-MM-DD&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;) GROUP BY UID_BAN_CODIGO_BANCO
 )
 SELECT 
@@ -605,14 +605,14 @@ BANCO, TOTAL_TNX_72, TOTAL_TNX,PORCENTAJE,
     (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
     ELSE 0 END
 ) AS CUOTA_INTERBANCARIA,
-ROUND((CASE WHEN PORCENTAJE &gt; 2.5 THEN TOTAL_TNX*TARIFA_SWITCH ELSE 0 END),2) AS CUOTA_SWITH,
+ROUND((CASE WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*TARIFA_SWITCH ELSE 0 END),2) AS CUOTA_SWITH,
 ROUND((CASE 
     WHEN ROUND(PORCENTAJE,2) &gt; 2.5 THEN 
     ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
     (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
     ELSE 0 END) + 
 (CASE 
-    WHEN PORCENTAJE &gt; 2.5 THEN TOTAL_TNX*TARIFA_SWITCH
+    WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*TARIFA_SWITCH
     ELSE 0 END
 ),2) AS SUBTOTAL,
 ROUND(((CASE 
@@ -620,21 +620,22 @@ ROUND(((CASE
     ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
     (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
     ELSE 0 END) + 
-(CASE WHEN PORCENTAJE &gt; 2.5 THEN TOTAL_TNX*TARIFA_SWITCH ELSE 0 END))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2) AS IVA,
+(CASE WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*TARIFA_SWITCH ELSE 0 END))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2) AS IVA,
 ROUND(((CASE 
     WHEN ROUND(PORCENTAJE,2) &gt; 2.5 THEN 
     ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
     (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
     ELSE 0 END) + 
-(CASE WHEN PORCENTAJE &gt; 2.5 THEN TOTAL_TNX*TARIFA_SWITCH ELSE 0 END))
+(CASE WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*TARIFA_SWITCH ELSE 0 END))
 +
 ((CASE 
     WHEN ROUND(PORCENTAJE,2) &gt; 2.5 THEN 
     ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
     (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
     ELSE 0 END) + 
-(CASE WHEN PORCENTAJE &gt; 2.5 THEN TOTAL_TNX*TARIFA_SWITCH ELSE 0 END))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2)
-AS TOTAL FROM TEMPORAL</value>
+(CASE WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*TARIFA_SWITCH ELSE 0 END))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2)
+AS TOTAL 
+FROM TEMPORAL</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="ac58d987-5a2b-4792-a8a6-34804734fc8c">
@@ -2635,7 +2636,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <scriptlet id="087c51be-a91c-45a7-a1d7-4cb5de95dc24">
         <annotation></annotation>
-        <name>Step Usa Script ObtenerRango_MesDado in Flow SANCIONES - CODIGO 72 (74d3552f-4e12-4bdf-908b-7331b2824cfb)</name>
+        <name>Step Usa Script ObtenerRango_MesDado in Flow SANCIONES - DESTINO NO DISPONIBLE (74d3552f-4e12-4bdf-908b-7331b2824cfb)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>93fcef9f-1b3b-4fff-b0c8-ca223a21bebe</refId>
