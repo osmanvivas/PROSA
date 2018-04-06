@@ -560,7 +560,7 @@ SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_TOTAL_
 SUM(CASE WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; THEN A.UID_IMPORTE_TOTAL   WHEN TRIM(A.UID_CODIGO_TIPO_MENSAJE)=&apos;0420&apos; THEN (-1)*A.UID_IMPORTE_TOTAL ELSE 0 END) AS IMP_TOTAL
 
 FROM TBL_RED_USO_INFRA_DIARIO A WHERE 
-TRIM(A.UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;) AND  TRIM(A.UID_CODIGO_BANCO) NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;) AND 
+TRIM(A.UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;,&apos;B878&apos;,&apos;T878&apos;) AND  TRIM(A.UID_CODIGO_BANCO) NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;VISA&apos;,&apos;JCB&apos;,&apos;UPAY&apos;,&apos;CIBC&apos;,&apos;B878&apos;,&apos;T878&apos;) AND 
 TRIM(A.UID_SERVICIO) = &apos;VTG&apos; AND 
 TRIM(A.UID_DESCRIPCION) IN (&apos;ORIGINALES&apos;,&apos;REVERSOS&apos;) AND 
 A.UID_FECHA_PROCESO BETWEEN to_date(&apos;${primerDia}&apos;,&apos;yyyy-mm-dd&apos;) AND to_date(&apos;${ultimoDia}&apos;,&apos;yyyy-mm-dd&apos;) 
@@ -3357,7 +3357,7 @@ INICIO DEL PROCESO</value>
     </returnStep>
     <step id="b4077de8-1ba9-4ecc-baa3-86e25ca93006">
       <annotation></annotation>
-      <name>NOTIFICACION INICIO PROCESO</name>
+      <name>NOTIFICACION FIN PROCESO</name>
       <bounds>
         <x>820.0</x>
         <y>9.0</y>

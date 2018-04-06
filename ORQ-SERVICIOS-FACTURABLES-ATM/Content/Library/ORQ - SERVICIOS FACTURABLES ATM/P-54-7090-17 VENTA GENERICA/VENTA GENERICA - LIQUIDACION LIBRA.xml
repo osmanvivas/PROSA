@@ -326,15 +326,15 @@ if(queryCount &gt; 0){
 	    	CREDITO = parseFloat(linea2[1]);
 	    	DEBITO = parseFloat(linea2[2]);
 	    	NETO = parseFloat(linea2[3]);
-	    	//if(CREDITO != 0 &amp;&amp; DEBITO != 0){
+	    	ACUM_CREDITO = ACUM_CREDITO+CREDITO;
+			ACUM_DEBITO = ACUM_DEBITO+DEBITO;
+	    	if (Math.round(NETO) &gt; 0 || Math.round(NETO) &lt; 0 ){
 	    		TITULO = &quot;LIQUIDACION ESPECIAL COMISION VENTA GENERICA 2% &quot;+MONTH+&quot; &quot;+UIM_ANIO_FACT;
-	    		ACUM_CREDITO = ACUM_CREDITO+CREDITO;
-	    		ACUM_DEBITO = ACUM_DEBITO+DEBITO;
 	    		insert += &quot;INSERT INTO LIQUIDACIONES (FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE) VALUES (TO_DATE(&apos;&quot;+FECHA_LIQUIDACION+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;N&apos;);\n&quot;;
 				insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+CREDITO+&quot;,&quot;+DEBITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
 				insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
 				insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
-			//}
+			}
 		  } 
 	} // fin for
 	insert+=&quot;COMMIT;\n&quot;;
@@ -345,7 +345,10 @@ if(queryCount &gt; 0){
 // into the context to examine variables when developing and debugging scriptlets. 
 // For example to place the OutputString information into a context key called &apos;Output&apos;: 
 
-if((ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2) == 0){
+var resta = (ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2); 
+var resta_int = Math.round(resta);
+
+if( resta_int == 0){
   ban = 0;
 }else{
   ban = 1;
@@ -355,7 +358,7 @@ scriptletContext.putGlobal(&quot;ACUM_CREDITO&quot;, ACUM_CREDITO);
 scriptletContext.putGlobal(&quot;ACUM_DEBITO&quot;, ACUM_DEBITO);
 scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
 scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
-scriptletContext.putGlobal(&quot;DIFERENCIA&quot;, (ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2));
+scriptletContext.putGlobal(&quot;DIFERENCIA&quot;, resta_int);
 scriptletContext.putGlobal(&quot;BAN&quot;, ban);
 // ===========================================================================================</script>
         <type>RHINO</type>
@@ -524,11 +527,13 @@ scriptletContext.putGlobal(&quot;BAN&quot;, ban);
 SELECT 
 TRIM(B.CODIGO_BANCO) AS CV_BANCO, CODIGO_BANCO_P,
    NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-   WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
+   WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_DESCRIPCION =&apos;DETALLE VG BCO&apos; 
+   AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
    TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND
    C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_BAN_CODIGO_BANCO),0)  AS CREDITO,
    NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-   WHERE C.UIM_SERVICIO =&apos;VTG&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
+   WHERE C.UIM_SERVICIO =&apos;VTG&apos;  AND C.UIM_DESCRIPCION =&apos;DETALLE VG BCO&apos; 
+   AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
    TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND
    C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_CODIGO_BANCO),0)  AS DEBITO
 FROM BANCOS B
@@ -2328,12 +2333,6 @@ INICIO DEL PROCESO</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="90a5468f-5a1b-4909-84de-5d5f1199c737">
-        <baseIcon>return_failure.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>true</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
