@@ -372,27 +372,28 @@ if(queryCount &gt; 0){
 	linea = query_results.split(&quot;\n&quot;);
 	for(i=0; i &lt; linea.length; i++){
 	    linea_insert = linea[i];
-
 	    linea2=&quot;&quot;;
 	    linea2 = linea_insert.split(&quot;,&quot;);
-
 	    linea_insert2=&quot;&quot;;
 		linea_insert2 = &quot;&apos;&quot;+linea2[0]+&quot;&apos;,&quot;; /*UIM_BAN_CODIGO_BANCO*/
 		linea_insert2 += &quot;&apos;NA&apos;,&quot;; /*UIM_CODIGO_BANCO*/
 	    linea_insert2 += linea2[1]+&quot;,&quot;; /*UIM_TOTAL_TNX*/
 	    linea_insert2 += linea2[2]+&quot;,&quot;; /*UIM_IMPORTE_TOTAL*/
-	    linea_insert2 += linea2[3]+&quot;,&quot;;/*UIM_SUBTOTAL*/
-	    linea_insert2 += linea2[4]+&quot;,&quot;; /*UIM_IVA*/
-	    linea_insert2 += linea2[5]+&quot;,&quot;; /*UIM_TOTAL*/
+	    linea_insert2 += linea2[3]+&quot;,&quot;; /*SUBTOTAL_COMISION -&gt; UIM_SUBTOTAL*/
+	    linea_insert2 += linea2[4]+&quot;,&quot;; /*IVA -&gt; UIM_IVA*/
+	    linea_insert2 += linea2[5]+&quot;,&quot;; /*TOTAL_COMISION -&gt; UIM_TOTAL*/
+	    linea_insert2 += linea2[6]+&quot;,&quot;;/*PORCENTAJE_COMISION -&gt; UIM_IMP_NIPS*/
+	    linea_insert2 += &quot;0,&quot;; /*MONTO LIQUIDACION MES*/
 	    linea_insert2 += &quot;&apos;VTG&apos;,&quot;; /*UIM_SERVICIO*/
 	    linea_insert2 += &quot;&apos;DETALLE VG TEL&apos;,&quot;; /*UIM_DESCRIPCION*/
 	    linea_insert2 += UIM_MES_FACT+&quot;,&quot;;
 	    linea_insert2 += UIM_ANIO_FACT;
 	    
-	    insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_MENSUAL (UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX,UIM_IMPORTE_TOTAL,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT) VALUES (to_date(&quot;&apos;+UIM_FECHA_PROCESO+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;);\n&apos;;
+	    insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_MENSUAL (UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX,UIM_IMPORTE_TOTAL,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_IMP_NIPS,UIM_IMP_CONS,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT) VALUES (to_date(&quot;&apos;+UIM_FECHA_PROCESO+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;);\n&apos;;
 		insert2+=UIM_FECHA_PROCESO+&apos;,&apos;+linea_insert2+&apos;\n&apos;;
 		insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
 		insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+		
 	} // fin for
 	insert+=&quot;COMMIT;\n&quot;;
 	insert+=&quot;END;&quot;;
@@ -574,16 +575,17 @@ SELECT
 TRIM(UID_CODIGO_BANCO) AS TELEFONICA,
 SUM(
     CASE
-    WHEN UID_CODIGO_TIPO_MENSAJE=&apos;0210&apos; THEN UID_TOTAL_TNX
-    WHEN UID_CODIGO_TIPO_MENSAJE=&apos;0420&apos; THEN (-1)*UID_TOTAL_TNX
+    WHEN UID_CODIGO_TIPO_MENSAJE=&apos;0210&apos; AND UID_RAZON_RESPUESTA=&apos;00&apos; THEN UID_TOTAL_TNX
+    WHEN UID_CODIGO_TIPO_MENSAJE=&apos;0420&apos; AND UID_RAZON_RESPUESTA=&apos;00&apos; THEN (-1)*UID_TOTAL_TNX
     ELSE 0 END
 ) AS TOTAL_TNX,
 SUM(
     CASE
-    WHEN UID_CODIGO_TIPO_MENSAJE=&apos;0210&apos; THEN UID_IMPORTE_TOTAL
-    WHEN UID_CODIGO_TIPO_MENSAJE=&apos;0420&apos; THEN (-1)*UID_IMPORTE_TOTAL
+    WHEN UID_CODIGO_TIPO_MENSAJE=&apos;0210&apos; AND UID_RAZON_RESPUESTA=&apos;00&apos; THEN UID_IMPORTE_TOTAL
+    WHEN UID_CODIGO_TIPO_MENSAJE=&apos;0420&apos; AND UID_RAZON_RESPUESTA=&apos;00&apos; THEN (-1)*UID_IMPORTE_TOTAL
     ELSE 0 END
-) AS TOTAL_IMPORTE
+) AS TOTAL_IMPORTE,
+(SELECT D.UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS D WHERE D.UIT_OPERACION=&apos;VENTA GENERICA&apos; AND D.UIT_ENTIDAD=&apos;GENERAL&apos; AND D.UIT_OPERATIVA=&apos;NACIONAL&apos; AND D.UIT_GRUPO=UID_CODIGO_BANCO) AS PORCENTAJE_COMISION 
 FROM TBL_RED_USO_INFRA_DIARIO 
 WHERE 
 UID_SERVICIO=&apos;VTG&apos; AND 
@@ -592,11 +594,10 @@ UID_CODIGO_BANCO IS NOT NULL AND
 UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;YYYY-MM-DD&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;)
 GROUP BY UID_CODIGO_BANCO )
 SELECT TELEFONICA, TOTAL_TNX, TOTAL_IMPORTE,
-ROUND(TOTAL_IMPORTE * (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;VENTA GENERICA&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=TELEFONICA),2) AS SUBTOTAL,
-ROUND((TOTAL_IMPORTE * (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;VENTA GENERICA&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=TELEFONICA) * (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;IMPUESTO&apos;)),2) AS IVA,
-ROUND((
-TOTAL_IMPORTE * (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;VENTA GENERICA&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=TELEFONICA) +
-(TOTAL_IMPORTE * (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;VENTA GENERICA&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=TELEFONICA) * (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;IMPUESTO&apos;))),2) AS TOTAL
+ROUND((TOTAL_IMPORTE * PORCENTAJE_COMISION)/1.16,2) AS SUBTOTAL_COMISION,
+ROUND(ROUND((TOTAL_IMPORTE * PORCENTAJE_COMISION)/1.16,2) * (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;IMPUESTO&apos;),2) AS IVA,
+ROUND(TOTAL_IMPORTE * PORCENTAJE_COMISION,2) AS TOTAL,
+PORCENTAJE_COMISION
 FROM TEMPORAL</value>
           <record>false</record>
         </staticBinding>
@@ -886,7 +887,7 @@ FROM TEMPORAL</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>contents</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>FECHA_PROCESO,ADQUIRIENTE,EMISOR,TOTAL TRANSACCIONES,IMPORTE TOTAL,SUBTOTAL COMISION 2%,IVA,TOTAL,SERVICIO,DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT
+          <value>FECHA_PROCESO,BAN_CODIGO_BANCO,CODIGO_BANCO,TOTAL_TNX,IMPORTE_TOTAL,SUBTOTAL,IVA,TOTAL,PORCENTAJE_COMISION,MONTO_LIQUIDACION_MES,SERVICIO,DESCRIPCION,MES_FACT,ANIO_FACT
 ${INSERT_SENTENCE2}</value>
           <record>false</record>
         </staticBinding>
