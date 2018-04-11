@@ -274,7 +274,7 @@
       <userPrompt></userPrompt>
       <scriptlet id="02114894-1ba3-48df-b2ab-a295990a269e">
         <annotation></annotation>
-        <name>Step Usa Script Rango_Mes_Anterior in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (35cc51b2-5922-403c-a24e-9c3ed80f140b)</name>
+        <name>Step Usa Script Rango_Mes_Anterior in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (35cc51b2-5922-403c-a24e-9c3ed80f140b)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>e76d1548-888f-4713-bc63-2c0a2daf1a15</refId>
@@ -370,7 +370,7 @@
       <userPrompt></userPrompt>
       <scriptlet id="6caba20a-ce6e-466f-93b0-cbafd80ac1da">
         <annotation></annotation>
-        <name>Step QUERY VISA in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (cc36de2f-0b5e-45c2-94fc-ec8ebd3a6839)</name>
+        <name>Step QUERY VISA in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (cc36de2f-0b5e-45c2-94fc-ec8ebd3a6839)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -2599,7 +2599,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <scriptlet id="ffca23c1-025a-4f9a-ad29-f4725694f947">
         <annotation></annotation>
-        <name>Step Usa Script ObtenerRango_MesDado in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (a9060d90-aa99-4872-92bc-4f95ffd03bee)</name>
+        <name>Step Usa Script ObtenerRango_MesDado in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (a9060d90-aa99-4872-92bc-4f95ffd03bee)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>93fcef9f-1b3b-4fff-b0c8-ca223a21bebe</refId>
@@ -2695,7 +2695,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <scriptlet id="fc3891ad-44d8-42ce-8d0e-4afd825cf5ae">
         <annotation></annotation>
-        <name>Step DELETE RED in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (0158866d-c79d-49a1-b37f-198d26e04cdf)</name>
+        <name>Step DELETE RED in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (0158866d-c79d-49a1-b37f-198d26e04cdf)</name>
         <script>scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;,&quot;&quot;);</script>
         <type>NASHORN</type>
       </scriptlet>
@@ -4345,7 +4345,7 @@ WHERE B.UIT_IMPORTE_TARIFA_DLLS &lt;&gt; 0</value>
       <userPrompt></userPrompt>
       <scriptlet id="9b1e4688-376a-4e96-bbe5-1c0a9813a35b">
         <annotation></annotation>
-        <name>Step OBTENER TIPO DE CAMBIO in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (f28fe4a6-1403-4c9f-bc39-f2afcb0b226a)</name>
+        <name>Step OBTENER TIPO DE CAMBIO in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (f28fe4a6-1403-4c9f-bc39-f2afcb0b226a)</name>
         <script></script>
         <type>NASHORN</type>
       </scriptlet>
@@ -4725,7 +4725,7 @@ WHERE B.UIT_IMPORTE_TARIFA_DLLS &lt;&gt; 0</value>
       <userPrompt></userPrompt>
       <scriptlet id="6e24699f-2025-4b63-b299-9f50d87f8be4">
         <annotation></annotation>
-        <name>Step GENERAR QUERY VISA in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (a0cfaeff-c40c-4687-8d96-e7178c4eebfc)</name>
+        <name>Step GENERAR QUERY VISA in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (a0cfaeff-c40c-4687-8d96-e7178c4eebfc)</name>
         <type>NASHORN</type>
       </scriptlet>
       <bindings>
@@ -4863,7 +4863,7 @@ WHERE B.UIT_IMPORTE_TARIFA_DLLS &lt;&gt; 0</value>
       <userPrompt></userPrompt>
       <scriptlet id="b5195c61-5c80-427c-a1cc-55d7b763ecb1">
         <annotation></annotation>
-        <name>Step QUERY MASTERCARD in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (d0378aa9-39a1-4d97-a99d-500f489c2607)</name>
+        <name>Step QUERY MASTERCARD in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (d0378aa9-39a1-4d97-a99d-500f489c2607)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -5876,7 +5876,7 @@ FROM TEMPORAL</value>
       <userPrompt></userPrompt>
       <scriptlet id="760c4dfd-f516-4f0e-aa92-72a54fd0c4bb">
         <annotation></annotation>
-        <name>Step QUERY UPAY-JCB1 in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (b7e5c1d3-4d5c-45c0-b4c8-8388644336ae)</name>
+        <name>Step QUERY UPAY-JCB1 in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (b7e5c1d3-4d5c-45c0-b4c8-8388644336ae)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -6725,7 +6725,7 @@ FROM TEMPORAL</value>
       <userPrompt></userPrompt>
       <scriptlet id="b5612157-6781-492b-8262-d51b2bbff4d4">
         <annotation></annotation>
-        <name>Step QUERY EGLOBAL in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (410279a1-84b8-4c46-b655-49f6ffe460d9)</name>
+        <name>Step QUERY EGLOBAL in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (410279a1-84b8-4c46-b655-49f6ffe460d9)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -6974,7 +6974,7 @@ SUM(CASE WHEN TRIM(UID_DESCRIPCION) IN (&apos;EGLO ADQ RECH&apos;,&apos;EGLO EMI
 FROM 
 TBL_RED_USO_INFRA_DIARIO 
 WHERE 
-TRIM(UID_BAN_CODIGO_BANCO) NOT IN (&apos;EGLO&apos;) AND 
+TRIM(UID_BAN_CODIGO_BANCO) NOT IN (&apos;EGLO&apos;,&apos;B878&apos;,&apos;T878&apos;) AND 
 TRIM(UID_SERVICIO)=&apos;UDI&apos; AND
 UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;yyyy-mm-dd&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;yyyy-mm-dd&apos;) AND
 TRIM(UID_DESCRIPCION) LIKE &apos;%EGLO%&apos;
@@ -7559,7 +7559,7 @@ FROM TEMPORAL</value>
       <userPrompt></userPrompt>
       <scriptlet id="5dc7f40d-4b0d-4cc1-ac55-30c2b02ce6d8">
         <annotation></annotation>
-        <name>Step QUERY OPNACIONAL in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (ef6fe280-d288-441b-a103-a497f0b997a5)</name>
+        <name>Step QUERY OPNACIONAL in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (ef6fe280-d288-441b-a103-a497f0b997a5)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -8325,7 +8325,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
       <userPrompt></userPrompt>
       <scriptlet id="73e7b1e7-479f-41cf-9f8b-e176b95f533d">
         <annotation></annotation>
-        <name>Step GENERAR QUERY OPNACIONAL in Flow P-54-7090-17 USO DE INFRAESTRUCTURA - PROCESO MENSUAL (92ec9967-a09b-4841-8146-53d2379b4f74)</name>
+        <name>Step GENERAR QUERY OPNACIONAL in Flow USO DE INFRAESTRUCTURA - PROCESO MENSUAL (92ec9967-a09b-4841-8146-53d2379b4f74)</name>
         <type>NASHORN</type>
       </scriptlet>
       <bindings>

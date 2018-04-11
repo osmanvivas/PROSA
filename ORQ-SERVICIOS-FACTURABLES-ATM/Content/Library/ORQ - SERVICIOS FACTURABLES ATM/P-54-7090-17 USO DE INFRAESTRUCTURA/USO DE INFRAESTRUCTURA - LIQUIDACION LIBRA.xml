@@ -340,7 +340,11 @@ if(queryCount &gt; 0){
 // into the context to examine variables when developing and debugging scriptlets. 
 // For example to place the OutputString information into a context key called &apos;Output&apos;: 
 
-if((ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2) == 0){
+var resta = (ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2); 
+var resta_int = Math.round(resta);
+
+
+if( resta_int == 0){
   ban = 0;
 }else{
   ban = 1;
@@ -350,7 +354,7 @@ scriptletContext.putGlobal(&quot;ACUM_CREDITO&quot;, ACUM_CREDITO);
 scriptletContext.putGlobal(&quot;ACUM_DEBITO&quot;, ACUM_DEBITO);
 scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
 scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
-scriptletContext.putGlobal(&quot;DIFERENCIA&quot;, ACUM_CREDITO - ACUM_DEBITO);
+scriptletContext.putGlobal(&quot;DIFERENCIA&quot;, resta_int);
 scriptletContext.putGlobal(&quot;BAN&quot;, ban);
 // ===========================================================================================</script>
         <type>RHINO</type>
@@ -846,7 +850,7 @@ FROM TEMPORAL </value>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
+          <assignToContext>true</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
@@ -2475,7 +2479,8 @@ FIN EXITOSO DEL PROCESO</value>
         </staticBinding>
         <staticBinding id="b9e74d7f-bdff-4739-a1ef-6f9626f513ea">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -2483,7 +2488,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Attachments</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/VENTA GENERICA - LIQUIDACION LIBRA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
       </bindings>
