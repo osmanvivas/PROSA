@@ -92,9 +92,8 @@
           <isPersisted>true</isPersisted>
           <inputSymbol>list</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SELECT COUNT(*),CODIGO_BANCO,&apos;72&apos;,FECHA_CARGA FROM RED.TRANSACCIONES WHERE fecha_carga = &apos;03-mar-18&apos; AND RAZON_RESPUESTA IN (&apos;72&apos;) GROUP BY CODIGO_BANCO,FECHA_CARGA 
-UNION 
-SELECT COUNT(*),CODIGO_BANCO,&apos;00&apos;,FECHA_CARGA FROM RED.TRANSACCIONES WHERE fecha_carga = &apos;03-mar-18&apos; AND RAZON_RESPUESTA NOT IN (&apos;72&apos;) GROUP BY CODIGO_BANCO,FECHA_CARGA</value>
+          <value>SELECT &apos;&quot;&apos;||BANCO_EMI||&apos;&quot;&apos;,&apos;&quot;&apos;||BANCO_ADQ||&apos;&quot;&apos;,&apos;&quot;&apos;||CLAVE_OPERACION||&apos;&quot;&apos;,&apos;&quot;&apos;||CODIGO_TIPO_MENSAJE||&apos;&quot;&apos;,SUM(NUMERO_TRX),&apos;&quot;MDS&quot;&apos;,&apos;&quot;&apos;||FECHA_CARGA||&apos;&quot;&apos;,&apos;&quot;UDI&quot;&apos; 
+FROM RED.TBL_CIF_MDS_HIST WHERE FECHA_CARGA = &apos;16-MAR-2018&apos; GROUP BY BANCO_EMI,BANCO_ADQ,CLAVE_OPERACION,CODIGO_TIPO_MENSAJE,FECHA_CARGA;</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="af0b4dd3-a152-4be3-ad3f-821359a37970">

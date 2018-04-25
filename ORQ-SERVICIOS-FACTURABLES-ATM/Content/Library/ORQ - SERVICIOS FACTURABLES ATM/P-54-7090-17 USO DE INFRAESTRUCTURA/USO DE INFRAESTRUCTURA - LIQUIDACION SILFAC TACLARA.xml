@@ -14,6 +14,7 @@ b6a8cf67-538b-4919-af6f-923a72666f19.bc918f7f-64be-4d20-afe4-31041027ae9c.prompt
 b6a8cf67-538b-4919-af6f-923a72666f19.c38a7c07-6370-4e51-99f5-49f459054196.description=<pre>This operation writes the data from "contents" input to the requested file. The operation can be used to overwrite existing content of the file, append extra lines to it or even create a new file.\n\nInputs\:\n    source -  Full path to file. If the file does not exist it is created first.\n    contents - The content that should be written to the file. This input field can contain more lines, separated by a delimiter. If it contains the new line character (\\n or \\r\\n), but this is not the delimiter, this character will be escaped and written to file.  \nExample\: "This is line no. 01\\nThis is line no. 2\\n" where \\n is the delimiter.\n    delimiter - Specifies the newline delimiter that is used to split the "contents" input field into separate lines that will be further written to the given file.\nExamples\: \\n, \\r\\n, etc\n    characterSet - The character encoding used to write to the file. \nDefault\: UTF-8. \nValid values\: windows-1252, UTF-16, UTF-16BE,  ISO-8859-1, US-ASCII, Shift_JIS etc.\n    overwrite - Specifies whether to overwrite the file or append to it. \nDefault\: true. \nValid values\: true, false or the empty string. If this is left empty, the file will be overwritten.\n\nResults\:\n    returnResult - This is the primary output. It contains the "success" confirmation message if the operation successfully completes, or an exception message otherwise.\n    returnCode - It has the value 0 if the operation successfully completes and 1 otherwise.\n    exception - This contains an exception message if the operation fails.\n\nResponses\:\n    success - File/directory was written successfully.\n    failure - Unable to write to file/directory, empty contents or source.\n\nExamples\:\n1. This is a valid input example for using this operation on Windows\:\n    source\: C\:\\Program Files\\example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n\n2. This is a valid input example for using this operation on Linux\:\n    source\: /root/example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n</pre>
 b6a8cf67-538b-4919-af6f-923a72666f19.cf706fac-fcd6-45dd-9295-f61fa8a2fbf3.prompt=MES FACTURACION (MM)\:
 b6a8cf67-538b-4919-af6f-923a72666f19.d79dcc3f-7553-4a85-a09a-37263dcd1806.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
+b6a8cf67-538b-4919-af6f-923a72666f19.d9ae3aaf-3d2f-4c9b-805d-bf8a8d2cc470.description=<pre>This operation writes the data from "contents" input to the requested file. The operation can be used to overwrite existing content of the file, append extra lines to it or even create a new file.\n\nInputs\:\n    source -  Full path to file. If the file does not exist it is created first.\n    contents - The content that should be written to the file. This input field can contain more lines, separated by a delimiter. If it contains the new line character (\\n or \\r\\n), but this is not the delimiter, this character will be escaped and written to file.  \nExample\: "This is line no. 01\\nThis is line no. 2\\n" where \\n is the delimiter.\n    delimiter - Specifies the newline delimiter that is used to split the "contents" input field into separate lines that will be further written to the given file.\nExamples\: \\n, \\r\\n, etc\n    characterSet - The character encoding used to write to the file. \nDefault\: UTF-8. \nValid values\: windows-1252, UTF-16, UTF-16BE,  ISO-8859-1, US-ASCII, Shift_JIS etc.\n    overwrite - Specifies whether to overwrite the file or append to it. \nDefault\: true. \nValid values\: true, false or the empty string. If this is left empty, the file will be overwritten.\n\nResults\:\n    returnResult - This is the primary output. It contains the "success" confirmation message if the operation successfully completes, or an exception message otherwise.\n    returnCode - It has the value 0 if the operation successfully completes and 1 otherwise.\n    exception - This contains an exception message if the operation fails.\n\nResponses\:\n    success - File/directory was written successfully.\n    failure - Unable to write to file/directory, empty contents or source.\n\nExamples\:\n1. This is a valid input example for using this operation on Windows\:\n    source\: C\:\\Program Files\\example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n\n2. This is a valid input example for using this operation on Linux\:\n    source\: /root/example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n</pre>
 b6a8cf67-538b-4919-af6f-923a72666f19.dd6d4700-50e3-4cd1-87bc-81a7d5148b4f.transition.description=CALCULO DE\: ${MONTH}
 b6a8cf67-538b-4919-af6f-923a72666f19.f76d82e5-0e3c-42ad-b872-e0f895bb1eb3.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
 b6a8cf67-538b-4919-af6f-923a72666f19.ff87b660-4957-434c-a7a5-10544c07ef2c.description=<pre>\nRuns a SQL SELECT query.\nReturns the complete result like the following\:\na<colDelimiter>1<rowDelimiter>b<colDelimiter>2\n\nInputs\:\n    DBServerName - The hostname or ip address of db server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the server.\n    Password -  The password to use when connecting to the server.\n    instance - The name instance of MSSQL Server. Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    colDelimiter - The delimiter to use between columns in resulting table.\nDefault value\: comma (,)\n    rowDelimiter - The delimiter to use between rows in resulting table.\nDefault value\: \\n\n    timeout - Seconds to wait before timing out the SQL command execution.\nDefault value\: 0 \n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. Form more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n\nResults\:\n    returnResult - This is the primary output. Return the list of all the data returned by the query. It is delimited by colDelimiter and rowDelimiter. \n\nResponses\:\n    success - The command was executed successfully. \n    failure - Failed to execute the command. \n\nNote\: \n    SQL statement other than SELECT statement (like INSERT, UPDATE or DELETE) is not supported. In case statements other than SELECT are executed then the operation will fail but the statements might get partially or fully executed in the database.\n    Check the JDBC  folder description for details on how to load database connectors.\n\n</pre>
@@ -230,7 +231,7 @@ b6a8cf67-538b-4919-af6f-923a72666f19.ff87b660-4957-434c-a7a5-10544c07ef2c.descri
     </step>
     <step id="ff87b660-4957-434c-a7a5-10544c07ef2c">
       <annotation>b6a8cf67-538b-4919-af6f-923a72666f19.ff87b660-4957-434c-a7a5-10544c07ef2c.description</annotation>
-      <name>QUERY SILFAC</name>
+      <name>SILFAC TACLARA</name>
       <bounds>
         <x>281.0</x>
         <y>344.0</y>
@@ -264,7 +265,7 @@ b6a8cf67-538b-4919-af6f-923a72666f19.ff87b660-4957-434c-a7a5-10544c07ef2c.descri
       <userPrompt></userPrompt>
       <scriptlet id="d1f90441-5122-4c81-ae34-6275d73415a5">
         <annotation></annotation>
-        <name>Step QUERY SILFAC in Flow USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA (ff87b660-4957-434c-a7a5-10544c07ef2c)</name>
+        <name>Step SILFAC TACLARA in Flow USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA (ff87b660-4957-434c-a7a5-10544c07ef2c)</name>
         <script>query_results = scriptletContext.get(&quot;query_results&quot;); 
 queryCount = scriptletContext.get(&quot;queryCount&quot;); 
 UIM_MES_FACT = scriptletContext.get(&quot;UIM_MES_FACT&quot;);
@@ -291,11 +292,11 @@ if(queryCount &gt; 0){
 	for(i=0; i &lt; linea.length; i++){
 	    linea2 = linea[i].split(&quot;,&quot;);
 	    if(linea2.length &gt; 0){
+	    	
 	    	CV_BANCO = linea2[0];
-	    	CREDITO = parseFloat(linea2[1]);
-	    	DEBITO = parseFloat(linea2[2]);
-	    	if(CREDITO &gt; 0 || DEBITO &gt;0){
-	    	NETO = parseFloat(DEBITO - CREDITO);
+	    	CREDITO = parseFloat(linea2[2]);
+	    	DEBITO  =  parseFloat(linea2[3]);
+			NETO = parseFloat(CREDITO - DEBITO);
 	    	TITULO = &quot;LIQ USO INFRA &quot;+UIM_MES_FACT+&quot; &quot;+UIM_ANIO_FACT;
 	    	ACUM_CREDITO = ACUM_CREDITO + CREDITO;
 	    	ACUM_DEBITO = ACUM_DEBITO + DEBITO;
@@ -304,9 +305,9 @@ if(queryCount &gt; 0){
 			count = count + 1;
 			insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
 			insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
-			}
+			
 		  } 
-	} // fin for
+	}// fin for
 	insert+=&quot;COMMIT;\n&quot;;
 	insert+=&quot;END;&quot;;
 } // fin if
@@ -315,7 +316,10 @@ if(queryCount &gt; 0){
 // into the context to examine variables when developing and debugging scriptlets. 
 // For example to place the OutputString information into a context key called &apos;Output&apos;: 
 
-if((ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2) == 0){
+var resta = (ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2); 
+var resta_int = Math.round(resta);
+
+if( resta_int == 0){
   ban = 0;
 }else{
   ban = 1;
@@ -326,6 +330,7 @@ scriptletContext.putGlobal(&quot;ACUM_DEBITO&quot;, ACUM_DEBITO);
 scriptletContext.putGlobal(&quot;INSERT_SENTENCE&quot;, insert);
 scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
 scriptletContext.putGlobal(&quot;BAN&quot;, ban);
+scriptletContext.putGlobal(&quot;DIFERENCIA&quot;, resta_int);
 scriptletContext.putGlobal(&quot;count&quot;, count);
 // ===========================================================================================</script>
         <type>RHINO</type>
@@ -490,19 +495,81 @@ scriptletContext.putGlobal(&quot;count&quot;, count);
           <isPersisted>true</isPersisted>
           <inputSymbol>Command</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SELECT 
-B.CODIGO_BANCO AS CV_BANCO,
-    NVL((SELECT SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-    WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-    C.UIM_BAN_CODIGO_BANCO != C.UIM_CODIGO_BANCO AND 
-    C.UIM_BAN_CODIGO_BANCO = B.CODIGO_BANCO AND
-    C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_BAN_CODIGO_BANCO),0)  AS CREDITO,
-    NVL((SELECT SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-    WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-    C.UIM_CODIGO_BANCO != C.UIM_BAN_CODIGO_BANCO AND 
-    C.UIM_CODIGO_BANCO = B.CODIGO_BANCO AND
-    C.UIM_ANIO_FACT=${UIM_ANIO_FACT} GROUP BY C.UIM_CODIGO_BANCO),0)  AS DEBITO 
-FROM BANCOS B</value>
+          <value>WITH TEMPORAL AS
+(
+SELECT TRIM(B.CODIGO_BANCO) AS CV_BANCO, NVL(TRIM(B.CODIGO_BANCO_P),&apos;NA&apos;) BANCO_P,
+ 
+    (CASE 
+    WHEN TRIM(B.CODIGO_BANCO) = &apos;VISA&apos; 
+    THEN
+        ROUND(NVL((SELECT SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE 
+        C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_BAN_CODIGO_BANCO) = &apos;VISA1&apos;),0),2)  
+    
+    WHEN TRIM(B.CODIGO_BANCO) = &apos;MDS&apos; 
+    THEN
+        ROUND(NVL((SELECT SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_BAN_CODIGO_BANCO) IN (&apos;MDS4&apos;,&apos;MDS5&apos;,&apos;MDS6&apos;)),0),2)  
+    
+    WHEN TRIM(B.CODIGO_BANCO) IN (&apos;UPAY&apos;,&apos;JCB1&apos;)
+    THEN
+        ROUND(NVL((SELECT (-1)*SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO)),0),2)  
+    
+    ELSE
+        ROUND(NVL((SELECT SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND 
+        TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO)),0),2)  
+    END) AS CREDITO,
+    
+(CASE 
+    WHEN TRIM(B.CODIGO_BANCO) = &apos;VISA&apos; 
+    THEN
+        ROUND(NVL((SELECT SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND 
+        TRIM(C.UIM_BAN_CODIGO_BANCO) = &apos;VISA2&apos;),0),2)  
+    
+    WHEN TRIM(B.CODIGO_BANCO) = &apos;MDS&apos; 
+    THEN
+        ROUND(NVL((SELECT SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND 
+        TRIM(C.UIM_BAN_CODIGO_BANCO) IN (&apos;MDS1&apos;,&apos;MDS2&apos;,&apos;MDS3&apos;)),0),2)  
+        
+    WHEN TRIM(B.CODIGO_BANCO) IN (&apos;UPAY&apos;,&apos;JCB1&apos;)
+    THEN
+        ROUND(NVL((SELECT (-1)*SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO)),0),2)  
+        
+    ELSE
+        ROUND(NVL((SELECT SUM(C.UIM_SUBTOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO)),0),2)  
+    END) AS DEBITO 
+
+FROM BANCOS B  
+) 
+SELECT
+A.CV_BANCO, A.BANCO_P,
+
+ROUND( (CASE WHEN A.CV_BANCO IN (&apos;UPAY&apos;,&apos;JCB1&apos;) THEN 1 ELSE -1 END)*
+(A. CREDITO + NVL((SELECT SUM(B.CREDITO) FROM TEMPORAL B WHERE TRIM(B.BANCO_P)=TRIM(A.CV_BANCO)),0)),2) AS CREDITO,
+
+ROUND( (CASE WHEN A.CV_BANCO IN (&apos;VISA&apos;,&apos;MDS&apos;) THEN 1 ELSE -1 END)*
+(A.DEBITO + NVL((SELECT SUM(B.DEBITO) FROM TEMPORAL B WHERE TRIM(B.BANCO_P)=TRIM(A.CV_BANCO)),0)),2) AS DEBITO  
+
+FROM TEMPORAL A WHERE TRIM(A.BANCO_P) IN (&apos;NA&apos;) ORDER BY A.CV_BANCO ASC</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="db48ca5a-b73a-4277-b0c0-2fe663952d94">
@@ -769,14 +836,14 @@ FROM BANCOS B</value>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
+          <assignToContext>true</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/BONIFICACIONES DE ACLARACIONES - LIQUIDACION SILFAC ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="3467f972-2a4a-4a34-bbf7-dc26e9b6a717">
@@ -1011,35 +1078,6 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="f04a1d5b-7b73-469c-8c97-60401579cc00">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>0ba817a9-3463-46d7-a731-09ea9fd685b7</refId>
-          </destination>
-          <source>
-            <refId>5b358826-87e1-4c56-9c18-2b107022a7be</refId>
-          </source>
-          <positions>
-            <point>
-              <x>471.0</x>
-              <y>397.0</y>
-            </point>
-            <point>
-              <x>484.0</x>
-              <y>525.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
         <transition id="cb80d2c7-42a0-4632-8a1a-b106d7bc3f02">
           <annotation></annotation>
           <name>success</name>
@@ -1062,6 +1100,35 @@ ${INSERT_SENTENCE2}</value>
             <point>
               <x>834.0</x>
               <y>507.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="91f7bebc-e734-4e8a-a0e4-38f6cf05de86">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>d9ae3aaf-3d2f-4c9b-805d-bf8a8d2cc470</refId>
+          </destination>
+          <source>
+            <refId>5b358826-87e1-4c56-9c18-2b107022a7be</refId>
+          </source>
+          <positions>
+            <point>
+              <x>528.0</x>
+              <y>378.0</y>
+            </point>
+            <point>
+              <x>463.0</x>
+              <y>253.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -1977,7 +2044,7 @@ ${INSERT_SENTENCE2}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Body</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;
+          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA  ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;
 &lt;br&gt;
 MENSAJE DE ERROR:&lt;br&gt;
 ${MSG_ERROR}</value>
@@ -1993,12 +2060,13 @@ ${MSG_ERROR}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
+          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA  ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="fe541e7b-f83e-474f-b116-b329ede37dbe">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -2099,7 +2167,7 @@ ${MSG_ERROR}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Body</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>ERROR - SERVICIOS FACTURABLE&apos;s ATMS (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;
+          <value>ERROR - SERVICIOS FACTURABLE&apos;s ATMS (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA  ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;
 &lt;br&gt;
 MENSAJE DE ERROR:&lt;br&gt;
 ${MSG_ERROR}</value>
@@ -2115,7 +2183,7 @@ ${MSG_ERROR}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>ERROR - SERVICIOS FACTURABLE&apos;s ATMS (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
+          <value>ERROR - SERVICIOS FACTURABLE&apos;s ATMS (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA  ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="ab4a1a71-2170-4700-80e9-7024c607f60b">
@@ -2221,7 +2289,7 @@ ${MSG_ERROR}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Body</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC  ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;&lt;br&gt;
+          <value>SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA  ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;&lt;br&gt;
 INICIO DEL PROCESO</value>
           <record>false</record>
         </staticBinding>
@@ -2235,7 +2303,7 @@ INICIO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>INICIO - SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
+          <value>INICIO - SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA  ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="8fe14068-d5fd-434f-850f-290c18e0db2a">
@@ -2385,7 +2453,7 @@ INICIO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Body</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;&lt;br&gt;
+          <value>SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA  ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;&lt;br&gt;
 FIN EXITOSO DEL PROCESO</value>
           <record>false</record>
         </staticBinding>
@@ -2399,12 +2467,13 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>FIN - SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
+          <value>FIN - SERVICIOS FACTURABLES ATM&apos;s (USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA  ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="52293547-2740-4fcc-b4ea-205b1eb14501">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -2412,7 +2481,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Attachments</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/BONIFICACIONES DE ACLARACIONES - LIQUIDACION SILFAC ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
       </bindings>
@@ -3140,6 +3209,210 @@ FIN EXITOSO DEL PROCESO</value>
                 <annotation></annotation>
                 <name>Format</name>
                 <text>INSERCION DE REPORTE MENSUAL&lt;br&gt;
+</text>
+                <position>BEGINNING</position>
+              </concat>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="d9ae3aaf-3d2f-4c9b-805d-bf8a8d2cc470">
+      <annotation>b6a8cf67-538b-4919-af6f-923a72666f19.d9ae3aaf-3d2f-4c9b-805d-bf8a8d2cc470.description</annotation>
+      <name>Write to File</name>
+      <bounds>
+        <x>413.0</x>
+        <y>219.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <iconSpec id="fb2c4faa-7e6e-41bf-a384-fe42eb71142e">
+        <baseIcon>document_text.png</baseIcon>
+        <basePath>Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers>
+          <iconSpec id="af309753-1cb7-4963-8f50-22a7be393423">
+            <baseIcon>view.png</baseIcon>
+            <basePath>Annotations/</basePath>
+            <readOnly>false</readOnly>
+            <layers/>
+          </iconSpec>
+        </layers>
+      </iconSpec>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="3688e55c-167c-4aff-99f9-d4e4452bbb09">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>true</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>source</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>/aplic/prod/orq/usf/rpt/sal/USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="606ba02a-50df-467a-80d8-66d19fcec0ba">
+          <annotation></annotation>
+          <toContextKey></toContextKey>
+          <fromContextKey></fromContextKey>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>contents</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>PERIODO,CV_BANCO,CONCEPTO,MTO_EMI,MTO_ADQ
+${INSERT_SENTENCE2}</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="38b2a168-255f-4a08-a46d-a515922c7975">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>delimiter</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>
+</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="71fed0ea-2b69-495d-b021-b27e37afd59e">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>characterSet</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="83da66cd-381e-4f2a-b9c0-d379eda44657">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>overwrite</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>true</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="734f9d87-4833-42dd-b7ad-627177ca013a">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>0ba817a9-3463-46d7-a731-09ea9fd685b7</refId>
+          </destination>
+          <source>
+            <refId>d9ae3aaf-3d2f-4c9b-805d-bf8a8d2cc470</refId>
+          </source>
+          <positions>
+            <point>
+              <x>463.0</x>
+              <y>253.0</y>
+            </point>
+            <point>
+              <x>331.0</x>
+              <y>220.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="d65b838e-ccf9-4880-a3c6-2c01fe684974">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>0ba817a9-3463-46d7-a731-09ea9fd685b7</refId>
+          </destination>
+          <source>
+            <refId>d9ae3aaf-3d2f-4c9b-805d-bf8a8d2cc470</refId>
+          </source>
+          <positions>
+            <point>
+              <x>463.0</x>
+              <y>253.0</y>
+            </point>
+            <point>
+              <x>410.8548406171884</x>
+              <y>214.1942999941867</y>
+            </point>
+            <point>
+              <x>395.2719406346282</x>
+              <y>210.29857499854668</y>
+            </point>
+            <point>
+              <x>331.0</x>
+              <y>220.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>af728dc4-d7a0-4e8e-917a-74c188f2e470</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="7df1e7bd-8e01-4498-a230-ed79765a899f">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>MSG_ERROR</contextKey>
+          <expression id="8d61a82c-2186-48a5-a72a-f8e8c2ad229e">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters>
+              <concat id="6a94de36-2b21-440f-8dfe-2b9b03f5344a">
+                <annotation></annotation>
+                <name>Format</name>
+                <text>ESCRITURA DE ARCHIVO DE REPORTE MENSUAL&lt;br&gt;
 </text>
                 <position>BEGINNING</position>
               </concat>

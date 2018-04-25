@@ -301,16 +301,10 @@ var curr_month = d.getMonth()+1;
 var curr_year = d.getFullYear();
 var UIM_FECHA_PROCESO = curr_date+&quot;-&quot;+curr_month+&quot;-&quot;+curr_year;
 
-var insert=&quot;&quot;;
-var insert2=&quot;&quot;;
-var CV_BANCO=&apos;&apos;;
-var CREDITO=0;
-var DEBITO=0;
-var ACUM_CREDITO=0;
-var ACUM_DEBITO=0;
-var TITULO=&apos;&apos;;
-var NETO=0;
-var ban=1;
+insert=&quot;&quot;; insert2=&quot;&quot;;
+CV_BANCO=&apos;&apos;; CREDITO=0; DEBITO=0;
+ACUM_CREDITO=0; ACUM_DEBITO=0;
+TITULO=&apos;&apos;; NETO=0; ban=1;
 
 if(queryCount &gt; 0){
     insert+=&quot;BEGIN\n&quot;; 
@@ -320,30 +314,24 @@ if(queryCount &gt; 0){
 	    linea2 = linea[i].split(&quot;,&quot;);
 	    if(linea2.length &gt; 0){
 	    	CV_BANCO = linea2[0];
-	    	CREDITO = parseFloat(linea2[1]);
-	    	DEBITO =  parseFloat(linea2[2]);
-	    	
-				NETO = parseFloat(CREDITO - DEBITO);
-				TITULO = &quot;LIQUIDACION POR USO DE INFRAESTRUCTURA &quot;+MONTH+&quot; &quot;+UIM_ANIO_FACT;
-				ACUM_CREDITO = ACUM_CREDITO + CREDITO;
-				ACUM_DEBITO = ACUM_DEBITO + DEBITO;
-				insert += &quot;INSERT INTO LIQUIDACIONES (FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE) VALUES (TO_DATE(&apos;&quot;+FECHA_LIQUIDACION+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;N&apos;);\n&quot;;
-				insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
-				insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
-				insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+	    	CREDITO = parseFloat(linea2[2]);
+	    	DEBITO  =  parseFloat(linea2[3]);
+			NETO = parseFloat(CREDITO - DEBITO);
+			TITULO = &quot;LIQUIDACION POR USO DE INFRAESTRUCTURA &quot;+MONTH+&quot; &quot;+UIM_ANIO_FACT;
+			ACUM_CREDITO = ACUM_CREDITO + CREDITO;
+			ACUM_DEBITO = ACUM_DEBITO + DEBITO;
+			insert += &quot;INSERT INTO LIQUIDACIONES (FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE) VALUES (TO_DATE(&apos;&quot;+FECHA_LIQUIDACION+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;N&apos;);\n&quot;;
+			insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
+			insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
+			insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
 		  } 
 	} // fin for
 	insert+=&quot;COMMIT;\n&quot;;
 	insert+=&quot;END;&quot;;
 } // fin if
 
-// Use the context to hold data for use by other steps.  It is also helpful to place information 
-// into the context to examine variables when developing and debugging scriptlets. 
-// For example to place the OutputString information into a context key called &apos;Output&apos;: 
-
 var resta = (ACUM_CREDITO).toFixed(2) - (ACUM_DEBITO).toFixed(2); 
 var resta_int = Math.round(resta);
-
 
 if( resta_int == 0){
   ban = 0;
@@ -522,69 +510,79 @@ scriptletContext.putGlobal(&quot;BAN&quot;, ban);
           <listDelimiter>,</listDelimiter>
           <value>WITH TEMPORAL AS
 (
-SELECT TRIM(B.CODIGO_BANCO) AS CV_BANCO,
+SELECT TRIM(B.CODIGO_BANCO) AS CV_BANCO, NVL(TRIM(B.CODIGO_BANCO_P),&apos;NA&apos;) BANCO_P,
  
     (CASE 
     WHEN TRIM(B.CODIGO_BANCO) = &apos;VISA&apos; 
     THEN
         ROUND(NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) &lt;&gt; TRIM(C.UIM_CODIGO_BANCO) AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) = &apos;VISA1&apos; AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT}),0),2)  
+        WHERE 
+        C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_BAN_CODIGO_BANCO) = &apos;VISA1&apos;),0),2)  
     
     WHEN TRIM(B.CODIGO_BANCO) = &apos;MDS&apos; 
     THEN
         ROUND(NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) &lt;&gt; TRIM(C.UIM_CODIGO_BANCO) AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) IN (&apos;MDS4&apos;,&apos;MDS5&apos;,&apos;MDS6&apos;) AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT}),0),2)  
-    WHEN TRIM(B.CODIGO_BANCO) = &apos;UPAY&apos; OR TRIM(B.CODIGO_BANCO) = &apos;JCB1&apos;  
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_BAN_CODIGO_BANCO) IN (&apos;MDS4&apos;,&apos;MDS5&apos;,&apos;MDS6&apos;)),0),2)  
+    
+    WHEN TRIM(B.CODIGO_BANCO) IN (&apos;UPAY&apos;,&apos;JCB1&apos;)
     THEN
         ROUND(NVL((SELECT (-1)*SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) &lt;&gt; TRIM(C.UIM_CODIGO_BANCO) AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT}),0),2)  
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO)),0),2)  
+    
     ELSE
         ROUND(NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) &lt;&gt; TRIM(C.UIM_CODIGO_BANCO) AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT}),0),2)  
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND 
+        TRIM(C.UIM_BAN_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO)),0),2)  
     END) AS CREDITO,
+    
 (CASE 
     WHEN TRIM(B.CODIGO_BANCO) = &apos;VISA&apos; 
     THEN
         ROUND(NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-        TRIM(C.UIM_CODIGO_BANCO) &lt;&gt; TRIM(C.UIM_BAN_CODIGO_BANCO) AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) = &apos;VISA2&apos; AND
-        C.UIM_ANIO_FACT=${UIM_ANIO_FACT}),0),2) 
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND 
+        TRIM(C.UIM_BAN_CODIGO_BANCO) = &apos;VISA2&apos;),0),2)  
+    
     WHEN TRIM(B.CODIGO_BANCO) = &apos;MDS&apos; 
     THEN
         ROUND(NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-        TRIM(C.UIM_CODIGO_BANCO) &lt;&gt; TRIM(C.UIM_BAN_CODIGO_BANCO) AND 
-        TRIM(C.UIM_BAN_CODIGO_BANCO) IN (&apos;MDS1&apos;,&apos;MDS2&apos;,&apos;MDS3&apos;) AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT}),0),2)  
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND 
+        TRIM(C.UIM_BAN_CODIGO_BANCO) IN (&apos;MDS1&apos;,&apos;MDS2&apos;,&apos;MDS3&apos;)),0),2)  
+        
+    WHEN TRIM(B.CODIGO_BANCO) IN (&apos;UPAY&apos;,&apos;JCB1&apos;)
+    THEN
+        ROUND(NVL((SELECT (-1)*SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO)),0),2)  
+        
     ELSE
         ROUND(NVL((SELECT SUM(C.UIM_TOTAL) FROM TBL_RED_USO_INFRA_MENSUAL C
-        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND C.UIM_MES_FACT=${UIM_MES_FACT} AND 
-        TRIM(C.UIM_CODIGO_BANCO) &lt;&gt; TRIM(C.UIM_BAN_CODIGO_BANCO) AND 
-        TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO) AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT}),0),2)  
-END) AS DEBITO FROM BANCOS B WHERE B.CODIGO_BANCO NOT IN (&apos;CIBC&apos;)
-) SELECT
+        WHERE C.UIM_SERVICIO =&apos;UDI&apos; AND 
+        C.UIM_MES_FACT=${UIM_MES_FACT} AND C.UIM_ANIO_FACT=${UIM_ANIO_FACT} AND
+        TRIM(C.UIM_CODIGO_BANCO) = TRIM(B.CODIGO_BANCO)),0),2)  
+    END) AS DEBITO 
 
-CV_BANCO, 
-(CASE 
-    WHEN CREDITO &lt; 0 AND CV_BANCO NOT IN (&apos;UPAY&apos;,&apos;JCB1&apos;)
-    THEN (-1)*CREDITO
-    ELSE CREDITO END
-) AS CREDITO,
-(CASE 
-    WHEN DEBITO &lt; 0 AND CV_BANCO NOT IN (&apos;UPAY&apos;,&apos;JCB1&apos;)
-    THEN (-1)*DEBITO
-    ELSE DEBITO END
-) AS DEBITO
+FROM BANCOS B  
+) 
+SELECT
+A.CV_BANCO, A.BANCO_P,
 
-FROM TEMPORAL </value>
+ROUND( (CASE WHEN A.CV_BANCO IN (&apos;UPAY&apos;,&apos;JCB1&apos;) THEN 1 ELSE -1 END)*
+(A. CREDITO + NVL((SELECT SUM(B.CREDITO) FROM TEMPORAL B WHERE TRIM(B.BANCO_P)=TRIM(A.CV_BANCO)),0)),2) AS CREDITO,
+
+ROUND( (CASE WHEN A.CV_BANCO IN (&apos;VISA&apos;,&apos;MDS&apos;) THEN 1 ELSE -1 END)*
+(A.DEBITO + NVL((SELECT SUM(B.DEBITO) FROM TEMPORAL B WHERE TRIM(B.BANCO_P)=TRIM(A.CV_BANCO)),0)),2) AS DEBITO  
+
+FROM TEMPORAL A WHERE TRIM(A.BANCO_P) IN (&apos;NA&apos;) ORDER BY A.CV_BANCO ASC</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="dcdc4943-0235-4462-9a75-912a48112a63">
@@ -776,12 +774,6 @@ FROM TEMPORAL </value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="63ab1964-2418-49b4-9960-e9fdad96cbeb">
-        <baseIcon>return_success.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>true</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
