@@ -6,12 +6,11 @@ e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.236e5a9e-1c81-48f7-b836-b428d606e329.transi
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.2dcd8835-b678-4aca-bbf6-d095ca3dfd7d.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.4da1618f-6b76-4667-ae0c-8311db2bead1.description=<pre>\nRuns a SQL SELECT query.\nReturns the complete result like the following\:\na<colDelimiter>1<rowDelimiter>b<colDelimiter>2\n\nInputs\:\n    DBServerName - The hostname or ip address of db server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the server.\n    Password -  The password to use when connecting to the server.\n    instance - The name instance of MSSQL Server. Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    colDelimiter - The delimiter to use between columns in resulting table.\nDefault value\: comma (,)\n    rowDelimiter - The delimiter to use between rows in resulting table.\nDefault value\: \\n\n    timeout - Seconds to wait before timing out the SQL command execution.\nDefault value\: 0 \n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. Form more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n\nResults\:\n    returnResult - This is the primary output. Return the list of all the data returned by the query. It is delimited by colDelimiter and rowDelimiter. \n\nResponses\:\n    success - The command was executed successfully. \n    failure - Failed to execute the command. \n\nNote\: \n    SQL statement other than SELECT statement (like INSERT, UPDATE or DELETE) is not supported. In case statements other than SELECT are executed then the operation will fail but the statements might get partially or fully executed in the database.\n    Check the JDBC  folder description for details on how to load database connectors.\n\n</pre>
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.50740828-62c9-4c0a-9d91-7c087fcdd88c.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
-e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.5f3e60ff-a69e-4788-b0a9-c43141b127a8.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
+e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.67db3c5c-73e0-4a19-aab1-2f02f82158cc.transition.description=Registros Eliminados\: ${updateCount}
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.781400a3-87f6-49b2-a4b1-780e995ce365.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.8d7989f6-497c-4459-92c3-226f84dafefb.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.90c72a73-0e2d-4d03-99d3-8cca9ac75d65.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.c030ef02-61d6-491c-af7d-e7c06f164be9.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
-e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.cd71021f-ddbe-4cfd-96fe-c9b10e25ed0e.transition.description=Registros Eliminados\: ${updateCount}
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.d0a7e03a-45d0-4fad-a8a4-cc7caf8674d4.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.dc93fb03-95e8-4c36-b8b1-f4203518afec.description=<pre>\nPerforms a mathematical operation on two numbers\n\nInputs\:\noperator - The operation to perform (+, -, *, /, <, >, <\=, >\=, \=\=, \!\=).\nvalue1 - The first value.\nvalue2 - The second value.\n\nReturns\:\nThe result of the operation, for boolean values this is true or false.\n\nResponses\:\nsuccess - The operation completed successfully. If a boolean operation, it evaluated to true.\nfailure - Something went wrong or the boolean operation returned false.\n</pre>
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.deb0e2bf-2db8-4295-a9f2-015eca1167ce.transition.description=Entre ${primerDia} y ${ultimoDia}
@@ -375,16 +374,17 @@ if(queryCount &gt; 0){
 	    linea2=&quot;&quot;;
 	    linea2 = linea_insert.split(&quot;,&quot;);
 	    linea_insert2 = &quot;&apos;&quot;+linea2[0]+&quot;&apos;,&quot;; //BANCO -&gt; UIM_BAN_CODIGO_BANCO
-	    linea_insert2 += &quot;&apos;NA&apos;,&quot;; //BANCO -&gt; UIM_BAN_CODIGO_BANCO
-	    linea_insert2 += linea2[1]+&quot;,&quot;; //DESFASADOS -&gt; UIM_TOTAL_TNX_ADQ
-	    linea_insert2 += linea2[2]+&quot;,&quot;; //TOTAL_TNX -&gt; UIM_TOTAL_TNX
-	    linea_insert2 += linea2[3]+&quot;,&quot;; //CUOTA_INTERBANCARIA -&gt; IMP_RETIROS
-	    linea_insert2 += linea2[4]+&quot;,&quot;; //CUOTA_SWITCH -&gt; IMP_CONS
-	    linea_insert2 += linea2[5]+&quot;,&quot;; //SUBTOTAL -&gt; UIM_SUBTOTAL
-	    linea_insert2 += linea2[6]+&quot;,&quot;; //IVA -&gt; UIM_IVA
-	    linea_insert2 += linea2[7]; //TOTAL -&gt; UIM_TOTAL
+	    linea_insert2 += &quot;&apos;NA&apos;,&quot;; 			//BANCO -&gt; UIM_BAN_CODIGO_BANCO
+	    linea_insert2 += linea2[1]+&quot;,&quot;; 	//DESFASADOS -&gt; UIM_TOTAL_TNX_ADQ
+	    linea_insert2 += linea2[2]+&quot;,&quot;; 	//TOTAL_TNX -&gt; UIM_TOTAL_TNX
+	    linea_insert2 += linea2[3]+&quot;,&quot;; 	//CUOTA_INTERBANCARIA -&gt; IMP_RETIROS
+	    linea_insert2 += linea2[4]+&quot;,&quot;;		//TARIFA_SWITCH -&gt; UIM_IMP_VTG
+	    linea_insert2 += linea2[5]+&quot;,&quot;; 	//CUOTA_SWITCH -&gt; IMP_CONS
+	    linea_insert2 += linea2[6]+&quot;,&quot;; 	//SUBTOTAL -&gt; UIM_SUBTOTAL
+	    linea_insert2 += linea2[7]+&quot;,&quot;; 	//IVA -&gt; UIM_IVA
+	    linea_insert2 += linea2[8]; 		//TOTAL -&gt; UIM_TOTAL
 	    
-	    insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_MENSUAL (UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_ADQ,UIM_TOTAL_TNX,UIM_IMP_RETIROS,UIM_IMP_CONS,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT) VALUES (to_date(&quot;&apos;+UIM_FECHA_PROCESO+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;,&apos;+&apos;&quot;SAN&quot;&apos;+&apos;,&apos;+&apos;&quot;REV DESF&quot;&apos;+&apos;,&apos;+UIM_MES_FACT+&apos;,&apos;+UIM_ANIO_FACT+&apos;);\n&apos;;
+	    insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_MENSUAL (UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_ADQ,UIM_TOTAL_TNX,UIM_IMP_RETIROS,UIM_IMP_VTG,UIM_IMP_CONS,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT) VALUES (to_date(&quot;&apos;+UIM_FECHA_PROCESO+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;,&apos;+&apos;&quot;SAN&quot;&apos;+&apos;,&apos;+&apos;&quot;REV DESF&quot;&apos;+&apos;,&apos;+UIM_MES_FACT+&apos;,&apos;+UIM_ANIO_FACT+&apos;);\n&apos;;
 		insert2+=UIM_FECHA_PROCESO+&apos;,&apos;+linea_insert2+&apos;,&apos;+&apos;&quot;SAN&quot;&apos;+&apos;,&apos;+&apos;&quot;REV DESF&quot;&apos;+&apos;,&apos;+UIM_MES_FACT+&apos;,&apos;+UIM_ANIO_FACT+&apos;\n&apos;;
 		insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
 		insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
@@ -557,7 +557,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey>QUERY_REV_DESF</fromContextKey>
-          <assignFromContext>true</assignFromContext>
+          <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -565,7 +565,32 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <isPersisted>true</isPersisted>
           <inputSymbol>Command</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value></value>
+          <value>/*REVERSOS DESFASADOS*/
+WITH TEMPORAL AS (
+SELECT UID_CODIGO_BANCO AS BANCO, COUNT(*) AS DESFASADOS,
+NVL((SELECT SUM(C.UID_TOTAL_TNX) FROM TBL_RED_USO_INFRA_DIARIO C WHERE C.UID_DESCRIPCION=&apos;Codigo 72&apos; AND 
+TRIM(C.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; AND TRIM(C.UID_BAN_CODIGO_BANCO)=B.UID_CODIGO_BANCO AND C.UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;YYYY-MM-DD&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;)),0) AS TOTAL_TNX,
+COUNT(*)*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;REV DESF&apos;) AS CUOTA_INTERBANCARIA 
+FROM TBL_RED_USO_INFRA_DIARIO B
+WHERE 
+B.UID_SERVICIO=&apos;SAN&apos; AND B.UID_DESCRIPCION=&apos;Reversos Desfasados&apos; AND 
+TRIM(B.UID_CODIGO_BANCO) &lt;&gt; TRIM(B.UID_BAN_CODIGO_BANCO) AND 
+TRIM(B.UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;,&apos;B878&apos;) AND
+TRIM(B.UID_BAN_CODIGO_BANCO) NOT IN (SELECT TRIM(C.CODIGO_BANCO) FROM RED.BANCOS C WHERE TRIM(C.CODIGO_BANCO_P)=TRIM(B.UID_CODIGO_BANCO)) AND 
+TRIM(B.UID_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;,&apos;B878&apos;) AND
+B.UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;YYYY-MM-DD&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;) 
+GROUP BY UID_CODIGO_BANCO
+)
+SELECT 
+BANCO, DESFASADOS, TOTAL_TNX,CUOTA_INTERBANCARIA,
+NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)  AS TARIFA_SWITCH,
+ROUND((DESFASADOS*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)),2) AS CUOTA_SWITCH,
+ROUND(CUOTA_INTERBANCARIA+(DESFASADOS*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)),2) AS SUBTOTAL,
+ROUND((CUOTA_INTERBANCARIA+(DESFASADOS* NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2) AS IVA,
+
+ROUND(CUOTA_INTERBANCARIA+(DESFASADOS*  NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279) ) +
+(CUOTA_INTERBANCARIA+(DESFASADOS* NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2) AS TOTAL 
+FROM TEMPORAL</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="78ed7d7c-4aa1-4d6b-b937-dca0b14dec3a">
@@ -757,6 +782,12 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
+      <iconSpec id="3e6cf71f-ce15-4ad1-9017-b4ea60831e0f">
+        <baseIcon>return_success.png</baseIcon>
+        <basePath>System</basePath>
+        <readOnly>true</readOnly>
+        <layers/>
+      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -839,7 +870,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI05.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI042.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="3fb67056-0933-4802-a881-dc06fe78e6e6">
@@ -854,7 +885,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <isPersisted>true</isPersisted>
           <inputSymbol>contents</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_72,UIM_TOTAL_TNX,UIM_IMP_INTERBANCARIA,UIM_IMP_SWITCH,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT
+          <value>UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_72,UIM_TOTAL_TNX,UIM_IMP_INTERBANCARIA,TARIFA_SWITCH,UIM_IMP_SWITCH,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT
 ${INSERT_SENTENCE2}</value>
           <record>false</record>
         </staticBinding>
@@ -2893,8 +2924,8 @@ ${INSERT_SENTENCE2}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="cd71021f-ddbe-4cfd-96fe-c9b10e25ed0e">
-          <annotation>e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.cd71021f-ddbe-4cfd-96fe-c9b10e25ed0e.transition.description</annotation>
+        <transition id="67db3c5c-73e0-4a19-aab1-2f02f82158cc">
+          <annotation>e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.67db3c5c-73e0-4a19-aab1-2f02f82158cc.transition.description</annotation>
           <name>success</name>
           <command>NEXT</command>
           <linkMode>false</linkMode>
@@ -2902,7 +2933,7 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>5f3e60ff-a69e-4788-b0a9-c43141b127a8</refId>
+            <refId>4da1618f-6b76-4667-ae0c-8311db2bead1</refId>
           </destination>
           <source>
             <refId>781400a3-87f6-49b2-a4b1-780e995ce365</refId>
@@ -2913,8 +2944,8 @@ ${INSERT_SENTENCE2}</value>
               <y>510.0</y>
             </point>
             <point>
-              <x>354.0</x>
-              <y>601.0</y>
+              <x>291.0</x>
+              <y>320.0</y>
             </point>
           </positions>
           <labelPosition>
@@ -3619,137 +3650,6 @@ ${MSG_ERROR}</value>
         <refId>1af33279-42d9-42ae-8eb0-289d96a35f8f</refId>
       </opRef>
       <assignments/>
-      <throttleSize>0</throttleSize>
-    </step>
-    <step id="5f3e60ff-a69e-4788-b0a9-c43141b127a8">
-      <annotation>e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.5f3e60ff-a69e-4788-b0a9-c43141b127a8.description</annotation>
-      <name>GENERAR QUERY REVERSOS DESFASADOS</name>
-      <bounds>
-        <x>304.0</x>
-        <y>567.0</y>
-      </bounds>
-      <layer>-1</layer>
-      <hideInbound>false</hideInbound>
-      <iconSpec id="bfd9c4ec-4f65-462d-bf23-2bd23b1c75a9">
-        <baseIcon>hourglass.png</baseIcon>
-        <basePath>Utilities</basePath>
-        <readOnly>false</readOnly>
-        <layers/>
-      </iconSpec>
-      <addResultToRunContext>false</addResultToRunContext>
-      <isCriticalStep>false</isCriticalStep>
-      <isNonBlocking>false</isNonBlocking>
-      <isParallelStep>false</isParallelStep>
-      <isSingleResponse>true</isSingleResponse>
-      <recordInHistory>false</recordInHistory>
-      <recordRawOutput>true</recordRawOutput>
-      <recordPrimaryOutput>true</recordPrimaryOutput>
-      <checkPointStep>true</checkPointStep>
-      <historyCheckPointStep>true</historyCheckPointStep>
-      <scriptResultStep>false</scriptResultStep>
-      <userPrompt></userPrompt>
-      <scriptlet id="f1705947-c783-4cd1-9223-76ffc058bb4c">
-        <annotation></annotation>
-        <name>Step GENERAR QUERY REVERSOS DESFASADOS in Flow SANCIONES - REVERSOS DESFASADOS (5f3e60ff-a69e-4788-b0a9-c43141b127a8)</name>
-        <type>NASHORN</type>
-      </scriptlet>
-      <bindings>
-        <staticBinding id="2ba572b4-6799-4059-b33a-c152f7d6c33c">
-          <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>true</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>seconds</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value>0</value>
-          <record>false</record>
-        </staticBinding>
-        <staticBinding id="22990d2d-d826-46cc-a5a3-926593d91eb7">
-          <annotation></annotation>
-          <fromContextKey>ORQ-USF QUERY SANCIONES REVERSOS DESFASADOS</fromContextKey>
-          <assignFromContext>true</assignFromContext>
-          <assignToContext>false</assignToContext>
-          <inputType>STRING</inputType>
-          <isList>false</isList>
-          <required>false</required>
-          <isPersisted>true</isPersisted>
-          <inputSymbol>QUERY_REV_DESFASADOS</inputSymbol>
-          <listDelimiter>,</listDelimiter>
-          <value></value>
-          <record>false</record>
-        </staticBinding>
-      </bindings>
-      <transitions>
-        <transition id="73e83684-1332-4c60-a08d-7a08fba92c43">
-          <annotation></annotation>
-          <name>done</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>done</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>4da1618f-6b76-4667-ae0c-8311db2bead1</refId>
-          </destination>
-          <source>
-            <refId>5f3e60ff-a69e-4788-b0a9-c43141b127a8</refId>
-          </source>
-          <positions>
-            <point>
-              <x>354.0</x>
-              <y>601.0</y>
-            </point>
-            <point>
-              <x>291.0</x>
-              <y>320.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
-      </transitions>
-      <properties/>
-      <opRef>
-        <refId>d1bbf441-824a-450e-afae-2ddec0e0f35e</refId>
-      </opRef>
-      <assignments>
-        <flowVariableAssignment id="d119c2c8-1880-44df-8f3a-31d51325c170">
-          <annotation></annotation>
-          <name>assignment</name>
-          <action>OVERWRITE</action>
-          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
-          <contextKey>QUERY_REV_DESF</contextKey>
-          <expression id="515d9d91-ca0b-4b68-975c-b15db8835593">
-            <annotation></annotation>
-            <name>Input: QUERY_REV_DESFASADOS</name>
-            <fieldName>QUERY_REV_DESFASADOS</fieldName>
-            <sourceType>INPUT</sourceType>
-            <filters>
-              <replaceAllFilter id="803e0f8e-ec13-48a5-ad80-f5bd1f4e6133">
-                <annotation></annotation>
-                <name>Replace</name>
-                <ignoreCase>false</ignoreCase>
-                <searchString>primerDia</searchString>
-                <replaceString>&apos;${primerDia}&apos;</replaceString>
-                <replaceType>ALL</replaceType>
-              </replaceAllFilter>
-              <replaceAllFilter id="3f7e1712-1466-4c77-a15e-7e2867f17444">
-                <annotation></annotation>
-                <name>Replace</name>
-                <ignoreCase>false</ignoreCase>
-                <searchString>ultimoDia</searchString>
-                <replaceString>&apos;${ultimoDia}&apos;</replaceString>
-                <replaceType>ALL</replaceType>
-              </replaceAllFilter>
-            </filters>
-          </expression>
-        </flowVariableAssignment>
-      </assignments>
       <throttleSize>0</throttleSize>
     </step>
   </steps>

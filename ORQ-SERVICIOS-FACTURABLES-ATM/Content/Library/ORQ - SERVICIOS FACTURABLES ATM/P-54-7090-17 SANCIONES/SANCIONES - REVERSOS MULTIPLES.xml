@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flow id="d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a">
-  <descriptionCdata><![CDATA[d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.09711f11-7302-4599-81fa-a85067d5cd80.transition.description=Registros Eliminados\: ${updateCount}
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.0b14e3f1-d655-41e8-8416-0796a7e4358d.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.0ec686d8-5ba8-462f-895e-3947c334b5e3.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.529bfe01-87bc-4d43-a51e-b999a59f4607.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.74d3552f-4e12-4bdf-908b-7331b2824cfb.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.79a5b1c4-2508-4537-8386-44ccb429d32c.transition.description=Entre ${primerDia} y ${ultimoDia}
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.819be953-72d5-4077-938f-93eb585c9e14.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.973a4707-6a1d-4fe4-aa98-0e43513296ae.description=<pre>This operation writes the data from "contents" input to the requested file. The operation can be used to overwrite existing content of the file, append extra lines to it or even create a new file.\n\nInputs\:\n    source -  Full path to file. If the file does not exist it is created first.\n    contents - The content that should be written to the file. This input field can contain more lines, separated by a delimiter. If it contains the new line character (\\n or \\r\\n), but this is not the delimiter, this character will be escaped and written to file.  \nExample\: "This is line no. 01\\nThis is line no. 2\\n" where \\n is the delimiter.\n    delimiter - Specifies the newline delimiter that is used to split the "contents" input field into separate lines that will be further written to the given file.\nExamples\: \\n, \\r\\n, etc\n    characterSet - The character encoding used to write to the file. \nDefault\: UTF-8. \nValid values\: windows-1252, UTF-16, UTF-16BE,  ISO-8859-1, US-ASCII, Shift_JIS etc.\n    overwrite - Specifies whether to overwrite the file or append to it. \nDefault\: true. \nValid values\: true, false or the empty string. If this is left empty, the file will be overwritten.\n\nResults\:\n    returnResult - This is the primary output. It contains the "success" confirmation message if the operation successfully completes, or an exception message otherwise.\n    returnCode - It has the value 0 if the operation successfully completes and 1 otherwise.\n    exception - This contains an exception message if the operation fails.\n\nResponses\:\n    success - File/directory was written successfully.\n    failure - Unable to write to file/directory, empty contents or source.\n\nExamples\:\n1. This is a valid input example for using this operation on Windows\:\n    source\: C\:\\Program Files\\example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n\n2. This is a valid input example for using this operation on Linux\:\n    source\: /root/example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.a4c349af-865e-4d8b-8e39-ca1d2dfd1fc2.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.bf2720e9-1f69-44ce-9766-2fe5db7af165.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.bfcb2631-fef7-48f9-beb2-2cf9e76ffd1f.transition.description=Registros Retornados\: ${queryCount}
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.c3988867-b005-4bf5-8e1d-b9d217d19371.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.c426a400-e401-439b-806a-053fbb232aec.description=<pre>Uses Secure FTP (SFTP) to send a file on a RAS to a remote host.  \n\nInputs\:\nhost - IP address/host name.\nport - The port to connect to on host.\nusername - Remote username.\npassword - Password to authenticate. If using a private key file this will be used as the passphrase for the file.\nprivateKey - Absolute path for private key file for public/private key authentication.\nlocalFile - The path to the file on the RAS to be copied remotely using SFTP.\nremoteLocation - The remote location where the file is to be placed.\ncharacterSet - The name of the control encoding to use. Examples\: UTF-8, EUC-JP, SJIS.  Default is UTF-8.\ncloseSession - Close the SSH session at completion of operation?  Default value is true.  If false the SSH session can be reused by other SFTP commands in the same flow.  Valid values\: true, false.\n\nResponses\:\nsuccess - Command completed successfully.\nfailure - Command failed.\n\nResult\:\nLocal file will be copied to Remote system.\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.dc07aba4-66f3-4136-b534-de4bb4dc1dce.transition.description=CALCULO DE\: ${MONTH}
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.eeda54a2-1838-4ee3-ad0a-784acd7767c4.description=<pre>\nRuns a SQL SELECT query.\nReturns the complete result like the following\:\na<colDelimiter>1<rowDelimiter>b<colDelimiter>2\n\nInputs\:\n    DBServerName - The hostname or ip address of db server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the server.\n    Password -  The password to use when connecting to the server.\n    instance - The name instance of MSSQL Server. Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    colDelimiter - The delimiter to use between columns in resulting table.\nDefault value\: comma (,)\n    rowDelimiter - The delimiter to use between rows in resulting table.\nDefault value\: \\n\n    timeout - Seconds to wait before timing out the SQL command execution.\nDefault value\: 0 \n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. Form more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n\nResults\:\n    returnResult - This is the primary output. Return the list of all the data returned by the query. It is delimited by colDelimiter and rowDelimiter. \n\nResponses\:\n    success - The command was executed successfully. \n    failure - Failed to execute the command. \n\nNote\: \n    SQL statement other than SELECT statement (like INSERT, UPDATE or DELETE) is not supported. In case statements other than SELECT are executed then the operation will fail but the statements might get partially or fully executed in the database.\n    Check the JDBC  folder description for details on how to load database connectors.\n\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.ef31cf5c-cbde-41bb-b9a8-3e9083fe6ae0.description=<pre>\nPerforms a mathematical operation on two numbers\n\nInputs\:\noperator - The operation to perform (+, -, *, /, <, >, <\=, >\=, \=\=, \!\=).\nvalue1 - The first value.\nvalue2 - The second value.\n\nReturns\:\nThe result of the operation, for boolean values this is true or false.\n\nResponses\:\nsuccess - The operation completed successfully. If a boolean operation, it evaluated to true.\nfailure - Something went wrong or the boolean operation returned false.\n</pre>
-d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
+<flow id="7c773908-1610-4e45-a0cd-28da353b648e">
+  <descriptionCdata><![CDATA[7c773908-1610-4e45-a0cd-28da353b648e.05136587-bdbf-4244-873d-ae95c2e2709a.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.0ad22190-0fc8-4430-ae92-8d618fd50668.description=<pre>\nPerforms a mathematical operation on two numbers\n\nInputs\:\noperator - The operation to perform (+, -, *, /, <, >, <\=, >\=, \=\=, \!\=).\nvalue1 - The first value.\nvalue2 - The second value.\n\nReturns\:\nThe result of the operation, for boolean values this is true or false.\n\nResponses\:\nsuccess - The operation completed successfully. If a boolean operation, it evaluated to true.\nfailure - Something went wrong or the boolean operation returned false.\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.0ee04fb6-383c-4d7a-a42c-fcc72d7bfd1d.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
+7c773908-1610-4e45-a0cd-28da353b648e.108d6a90-01b3-47c7-9347-02fd4d862fc0.transition.description=Registros Eliminados\: ${updateCount}
+7c773908-1610-4e45-a0cd-28da353b648e.174a2238-28a8-4092-9709-4d921bb90b6d.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.1c98e918-b793-48be-acd1-a548dcc7cc09.description=<pre>This operation writes the data from "contents" input to the requested file. The operation can be used to overwrite existing content of the file, append extra lines to it or even create a new file.\n\nInputs\:\n    source -  Full path to file. If the file does not exist it is created first.\n    contents - The content that should be written to the file. This input field can contain more lines, separated by a delimiter. If it contains the new line character (\\n or \\r\\n), but this is not the delimiter, this character will be escaped and written to file.  \nExample\: "This is line no. 01\\nThis is line no. 2\\n" where \\n is the delimiter.\n    delimiter - Specifies the newline delimiter that is used to split the "contents" input field into separate lines that will be further written to the given file.\nExamples\: \\n, \\r\\n, etc\n    characterSet - The character encoding used to write to the file. \nDefault\: UTF-8. \nValid values\: windows-1252, UTF-16, UTF-16BE,  ISO-8859-1, US-ASCII, Shift_JIS etc.\n    overwrite - Specifies whether to overwrite the file or append to it. \nDefault\: true. \nValid values\: true, false or the empty string. If this is left empty, the file will be overwritten.\n\nResults\:\n    returnResult - This is the primary output. It contains the "success" confirmation message if the operation successfully completes, or an exception message otherwise.\n    returnCode - It has the value 0 if the operation successfully completes and 1 otherwise.\n    exception - This contains an exception message if the operation fails.\n\nResponses\:\n    success - File/directory was written successfully.\n    failure - Unable to write to file/directory, empty contents or source.\n\nExamples\:\n1. This is a valid input example for using this operation on Windows\:\n    source\: C\:\\Program Files\\example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n\n2. This is a valid input example for using this operation on Linux\:\n    source\: /root/example.txt\n    contents\: line1,line2,line3\n    delimiter\: ,\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.1dc906fb-535f-4e45-ba0f-399c84891e70.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.1f9ef2ad-a85e-4269-a163-647c40a25b0d.description=<pre>\nThis operation waits for the number of seconds specified in the "seconds" input.\n\nInputs\:\n    seconds - The number of seconds to wait.\n\nResults\:\n    resultString \u2013 This is the primary output. It contains the "completed sleep" message if the operation completed successfully and an error message otherwise. \n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation completed unsuccessfully.\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.34a1d17e-1c7b-47ea-98a2-83c65809bf93.description=<pre>\nRuns a SQL SELECT query.\nReturns the complete result like the following\:\na<colDelimiter>1<rowDelimiter>b<colDelimiter>2\n\nInputs\:\n    DBServerName - The hostname or ip address of db server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the server.\n    Password -  The password to use when connecting to the server.\n    instance - The name instance of MSSQL Server. Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    colDelimiter - The delimiter to use between columns in resulting table.\nDefault value\: comma (,)\n    rowDelimiter - The delimiter to use between rows in resulting table.\nDefault value\: \\n\n    timeout - Seconds to wait before timing out the SQL command execution.\nDefault value\: 0 \n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. Form more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n\nResults\:\n    returnResult - This is the primary output. Return the list of all the data returned by the query. It is delimited by colDelimiter and rowDelimiter. \n\nResponses\:\n    success - The command was executed successfully. \n    failure - Failed to execute the command. \n\nNote\: \n    SQL statement other than SELECT statement (like INSERT, UPDATE or DELETE) is not supported. In case statements other than SELECT are executed then the operation will fail but the statements might get partially or fully executed in the database.\n    Check the JDBC  folder description for details on how to load database connectors.\n\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.38427a5a-2947-42fc-9272-821a317bfab5.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
+7c773908-1610-4e45-a0cd-28da353b648e.9ac1c2d6-7e42-496d-b7b8-369143ca4a1f.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.9c93c092-d88b-4090-beef-ac9dc733a6e4.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.b58f8600-b9d0-47bd-ab80-39990b270f95.description=<pre>\nThis operation converts the date input value from one date/time format (specified by dateFormat) to another date/time format (specified by outFormat) using locale settings (language and country).\nYou can use the flow "Get Current Date and Time" to check upon the default date/time format from the Java environement.  \n\nInputs\:\n    date - The date to parse/convert.\n    dateFormat - The format of the input date.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    dateLocaleLang - The locale language for input dateFormat string. It will be ignored if dateFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    dateLocaleCountry - The locale country for input dateFormat string. It will be ignored if dateFormat is empty or dateLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n    outFormat - The format of the output date/time.\nDefault value\: default date/time format from the Java environement (which is dependent on the OS date/time format)\nExamples\: unix, yyyy-MM-dd'T'HH\:mm\:ss.SSSXXX, h\:mm a\n    outLocaleLang - The locale language for output string. It will be ignored if outFormat is empty. \nDefault value\: default locale language from the Java environement (which is dependent on the OS locale language)\nExamples\: en, ja\n    outLocaleCountry - The locale country for output string. It will be ignored if outFormat is empty or outLocaleLang is empty.\nDefault value\: default locale country from the Java environement (which is dependent on the OS locale country)\nExample\: US, FR\n\nResults\:\n    returnResult - The date in the new format.\n\nResponses\:\n    success - The date was converted.\n    failure - The date could not be converted.\n\nNotes\:\n    1. If default locale language from the Java environement is English, the input dateFormat is empty and the input outFormat is empty, the input date should be in the format of "July 13, 2006 10\:04\:08 AM". If the user specifies dateFormat as "dd-MM-yyyy HH\:mm\:ss", the input date should be in the format of "13-07-2006 10\:04\:08". If the input outFormat is empty, the result will be "July 13, 2006 10\:04\:08 AM". If the input outFormat is "yyyy-MM-dd", the result will be "2006-07-13". The dateFormat for "July 13, 2006 10\:04\:078 AM" is "MMM dd, yyyy HH\:mm\:ss a".\n    2. Note that the dateFormat and outFormat inputs are case sensitive. 'M' is used for months representation and 'm' for minutes.\n    3. Within date and time pattern strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. "''" represents a single quote. All other characters are not interpreted; they're simply copied into the output string during formatting or matched against the input string during parsing. The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved)\:\n\nLetter\tDate or Time Component\t\t\tPresentation\t\tExamples\nG\tEra designator\t\t\t\tText\t\tAD\ny\tYear\t\t\t\tYear\t\t1996;\u00A096\nY\tWeek year\t\t\t\tYear\t\t2009;\u00A009\nM\tMonth in year\t\t\t\tMonth\t\tJuly;\u00A0Jul;\u00A007\nw\tWeek in year\t\t\t\tNumber\t\t27\nW\tWeek in month\t\t\t\tNumber\t\t2\nD\tDay in year\t\t\t\tNumber\t\t189\nd\tDay in month\t\t\t\tNumber\t\t10\nF\tDay of week in month\t\t\tNumber\t\t2\nE\tDay name in week\t\t\tText\t\tTuesday;\u00A0Tue\nu\tDay number of week (1 \= Monday, ..., 7 \= Sunday)\tNumber\t\t1\na\tAm/pm marker\t\t\t\tText\t\tPM\nH\tHour in day (0-23)\t\t\tNumber\t\t0\nk\tHour in day (1-24)\t\t\tNumber\t\t24\nK\tHour in am/pm (0-11)\t\t\tNumber\t\t0\nh\tHour in am/pm (1-12)\t\t\tNumber\t\t12\nm\tMinute in hour\t\t\t\tNumber\t\t30\ns\tSecond in minute\t\t\tNumber\t\t55\nS\tMillisecond\t\t\t\tNumber\t\t978\nz\tTime zone\t\t\t\tGeneral time zone\tPacific Standard Time;\u00A0PST;\u00A0GMT-08\:00\nZ\tTime zone\t\t\t\tRFC 822 time zone\t-800\nX\tTime zone\t\t\t\tISO 8601 time zone\t-08;\u00A0-0800;\u00A0-08\:00\nSpecial case\:\nunix\tUnix timestamp\t\t\tNumber\t\t1384326000\n\nExamples for the date 2001-07-04 12\:08\:56 in U.S. Pacific Time\:\n\nDate\t\t\tDateFromat\t\t\tDateLocaleLang\tDateLocaleCountry\n2001.07.04 AD at 12\:08\:56 PDT\tyyyy.MM.dd G 'at' HH\:mm\:ss z\t\ten\t\tUS\nWed, Jul 4, '01\t\t\tEEE, MMM d, ''yy\t\ten\t\tUS\n2001-07-04T12\:08\:56.235+0700\tyyyy-MM-dd'T'HH\:mm\:ss.SSSZ\ten\t\tUS\n2001-07-04T12\:08\:56.235-07\:00\tyyyy-MM-dd'T'HH\:mm\:ss.SSSXXX\ten\t\tUS\n1309781336\t\t\tunix\t\t\t-\t\t-\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.b78a426e-58dd-48f3-9a92-cc6e8d962809.transition.description=CALCULO DE\: ${MONTH}
+7c773908-1610-4e45-a0cd-28da353b648e.dca5be19-caf7-4d1c-a648-4a99c92d3e1e.description=<pre>Uses Secure FTP (SFTP) to send a file on a RAS to a remote host.  \n\nInputs\:\nhost - IP address/host name.\nport - The port to connect to on host.\nusername - Remote username.\npassword - Password to authenticate. If using a private key file this will be used as the passphrase for the file.\nprivateKey - Absolute path for private key file for public/private key authentication.\nlocalFile - The path to the file on the RAS to be copied remotely using SFTP.\nremoteLocation - The remote location where the file is to be placed.\ncharacterSet - The name of the control encoding to use. Examples\: UTF-8, EUC-JP, SJIS.  Default is UTF-8.\ncloseSession - Close the SSH session at completion of operation?  Default value is true.  If false the SSH session can be reused by other SFTP commands in the same flow.  Valid values\: true, false.\n\nResponses\:\nsuccess - Command completed successfully.\nfailure - Command failed.\n\nResult\:\nLocal file will be copied to Remote system.\n</pre>
+7c773908-1610-4e45-a0cd-28da353b648e.f3b97e2d-ebeb-42b2-8572-45785879a22b.transition.description=Entre ${primerDia} y ${ultimoDia}
+7c773908-1610-4e45-a0cd-28da353b648e.fbaa799c-fd0e-4039-a21f-48752920ba6f.transition.description=Registros Retornados\: ${queryCount}
 ]]></descriptionCdata>
   <annotation></annotation>
-  <name>SANCIONES - DESTINO NO DISPONIBLE</name>
+  <name>SANCIONES - REVERSOS MULTIPLES</name>
   <categories/>
   <inputs>
-    <userInputBinding id="f3ac7421-25bf-4c70-bcd9-18a286aacdab">
+    <userInputBinding id="b2579e9f-0950-4bf2-8864-f6ec0b040b1f">
       <annotation></annotation>
       <assignFromContext>false</assignFromContext>
       <assignToContext>false</assignToContext>
@@ -37,7 +37,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <isMultiSelect>false</isMultiSelect>
       <sourceDelimiter>|</sourceDelimiter>
     </userInputBinding>
-    <userInputBinding id="fb4878e1-e536-45bd-99be-f7db23c40917">
+    <userInputBinding id="090cb323-139e-48c4-a0f1-cb43c2bd17f5">
       <annotation></annotation>
       <assignFromContext>false</assignFromContext>
       <assignToContext>false</assignToContext>
@@ -54,7 +54,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
     </userInputBinding>
   </inputs>
   <possibleResponses>
-    <opResponse id="cc0d7ef5-d44b-4a62-bd56-8bd2541c9a5f">
+    <opResponse id="911e9353-b08c-40ce-ace4-132219b0688d">
       <annotation></annotation>
       <name>success</name>
       <isDefault>true</isDefault>
@@ -62,7 +62,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <type>RESOLVED</type>
       <matchRules/>
     </opResponse>
-    <opResponse id="0d3eef50-7ae8-414f-ae61-2a8b9d373010">
+    <opResponse id="15db4210-d66d-4ee7-ac95-44d6887579e5">
       <annotation></annotation>
       <name>unknown</name>
       <isDefault>false</isDefault>
@@ -70,7 +70,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <type>NO_ACTION_TAKEN</type>
       <matchRules/>
     </opResponse>
-    <opResponse id="512432c6-c847-46bc-b1bc-2b8202662717">
+    <opResponse id="1b90d456-b54c-48c2-a2a7-4b45ecd38d61">
       <annotation></annotation>
       <name>failure</name>
       <isDefault>false</isDefault>
@@ -80,14 +80,14 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
     </opResponse>
   </possibleResponses>
   <availableResultExpressions/>
-  <resultExpression id="284f6e00-cea8-4866-844f-e5743194039b">
+  <resultExpression id="8765fe73-92ef-4301-b7b8-f31a9b03668a">
     <annotation></annotation>
     <name>FailureMessage</name>
     <fieldName>FailureMessage</fieldName>
     <sourceType>RAWRESULT</sourceType>
     <filters/>
   </resultExpression>
-  <iconSpec id="edf46d3e-4732-4977-af12-c683d08a9aa1">
+  <iconSpec id="cfff42a8-28ba-4710-8fa3-527aa173d1d5">
     <baseIcon>application_general.png</baseIcon>
     <basePath>/Application/</basePath>
     <readOnly>false</readOnly>
@@ -98,8 +98,8 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
   <compatibleRuntimeContext>false</compatibleRuntimeContext>
   <historyCheckPointFlow>true</historyCheckPointFlow>
   <steps>
-    <step id="fbd73018-5b69-4113-8c7e-fa7067a9d16a">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.description</annotation>
+    <step id="9ac1c2d6-7e42-496d-b7b8-369143ca4a1f">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.9ac1c2d6-7e42-496d-b7b8-369143ca4a1f.description</annotation>
       <name>Check Null MES_FACT</name>
       <bounds>
         <x>364.0</x>
@@ -107,7 +107,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="03cd8f3e-d9a4-4e4d-94e8-4da547f45fdc">
+      <iconSpec id="5b41584d-3a8f-4da7-a371-3bf6180f4818">
         <baseIcon>compare.png</baseIcon>
         <basePath>Utilities/</basePath>
         <readOnly>false</readOnly>
@@ -126,7 +126,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="fed45e6a-4757-4154-943a-5a98a5572f15">
+        <staticBinding id="b81d6f73-2e1c-430b-aab0-3def59ff3a85">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -139,7 +139,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
           <value>MES_FACT</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="50ec0574-737c-44b6-90a7-7d15e630234f">
+        <staticBinding id="bcbf0933-1707-4ac3-b40c-b389287c81e2">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -154,7 +154,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="1fc9d7fd-1f47-4739-9e29-fbfcecb5d159">
+        <transition id="070bee8b-5063-451c-9afa-de24eab78ef4">
           <annotation></annotation>
           <name>notNull</name>
           <command>NEXT</command>
@@ -163,10 +163,10 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>c3988867-b005-4bf5-8e1d-b9d217d19371</refId>
+            <refId>1dc906fb-535f-4e45-ba0f-399c84891e70</refId>
           </destination>
           <source>
-            <refId>fbd73018-5b69-4113-8c7e-fa7067a9d16a</refId>
+            <refId>9ac1c2d6-7e42-496d-b7b8-369143ca4a1f</refId>
           </source>
           <positions>
             <point>
@@ -183,7 +183,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="f55d2c93-6adf-4314-908f-46820a3086e2">
+        <transition id="70b73ddd-1bbe-4b85-be5c-26fb8d9385a7">
           <annotation></annotation>
           <name>isNull</name>
           <command>NEXT</command>
@@ -192,10 +192,10 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>0b14e3f1-d655-41e8-8416-0796a7e4358d</refId>
+            <refId>1f9ef2ad-a85e-4269-a163-647c40a25b0d</refId>
           </destination>
           <source>
-            <refId>fbd73018-5b69-4113-8c7e-fa7067a9d16a</refId>
+            <refId>9ac1c2d6-7e42-496d-b7b8-369143ca4a1f</refId>
           </source>
           <positions>
             <point>
@@ -220,8 +220,8 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="0b14e3f1-d655-41e8-8416-0796a7e4358d">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.0b14e3f1-d655-41e8-8416-0796a7e4358d.description</annotation>
+    <step id="1f9ef2ad-a85e-4269-a163-647c40a25b0d">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.1f9ef2ad-a85e-4269-a163-647c40a25b0d.description</annotation>
       <name>Usa Script Rango_Mes_Anterior</name>
       <bounds>
         <x>275.0</x>
@@ -229,7 +229,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="2b21370b-514d-44e7-ba08-1a6c4a7fa7af">
+      <iconSpec id="01aa7038-6391-4947-bfee-2b5d1f4e0842">
         <baseIcon>hourglass.png</baseIcon>
         <basePath>Utilities</basePath>
         <readOnly>false</readOnly>
@@ -247,9 +247,9 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <historyCheckPointStep>true</historyCheckPointStep>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
-      <scriptlet id="c2c3a732-46bc-46fb-9f71-fa30decc5171">
+      <scriptlet id="d9f7deb0-2a6f-4a29-80ee-607e6233400b">
         <annotation></annotation>
-        <name>Step Usa Script Rango_Mes_Anterior in Flow SANCIONES - DESTINO NO DISPONIBLE (0b14e3f1-d655-41e8-8416-0796a7e4358d)</name>
+        <name>Step Usa Script Rango_Mes_Anterior in Flow SANCIONES - REVERSOS MULTIPLES (1f9ef2ad-a85e-4269-a163-647c40a25b0d)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>e76d1548-888f-4713-bc63-2c0a2daf1a15</refId>
@@ -257,7 +257,7 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
         </scriptRef>
       </scriptlet>
       <bindings>
-        <staticBinding id="c088980d-2068-40f9-8f32-3b0b5cb09520">
+        <staticBinding id="32f137ea-932f-43fd-a819-bd33da103aa0">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -272,8 +272,8 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="79a5b1c4-2508-4537-8386-44ccb429d32c">
-          <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.79a5b1c4-2508-4537-8386-44ccb429d32c.transition.description</annotation>
+        <transition id="f3b97e2d-ebeb-42b2-8572-45785879a22b">
+          <annotation>7c773908-1610-4e45-a0cd-28da353b648e.f3b97e2d-ebeb-42b2-8572-45785879a22b.transition.description</annotation>
           <name>done</name>
           <command>NEXT</command>
           <linkMode>false</linkMode>
@@ -281,10 +281,10 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>529bfe01-87bc-4d43-a51e-b999a59f4607</refId>
+            <refId>05136587-bdbf-4244-873d-ae95c2e2709a</refId>
           </destination>
           <source>
-            <refId>0b14e3f1-d655-41e8-8416-0796a7e4358d</refId>
+            <refId>1f9ef2ad-a85e-4269-a163-647c40a25b0d</refId>
           </source>
           <positions>
             <point>
@@ -309,8 +309,8 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="eeda54a2-1838-4ee3-ad0a-784acd7767c4">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.eeda54a2-1838-4ee3-ad0a-784acd7767c4.description</annotation>
+    <step id="34a1d17e-1c7b-47ea-98a2-83c65809bf93">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.34a1d17e-1c7b-47ea-98a2-83c65809bf93.description</annotation>
       <name>SQL Query All Rows</name>
       <bounds>
         <x>241.0</x>
@@ -318,12 +318,12 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="d6fc68bd-a6e2-42bb-aad7-42c40ff7e9fb">
+      <iconSpec id="e1fcf863-baba-45cf-9c76-7917d5ff0a62">
         <baseIcon>database_general.png</baseIcon>
         <basePath>/Databases/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="60d390b3-b712-41ae-8220-4c63320a6313">
+          <iconSpec id="2428b6c1-760b-4058-b4aa-ba549e8347f7">
             <baseIcon>view.png</baseIcon>
             <basePath>/Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -343,9 +343,9 @@ d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.fbd73018-5b69-4113-8c7e-fa7067a9d16a.descri
       <historyCheckPointStep>true</historyCheckPointStep>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
-      <scriptlet id="3e911059-70b1-4c66-9dbc-1a6986ffcf1b">
+      <scriptlet id="ec74c8fe-a20f-4005-b5cc-e51a7ac254e1">
         <annotation></annotation>
-        <name>Step SQL Query All Rows in Flow SANCIONES - DESTINO NO DISPONIBLE (eeda54a2-1838-4ee3-ad0a-784acd7767c4)</name>
+        <name>Step SQL Query All Rows in Flow SANCIONES - REVERSOS MULTIPLES (34a1d17e-1c7b-47ea-98a2-83c65809bf93)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -375,18 +375,17 @@ if(queryCount &gt; 0){
 	    linea2 = linea_insert.split(&quot;,&quot;);
 	    linea_insert2 = &quot;&apos;&quot;+linea2[0]+&quot;&apos;,&quot;; //BANCO -&gt; UIM_BAN_CODIGO_BANCO
 	    linea_insert2 += &quot;&apos;NA&apos;,&quot;; 			//BANCO -&gt; UIM_BAN_CODIGO_BANCO
-	    linea_insert2 += linea2[1]+&quot;,&quot;; 	//TOTAL_TNX_72 -&gt; UIM_TOTAL_TNX_ADQ
+	    linea_insert2 += linea2[1]+&quot;,&quot;; 	//TOTAL_TNX_MULT -&gt; UIM_TOTAL_TNX_ADQ
 	    linea_insert2 += linea2[2]+&quot;,&quot;; 	//TOTAL_TNX -&gt; UIM_TOTAL_TNX
-	    linea_insert2 += linea2[3]+&quot;,&quot;; 	//PORCENTAJE -&gt; UIM_IMP_NIPS
+	    linea_insert2 += linea2[3]+&quot;,&quot;; 	//CUOTA_INTERBANCARIA -&gt; IMP_RETIROS
 	    linea_insert2 += linea2[4]+&quot;,&quot;;		//TARIFA_SWITCH -&gt; UIM_IMP_VTG
-	    linea_insert2 += linea2[5]+&quot;,&quot;; 	//CUOTA_INTERBANCARIA -&gt; IMP_RETIROS
-	    linea_insert2 += linea2[6]+&quot;,&quot;; 	//CUOTA_SWITCH -&gt; IMP_CONS
-	    linea_insert2 += linea2[7]+&quot;,&quot;; 	//SUBTOTAL -&gt; UIM_SUBTOTAL
-	    linea_insert2 += linea2[8]+&quot;,&quot;; 	//IVA -&gt; UIM_IVA
-	    linea_insert2 += linea2[9]; 		//TOTAL -&gt; UIM_TOTAL
+	    linea_insert2 += linea2[5]+&quot;,&quot;; 	//CUOTA_SWITCH -&gt; IMP_CONS
+	    linea_insert2 += linea2[6]+&quot;,&quot;; 	//SUBTOTAL -&gt; UIM_SUBTOTAL
+	    linea_insert2 += linea2[7]+&quot;,&quot;; 	//IVA -&gt; UIM_IVA
+	    linea_insert2 += linea2[8]; 		//TOTAL -&gt; UIM_TOTAL
 	    
-	    insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_MENSUAL (UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_ADQ,UIM_TOTAL_TNX,UIM_IMP_NIPS,UIM_IMP_VTG,UIM_IMP_RETIROS,UIM_IMP_CONS,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT) VALUES (to_date(&quot;&apos;+UIM_FECHA_PROCESO+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;,&apos;+&apos;&quot;SAN&quot;&apos;+&apos;,&apos;+&apos;&quot;CODIGO 72&quot;&apos;+&apos;,&apos;+UIM_MES_FACT+&apos;,&apos;+UIM_ANIO_FACT+&apos;);\n&apos;;
-		insert2+=UIM_FECHA_PROCESO+&apos;,&apos;+linea_insert2+&apos;,&apos;+&apos;&quot;SAN&quot;&apos;+&apos;,&apos;+&apos;&quot;CODIGO 72&quot;&apos;+&apos;,&apos;+UIM_MES_FACT+&apos;,&apos;+UIM_ANIO_FACT+&apos;\n&apos;;
+	    insert+=&apos;INSERT INTO TBL_RED_USO_INFRA_MENSUAL (UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_ADQ,UIM_TOTAL_TNX,UIM_IMP_RETIROS,UIM_IMP_VTG,UIM_IMP_CONS,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT) VALUES (to_date(&quot;&apos;+UIM_FECHA_PROCESO+&apos;&quot;,&quot;yyyy-mm-dd&quot;),&apos;+linea_insert2+&apos;,&apos;+&apos;&quot;SAN&quot;&apos;+&apos;,&apos;+&apos;&quot;REV DESF&quot;&apos;+&apos;,&apos;+UIM_MES_FACT+&apos;,&apos;+UIM_ANIO_FACT+&apos;);\n&apos;;
+		insert2+=UIM_FECHA_PROCESO+&apos;,&apos;+linea_insert2+&apos;,&apos;+&apos;&quot;SAN&quot;&apos;+&apos;,&apos;+&apos;&quot;REV DESF&quot;&apos;+&apos;,&apos;+UIM_MES_FACT+&apos;,&apos;+UIM_ANIO_FACT+&apos;\n&apos;;
 		insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
 		insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
 	} // fin for
@@ -406,7 +405,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
         <type>NASHORN</type>
       </scriptlet>
       <bindings>
-        <staticBinding id="850a755a-00df-40dc-9981-2d78b2740ad8">
+        <staticBinding id="350e07e0-9685-4775-855c-3550d9235a3c">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey>ORQ-USF RED D  IP</fromContextKey>
@@ -421,7 +420,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="b5ae15d2-fa06-403c-ba5a-ef3553ba5057">
+        <staticBinding id="20719448-a5fe-4ff2-8e0f-5fc2aaec7b8e">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -436,7 +435,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <value>Oracle</value>
           <record>false</record>
         </staticBinding>
-        <identityBinding id="ecef6735-c393-475c-b255-899cce80d398">
+        <identityBinding id="7082ae2a-faf8-4128-9596-38aada9426a1">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -455,7 +454,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           </link>
           <identityAttribute>USERNAME</identityAttribute>
         </identityBinding>
-        <identityBinding id="46a2c0fe-e060-4bd4-9eb2-e3b56f999bc1">
+        <identityBinding id="59e0bfa4-f676-4da8-be87-cc0f6c4f6fbe">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -474,7 +473,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           </link>
           <identityAttribute>PASSWORD</identityAttribute>
         </identityBinding>
-        <staticBinding id="9645dc8d-a789-4175-9756-63acb387a652">
+        <staticBinding id="a0ab16b0-2aeb-46cf-9694-59b8c341d2d2">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -486,7 +485,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="bf033951-271a-4834-a585-0c441cbab11e">
+        <staticBinding id="66f8352a-f032-4c97-ba82-28fa5ec02c5c">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey>ORQ-USF RED D PORT</fromContextKey>
@@ -501,7 +500,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <value>1533</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="35ad661f-f00b-4196-8465-977119c1bb2b">
+        <staticBinding id="d4309486-9960-4f8e-96e0-7558760c20ad">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey>ORQ-USF RED D SID</fromContextKey>
@@ -516,7 +515,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="920e69e7-7683-4f76-90eb-2b6ec8da279b">
+        <staticBinding id="c73a27c3-f8ac-4a6a-9c46-9aa503455013">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -530,7 +529,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="23633ab4-bb18-4f1a-95a8-634ba332afa7">
+        <staticBinding id="c4ba57df-73dd-47e8-84db-205b69cfc908">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -542,7 +541,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="8305037e-a704-45a6-a078-df15502bb973">
+        <staticBinding id="1900e12c-17e3-4fec-bf1b-a0cd8a45bcad">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -554,9 +553,10 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="e1e22a77-53a3-4ab0-b4a9-8e36c238f053">
+        <staticBinding id="228c9633-4620-401f-b556-e962094eaeca">
           <annotation></annotation>
           <toContextKey></toContextKey>
+          <fromContextKey>QUERY_REV_DESF</fromContextKey>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
@@ -565,64 +565,35 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <isPersisted>true</isPersisted>
           <inputSymbol>Command</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/*CODIGO 72*/
+          <value>/*REVERSOS DESFASADOS*/
 WITH TEMPORAL AS (
-SELECT TRIM(B.UID_BAN_CODIGO_BANCO) AS BANCO,
-SUM(CASE WHEN (TRIM(B.UID_RAZON_RESPUESTA)=&apos;72&apos; AND TRIM(B.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos;) THEN B.UID_TOTAL_TNX ELSE 0 END) AS TOTAL_TNX_72,
-SUM(CASE WHEN TRIM(B.UID_CODIGO_TIPO_MENSAJE) IN (&apos;0210&apos;) THEN B.UID_TOTAL_TNX ELSE 0 END) AS TOTAL_TNX,
-ROUND((SUM(CASE WHEN (TRIM(B.UID_RAZON_RESPUESTA)=&apos;72&apos; AND TRIM(B.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos;) THEN B.UID_TOTAL_TNX ELSE 0 END)*100)/SUM(CASE WHEN TRIM(B.UID_CODIGO_TIPO_MENSAJE) IN (&apos;0210&apos;) THEN B.UID_TOTAL_TNX ELSE 0 END),2) AS PORCENTAJE 
-FROM TBL_RED_USO_INFRA_DIARIO B 
+SELECT UID_CODIGO_BANCO AS BANCO, COUNT(*) AS DESFASADOS,
+NVL((SELECT SUM(C.UID_TOTAL_TNX) FROM TBL_RED_USO_INFRA_DIARIO C WHERE C.UID_DESCRIPCION=&apos;Codigo 72&apos; AND 
+TRIM(C.UID_CODIGO_TIPO_MENSAJE)=&apos;0210&apos; AND TRIM(C.UID_BAN_CODIGO_BANCO)=B.UID_CODIGO_BANCO AND C.UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;YYYY-MM-DD&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;)),0) AS TOTAL_TNX,
+COUNT(*)*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;REV DESF&apos;) AS CUOTA_INTERBANCARIA 
+FROM TBL_RED_USO_INFRA_DIARIO B
 WHERE 
-B.UID_SERVICIO=&apos;SAN&apos; AND B.UID_DESCRIPCION=&apos;Codigo 72&apos; AND 
+B.UID_SERVICIO=&apos;SAN&apos; AND B.UID_DESCRIPCION=&apos;Reversos Desfasados&apos; AND 
 TRIM(B.UID_CODIGO_BANCO) &lt;&gt; TRIM(B.UID_BAN_CODIGO_BANCO) AND 
-TRIM(B.UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;,&apos;B878&apos;) AND 
-TRIM(B.UID_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;,&apos;B878&apos;) AND 
-TRIM(B.UID_CODIGO_BANCO) NOT IN (SELECT TRIM(C.CODIGO_BANCO) FROM RED.BANCOS C WHERE TRIM(C.CODIGO_BANCO_P)=TRIM(B.UID_BAN_CODIGO_BANCO)) AND 
-B.UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;YYYY-MM-DD&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;) GROUP BY B.UID_BAN_CODIGO_BANCO
+TRIM(B.UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;,&apos;B878&apos;) AND
+TRIM(B.UID_BAN_CODIGO_BANCO) NOT IN (SELECT TRIM(C.CODIGO_BANCO) FROM RED.BANCOS C WHERE TRIM(C.CODIGO_BANCO_P)=TRIM(B.UID_CODIGO_BANCO)) AND 
+TRIM(B.UID_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;,&apos;B878&apos;) AND
+B.UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;YYYY-MM-DD&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;) 
+GROUP BY UID_CODIGO_BANCO
 )
 SELECT 
-BANCO, TOTAL_TNX_72, TOTAL_TNX, PORCENTAJE,
+BANCO, DESFASADOS, TOTAL_TNX,CUOTA_INTERBANCARIA,
 NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)  AS TARIFA_SWITCH,
-(CASE 
-    WHEN ROUND(PORCENTAJE,2) &gt; 2.5 THEN 
-    ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
-    (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
-    ELSE 0 END
-) AS CUOTA_INTERBANCARIA,
-ROUND((CASE WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279) ELSE 0 END),2) AS CUOTA_SWITH,
-ROUND((CASE 
-    WHEN ROUND(PORCENTAJE,2) &gt; 2.5 THEN 
-    ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
-    (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
-    ELSE 0 END) + 
-(CASE 
-    WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279) 
-    ELSE 0 END
-),2) AS SUBTOTAL,
-ROUND(((CASE 
-    WHEN ROUND(PORCENTAJE,2) &gt; 2.5 THEN 
-    ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
-    (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
-    ELSE 0 END) + 
-(CASE WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279) ELSE 0 END))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2) AS IVA,
-ROUND(((CASE 
-    WHEN ROUND(PORCENTAJE,2) &gt; 2.5 THEN 
-    ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
-    (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
-    ELSE 0 END) + 
-(CASE WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279) ELSE 0 END))
-+
-((CASE 
-    WHEN ROUND(PORCENTAJE,2) &gt; 2.5 THEN 
-    ROUND(((TOTAL_TNX_72 - (TOTAL_TNX*0.025))*
-    (SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;SANCIONES&apos; AND UIT_ENTIDAD=&apos;GENERAL&apos; AND UIT_OPERATIVA=&apos;NACIONAL&apos; AND UIT_GRUPO=&apos;CODIGO 72&apos;)),2)
-    ELSE 0 END) + 
-(CASE WHEN PORCENTAJE &gt; 2.5 THEN (TOTAL_TNX_72 - (TOTAL_TNX*0.025))*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279) ELSE 0 END))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2)
-AS TOTAL 
+ROUND((DESFASADOS*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)),2) AS CUOTA_SWITCH,
+ROUND(CUOTA_INTERBANCARIA+(DESFASADOS*NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)),2) AS SUBTOTAL,
+ROUND((CUOTA_INTERBANCARIA+(DESFASADOS* NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2) AS IVA,
+
+ROUND(CUOTA_INTERBANCARIA+(DESFASADOS*  NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279) ) +
+(CUOTA_INTERBANCARIA+(DESFASADOS* NVL((SELECT D.PRECIO FROM RED.TBL_RED_CUOTA_SWITCH D WHERE TOTAL_TNX BETWEEN D.INICIO AND D.FIN),0.2279)))*(SELECT UIT_IMPORTE_TARIFA_PSOS FROM TBL_RED_USO_INFRA_TARIFAS WHERE UIT_OPERACION=&apos;IVA&apos;),2) AS TOTAL 
 FROM TEMPORAL</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ac58d987-5a2b-4792-a8a6-34804734fc8c">
+        <staticBinding id="069550d9-5b90-4cf3-b5b5-26c485f057a1">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -637,7 +608,7 @@ FROM TEMPORAL</value>
           <value>,</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="900b23bf-3265-4cd9-8d15-0a88b80c91bb">
+        <staticBinding id="7f36f564-fb05-4f48-a289-1d3536b0e46c">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -653,7 +624,7 @@ FROM TEMPORAL</value>
 </value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="063ff006-81ec-463a-a152-f475df4c3845">
+        <staticBinding id="9abac880-474e-450f-a1fd-77440a27c14f">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -666,7 +637,7 @@ FROM TEMPORAL</value>
           <value>180</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="57a26c57-3317-4e25-af8e-739d3a6f47a3">
+        <staticBinding id="b5e20c39-4ff8-47eb-bd2e-bf99a803875a">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -680,8 +651,8 @@ FROM TEMPORAL</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="bfcb2631-fef7-48f9-beb2-2cf9e76ffd1f">
-          <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.bfcb2631-fef7-48f9-beb2-2cf9e76ffd1f.transition.description</annotation>
+        <transition id="fbaa799c-fd0e-4039-a21f-48752920ba6f">
+          <annotation>7c773908-1610-4e45-a0cd-28da353b648e.fbaa799c-fd0e-4039-a21f-48752920ba6f.transition.description</annotation>
           <name>success</name>
           <command>NEXT</command>
           <linkMode>false</linkMode>
@@ -689,10 +660,10 @@ FROM TEMPORAL</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>ef31cf5c-cbde-41bb-b9a8-3e9083fe6ae0</refId>
+            <refId>0ad22190-0fc8-4430-ae92-8d618fd50668</refId>
           </destination>
           <source>
-            <refId>eeda54a2-1838-4ee3-ad0a-784acd7767c4</refId>
+            <refId>34a1d17e-1c7b-47ea-98a2-83c65809bf93</refId>
           </source>
           <positions>
             <point>
@@ -709,7 +680,7 @@ FROM TEMPORAL</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="74c2dbae-d257-4092-a043-851f59b61f11">
+        <transition id="d2521426-9783-4c90-bb5d-fda034a245fa">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -718,10 +689,10 @@ FROM TEMPORAL</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>46631e35-2c91-4971-97b0-df2a74b7ebab</refId>
+            <refId>39291500-df50-4e40-95fc-a13e47644c8d</refId>
           </destination>
           <source>
-            <refId>eeda54a2-1838-4ee3-ad0a-784acd7767c4</refId>
+            <refId>34a1d17e-1c7b-47ea-98a2-83c65809bf93</refId>
           </source>
           <positions>
             <point>
@@ -744,19 +715,19 @@ FROM TEMPORAL</value>
         <refId>94ce36eb-1969-4418-8953-d204f7ec94ee</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="71f2a938-2d8c-4435-bf15-d7979f42f3ae">
+        <flowVariableAssignment id="749b5ea6-8dde-4a9e-8f7f-90a2a94d3f9e">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>MSG_ERROR</contextKey>
-          <expression id="299431e6-fe49-466d-8aa8-58a36de23f52">
+          <expression id="fb3c49ff-fd87-4798-89ba-89b49b8a7736">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <concat id="c6c7c4c5-9782-4954-8a6e-7627120f4f0c">
+              <concat id="86de1f4b-0a07-4f3b-9043-cfdafd6025a1">
                 <annotation></annotation>
                 <name>Format</name>
                 <text>QUERY DE REPORTE MENSUAL&lt;br&gt;
@@ -766,32 +737,32 @@ FROM TEMPORAL</value>
             </filters>
           </expression>
         </flowVariableAssignment>
-        <flowVariableAssignment id="25beb1b0-7bb8-4c2c-9c65-aa94aa0a0c55">
+        <flowVariableAssignment id="70f865e7-06f4-46d2-8e10-bf438ff2e238">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>queryCount</contextKey>
-          <expression id="b504d07e-b702-412c-a010-6f8e642f8db0">
+          <expression id="2a6a503f-1724-4c91-b899-4974949e9fc2">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <countLinesFilter id="5294a8b8-3409-4baf-8ae9-30a01ec84ee1">
+              <countLinesFilter id="8c43cdf1-3f50-4263-8d61-167720888fa3">
                 <annotation></annotation>
                 <name>Line Count</name>
               </countLinesFilter>
             </filters>
           </expression>
         </flowVariableAssignment>
-        <flowVariableAssignment id="ecab5d4e-b0e8-4c77-a99f-87619efa30dc">
+        <flowVariableAssignment id="12c618b7-6e1f-4040-b2b8-eaf4f930bdd7">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>query_results</contextKey>
-          <expression id="4f669d1e-977b-4ac5-bbcb-955d0be4973b">
+          <expression id="043a2ebb-f690-407b-ba1b-223a4579fcbd">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
@@ -802,7 +773,7 @@ FROM TEMPORAL</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <returnStep id="61e86120-792b-4e96-8250-31559992ea05">
+    <returnStep id="8273c8bd-7c39-4261-bf45-f24055155f4d">
       <annotation></annotation>
       <name>Resolved : success</name>
       <bounds>
@@ -811,7 +782,7 @@ FROM TEMPORAL</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="0904499a-62a9-4d8e-becc-eeb7315bab81">
+      <iconSpec id="b05fd951-7cfa-434b-93b0-7d40be48360d">
         <baseIcon>return_success.png</baseIcon>
         <basePath>System</basePath>
         <readOnly>true</readOnly>
@@ -831,7 +802,7 @@ FROM TEMPORAL</value>
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="373d78b8-ff78-4172-b584-4ee4f37fb8ab">
+        <transition id="c88b7b1c-0960-4a47-9b00-176feb33b547">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -840,10 +811,10 @@ FROM TEMPORAL</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>61e86120-792b-4e96-8250-31559992ea05</refId>
+            <refId>8273c8bd-7c39-4261-bf45-f24055155f4d</refId>
           </destination>
           <source>
-            <refId>61e86120-792b-4e96-8250-31559992ea05</refId>
+            <refId>8273c8bd-7c39-4261-bf45-f24055155f4d</refId>
           </source>
           <positions/>
         </transition>
@@ -852,8 +823,8 @@ FROM TEMPORAL</value>
       <returnStepType>RESOLVED</returnStepType>
       <assignments/>
     </returnStep>
-    <step id="973a4707-6a1d-4fe4-aa98-0e43513296ae">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.973a4707-6a1d-4fe4-aa98-0e43513296ae.description</annotation>
+    <step id="1c98e918-b793-48be-acd1-a548dcc7cc09">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.1c98e918-b793-48be-acd1-a548dcc7cc09.description</annotation>
       <name>Write to File</name>
       <bounds>
         <x>482.0</x>
@@ -861,12 +832,12 @@ FROM TEMPORAL</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="e3053dd1-4ca6-43aa-99d6-ca261363eaaf">
+      <iconSpec id="935d8d5e-15c3-49d4-b6f3-71e76d169052">
         <baseIcon>document_text.png</baseIcon>
         <basePath>Operating System/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="2ae8407c-3b64-4c52-85b3-903a34edd23c">
+          <iconSpec id="e3bd8df5-07c0-4142-9e74-62d8c887211a">
             <baseIcon>view.png</baseIcon>
             <basePath>Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -887,7 +858,7 @@ FROM TEMPORAL</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="9c347011-2eab-42ad-88a9-ab4494111fcf">
+        <staticBinding id="e415bbd9-0c75-4ce9-aa7e-c0f397a83fb6">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -899,10 +870,10 @@ FROM TEMPORAL</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI041.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI043.CSV</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="6523dffd-4ef0-4a3f-b44c-466a8d87e9de">
+        <staticBinding id="1f54a716-ed0d-4988-a622-64dbc5ca2875">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -914,11 +885,11 @@ FROM TEMPORAL</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>contents</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_72,UIM_TOTAL_TNX,UIM_PORCENTAJE,TARIFA_SWITCH,UIM_IMP_INTERBANCARIA,UIM_IMP_SWITCH,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT
+          <value>UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_72,UIM_TOTAL_TNX,UIM_IMP_INTERBANCARIA,TARIFA_SWITCH,UIM_IMP_SWITCH,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT
 ${INSERT_SENTENCE2}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="6dccdf59-5693-4e36-a89c-6393fce06add">
+        <staticBinding id="d52d71ce-5356-410f-a42c-6b5c838bb8da">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -932,7 +903,7 @@ ${INSERT_SENTENCE2}</value>
 </value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="837f67b5-1262-4299-bc98-0ef3257ba792">
+        <staticBinding id="64a6e921-ef34-45a9-af77-f7d7f37b4076">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -944,7 +915,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="99fdf2a4-acba-4033-bc19-da9bd680c23f">
+        <staticBinding id="a02b508f-bd75-47d2-88bc-120a3cb303ec">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -959,7 +930,7 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="e56cad9c-7197-49db-beda-8a1d1909d6ef">
+        <transition id="03041dd3-2b6b-4527-bc88-b05a78db5017">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -968,10 +939,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>c426a400-e401-439b-806a-053fbb232aec</refId>
+            <refId>dca5be19-caf7-4d1c-a648-4a99c92d3e1e</refId>
           </destination>
           <source>
-            <refId>973a4707-6a1d-4fe4-aa98-0e43513296ae</refId>
+            <refId>1c98e918-b793-48be-acd1-a548dcc7cc09</refId>
           </source>
           <positions>
             <point>
@@ -988,7 +959,7 @@ ${INSERT_SENTENCE2}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="3fdfbb1b-2bfc-4bb6-a193-2a9ca8ae4c8c">
+        <transition id="6f0984dc-c0a8-4cbb-a303-dbdd25513d10">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -997,10 +968,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>dfb79cf5-7590-4656-ad15-9719c0400e6b</refId>
+            <refId>c06976ef-a06f-4e6f-a9aa-6e9d30b58ae5</refId>
           </destination>
           <source>
-            <refId>973a4707-6a1d-4fe4-aa98-0e43513296ae</refId>
+            <refId>1c98e918-b793-48be-acd1-a548dcc7cc09</refId>
           </source>
           <positions>
             <point>
@@ -1023,19 +994,19 @@ ${INSERT_SENTENCE2}</value>
         <refId>af728dc4-d7a0-4e8e-917a-74c188f2e470</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="14089a49-7a4b-446a-b50c-8088fa333759">
+        <flowVariableAssignment id="fb9a1d8a-8b7e-4f20-b92a-62fc65c1d4e2">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>MSG_ERROR</contextKey>
-          <expression id="cb95af23-d8c3-4ce1-ba31-625988fb3842">
+          <expression id="ec1f0f93-4225-405a-8cfd-7939a29a6b59">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <concat id="3d9915df-a0b9-42b3-9140-153982967947">
+              <concat id="d0ab9467-dd12-4746-a489-e9964b09e09a">
                 <annotation></annotation>
                 <name>Format</name>
                 <text>ESCRITURA DE ARCHIVO DE REPORTE MENSUAL&lt;br&gt;
@@ -1048,8 +1019,8 @@ ${INSERT_SENTENCE2}</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="ef31cf5c-cbde-41bb-b9a8-3e9083fe6ae0">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.ef31cf5c-cbde-41bb-b9a8-3e9083fe6ae0.description</annotation>
+    <step id="0ad22190-0fc8-4430-ae92-8d618fd50668">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.0ad22190-0fc8-4430-ae92-8d618fd50668.description</annotation>
       <name>Evaluate Expression</name>
       <bounds>
         <x>421.0</x>
@@ -1057,7 +1028,7 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="de670d52-7f62-4e73-b594-e738045e50b7">
+      <iconSpec id="18b1bece-8a2b-49d3-8aa1-d124b1a361f0">
         <baseIcon>calculator.png</baseIcon>
         <basePath>Others</basePath>
         <readOnly>false</readOnly>
@@ -1076,7 +1047,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="6e8c6fb6-c3ce-4401-801f-5dc52f489d3e">
+        <staticBinding id="f3aab8f8-a33a-4da0-bebd-d4018d876a79">
           <annotation></annotation>
           <fromContextKey>queryCount</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -1090,7 +1061,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="e2b9bd62-f18f-4962-ba73-8638396234f4">
+        <staticBinding id="cb06dfc2-2add-48c9-8dd0-aaa4a756cd6f">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1103,7 +1074,7 @@ ${INSERT_SENTENCE2}</value>
           <value>0</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="b3503e8c-1417-4799-a200-9667292c031d">
+        <staticBinding id="dac3c3b4-8b05-40c0-80a0-8e46b220f0b5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1116,7 +1087,7 @@ ${INSERT_SENTENCE2}</value>
           <value>&gt;</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="511f1727-a799-458e-9276-c1811406075f">
+        <staticBinding id="75387994-1193-4df8-9301-9f795a104390">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1134,7 +1105,7 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="e221c0d1-0f6d-432a-9f2f-32003cf8b0ac">
+        <transition id="64c2f249-057c-4ae3-8d12-82ea839eb4c6">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -1143,10 +1114,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>819be953-72d5-4077-938f-93eb585c9e14</refId>
+            <refId>38427a5a-2947-42fc-9272-821a317bfab5</refId>
           </destination>
           <source>
-            <refId>ef31cf5c-cbde-41bb-b9a8-3e9083fe6ae0</refId>
+            <refId>0ad22190-0fc8-4430-ae92-8d618fd50668</refId>
           </source>
           <positions>
             <point>
@@ -1163,7 +1134,7 @@ ${INSERT_SENTENCE2}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="57978ece-43f9-40f7-b2b8-024a0b40c655">
+        <transition id="e4bb061f-b1c4-4084-ab7d-dd95a7c3557e">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -1172,10 +1143,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>46631e35-2c91-4971-97b0-df2a74b7ebab</refId>
+            <refId>39291500-df50-4e40-95fc-a13e47644c8d</refId>
           </destination>
           <source>
-            <refId>ef31cf5c-cbde-41bb-b9a8-3e9083fe6ae0</refId>
+            <refId>0ad22190-0fc8-4430-ae92-8d618fd50668</refId>
           </source>
           <positions>
             <point>
@@ -1198,19 +1169,19 @@ ${INSERT_SENTENCE2}</value>
         <refId>f61afe20-3c09-490b-8ff7-8540bedc5001</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="b5d8dae6-48e7-41a9-99af-97a1b08b5be0">
+        <flowVariableAssignment id="60ee5cac-ea8a-49de-9b21-bca35f8ffd40">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>MSG_ERROR</contextKey>
-          <expression id="20cec7e4-6d5c-4077-93a3-183d8a0627cd">
+          <expression id="37a0d82d-e2c5-4945-8d5f-db1e45b3c401">
             <annotation></annotation>
             <name>Result Field: result</name>
             <fieldName>result</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <concat id="8b0c7100-13de-488c-8c3d-489e4908e14b">
+              <concat id="30ec4b78-9767-4057-92f4-b2f12ea53396">
                 <annotation></annotation>
                 <name>Format</name>
                 <text>QUERY DE REPORTE MENSUAL NO ARROJO DATOS&lt;br&gt;
@@ -1223,8 +1194,8 @@ ${INSERT_SENTENCE2}</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="819be953-72d5-4077-938f-93eb585c9e14">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.819be953-72d5-4077-938f-93eb585c9e14.description</annotation>
+    <step id="38427a5a-2947-42fc-9272-821a317bfab5">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.38427a5a-2947-42fc-9272-821a317bfab5.description</annotation>
       <name>INSERTS EN REDD</name>
       <bounds>
         <x>628.0</x>
@@ -1232,12 +1203,12 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="f9fc9851-2fd7-42ff-a617-c7b688b19b80">
+      <iconSpec id="be7d3ede-96cc-40cd-a9a0-56d3a6a07fd7">
         <baseIcon>database_general.png</baseIcon>
         <basePath>Databases/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="86af9ba3-c3c3-4899-b076-729d30437dfe">
+          <iconSpec id="2314a7b5-bef9-4b4f-bd81-5964ac731c01">
             <baseIcon>remote.png</baseIcon>
             <basePath>Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -1258,7 +1229,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="397b9054-9383-43c4-a3cb-fb35447c9243">
+        <staticBinding id="b7908d37-b24c-4eed-bd3f-63d3fb078eee">
           <annotation></annotation>
           <fromContextKey>ORQ-USF RED D  IP</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -1272,7 +1243,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="6845c9d0-feae-4a58-a549-9d7f77dfecbe">
+        <staticBinding id="c320b682-88ca-47b2-8582-e3f7f7f35cf8">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1285,7 +1256,7 @@ ${INSERT_SENTENCE2}</value>
           <value>Oracle</value>
           <record>false</record>
         </staticBinding>
-        <identityBinding id="1919fdee-4293-4647-851f-ff189e774272">
+        <identityBinding id="cb43b87b-b789-4b4f-a4b5-444ada4ad19d">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1302,7 +1273,7 @@ ${INSERT_SENTENCE2}</value>
           </link>
           <identityAttribute>USERNAME</identityAttribute>
         </identityBinding>
-        <identityBinding id="434cc887-a763-4e7d-b529-c00f69737f42">
+        <identityBinding id="9268b736-0d46-45f5-bb4a-6134571cbe75">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1319,7 +1290,7 @@ ${INSERT_SENTENCE2}</value>
           </link>
           <identityAttribute>PASSWORD</identityAttribute>
         </identityBinding>
-        <staticBinding id="10650593-93f5-48f2-81e2-24239211d4bb">
+        <staticBinding id="748b531a-7ad8-4be3-bedd-5a8faeecc639">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1331,7 +1302,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="9886a85a-dc8e-4bbf-9b13-92962eaade58">
+        <staticBinding id="14ed9ac4-5087-4c00-8db1-3dd9bc99a6e2">
           <annotation></annotation>
           <fromContextKey>ORQ-USF RED D PORT</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -1344,7 +1315,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="1c2a4576-e299-47d1-802d-ff9683a70624">
+        <staticBinding id="89578e4d-6ca2-4f0f-8526-f7c396614ae6">
           <annotation></annotation>
           <fromContextKey>ORQ-USF RED D SID</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -1358,7 +1329,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="33829022-f01c-42f1-824a-91253fa2b98d">
+        <staticBinding id="24beb9f8-c286-49a0-94e6-750d8004e48f">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1370,7 +1341,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="0c24085e-7043-4549-854c-f54b1cf1d6ad">
+        <staticBinding id="c3d42314-a1d9-4601-bd3f-f74fe7f92eba">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1382,7 +1353,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="a08db014-1bef-49f9-bc6e-08594831a97f">
+        <staticBinding id="4e326cbb-c941-4b52-a358-ca9ef83bd161">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1394,7 +1365,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="f56b0183-1168-4e84-8c62-1646450ebe6d">
+        <staticBinding id="76b235de-09cc-4d30-83a2-76e1033bb455">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1407,7 +1378,7 @@ ${INSERT_SENTENCE2}</value>
           <value>${INSERT_SENTENCE}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="140dca81-01ba-4707-9ec2-23db7082c1b8">
+        <staticBinding id="01636e69-a48e-4bed-aa87-16c2b34bdf94">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1420,7 +1391,7 @@ ${INSERT_SENTENCE2}</value>
           <value>180000</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="512f2ee7-e9ca-486d-b2b5-e006f5157413">
+        <staticBinding id="213940c1-fad4-48ef-a789-0d93d155a31c">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1432,7 +1403,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="5d4b810d-8472-449f-a905-880d59448a83">
+        <staticBinding id="c2886524-b7aa-4c28-99d4-6e67c26c4ea4">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1445,7 +1416,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="2a38fe4c-86b3-4d21-b991-5b74fa4a75d7">
+        <staticBinding id="aab9a380-2a1d-4f9c-92a6-92778a6d1005">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1460,7 +1431,7 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="d0a59fd0-747e-4c84-8718-a6fc8cf85697">
+        <transition id="1e01e086-ebe8-4113-9f1f-6fc66f14430a">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -1469,10 +1440,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>973a4707-6a1d-4fe4-aa98-0e43513296ae</refId>
+            <refId>1c98e918-b793-48be-acd1-a548dcc7cc09</refId>
           </destination>
           <source>
-            <refId>819be953-72d5-4077-938f-93eb585c9e14</refId>
+            <refId>38427a5a-2947-42fc-9272-821a317bfab5</refId>
           </source>
           <positions>
             <point>
@@ -1489,7 +1460,7 @@ ${INSERT_SENTENCE2}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="ba8997d2-59e1-4bc3-b874-fa278aa09192">
+        <transition id="109b4898-98e5-4b06-9285-f085c0dd7152">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -1498,10 +1469,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>46631e35-2c91-4971-97b0-df2a74b7ebab</refId>
+            <refId>39291500-df50-4e40-95fc-a13e47644c8d</refId>
           </destination>
           <source>
-            <refId>819be953-72d5-4077-938f-93eb585c9e14</refId>
+            <refId>38427a5a-2947-42fc-9272-821a317bfab5</refId>
           </source>
           <positions>
             <point>
@@ -1524,19 +1495,19 @@ ${INSERT_SENTENCE2}</value>
         <refId>a8dd819d-158a-43c4-9648-f14e561a5381</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="c2f012cc-e2bb-4ea4-a51a-4b546bfa6b45">
+        <flowVariableAssignment id="8bc375c9-3a55-48f8-b406-0fb9435715af">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>MSG_ERROR</contextKey>
-          <expression id="5a948713-f989-4bdb-ac07-e3dcb8b99112">
+          <expression id="bb55904e-1acc-4621-b781-b49cff129024">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <concat id="25195c8e-fd00-4f54-b4cb-2400ab229f07">
+              <concat id="e7be9c13-ebfa-4149-b3f5-2e961778aba9">
                 <annotation></annotation>
                 <name>Format</name>
                 <text>INSERCION DE REPORTE MENSUAL&lt;br&gt;
@@ -1549,7 +1520,7 @@ ${INSERT_SENTENCE2}</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <returnStep id="008005c1-c966-4780-a93b-421ae373fdfc">
+    <returnStep id="d10191a8-4c67-4ee9-9948-cb0ce5e9d8ee">
       <annotation></annotation>
       <name>Error : failure</name>
       <bounds>
@@ -1558,12 +1529,6 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="7cd2f5e3-ac08-4125-a36b-68615d4bc3da">
-        <baseIcon>return_failure.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>true</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -1578,7 +1543,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="239f071e-17d0-4d68-ba68-25be8ce479cb">
+        <transition id="67a21c41-a2e9-40e5-b33f-e0b8b74c8b09">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -1587,14 +1552,14 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>008005c1-c966-4780-a93b-421ae373fdfc</refId>
+            <refId>d10191a8-4c67-4ee9-9948-cb0ce5e9d8ee</refId>
           </destination>
           <source>
-            <refId>008005c1-c966-4780-a93b-421ae373fdfc</refId>
+            <refId>d10191a8-4c67-4ee9-9948-cb0ce5e9d8ee</refId>
           </source>
           <positions/>
         </transition>
-        <transition id="8715e80a-b602-4434-ad4d-1348d545ef9e">
+        <transition id="8e6534d1-60e6-4ab0-8480-0eb16b249ffe">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -1603,10 +1568,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>008005c1-c966-4780-a93b-421ae373fdfc</refId>
+            <refId>d10191a8-4c67-4ee9-9948-cb0ce5e9d8ee</refId>
           </destination>
           <source>
-            <refId>008005c1-c966-4780-a93b-421ae373fdfc</refId>
+            <refId>d10191a8-4c67-4ee9-9948-cb0ce5e9d8ee</refId>
           </source>
           <positions/>
         </transition>
@@ -1615,8 +1580,8 @@ ${INSERT_SENTENCE2}</value>
       <returnStepType>ERROR</returnStepType>
       <assignments/>
     </returnStep>
-    <step id="529bfe01-87bc-4d43-a51e-b999a59f4607">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.529bfe01-87bc-4d43-a51e-b999a59f4607.description</annotation>
+    <step id="05136587-bdbf-4244-873d-ae95c2e2709a">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.05136587-bdbf-4244-873d-ae95c2e2709a.description</annotation>
       <name>OBTENER NOMBRE MES</name>
       <bounds>
         <x>42.0</x>
@@ -1624,12 +1589,12 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="050c0e55-d2d9-46be-bdbe-23c680459ce2">
+      <iconSpec id="4aef7120-2a75-4efc-89c9-da592f1eae06">
         <baseIcon>calendar.png</baseIcon>
         <basePath>Others/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="c46db9b6-9fb0-4a88-a65b-12ca753a7602">
+          <iconSpec id="5bd5fe46-e311-4314-9cca-7bd5cd0fb10d">
             <baseIcon>wrench.png</baseIcon>
             <basePath>Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -1650,7 +1615,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="e613c8d2-855e-4f09-9132-2c8836a10b7b">
+        <staticBinding id="a8e51eb0-4932-4caa-b361-7ee3c0bc2319">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1663,7 +1628,7 @@ ${INSERT_SENTENCE2}</value>
           <value>${primerDia}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="07f6aa4f-fd6a-4b2c-811b-d3531fe9ea95">
+        <staticBinding id="7267d836-7731-46fc-a7fb-ed0fa562e0b9">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1676,7 +1641,7 @@ ${INSERT_SENTENCE2}</value>
           <value>yyyy-MM-dd</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="cfd1e623-5cf3-42c8-a312-02edb0f74c7e">
+        <staticBinding id="42a994cb-e28e-411f-a78c-3ae4bdab8a7a">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1688,7 +1653,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="eca63fb8-a275-4de1-b034-f490af02d288">
+        <staticBinding id="07666406-a54d-4961-8cf9-14ff36017e82">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1700,7 +1665,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="1da6b535-5a07-4a19-8863-9bd23e663233">
+        <staticBinding id="5422b89a-e9e3-4fad-9db8-189ff82721e7">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1713,7 +1678,7 @@ ${INSERT_SENTENCE2}</value>
           <value>MMMM</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="cbf382e4-06fd-4ca4-82cb-0bac508e3dc5">
+        <staticBinding id="d8ea4aec-337f-4927-9ca6-0872d304e626">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1726,7 +1691,7 @@ ${INSERT_SENTENCE2}</value>
           <value>ES</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="2cb6bd94-9055-4205-b61f-8c53bcbbcc6a">
+        <staticBinding id="b8dc7f55-e5cb-4b44-962e-011d5aa75246">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1740,8 +1705,8 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="dc07aba4-66f3-4136-b534-de4bb4dc1dce">
-          <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.dc07aba4-66f3-4136-b534-de4bb4dc1dce.transition.description</annotation>
+        <transition id="b78a426e-58dd-48f3-9a92-cc6e8d962809">
+          <annotation>7c773908-1610-4e45-a0cd-28da353b648e.b78a426e-58dd-48f3-9a92-cc6e8d962809.transition.description</annotation>
           <name>done</name>
           <command>NEXT</command>
           <linkMode>false</linkMode>
@@ -1749,10 +1714,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>0ec686d8-5ba8-462f-895e-3947c334b5e3</refId>
+            <refId>b58f8600-b9d0-47bd-ab80-39990b270f95</refId>
           </destination>
           <source>
-            <refId>529bfe01-87bc-4d43-a51e-b999a59f4607</refId>
+            <refId>05136587-bdbf-4244-873d-ae95c2e2709a</refId>
           </source>
           <positions>
             <point>
@@ -1775,19 +1740,19 @@ ${INSERT_SENTENCE2}</value>
         <refId>c88d27ac-30cb-4ba9-acc0-404f7e15ec4a</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="3a0a4dc8-5354-4c0c-83e5-6f257a7963a6">
+        <flowVariableAssignment id="42339b68-264d-4759-ab39-0b3bc162d65d">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>MONTH</contextKey>
-          <expression id="0ffb068b-1c3a-4940-afb8-81e514c1c5de">
+          <expression id="cd8e036f-ce56-4219-91af-f73f2b489037">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <caseFilter id="c4386fe6-82d0-4348-96a3-9ecdb817a855">
+              <caseFilter id="0b239d9e-38cb-4b68-99b3-f76a61f42e40">
                 <annotation></annotation>
                 <name>Diff Case</name>
                 <toUpper>true</toUpper>
@@ -1798,8 +1763,8 @@ ${INSERT_SENTENCE2}</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="c426a400-e401-439b-806a-053fbb232aec">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.c426a400-e401-439b-806a-053fbb232aec.description</annotation>
+    <step id="dca5be19-caf7-4d1c-a648-4a99c92d3e1e">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.dca5be19-caf7-4d1c-a648-4a99c92d3e1e.description</annotation>
       <name>SFTP Put</name>
       <bounds>
         <x>653.0</x>
@@ -1807,12 +1772,12 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="cdf37f8d-c4c3-46f6-9372-1bf8db781f46">
+      <iconSpec id="81f1b116-9038-4144-9dd5-4b8b60084a62">
         <baseIcon>document_text.png</baseIcon>
         <basePath>/Operating System/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="9e25a790-e4a0-46d6-a91c-402f1d88ae41">
+          <iconSpec id="0fbed84e-7cc6-45e0-a29a-1575320995c0">
             <baseIcon>send.png</baseIcon>
             <basePath>/Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -1833,7 +1798,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="cd564e06-b8af-453e-a730-2e40c74502d3">
+        <staticBinding id="901f4e53-fa88-4f14-8a82-9cd3a02ed7fe">
           <annotation></annotation>
           <fromContextKey>ORQ-USF IP T5120</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -1847,7 +1812,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="8b7fb58c-35af-46b1-8f52-df5b5d5fea9e">
+        <staticBinding id="f170d972-f5fa-4c50-bd84-7e12bc5d335e">
           <annotation></annotation>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
@@ -1862,7 +1827,7 @@ ${INSERT_SENTENCE2}</value>
           <value>22</value>
           <record>false</record>
         </staticBinding>
-        <identityBinding id="1ed1fb02-6186-4ea4-a858-7ececef6b8b2">
+        <identityBinding id="4f47407e-16a5-4bbb-b2c8-e3a004a1c6ea">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1879,7 +1844,7 @@ ${INSERT_SENTENCE2}</value>
           </link>
           <identityAttribute>USERNAME</identityAttribute>
         </identityBinding>
-        <identityBinding id="2d0b918f-d92e-449a-900a-4ae64579b316">
+        <identityBinding id="d00485f3-b33e-4065-9626-c78ae267ea92">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1896,7 +1861,7 @@ ${INSERT_SENTENCE2}</value>
           </link>
           <identityAttribute>PASSWORD</identityAttribute>
         </identityBinding>
-        <staticBinding id="b8dd3dbc-cfc9-4f2b-a897-b678c543b464">
+        <staticBinding id="a9b387c6-8756-47e8-a7af-5e436d026ff3">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1908,7 +1873,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="e9141641-f8fe-44c3-8447-a530c426b179">
+        <staticBinding id="07d13e23-1d0e-480c-b171-dd186a5f8b37">
           <annotation></annotation>
           <fromContextKey>source</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -1922,7 +1887,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="536b0b52-0f7c-4eec-b662-cee684b57ca0">
+        <staticBinding id="08f7c931-cd0f-4b9d-becc-6adb96ef53c5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1935,7 +1900,7 @@ ${INSERT_SENTENCE2}</value>
           <value>/aplic/prod/orq/usf/sal</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ac9760ce-195e-48b8-b98e-2d1443c26be3">
+        <staticBinding id="bffa401f-897a-4601-a7cf-ef72cfefe125">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1947,7 +1912,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="96ec2d21-385c-4378-a849-aeb1e9e9fc9f">
+        <staticBinding id="d08abf1e-9c7d-47b0-a79d-5a59cddbcc28">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -1962,7 +1927,7 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="273943d1-809a-4049-abe6-969a6494634c">
+        <transition id="2599bda2-a367-4e27-86f0-125c3a4fc713">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -1971,10 +1936,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>11e4103f-199c-462b-b8e8-08091b549ce5</refId>
+            <refId>dec3c90f-e33d-440a-990b-b4540b5ab607</refId>
           </destination>
           <source>
-            <refId>c426a400-e401-439b-806a-053fbb232aec</refId>
+            <refId>dca5be19-caf7-4d1c-a648-4a99c92d3e1e</refId>
           </source>
           <positions>
             <point>
@@ -1991,7 +1956,7 @@ ${INSERT_SENTENCE2}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="79d666d0-75f2-4ac4-b844-0f8312a445f9">
+        <transition id="d2078fca-d361-4a55-a5ae-5bd9ed760dd9">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -2000,10 +1965,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>dfb79cf5-7590-4656-ad15-9719c0400e6b</refId>
+            <refId>c06976ef-a06f-4e6f-a9aa-6e9d30b58ae5</refId>
           </destination>
           <source>
-            <refId>c426a400-e401-439b-806a-053fbb232aec</refId>
+            <refId>dca5be19-caf7-4d1c-a648-4a99c92d3e1e</refId>
           </source>
           <positions>
             <point>
@@ -2026,19 +1991,19 @@ ${INSERT_SENTENCE2}</value>
         <refId>d0281620-067b-46b8-8053-965857395cdc</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="93678684-0ddb-4e6a-94e7-cb868d8bc741">
+        <flowVariableAssignment id="2024792d-28a7-4ec9-b1ba-f18e0d00966d">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>MSG_ERROR</contextKey>
-          <expression id="4533298f-1176-4a73-96f4-129079b928e7">
+          <expression id="f5e3b262-10eb-48b2-b863-4318d02b9e7d">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <concat id="9b004f0e-6050-4569-8661-2f5f8891eeb5">
+              <concat id="8816eb55-645b-43be-a760-2455f606397c">
                 <annotation></annotation>
                 <name>Format</name>
                 <text>TRANSFERENCIA SFTP DE ARCHIVO DE REPORTE MENSUAL&lt;br&gt;
@@ -2051,7 +2016,7 @@ ${INSERT_SENTENCE2}</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <returnStep id="1ac2f3f2-3f03-4ca8-be40-0e2d0bfc9e54">
+    <returnStep id="527d268d-6106-4999-8793-25b8e8c32e96">
       <annotation></annotation>
       <name>No Action Taken : unknown</name>
       <bounds>
@@ -2074,7 +2039,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="d2dbc9b5-21df-48e1-89bc-e86a57e88980">
+        <transition id="25638664-5435-4a81-ace2-bff42bdd4a15">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -2083,10 +2048,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>1ac2f3f2-3f03-4ca8-be40-0e2d0bfc9e54</refId>
+            <refId>527d268d-6106-4999-8793-25b8e8c32e96</refId>
           </destination>
           <source>
-            <refId>1ac2f3f2-3f03-4ca8-be40-0e2d0bfc9e54</refId>
+            <refId>527d268d-6106-4999-8793-25b8e8c32e96</refId>
           </source>
           <positions/>
         </transition>
@@ -2095,8 +2060,8 @@ ${INSERT_SENTENCE2}</value>
       <returnStepType>NO_ACTION_TAKEN</returnStepType>
       <assignments/>
     </returnStep>
-    <step id="0ec686d8-5ba8-462f-895e-3947c334b5e3">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.0ec686d8-5ba8-462f-895e-3947c334b5e3.description</annotation>
+    <step id="b58f8600-b9d0-47bd-ab80-39990b270f95">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.b58f8600-b9d0-47bd-ab80-39990b270f95.description</annotation>
       <name>OBTENER NUMERO MES</name>
       <bounds>
         <x>45.0</x>
@@ -2104,12 +2069,12 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="4d45760a-7c58-46f0-b177-7356b5ae1de7">
+      <iconSpec id="2954ffd2-82c9-481f-b874-22d7e7151b42">
         <baseIcon>calendar.png</baseIcon>
         <basePath>Others/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="740aad29-a21e-48b5-ab47-7a03af9e2894">
+          <iconSpec id="2c4700c7-5555-446b-a8e1-fac2d08dd36e">
             <baseIcon>wrench.png</baseIcon>
             <basePath>Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -2130,7 +2095,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="ea3215f5-4714-450e-bd8e-e30045c391a1">
+        <staticBinding id="49eb80bb-2d08-4940-836e-977b5ac20fa9">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2143,7 +2108,7 @@ ${INSERT_SENTENCE2}</value>
           <value>${primerDia}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="37031093-7631-4078-a64e-91af0ae9d91a">
+        <staticBinding id="7ac97ece-d875-4d4a-928a-9f78911339e5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2156,7 +2121,7 @@ ${INSERT_SENTENCE2}</value>
           <value>yyyy-MM-dd</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="97b149f9-347d-4359-ab65-7224f3f86f21">
+        <staticBinding id="d75a2d0e-6b8f-4c8a-a4d5-640478a27d7c">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2168,7 +2133,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="7280cf42-2286-40b3-9242-8e0190414458">
+        <staticBinding id="11406be8-1223-4a0e-90bd-128d96b0d43d">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2180,7 +2145,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="dc265af8-6647-4eb4-af32-97cf36e9e202">
+        <staticBinding id="f7bbb22e-2bb6-4fbf-8daf-bf3c8dab461f">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2193,7 +2158,7 @@ ${INSERT_SENTENCE2}</value>
           <value>MM</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="8836f836-fb3c-4852-bd26-dcad71b3840c">
+        <staticBinding id="d4fb5960-f207-4e01-887d-67cc1947b23e">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2206,7 +2171,7 @@ ${INSERT_SENTENCE2}</value>
           <value>ES</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="bfa966a5-a640-4ca5-bf74-700d0fa5bc67">
+        <staticBinding id="565cbe50-cbee-4ed2-b697-399335f776b5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2220,7 +2185,7 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="85e67967-f90e-45ad-8ac4-5fab47159e2b">
+        <transition id="ee4746ea-c927-4595-bb44-0402033cb6b6">
           <annotation></annotation>
           <name>done</name>
           <command>NEXT</command>
@@ -2229,10 +2194,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>a4c349af-865e-4d8b-8e39-ca1d2dfd1fc2</refId>
+            <refId>9c93c092-d88b-4090-beef-ac9dc733a6e4</refId>
           </destination>
           <source>
-            <refId>0ec686d8-5ba8-462f-895e-3947c334b5e3</refId>
+            <refId>b58f8600-b9d0-47bd-ab80-39990b270f95</refId>
           </source>
           <positions>
             <point>
@@ -2255,19 +2220,19 @@ ${INSERT_SENTENCE2}</value>
         <refId>c88d27ac-30cb-4ba9-acc0-404f7e15ec4a</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="06682186-decd-4eec-bdf1-83985f850c7a">
+        <flowVariableAssignment id="69282dbe-ed4b-4713-b1a8-d40f05f421b3">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>UIM_MES_FACT</contextKey>
-          <expression id="7e9d9357-4de2-4bd0-8589-2155b2041a97">
+          <expression id="fe1e559e-e8f5-4e36-8efa-e0e50a6d8242">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <caseFilter id="fa5b27b7-9a8e-4836-9005-5eb99d953090">
+              <caseFilter id="5f918643-ddfe-403a-98b7-a1f199c74d6c">
                 <annotation></annotation>
                 <name>Diff Case</name>
                 <toUpper>true</toUpper>
@@ -2278,8 +2243,8 @@ ${INSERT_SENTENCE2}</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="a4c349af-865e-4d8b-8e39-ca1d2dfd1fc2">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.a4c349af-865e-4d8b-8e39-ca1d2dfd1fc2.description</annotation>
+    <step id="9c93c092-d88b-4090-beef-ac9dc733a6e4">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.9c93c092-d88b-4090-beef-ac9dc733a6e4.description</annotation>
       <name>OBTENER NUMERO A&#209;O</name>
       <bounds>
         <x>46.0</x>
@@ -2287,12 +2252,12 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="ea6a07aa-e5e1-4254-a950-dbcffe2d39ce">
+      <iconSpec id="e6e85429-19f8-4c9e-9875-1ef090761a1f">
         <baseIcon>calendar.png</baseIcon>
         <basePath>Others/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="726020bb-872e-498d-9136-bc4dd85fb995">
+          <iconSpec id="1ae48cf8-21c7-433a-8a6a-597157c001bb">
             <baseIcon>wrench.png</baseIcon>
             <basePath>Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -2313,7 +2278,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="2327ba7e-cc65-428d-95e8-6e795a4ae471">
+        <staticBinding id="89ff0c78-3d0a-4269-8649-61c8d323c88a">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2326,7 +2291,7 @@ ${INSERT_SENTENCE2}</value>
           <value>${primerDia}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="0fdc4da9-9c79-4071-b4df-4b397cba8925">
+        <staticBinding id="e4f732cd-4e72-40fb-88ca-dc4cb9b38587">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2339,7 +2304,7 @@ ${INSERT_SENTENCE2}</value>
           <value>yyyy-MM-dd</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="0007a493-ec16-4488-8c87-678a78bd4b50">
+        <staticBinding id="a86f8eb5-2bf1-46c0-96f9-5077233f25a2">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2351,7 +2316,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="71badd57-3635-4553-bb32-1877a1393e36">
+        <staticBinding id="0baff3d5-e7a1-443e-9feb-f0892db2d275">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2363,7 +2328,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="a945ad5c-821b-4ecb-b53d-be30de3b2527">
+        <staticBinding id="54f72a65-79b1-4c38-9942-4b54c1bf7f56">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2376,7 +2341,7 @@ ${INSERT_SENTENCE2}</value>
           <value>yyyy</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="1bf8303c-ce13-4a9a-bb87-aab2ca314479">
+        <staticBinding id="0d0cef26-3c9a-4498-ba07-3bb349527db7">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2389,7 +2354,7 @@ ${INSERT_SENTENCE2}</value>
           <value>ES</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="44451637-87c7-4ac9-b275-27c0cf0b71e9">
+        <staticBinding id="b40e33a9-a986-4a47-93f9-a5227567ad9e">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2403,7 +2368,7 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="cd9e2bfa-b5ea-46a9-b03e-8402a8d92953">
+        <transition id="b26edf6d-77da-4435-8fba-2389186198b7">
           <annotation></annotation>
           <name>done</name>
           <command>NEXT</command>
@@ -2412,10 +2377,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>e5c4b7f3-61fd-4fb7-b112-ba8547ee897f</refId>
+            <refId>02f661dd-de1e-4815-95af-89ebe12e110d</refId>
           </destination>
           <source>
-            <refId>a4c349af-865e-4d8b-8e39-ca1d2dfd1fc2</refId>
+            <refId>9c93c092-d88b-4090-beef-ac9dc733a6e4</refId>
           </source>
           <positions>
             <point>
@@ -2438,19 +2403,19 @@ ${INSERT_SENTENCE2}</value>
         <refId>c88d27ac-30cb-4ba9-acc0-404f7e15ec4a</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="729b5964-735f-4485-96b7-82a555ef3cc4">
+        <flowVariableAssignment id="120b95f4-415a-4da1-b508-843efeab26f8">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>UIM_ANIO_FACT2</contextKey>
-          <expression id="472f4eb5-087e-4ee5-99a3-89cd8cb23265">
+          <expression id="f2958946-10fb-4e88-bfb2-b28eec0ac298">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <selectRangeFilter id="c8e5457f-a75d-4512-9f89-588bdd021051">
+              <selectRangeFilter id="1f599b06-ddca-47f7-9f0f-74446e06b7c3">
                 <annotation></annotation>
                 <name>Select Range</name>
                 <start>2</start>
@@ -2459,19 +2424,19 @@ ${INSERT_SENTENCE2}</value>
             </filters>
           </expression>
         </flowVariableAssignment>
-        <flowVariableAssignment id="3027ed4e-67c3-4077-82ae-cd1a0cb6bffa">
+        <flowVariableAssignment id="213f9fdf-83f6-47ee-8e24-c5975f53c2aa">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>UIM_ANIO_FACT</contextKey>
-          <expression id="776e9887-2956-442f-9e95-84a2596120c2">
+          <expression id="001b0c85-221c-4448-9478-e35a97e9d250">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <caseFilter id="75938dd0-3caa-4a24-9312-bd613203817d">
+              <caseFilter id="cf2442e9-6baa-4658-bb4b-7648d3855cc4">
                 <annotation></annotation>
                 <name>Diff Case</name>
                 <toUpper>true</toUpper>
@@ -2482,8 +2447,8 @@ ${INSERT_SENTENCE2}</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="c3988867-b005-4bf5-8e1d-b9d217d19371">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.c3988867-b005-4bf5-8e1d-b9d217d19371.description</annotation>
+    <step id="1dc906fb-535f-4e45-ba0f-399c84891e70">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.1dc906fb-535f-4e45-ba0f-399c84891e70.description</annotation>
       <name>Check Null ANIO_FACT</name>
       <bounds>
         <x>204.0</x>
@@ -2491,7 +2456,7 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="1122cbc4-0f06-4984-b950-797cd5a6ff69">
+      <iconSpec id="aa006d17-5b99-4495-a2d1-c8e4b4138385">
         <baseIcon>compare.png</baseIcon>
         <basePath>Utilities/</basePath>
         <readOnly>false</readOnly>
@@ -2510,7 +2475,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="f4c25612-1668-48f5-8cb4-c4fadd0a33b2">
+        <staticBinding id="cfb05cfd-9c27-42ff-9cdc-8a14b21148b3">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2523,7 +2488,7 @@ ${INSERT_SENTENCE2}</value>
           <value>ANIO_FACT</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="b081556c-3830-4076-8d18-2724aba02bd6">
+        <staticBinding id="75f4b36c-b352-4971-ab2c-f254a901a72b">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2538,7 +2503,7 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="bed57a91-8182-4968-b8f4-a1ae90082597">
+        <transition id="fa14f36f-d818-4a89-87b7-cbfb3ec9d1dd">
           <annotation></annotation>
           <name>isNull</name>
           <command>NEXT</command>
@@ -2547,10 +2512,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>0b14e3f1-d655-41e8-8416-0796a7e4358d</refId>
+            <refId>1f9ef2ad-a85e-4269-a163-647c40a25b0d</refId>
           </destination>
           <source>
-            <refId>c3988867-b005-4bf5-8e1d-b9d217d19371</refId>
+            <refId>1dc906fb-535f-4e45-ba0f-399c84891e70</refId>
           </source>
           <positions>
             <point>
@@ -2567,7 +2532,7 @@ ${INSERT_SENTENCE2}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="404daa20-1279-4aeb-9944-8ee43bccfc38">
+        <transition id="4eb41a01-3e3a-4ebf-b33c-c2980abe6a59">
           <annotation></annotation>
           <name>notNull</name>
           <command>NEXT</command>
@@ -2576,10 +2541,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>74d3552f-4e12-4bdf-908b-7331b2824cfb</refId>
+            <refId>174a2238-28a8-4092-9709-4d921bb90b6d</refId>
           </destination>
           <source>
-            <refId>c3988867-b005-4bf5-8e1d-b9d217d19371</refId>
+            <refId>1dc906fb-535f-4e45-ba0f-399c84891e70</refId>
           </source>
           <positions>
             <point>
@@ -2604,8 +2569,8 @@ ${INSERT_SENTENCE2}</value>
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="74d3552f-4e12-4bdf-908b-7331b2824cfb">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.74d3552f-4e12-4bdf-908b-7331b2824cfb.description</annotation>
+    <step id="174a2238-28a8-4092-9709-4d921bb90b6d">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.174a2238-28a8-4092-9709-4d921bb90b6d.description</annotation>
       <name>Usa Script ObtenerRango_MesDado</name>
       <bounds>
         <x>42.0</x>
@@ -2613,7 +2578,7 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="aa8ff07c-bd97-4d93-bd2d-7ce388d52aa5">
+      <iconSpec id="89e8d438-a378-458b-9e7a-50d21d695410">
         <baseIcon>hourglass.png</baseIcon>
         <basePath>Utilities</basePath>
         <readOnly>false</readOnly>
@@ -2631,9 +2596,9 @@ ${INSERT_SENTENCE2}</value>
       <historyCheckPointStep>true</historyCheckPointStep>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
-      <scriptlet id="087c51be-a91c-45a7-a1d7-4cb5de95dc24">
+      <scriptlet id="3a953291-dd50-45e8-9728-2c6f75a980eb">
         <annotation></annotation>
-        <name>Step Usa Script ObtenerRango_MesDado in Flow SANCIONES - DESTINO NO DISPONIBLE (74d3552f-4e12-4bdf-908b-7331b2824cfb)</name>
+        <name>Step Usa Script ObtenerRango_MesDado in Flow SANCIONES - REVERSOS MULTIPLES (174a2238-28a8-4092-9709-4d921bb90b6d)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>93fcef9f-1b3b-4fff-b0c8-ca223a21bebe</refId>
@@ -2641,7 +2606,7 @@ ${INSERT_SENTENCE2}</value>
         </scriptRef>
       </scriptlet>
       <bindings>
-        <staticBinding id="876300a7-3632-43a8-a945-f8e670e5f0e5">
+        <staticBinding id="b980b28b-155f-4419-a440-5db2a1a251d5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2656,7 +2621,7 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="853b603c-f51c-44fe-9d36-17d02f262d2d">
+        <transition id="6e604d16-2031-47ab-ab5d-d3c2a24e3546">
           <annotation></annotation>
           <name>done</name>
           <command>NEXT</command>
@@ -2665,10 +2630,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>529bfe01-87bc-4d43-a51e-b999a59f4607</refId>
+            <refId>05136587-bdbf-4244-873d-ae95c2e2709a</refId>
           </destination>
           <source>
-            <refId>74d3552f-4e12-4bdf-908b-7331b2824cfb</refId>
+            <refId>174a2238-28a8-4092-9709-4d921bb90b6d</refId>
           </source>
           <positions>
             <point>
@@ -2693,8 +2658,8 @@ ${INSERT_SENTENCE2}</value>
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="bf2720e9-1f69-44ce-9766-2fe5db7af165">
-      <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.bf2720e9-1f69-44ce-9766-2fe5db7af165.description</annotation>
+    <step id="0ee04fb6-383c-4d7a-a42c-fcc72d7bfd1d">
+      <annotation>7c773908-1610-4e45-a0cd-28da353b648e.0ee04fb6-383c-4d7a-a42c-fcc72d7bfd1d.description</annotation>
       <name>DELETE RED</name>
       <bounds>
         <x>201.0</x>
@@ -2702,12 +2667,12 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="6bd5f787-a201-4ec4-b733-57788436bd3c">
+      <iconSpec id="33e3d914-af4d-450c-9b4c-86d88051acc6">
         <baseIcon>database_general.png</baseIcon>
         <basePath>Databases/</basePath>
         <readOnly>false</readOnly>
         <layers>
-          <iconSpec id="ee5351dd-38c8-4ebb-bdc4-656e1811da52">
+          <iconSpec id="767f2565-adf3-493e-b78a-1fd1eb438981">
             <baseIcon>remote.png</baseIcon>
             <basePath>Annotations/</basePath>
             <readOnly>false</readOnly>
@@ -2728,7 +2693,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="46f8ba89-74ec-479d-bec5-ef59eabca379">
+        <staticBinding id="7eea0ffe-dfe1-4093-8fd6-705b1b187428">
           <annotation></annotation>
           <fromContextKey>ORQ-USF RED D  IP</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -2742,7 +2707,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="01ec5376-9890-4a3f-8576-4c0d7f89b943">
+        <staticBinding id="9d70b139-c881-4b51-8189-c6aeae6f5898">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2755,7 +2720,7 @@ ${INSERT_SENTENCE2}</value>
           <value>Oracle</value>
           <record>false</record>
         </staticBinding>
-        <identityBinding id="548a1d18-c602-4aa8-9c4a-75d8076f29b5">
+        <identityBinding id="9978c4a3-07d7-47f2-bd80-1b2aeaa9c08a">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2772,7 +2737,7 @@ ${INSERT_SENTENCE2}</value>
           </link>
           <identityAttribute>USERNAME</identityAttribute>
         </identityBinding>
-        <identityBinding id="3901e234-8076-4087-babc-6503b53febd4">
+        <identityBinding id="a1bd9bdc-2596-45fc-aae6-1ad880204425">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2789,7 +2754,7 @@ ${INSERT_SENTENCE2}</value>
           </link>
           <identityAttribute>PASSWORD</identityAttribute>
         </identityBinding>
-        <staticBinding id="f9d87230-6b9c-4a14-8b4b-694c4339f88a">
+        <staticBinding id="99c05d2f-58ed-45cd-bfc7-455467d279c6">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2801,7 +2766,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="c1bc00a6-be42-41d8-bd67-1aac3a8df0c0">
+        <staticBinding id="08110100-14da-4d8e-9d18-0d39f98c5d8b">
           <annotation></annotation>
           <fromContextKey>ORQ-USF RED D PORT</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -2814,7 +2779,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="90a01a4c-de3d-4941-bf2e-8069f6a28ae5">
+        <staticBinding id="40696d29-2490-41ef-a541-4e9fbd4d6f4f">
           <annotation></annotation>
           <fromContextKey>ORQ-USF RED D SID</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -2828,7 +2793,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="300a83e9-3325-493e-ad67-6957c57135d7">
+        <staticBinding id="6a7a533b-e93c-478a-a139-cd3bddb00ec7">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2840,7 +2805,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="01b91489-0869-4bff-9599-4313e5321df5">
+        <staticBinding id="6238cd4d-2fd1-448d-b80d-2857d4ec7b48">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2852,7 +2817,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="b60197a8-38db-45dd-9055-15e3a0836df9">
+        <staticBinding id="aa2e7f6a-e593-4eb6-86d6-3ec59384cf23">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2864,7 +2829,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="6c624159-d196-4bdc-9051-d6810e1e1a9c">
+        <staticBinding id="15d23714-436c-43eb-9938-cc152eb9b49f">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2874,10 +2839,10 @@ ${INSERT_SENTENCE2}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Command</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>DELETE  FROM TBL_RED_USO_INFRA_MENSUAL  WHERE  UIM_MES_FACT = ${UIM_MES_FACT} AND UIM_ANIO_FACT = ${UIM_ANIO_FACT} AND UIM_SERVICIO=&apos;SAN&apos; AND UIM_DESCRIPCION=&apos;CODIGO 72&apos;</value>
+          <value>DELETE  FROM TBL_RED_USO_INFRA_MENSUAL  WHERE  UIM_MES_FACT = ${UIM_MES_FACT} AND UIM_ANIO_FACT = ${UIM_ANIO_FACT} AND UIM_SERVICIO=&apos;SAN&apos; AND UIM_DESCRIPCION=&apos;REV DESF&apos;</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ab4589cb-9a25-43d7-b30d-a6afbd9d469c">
+        <staticBinding id="4924f42b-ec7e-42b3-8b1e-a7aeb0c8edab">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2890,7 +2855,7 @@ ${INSERT_SENTENCE2}</value>
           <value>180000</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ff22b58a-5ce4-4d85-a169-775bce5d67b6">
+        <staticBinding id="9a1e585f-ba39-4ac8-9843-bca05507a329">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2902,7 +2867,7 @@ ${INSERT_SENTENCE2}</value>
           <listDelimiter>,</listDelimiter>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="f3f50fb9-83e9-4fc5-a4bc-6807970ae5b5">
+        <staticBinding id="6641efd1-d0fa-4273-a6dd-73e9ea4c0061">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2915,7 +2880,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="dc19c1eb-2700-44c7-8e27-8f28b7de3f1d">
+        <staticBinding id="0837ed69-daa7-440a-8e59-fc59fb958e41">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -2930,8 +2895,37 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="09711f11-7302-4599-81fa-a85067d5cd80">
-          <annotation>d5ce06c5-8fc0-4ff0-8cc8-7d404bf1bc2a.09711f11-7302-4599-81fa-a85067d5cd80.transition.description</annotation>
+        <transition id="830301cb-d849-45cd-a9c7-48ff48596700">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>39291500-df50-4e40-95fc-a13e47644c8d</refId>
+          </destination>
+          <source>
+            <refId>0ee04fb6-383c-4d7a-a42c-fcc72d7bfd1d</refId>
+          </source>
+          <positions>
+            <point>
+              <x>251.0</x>
+              <y>510.0</y>
+            </point>
+            <point>
+              <x>484.0</x>
+              <y>525.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="108d6a90-01b3-47c7-9347-02fd4d862fc0">
+          <annotation>7c773908-1610-4e45-a0cd-28da353b648e.108d6a90-01b3-47c7-9347-02fd4d862fc0.transition.description</annotation>
           <name>success</name>
           <command>NEXT</command>
           <linkMode>false</linkMode>
@@ -2939,10 +2933,10 @@ ${INSERT_SENTENCE2}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>eeda54a2-1838-4ee3-ad0a-784acd7767c4</refId>
+            <refId>34a1d17e-1c7b-47ea-98a2-83c65809bf93</refId>
           </destination>
           <source>
-            <refId>bf2720e9-1f69-44ce-9766-2fe5db7af165</refId>
+            <refId>0ee04fb6-383c-4d7a-a42c-fcc72d7bfd1d</refId>
           </source>
           <positions>
             <point>
@@ -2959,54 +2953,25 @@ ${INSERT_SENTENCE2}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="3f86625c-fe0a-4ec9-821e-bfccbae21a84">
-          <annotation></annotation>
-          <name>failure</name>
-          <command>NEXT</command>
-          <linkMode>false</linkMode>
-          <responseSymbol>failure</responseSymbol>
-          <shouldHandoff>false</shouldHandoff>
-          <transitionValue>0.0</transitionValue>
-          <destination>
-            <refId>46631e35-2c91-4971-97b0-df2a74b7ebab</refId>
-          </destination>
-          <source>
-            <refId>bf2720e9-1f69-44ce-9766-2fe5db7af165</refId>
-          </source>
-          <positions>
-            <point>
-              <x>251.0</x>
-              <y>510.0</y>
-            </point>
-            <point>
-              <x>484.0</x>
-              <y>525.0</y>
-            </point>
-          </positions>
-          <labelPosition>
-            <x>333.0</x>
-            <y>0.0</y>
-          </labelPosition>
-        </transition>
       </transitions>
       <properties/>
       <opRef>
         <refId>a8dd819d-158a-43c4-9648-f14e561a5381</refId>
       </opRef>
       <assignments>
-        <flowVariableAssignment id="793bc6ea-2362-4b67-a70b-2aba0962c937">
+        <flowVariableAssignment id="1522dbf5-867b-4777-8871-980ddbd3bc68">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>MSG_ERROR</contextKey>
-          <expression id="a0d37227-ab80-4030-8f99-bc3768b870a4">
+          <expression id="edf05848-6502-4b9f-b62d-2b7d3dba40e6">
             <annotation></annotation>
             <name>Result Field: returnResult</name>
             <fieldName>returnResult</fieldName>
             <sourceType>RAWRESULT</sourceType>
             <filters>
-              <concat id="b40cf4a9-3023-4e53-b7c6-655f6dfa5bfb">
+              <concat id="e8b4063a-df5b-4ee4-9dc4-104b40dc29b3">
                 <annotation></annotation>
                 <name>Format</name>
                 <text>ELIMINACION DE REGISTROS&lt;br&gt;
@@ -3016,13 +2981,13 @@ ${INSERT_SENTENCE2}</value>
             </filters>
           </expression>
         </flowVariableAssignment>
-        <flowVariableAssignment id="74cc63cf-e67b-4e78-bc4d-ade45b309b7b">
+        <flowVariableAssignment id="bb561ae3-a6b8-48e2-8597-93dac6dabee7">
           <annotation></annotation>
           <name>assignment</name>
           <action>OVERWRITE</action>
           <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
           <contextKey>updateCount</contextKey>
-          <expression id="c6e6273c-0ed8-4c07-b5e5-4598336d396e">
+          <expression id="997b2014-d9da-40a2-9dd5-1d4158b0e08b">
             <annotation></annotation>
             <name>Result Field: updateCount</name>
             <fieldName>updateCount</fieldName>
@@ -3033,7 +2998,7 @@ ${INSERT_SENTENCE2}</value>
       </assignments>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="46631e35-2c91-4971-97b0-df2a74b7ebab">
+    <step id="39291500-df50-4e40-95fc-a13e47644c8d">
       <annotation></annotation>
       <name>NOTIFICACION DE ERROR</name>
       <bounds>
@@ -3042,12 +3007,6 @@ ${INSERT_SENTENCE2}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="f59c0d58-9c63-485e-b67a-57ac4f12cf7d">
-        <baseIcon>flow.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>false</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -3061,7 +3020,7 @@ ${INSERT_SENTENCE2}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="ac589639-70ef-4686-a8e8-2a08aa2d620f">
+        <staticBinding id="f794a0d8-c5c5-46c5-b969-2296ab960855">
           <annotation></annotation>
           <fromContextKey>ORQ-USF CORREOS TECNICOS</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -3075,7 +3034,7 @@ ${INSERT_SENTENCE2}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="28aff63d-5dbe-4866-9bee-d89c32853209">
+        <staticBinding id="1fb66406-0299-41a4-bce5-e7827616209e">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3085,13 +3044,13 @@ ${INSERT_SENTENCE2}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Body</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - DESTINO NO DISPONIBLE MENSUAL)&lt;br&gt;
+          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - REVERSOS MULTIPLES MENSUAL)&lt;br&gt;
 &lt;br&gt;
 MENSAJE DE ERROR:&lt;br&gt;
 ${MSG_ERROR}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="f2287494-bcbf-4fb6-8840-07a6964ef0a9">
+        <staticBinding id="8d2ff2ed-bdff-4996-aba1-f3f584674cf9">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3101,10 +3060,10 @@ ${MSG_ERROR}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - DESTINO NO DISPONIBLE MENSUAL)</value>
+          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - REVERSOS MULTIPLES MENSUAL)</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ea0dd75c-9c16-45a3-bbdc-dcf969015182">
+        <staticBinding id="e8ad991b-1e81-4715-9c7e-0279a83e9e16">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3118,7 +3077,7 @@ ${MSG_ERROR}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="0951b7f7-495e-4fdc-8365-cf4f04e2be31">
+        <transition id="a08267aa-d851-4dbe-bcdd-ddbac8bba61f">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -3127,10 +3086,10 @@ ${MSG_ERROR}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>008005c1-c966-4780-a93b-421ae373fdfc</refId>
+            <refId>d10191a8-4c67-4ee9-9948-cb0ce5e9d8ee</refId>
           </destination>
           <source>
-            <refId>46631e35-2c91-4971-97b0-df2a74b7ebab</refId>
+            <refId>39291500-df50-4e40-95fc-a13e47644c8d</refId>
           </source>
           <positions>
             <point>
@@ -3147,7 +3106,7 @@ ${MSG_ERROR}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="691ec8af-8bd7-4aed-830f-6d55e6852cbf">
+        <transition id="a225a57f-4fad-4305-92c2-d16cfe8cd559">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -3156,10 +3115,10 @@ ${MSG_ERROR}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>008005c1-c966-4780-a93b-421ae373fdfc</refId>
+            <refId>d10191a8-4c67-4ee9-9948-cb0ce5e9d8ee</refId>
           </destination>
           <source>
-            <refId>46631e35-2c91-4971-97b0-df2a74b7ebab</refId>
+            <refId>39291500-df50-4e40-95fc-a13e47644c8d</refId>
           </source>
           <positions>
             <point>
@@ -3192,7 +3151,7 @@ ${MSG_ERROR}</value>
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="e5c4b7f3-61fd-4fb7-b112-ba8547ee897f">
+    <step id="02f661dd-de1e-4815-95af-89ebe12e110d">
       <annotation></annotation>
       <name>NOTIFICACION INICIO PROCESO</name>
       <bounds>
@@ -3201,7 +3160,7 @@ ${MSG_ERROR}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="8bbd56f9-267b-4393-984a-16a190e240ea">
+      <iconSpec id="3d323f3a-7793-4ee2-8c64-fc9814bb44d4">
         <baseIcon>flow.png</baseIcon>
         <basePath>System</basePath>
         <readOnly>false</readOnly>
@@ -3220,7 +3179,7 @@ ${MSG_ERROR}</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="90310dc3-9381-4974-8b62-4250eee74cfa">
+        <staticBinding id="a1304071-d192-470d-b63f-83a4b17c0899">
           <annotation></annotation>
           <fromContextKey>ORQ-USF CORREOS OPERATIVOS</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -3234,7 +3193,7 @@ ${MSG_ERROR}</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="3bbd4dbc-e0e3-4de8-8eb2-57958dfd52d7">
+        <staticBinding id="8119adb8-c046-4efe-94e2-4e0ad45a18e3">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3244,11 +3203,11 @@ ${MSG_ERROR}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Body</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - DESTINO NO DISPONIBLE MENSUAL  ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;&lt;br&gt;
+          <value>SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - REVERSOS MULTIPLES MENSUAL  ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;&lt;br&gt;
 INICIO DEL PROCESO</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="0d631db2-f886-4bb0-99cd-7a29c6073cf7">
+        <staticBinding id="dd619d10-a7c9-4278-b8ca-010025bd15b7">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3258,10 +3217,10 @@ INICIO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>INICIO - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - DESTINO NO DISPONIBLE MENSUAL ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
+          <value>INICIO - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - REVERSOS MULTIPLES MENSUAL ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="909088e8-c6e3-42dc-a645-b87ea1bce88a">
+        <staticBinding id="754fc09b-8aee-4ec8-92e7-1727e3210fe9">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3275,7 +3234,7 @@ INICIO DEL PROCESO</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="96150383-986e-4797-9230-bba6a6e8d058">
+        <transition id="da53d174-3a6f-454b-a39a-c1e14bc0669e">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -3284,10 +3243,10 @@ INICIO DEL PROCESO</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>bf2720e9-1f69-44ce-9766-2fe5db7af165</refId>
+            <refId>0ee04fb6-383c-4d7a-a42c-fcc72d7bfd1d</refId>
           </destination>
           <source>
-            <refId>e5c4b7f3-61fd-4fb7-b112-ba8547ee897f</refId>
+            <refId>02f661dd-de1e-4815-95af-89ebe12e110d</refId>
           </source>
           <positions>
             <point>
@@ -3304,7 +3263,7 @@ INICIO DEL PROCESO</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="ef7c8cf7-d976-4bff-a523-078daf2d9799">
+        <transition id="b9eca54d-850f-408d-b906-f69403bf15d4">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -3313,10 +3272,10 @@ INICIO DEL PROCESO</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>bf2720e9-1f69-44ce-9766-2fe5db7af165</refId>
+            <refId>0ee04fb6-383c-4d7a-a42c-fcc72d7bfd1d</refId>
           </destination>
           <source>
-            <refId>e5c4b7f3-61fd-4fb7-b112-ba8547ee897f</refId>
+            <refId>02f661dd-de1e-4815-95af-89ebe12e110d</refId>
           </source>
           <positions>
             <point>
@@ -3349,7 +3308,7 @@ INICIO DEL PROCESO</value>
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <returnStep id="86b576d1-fe58-4a2e-b75f-2bf2b1a8fdd5">
+    <returnStep id="980ee469-5436-4b5b-a2a3-118aa40dfa2a">
       <annotation></annotation>
       <name>Error : failure</name>
       <bounds>
@@ -3372,7 +3331,7 @@ INICIO DEL PROCESO</value>
       <userPrompt></userPrompt>
       <bindings/>
       <transitions>
-        <transition id="305e9035-28b3-4055-99da-248cb4f2602f">
+        <transition id="f79c6929-a0ad-46f0-81d7-25822bdd39f7">
           <annotation></annotation>
           <name>return</name>
           <command>NEXT</command>
@@ -3381,10 +3340,10 @@ INICIO DEL PROCESO</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>86b576d1-fe58-4a2e-b75f-2bf2b1a8fdd5</refId>
+            <refId>980ee469-5436-4b5b-a2a3-118aa40dfa2a</refId>
           </destination>
           <source>
-            <refId>86b576d1-fe58-4a2e-b75f-2bf2b1a8fdd5</refId>
+            <refId>980ee469-5436-4b5b-a2a3-118aa40dfa2a</refId>
           </source>
           <positions/>
         </transition>
@@ -3393,7 +3352,7 @@ INICIO DEL PROCESO</value>
       <returnStepType>ERROR</returnStepType>
       <assignments/>
     </returnStep>
-    <step id="11e4103f-199c-462b-b8e8-08091b549ce5">
+    <step id="dec3c90f-e33d-440a-990b-b4540b5ab607">
       <annotation></annotation>
       <name>NOTIFICACION INICIO PROCESO</name>
       <bounds>
@@ -3402,7 +3361,7 @@ INICIO DEL PROCESO</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="947ec5e3-d61b-422b-9254-da64b1d1566c">
+      <iconSpec id="73dbb439-afb3-4ae9-829a-d17cd2f6f083">
         <baseIcon>flow.png</baseIcon>
         <basePath>System</basePath>
         <readOnly>false</readOnly>
@@ -3421,7 +3380,7 @@ INICIO DEL PROCESO</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="805480f1-6227-4af0-a4db-66ead1e43edb">
+        <staticBinding id="dfc3360a-25d6-4c98-b522-2e8786b99f5a">
           <annotation></annotation>
           <fromContextKey>ORQ-USF CORREOS OPERATIVOS</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -3435,7 +3394,7 @@ INICIO DEL PROCESO</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="e59fdcbd-6cc4-4a00-9b42-dccc544825d2">
+        <staticBinding id="c40688cf-b1d1-429b-a3fe-0b9fbab5cf40">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3445,11 +3404,11 @@ INICIO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Body</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - DESTINO NO DISPONIBLE MENSUAL ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;&lt;br&gt;
+          <value>SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - REVERSOS MULTIPLES MENSUAL ${UIM_MES_FACT}/${UIM_ANIO_FACT})&lt;br&gt;&lt;br&gt;
 FIN DEL PROCESO</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ea2f98ed-1eeb-442d-96bb-d826859caec6">
+        <staticBinding id="ccfe3eda-ae8a-4c2c-af58-adeb9eaa0da1">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3459,10 +3418,10 @@ FIN DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>FIN - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - DESTINO NO DISPONIBLE MENSUAL ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
+          <value>FIN - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - REVERSOS MULTIPLES MENSUAL ${UIM_MES_FACT}/${UIM_ANIO_FACT})</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="55db5e38-f6bb-47bb-89e4-fe4abfb1bfaf">
+        <staticBinding id="345555c9-a843-4dd6-855d-2a3b4a2f5eef">
           <annotation></annotation>
           <fromContextKey>source</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -3478,7 +3437,7 @@ FIN DEL PROCESO</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="39bf6ed7-ccbe-4a66-8ef0-191f1566d381">
+        <transition id="83646b12-e50a-469a-ae74-2045b3726ff7">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -3487,10 +3446,10 @@ FIN DEL PROCESO</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>86b576d1-fe58-4a2e-b75f-2bf2b1a8fdd5</refId>
+            <refId>980ee469-5436-4b5b-a2a3-118aa40dfa2a</refId>
           </destination>
           <source>
-            <refId>11e4103f-199c-462b-b8e8-08091b549ce5</refId>
+            <refId>dec3c90f-e33d-440a-990b-b4540b5ab607</refId>
           </source>
           <positions>
             <point>
@@ -3507,7 +3466,7 @@ FIN DEL PROCESO</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="ef14c610-7c41-467a-bdbf-b68bd59f3758">
+        <transition id="6b29bc25-cffd-4c35-af33-cef79b9b1b89">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -3516,10 +3475,10 @@ FIN DEL PROCESO</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>61e86120-792b-4e96-8250-31559992ea05</refId>
+            <refId>8273c8bd-7c39-4261-bf45-f24055155f4d</refId>
           </destination>
           <source>
-            <refId>11e4103f-199c-462b-b8e8-08091b549ce5</refId>
+            <refId>dec3c90f-e33d-440a-990b-b4540b5ab607</refId>
           </source>
           <positions>
             <point>
@@ -3544,7 +3503,7 @@ FIN DEL PROCESO</value>
       <assignments/>
       <throttleSize>0</throttleSize>
     </step>
-    <step id="dfb79cf5-7590-4656-ad15-9719c0400e6b">
+    <step id="c06976ef-a06f-4e6f-a9aa-6e9d30b58ae5">
       <annotation></annotation>
       <name>NOTIFICACION DE ERROR</name>
       <bounds>
@@ -3566,7 +3525,7 @@ FIN DEL PROCESO</value>
       <scriptResultStep>false</scriptResultStep>
       <userPrompt></userPrompt>
       <bindings>
-        <staticBinding id="efee9609-62f7-4a38-9b63-19e88129d79f">
+        <staticBinding id="1eb436b4-a565-4893-af80-55c4482dcd11">
           <annotation></annotation>
           <fromContextKey>ORQ-USF CORREOS TECNICOS</fromContextKey>
           <assignFromContext>true</assignFromContext>
@@ -3580,7 +3539,7 @@ FIN DEL PROCESO</value>
           <value></value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="ed106cc2-8a3d-4425-b6d1-988ca36df18c">
+        <staticBinding id="55bfc567-452c-4dd2-bbe0-e3aff05ea1a5">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3590,13 +3549,13 @@ FIN DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Body</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - DESTINO NO DISPONIBLE MENSUAL)&lt;br&gt;
+          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - REVERSOS MULTIPLES MENSUAL)&lt;br&gt;
 &lt;br&gt;
 MENSAJE DE ERROR:&lt;br&gt;
 ${MSG_ERROR}</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="c99f1389-0e4e-4a61-918a-9822c803c709">
+        <staticBinding id="d62c4cbc-3dda-49d5-a260-af6cd240968c">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3606,10 +3565,10 @@ ${MSG_ERROR}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Subject</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - DESTINO NO DISPONIBLE MENSUAL)</value>
+          <value>ERROR - SERVICIOS FACTURABLES ATM&apos;s (SANCIONES - REVERSOS MULTIPLES MENSUAL)</value>
           <record>false</record>
         </staticBinding>
-        <staticBinding id="5588d750-2ed3-4d96-8660-98b7bf0820ba">
+        <staticBinding id="60d3bf3f-9224-4936-9586-3c48248b3294">
           <annotation></annotation>
           <assignFromContext>false</assignFromContext>
           <assignToContext>false</assignToContext>
@@ -3623,7 +3582,7 @@ ${MSG_ERROR}</value>
         </staticBinding>
       </bindings>
       <transitions>
-        <transition id="ce8ff2b7-04a9-4323-aae7-dec6c505b802">
+        <transition id="7a17eed9-0310-4ffa-8ca8-b58b26c7c64b">
           <annotation></annotation>
           <name>failure</name>
           <command>NEXT</command>
@@ -3632,10 +3591,10 @@ ${MSG_ERROR}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>1ac2f3f2-3f03-4ca8-be40-0e2d0bfc9e54</refId>
+            <refId>527d268d-6106-4999-8793-25b8e8c32e96</refId>
           </destination>
           <source>
-            <refId>dfb79cf5-7590-4656-ad15-9719c0400e6b</refId>
+            <refId>c06976ef-a06f-4e6f-a9aa-6e9d30b58ae5</refId>
           </source>
           <positions>
             <point>
@@ -3652,7 +3611,7 @@ ${MSG_ERROR}</value>
             <y>0.0</y>
           </labelPosition>
         </transition>
-        <transition id="6ecf6b81-11b0-445d-af76-1f72d27def48">
+        <transition id="09fa1280-ddea-4106-8b9a-4d661eb40b53">
           <annotation></annotation>
           <name>success</name>
           <command>NEXT</command>
@@ -3661,10 +3620,10 @@ ${MSG_ERROR}</value>
           <shouldHandoff>false</shouldHandoff>
           <transitionValue>0.0</transitionValue>
           <destination>
-            <refId>1ac2f3f2-3f03-4ca8-be40-0e2d0bfc9e54</refId>
+            <refId>527d268d-6106-4999-8793-25b8e8c32e96</refId>
           </destination>
           <source>
-            <refId>dfb79cf5-7590-4656-ad15-9719c0400e6b</refId>
+            <refId>c06976ef-a06f-4e6f-a9aa-6e9d30b58ae5</refId>
           </source>
           <positions>
             <point>
@@ -3694,5 +3653,5 @@ ${MSG_ERROR}</value>
       <throttleSize>0</throttleSize>
     </step>
   </steps>
-  <startSteps>fbd73018-5b69-4113-8c7e-fa7067a9d16a</startSteps>
+  <startSteps>9ac1c2d6-7e42-496d-b7b8-369143ca4a1f</startSteps>
 </flow>

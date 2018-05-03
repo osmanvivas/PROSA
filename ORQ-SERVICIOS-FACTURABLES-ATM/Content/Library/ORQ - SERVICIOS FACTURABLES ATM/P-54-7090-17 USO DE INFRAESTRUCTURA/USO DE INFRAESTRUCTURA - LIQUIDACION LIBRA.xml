@@ -320,10 +320,12 @@ if(queryCount &gt; 0){
 			TITULO = &quot;LIQUIDACION POR USO DE INFRAESTRUCTURA &quot;+MONTH+&quot; &quot;+UIM_ANIO_FACT;
 			ACUM_CREDITO = ACUM_CREDITO + CREDITO;
 			ACUM_DEBITO = ACUM_DEBITO + DEBITO;
-			insert += &quot;INSERT INTO LIQUIDACIONES (FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE) VALUES (TO_DATE(&apos;&quot;+FECHA_LIQUIDACION+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;N&apos;);\n&quot;;
-			insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
-			insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
-			insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+			if(Math.round(NETO) != 0){
+				insert += &quot;INSERT INTO LIQUIDACIONES (FECHA_CONTABLE_LIQUIDACION,CODIGO_BANCO_LIQUIDACION,TITULO_LIQUIDACION,DEBITO_LIQUIDACION,CREDITO_LIQUIDACION,NETO_LIQUIDACION,FECHA_INICIO_LIQUIDACION,FECHA_FIN_LIQUIDACION,INTERFASE) VALUES (TO_DATE(&apos;&quot;+FECHA_LIQUIDACION+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),TO_DATE(&apos;&quot;+UIM_FECHA_PROCESO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;N&apos;);\n&quot;;
+				insert2 += FECHA_LIQUIDACION+&quot;,&quot;+CV_BANCO+&quot;,&quot;+TITULO+&quot;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;,&quot;+NETO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,&quot;+UIM_FECHA_PROCESO+&quot;,N\n&quot;;
+				insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
+				insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
+			}
 		  } 
 	} // fin for
 	insert+=&quot;COMMIT;\n&quot;;
