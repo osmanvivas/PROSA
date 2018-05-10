@@ -809,14 +809,14 @@ FROM TEMPORAL A WHERE A.CODIGO_BANCO_P IS NULL ORDER BY 1 ASC</value>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
+          <assignToContext>true</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/VENTA GENERICA - LIQUIDACION LIBRA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI03.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="7a5d4937-e147-4557-924d-ad96d7ec7041">
@@ -2038,7 +2038,8 @@ ${MSG_ERROR}</value>
         </staticBinding>
         <staticBinding id="da8780f2-9b03-40eb-a7a0-7be248660906">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -2046,7 +2047,7 @@ ${MSG_ERROR}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Attachments</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/VENTA GENERICA - LIQUIDACION LIBRA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
       </bindings>
@@ -2439,7 +2440,8 @@ FIN EXITOSO DEL PROCESO</value>
         </staticBinding>
         <staticBinding id="4ed8d6d9-475d-4b78-bc28-230e9ed0069c">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -2447,7 +2449,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Attachments</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/VENTA GENERICA - LIQUIDACION LIBRA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
       </bindings>
@@ -4734,14 +4736,14 @@ FIN EXITOSO DEL PROCESO</value>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
+          <assignToContext>true</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/VENTA GENERICA - LIQUIDACION LIBRA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT}${MONTH}01FI03.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="8ea08873-0358-43aa-8814-92e0a9c0bfb3">

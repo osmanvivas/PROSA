@@ -1916,7 +1916,7 @@ ORDER BY 1 ASC</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/VENTA GENERICA - FACTURACION LIQUIDACION LIBRA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI04.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="7a3f384c-d9fb-4edf-b877-94aa6e1f7593">

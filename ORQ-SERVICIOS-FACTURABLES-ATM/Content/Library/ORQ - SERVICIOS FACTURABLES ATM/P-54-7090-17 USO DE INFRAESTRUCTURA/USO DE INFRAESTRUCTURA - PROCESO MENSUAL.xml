@@ -795,12 +795,6 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="ad15d697-b25d-4c98-8bf1-e49dc8fae2f8">
-        <baseIcon>return_success.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>true</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -883,7 +877,7 @@ scriptletContext.putGlobal(&quot;INSERT_SENTENCE2&quot;, insert2);
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI03.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI08.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="188daace-6374-444e-a26a-4503952e14b9">
@@ -1542,12 +1536,6 @@ ${query_results}</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="1f1723c7-4822-43f1-a7e6-9b3c89995347">
-        <baseIcon>return_failure.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>true</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>

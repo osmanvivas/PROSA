@@ -264,7 +264,7 @@
       <userPrompt></userPrompt>
       <scriptlet id="cf3a5029-4ec4-4a9a-96fa-33c88f5427ad">
         <annotation></annotation>
-        <name>Step QUERY SILFAC in Flow P-54-7090-17 BONIFICACION DE ACLARACIONES - LIQUIDACION SILFAC (e469a961-36cd-4b02-8146-70acd3128ab0)</name>
+        <name>Step QUERY SILFAC in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION SILFAC TACLARA (e469a961-36cd-4b02-8146-70acd3128ab0)</name>
         <script>query_results = scriptletContext.get(&quot;query_results&quot;); 
 queryCount = scriptletContext.get(&quot;queryCount&quot;); 
 UIM_MES_FACT = scriptletContext.get(&quot;UIM_MES_FACT&quot;);
@@ -771,14 +771,14 @@ B.CODIGO_BANCO NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
+          <assignToContext>true</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/BONIFICACIONES DE ACLARACIONES - LIQUIDACION SILFAC ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI07.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="d1f3ef80-9c77-40a7-abf5-aa0e67c8d6fc">
@@ -1867,7 +1867,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <scriptlet id="1302d043-98ed-4ed9-b237-e08d1f31af46">
         <annotation></annotation>
-        <name>Step Usa Script ObtenerRango_MesDado in Flow P-54-7090-17 BONIFICACION DE ACLARACIONES - LIQUIDACION SILFAC (b2197249-5d0f-4a6c-b2c3-fdd201b3841b)</name>
+        <name>Step Usa Script ObtenerRango_MesDado in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION SILFAC TACLARA (b2197249-5d0f-4a6c-b2c3-fdd201b3841b)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>93fcef9f-1b3b-4fff-b0c8-ca223a21bebe</refId>
@@ -2406,7 +2406,8 @@ FIN EXITOSO DEL PROCESO</value>
         </staticBinding>
         <staticBinding id="bede30ff-2295-40ea-be8f-b5af45cd8366">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -2414,7 +2415,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Attachments</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/BONIFICACIONES DE ACLARACIONES - LIQUIDACION SILFAC ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
       </bindings>

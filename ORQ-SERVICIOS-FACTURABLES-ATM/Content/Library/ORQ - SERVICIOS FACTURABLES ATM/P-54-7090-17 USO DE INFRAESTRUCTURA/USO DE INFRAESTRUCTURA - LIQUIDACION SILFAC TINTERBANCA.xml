@@ -837,7 +837,7 @@ scriptletContext.putGlobal(&quot;count&quot;, count);
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TINTERBANCA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI011.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="9714d40c-ea80-4f5c-9d79-649194e6f3c4">

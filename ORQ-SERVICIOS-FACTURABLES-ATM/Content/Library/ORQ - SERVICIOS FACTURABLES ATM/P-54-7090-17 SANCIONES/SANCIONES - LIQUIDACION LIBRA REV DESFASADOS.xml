@@ -736,12 +736,6 @@ FROM TEMPORAL A WHERE A.CODIGO_BANCO_P IS NULL ORDER BY 1 ASC</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="e3824e5f-907a-46f2-8108-3995e5ca5c91">
-        <baseIcon>return_success.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>true</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -824,7 +818,7 @@ FROM TEMPORAL A WHERE A.CODIGO_BANCO_P IS NULL ORDER BY 1 ASC</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/SANCIONES - LIQUIDACION LIBRA DESTINO NO DISPONIBLE ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI016.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="0e421b3c-e717-4def-a1e7-f5790a87f418">
@@ -4751,7 +4745,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/SANCIONES - LIQUIDACION LIBRA DESTINO NO DISPONIBLE ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI016.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="8f161025-7b74-4417-a595-49d238255b3b">

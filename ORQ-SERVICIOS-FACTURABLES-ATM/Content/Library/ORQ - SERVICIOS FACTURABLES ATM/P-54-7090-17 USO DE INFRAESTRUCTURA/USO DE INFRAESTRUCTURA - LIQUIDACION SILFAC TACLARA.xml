@@ -843,7 +843,7 @@ FROM TEMPORAL A WHERE TRIM(A.BANCO_P) IN (&apos;NA&apos;) ORDER BY A.CV_BANCO AS
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI010.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="3467f972-2a4a-4a34-bbf7-dc26e9b6a717">
@@ -3265,7 +3265,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/USO DE INFRAESTRUCTURA - LIQUIDACION SILFAC TACLARA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI010.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="606ba02a-50df-467a-80d8-66d19fcec0ba">

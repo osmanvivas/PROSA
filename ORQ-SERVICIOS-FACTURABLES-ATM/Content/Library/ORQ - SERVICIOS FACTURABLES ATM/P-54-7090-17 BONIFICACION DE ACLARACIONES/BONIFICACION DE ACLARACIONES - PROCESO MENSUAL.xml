@@ -249,7 +249,7 @@ de15beea-0af0-40c1-b7ad-c165fd68a3c1.f2a756fa-f8e2-4104-8a43-1a2e5c8c769e.transi
       <userPrompt></userPrompt>
       <scriptlet id="4156b32b-a342-4fcd-a950-eda659fe0b07">
         <annotation></annotation>
-        <name>Step Usa Script Rango_Mes_Anterior in Flow P-54-7090-17 BONIFICACION DE ACLARACIONES - PROCESO MENSUAL (a50a4138-7a82-4a18-ab76-70543a4ce4d1)</name>
+        <name>Step Usa Script Rango_Mes_Anterior in Flow BONIFICACION DE ACLARACIONES - PROCESO MENSUAL (a50a4138-7a82-4a18-ab76-70543a4ce4d1)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>e76d1548-888f-4713-bc63-2c0a2daf1a15</refId>
@@ -345,7 +345,7 @@ de15beea-0af0-40c1-b7ad-c165fd68a3c1.f2a756fa-f8e2-4104-8a43-1a2e5c8c769e.transi
       <userPrompt></userPrompt>
       <scriptlet id="d490c28c-c18a-49be-b46f-a9a5530e9050">
         <annotation></annotation>
-        <name>Step SQL Query All Rows in Flow P-54-7090-17 BONIFICACION DE ACLARACIONES - PROCESO MENSUAL (7241f3a8-4909-45f1-830a-2554ce1e8f0f)</name>
+        <name>Step SQL Query All Rows in Flow BONIFICACION DE ACLARACIONES - PROCESO MENSUAL (7241f3a8-4909-45f1-830a-2554ce1e8f0f)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -877,14 +877,14 @@ UID_FECHA_PROCESO BETWEEN to_date(&apos;${primerDia}&apos;,&apos;yyyy-mm-dd&apos
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
+          <assignToContext>true</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI02.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI05.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="fa01ed24-1c52-4bbb-9563-e61b6199240e">
@@ -1876,7 +1876,8 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
         <staticBinding id="004c418e-2ed6-477c-a2c4-d921a4f86f52">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -1884,7 +1885,7 @@ ${INSERT_SENTENCE2}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>localFile</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI02.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="e77dc48f-9ab4-4492-bcbb-b08bf778705d">
@@ -2592,7 +2593,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <scriptlet id="e850f4e9-9376-4534-b716-82ba8d3f13c1">
         <annotation></annotation>
-        <name>Step Usa Script ObtenerRango_MesDado in Flow P-54-7090-17 BONIFICACION DE ACLARACIONES - PROCESO MENSUAL (05ce219f-4b5d-42c9-bb2c-5b5959d5451a)</name>
+        <name>Step Usa Script ObtenerRango_MesDado in Flow BONIFICACION DE ACLARACIONES - PROCESO MENSUAL (05ce219f-4b5d-42c9-bb2c-5b5959d5451a)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>93fcef9f-1b3b-4fff-b0c8-ca223a21bebe</refId>
@@ -3576,7 +3577,8 @@ FIN EXITOSO DEL PROCESO</value>
         </staticBinding>
         <staticBinding id="8cef4b5e-c7a9-41fe-ab18-814a6026b713">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -3584,7 +3586,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Attachments</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI02.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
       </bindings>

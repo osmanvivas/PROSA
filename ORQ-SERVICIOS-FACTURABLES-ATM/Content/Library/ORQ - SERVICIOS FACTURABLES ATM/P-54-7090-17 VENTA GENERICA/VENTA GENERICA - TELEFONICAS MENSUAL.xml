@@ -865,14 +865,14 @@ FROM TEMPORAL</value>
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
+          <assignToContext>true</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI01TELEFONICAS.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI02.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="0d131e35-9993-4116-85c7-365ee2722834">
@@ -1877,7 +1877,8 @@ ${INSERT_SENTENCE2}</value>
         </staticBinding>
         <staticBinding id="1798f5fc-ac73-4f16-a077-a20ec7f6b97d">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -1885,7 +1886,7 @@ ${INSERT_SENTENCE2}</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>localFile</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI01TELEFONICAS.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="805d0cfb-8e25-47af-afe4-5146cc7ef6ac">
@@ -3424,7 +3425,8 @@ FIN DEL PROCESO</value>
         </staticBinding>
         <staticBinding id="f14486db-7ce0-410a-8467-6e0f568e37aa">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -3432,7 +3434,7 @@ FIN DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Attachments</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI01TELEFONICAS.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
       </bindings>

@@ -19,7 +19,7 @@ e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.f22bd599-82dc-472a-aa63-d1832a2e6a31.descri
 e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.fa9391e5-c255-40ae-94cf-9763b8a6a8e6.description=This operation runs a SQL command.\n\nInputs\:\n    DBServerName - The hostname or ip address of the database server.\n    DbType - The type of database to connect to. \nValid values\: Oracle, MSSQL, Sybase, Netcool, DB2 and Custom.\nDefault value\: Oracle\n    Username - The username to use when connecting to the database.\n    Password -  The password to use when connecting to the database.\n    instance - The name instance (for MSSQL Server). Leave it blank for default instance.\n    DbPort - The port to connect to.\nDefault values\: Oracle\: 1521, MSSQL\: 1433, Sybase\: 5000, Netcool\: 4100, DB2\: 50000.\n    Database - The name of the database.\n    authenticationType - The type of authentication used to access the database (applicable only to MSSQL type). \nValid values\: sql, windows (for MSSQL)\nDefault value\: sql\n    dbClass - The classname of the JDBC driver to use.\n    dbURL - The url required to load up the driver and make your connection.\n    Command - The command to execute.\n    timeout - Seconds to wait before timing out the SQL command execution. When the default value is used, there is no limit on the amount of time allowed for a running command to complete.\nDefault value\: 0\n    databasePoolingProperties - Properties for database pooling configuration. This parameter replaces the databasePooling.properties file from 9x version (you may copy-paste the file content here). Pooling is disabled by default. For more details check the /Library/Operations/Database/JDBC folder description.\nExample\: db.pooling.enable\=true\n    resultSetType - the result set type. See JDBC folder description for more details.\nValid values\: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.\nDefault value\: TYPE_FORWARD_ONLY\n    resultSetConcurrency - the result set concurrency. See JDBC folder description for more details.\nValid values\: CONCUR_READ_ONLY, CONCUR_UPDATABLE\nDefault value\: CONCUR_READ_ONLY\n\nResults\:\n    returnResult - This is the primary output. It contains the "Command completed successfully" message if the operation succeeded, or a failure message otherwise.\n    outputText - The return result of SQL command.\n    updateCount - The update count of the command executed.\n\nResponses\:\n    success - The command was executed successfully.\n    failure - Failed to execute the command.\n\nNote\:\n1. Check the JDBC folder description for details on how to load database connectors.\n2. In case of using subprograms like (GET_LINE, GET_LINES, NEW_LINE, PUT, PUT_LUNE) from DBMS_OUTPUT package, the DBMS_OUTPUT.ENABLE(<buffer_size>) declaration should be used before of these calls.
 ]]></descriptionCdata>
   <annotation></annotation>
-  <name>SANCIONES - REVERSOS DESFASADOS</name>
+  <name>SANCIONES - MENSUAL REVERSOS DESFASADOS</name>
   <categories/>
   <inputs>
     <userInputBinding id="93b268f9-abff-462e-a973-404c9a121b8d">
@@ -249,7 +249,7 @@ e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.fa9391e5-c255-40ae-94cf-9763b8a6a8e6.descri
       <userPrompt></userPrompt>
       <scriptlet id="5f3c6c06-e22b-4a8d-a891-2105abdb778b">
         <annotation></annotation>
-        <name>Step Usa Script Rango_Mes_Anterior in Flow SANCIONES - REVERSOS DESFASADOS (2dcd8835-b678-4aca-bbf6-d095ca3dfd7d)</name>
+        <name>Step Usa Script Rango_Mes_Anterior in Flow SANCIONES - MENSUAL REVERSOS DESFASADOS (2dcd8835-b678-4aca-bbf6-d095ca3dfd7d)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>e76d1548-888f-4713-bc63-2c0a2daf1a15</refId>
@@ -345,7 +345,7 @@ e60a9cc0-9461-49b8-a8fa-9f8c8dc7aca8.fa9391e5-c255-40ae-94cf-9763b8a6a8e6.descri
       <userPrompt></userPrompt>
       <scriptlet id="14404173-09fd-4ce0-808c-0d9a57f67ea2">
         <annotation></annotation>
-        <name>Step SQL Query All Rows in Flow SANCIONES - REVERSOS DESFASADOS (4da1618f-6b76-4667-ae0c-8311db2bead1)</name>
+        <name>Step SQL Query All Rows in Flow SANCIONES - MENSUAL REVERSOS DESFASADOS (4da1618f-6b76-4667-ae0c-8311db2bead1)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -782,12 +782,6 @@ FROM TEMPORAL</value>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
-      <iconSpec id="3e6cf71f-ce15-4ad1-9017-b4ea60831e0f">
-        <baseIcon>return_success.png</baseIcon>
-        <basePath>System</basePath>
-        <readOnly>true</readOnly>
-        <layers/>
-      </iconSpec>
       <addResultToRunContext>false</addResultToRunContext>
       <isCriticalStep>false</isCriticalStep>
       <isNonBlocking>false</isNonBlocking>
@@ -870,7 +864,7 @@ FROM TEMPORAL</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI042.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI013.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="3fb67056-0933-4802-a881-dc06fe78e6e6">
@@ -885,7 +879,7 @@ FROM TEMPORAL</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>contents</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_TOTAL_TNX_72,UIM_TOTAL_TNX,UIM_IMP_INTERBANCARIA,TARIFA_SWITCH,UIM_IMP_SWITCH,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT
+          <value>UIM_FECHA_PROCESO,UIM_BAN_CODIGO_BANCO,UIM_CODIGO_BANCO,UIM_DESFASADOS_TNX,UIM_TOTAL_TNX,UIM_IMP_INTERBANCARIA,TARIFA_SWITCH,UIM_IMP_SWITCH,UIM_SUBTOTAL,UIM_IVA,UIM_TOTAL,UIM_SERVICIO,UIM_DESCRIPCION,UIM_MES_FACT,UIM_ANIO_FACT
 ${INSERT_SENTENCE2}</value>
           <record>false</record>
         </staticBinding>
@@ -2598,7 +2592,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <scriptlet id="3eb9d006-3449-42ad-a784-f27764443e03">
         <annotation></annotation>
-        <name>Step Usa Script ObtenerRango_MesDado in Flow SANCIONES - REVERSOS DESFASADOS (90c72a73-0e2d-4d03-99d3-8cca9ac75d65)</name>
+        <name>Step Usa Script ObtenerRango_MesDado in Flow SANCIONES - MENSUAL REVERSOS DESFASADOS (90c72a73-0e2d-4d03-99d3-8cca9ac75d65)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>93fcef9f-1b3b-4fff-b0c8-ca223a21bebe</refId>

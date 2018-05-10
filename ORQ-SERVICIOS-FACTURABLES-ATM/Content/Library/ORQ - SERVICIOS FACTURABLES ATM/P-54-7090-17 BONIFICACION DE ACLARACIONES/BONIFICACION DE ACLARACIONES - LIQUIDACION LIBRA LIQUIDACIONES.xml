@@ -281,7 +281,7 @@ fe3632b8-05d1-4a02-8c2e-d3f9a6d83375.f819712f-f312-4bce-afc8-00bf49884d4e.descri
       <userPrompt></userPrompt>
       <scriptlet id="88af67fa-528d-4ca9-b83a-25dff5d66e13">
         <annotation></annotation>
-        <name>Step QUERY LIBRA in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION LIBRA (cb6c0b14-a6ba-412a-a37d-792fa878d49c)</name>
+        <name>Step QUERY LIBRA in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION LIBRA LIQUIDACIONES (cb6c0b14-a6ba-412a-a37d-792fa878d49c)</name>
         <script>// This template shows how to access operation return data, inputs and context data 
 // and how to set context data, responses and results. 
  
@@ -799,14 +799,14 @@ B.CODIGO_BANCO NOT IN  (&apos;0000&apos;,&apos;EGLO&apos;,&apos;MDS&apos;,&apos;
           <toContextKey></toContextKey>
           <fromContextKey></fromContextKey>
           <assignFromContext>false</assignFromContext>
-          <assignToContext>false</assignToContext>
+          <assignToContext>true</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
           <required>true</required>
           <isPersisted>true</isPersisted>
           <inputSymbol>source</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/BONIFICACIONES DE ACLARACIONES - LIQUIDACION LIBRA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value>/aplic/prod/orq/usf/rpt/sal/ORQRPTB999M${UIM_ANIO_FACT2}${UIM_MES_FACT}01FI06.CSV</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="288ea8c9-016c-4358-b270-225d0115df6a">
@@ -1895,7 +1895,7 @@ ${INSERT_SENTENCE2}</value>
       <userPrompt></userPrompt>
       <scriptlet id="c0b08f7f-c0db-454e-9e80-8946ea309de1">
         <annotation></annotation>
-        <name>Step Usa Script ObtenerRango_MesDado in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION LIBRA (2eb5bc03-84df-4f9a-83dd-d47b1dac418a)</name>
+        <name>Step Usa Script ObtenerRango_MesDado in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION LIBRA LIQUIDACIONES (2eb5bc03-84df-4f9a-83dd-d47b1dac418a)</name>
         <type>NASHORN</type>
         <scriptRef>
           <refId>93fcef9f-1b3b-4fff-b0c8-ca223a21bebe</refId>
@@ -2428,7 +2428,8 @@ FIN EXITOSO DEL PROCESO</value>
         </staticBinding>
         <staticBinding id="f64b4352-9c81-49bf-9b87-3fade85cc49b">
           <annotation></annotation>
-          <assignFromContext>false</assignFromContext>
+          <fromContextKey>source</fromContextKey>
+          <assignFromContext>true</assignFromContext>
           <assignToContext>false</assignToContext>
           <inputType>STRING</inputType>
           <isList>false</isList>
@@ -2436,7 +2437,7 @@ FIN EXITOSO DEL PROCESO</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Attachments</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>/aplic/prod/orq/usf/rpt/sal/BONIFICACIONES DE ACLARACIONES - LIQUIDACION LIBRA ${MONTH}_${UIM_ANIO_FACT}.CSV</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
       </bindings>
@@ -2636,7 +2637,7 @@ FIN EXITOSO DEL PROCESO</value>
       <userPrompt></userPrompt>
       <scriptlet id="4c2d1529-c85e-400d-ab77-536784078f36">
         <annotation></annotation>
-        <name>Step Evaluate Expression in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION LIBRA (f819712f-f312-4bce-afc8-00bf49884d4e)</name>
+        <name>Step Evaluate Expression in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION LIBRA LIQUIDACIONES (f819712f-f312-4bce-afc8-00bf49884d4e)</name>
         <script>FECHA_LIQUIDACION = scriptletContext.get(&quot;FECHA_LIQUIDACION&quot;);
 </script>
         <type>NASHORN</type>
@@ -3320,7 +3321,7 @@ FIN EXITOSO DEL PROCESO</value>
       <userPrompt></userPrompt>
       <scriptlet id="dbf7e505-dc53-4f2e-a2dd-869eb4526d48">
         <annotation></annotation>
-        <name>Step CALCULAR FECHA LIQUIDACION in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION LIBRA (9054e7e6-b458-4066-9266-34b26e25111d)</name>
+        <name>Step CALCULAR FECHA LIQUIDACION in Flow BONIFICACION DE ACLARACIONES - LIQUIDACION LIBRA LIQUIDACIONES (9054e7e6-b458-4066-9266-34b26e25111d)</name>
         <script></script>
         <type>RHINO</type>
       </scriptlet>
