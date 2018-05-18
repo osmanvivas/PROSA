@@ -575,9 +575,9 @@ FROM TBL_RED_USO_INFRA_DIARIO B
 WHERE 
 B.UID_DESCRIPCION=&apos;Reversos Multiples&apos; AND 
 TRIM(B.UID_BAN_CODIGO_BANCO) &lt;&gt; TRIM(B.UID_CODIGO_BANCO) AND 
-TRIM(B.UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;) AND
+TRIM(B.UID_BAN_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;,&apos;IUSC&apos;,&apos;PEGA&apos;,&apos;TEL2&apos;,&apos;TELC&apos;,&apos;UNEF&apos;) AND
 B.UID_CODIGO_BANCO NOT IN (SELECT C.CODIGO_BANCO FROM RED.BANCOS C WHERE C.CODIGO_BANCO_P=B.UID_BAN_CODIGO_BANCO) AND
-TRIM(B.UID_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;) AND 
+TRIM(B.UID_CODIGO_BANCO) NOT IN (&apos;0000&apos;,&apos;M032&apos;,&apos;M072&apos;,&apos;M021&apos;,&apos;M132&apos;,&apos;MDS&apos;,&apos;M032&apos;,&apos;BNMX&apos;,&apos;BIC1&apos;,&apos;VISA&apos;,&apos;UPAY&apos;,&apos;JCB1&apos;,&apos;CIBC&apos;,&apos;EGLO&apos;,&apos;IUSC&apos;,&apos;PEGA&apos;,&apos;TEL2&apos;,&apos;TELC&apos;,&apos;UNEF&apos;) AND 
 B.UID_FECHA_PROCESO BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;YYYY-MM-DD&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;)  
 GROUP BY B.UID_BAN_CODIGO_BANCO
 ) SELECT 
