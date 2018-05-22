@@ -300,12 +300,13 @@ if(queryCount &gt; 0){
 	    	TITULO = &quot;LIQ USO INFRA &quot;+UIM_MES_FACT+&quot; &quot;+UIM_ANIO_FACT;
 	    	ACUM_CREDITO = ACUM_CREDITO + CREDITO;
 	    	ACUM_DEBITO = ACUM_DEBITO + DEBITO;
+	    	if(Math.round(NETO) != 0){
 	    	insert += &quot;INSERT INTO TACLARA (PERIODO,CV_BANCO,CONCEPTO,MTO_EMI,MTO_ADQ) VALUES (TO_DATE(&apos;&quot;+PERIODO+&quot;&apos;,&apos;DD-MM-YYYY&apos;),&apos;&quot;+CV_BANCO+&quot;&apos;,&apos;&quot;+TITULO+&quot;&apos;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;);\n&quot;;
 			insert2 += CV_BANCO+&quot;,&quot;+PERIODO+&quot;,&quot;+TITULO+&quot;,&quot;+DEBITO+&quot;,&quot;+CREDITO+&quot;\n&quot;;
 			count = count + 1;
 			insert = insert.replace(/\&quot;/g,&quot;&apos;&quot;);
 			insert = insert.replace(/null/g,&quot;&apos;&apos;&quot;);
-			
+			}
 		  } 
 	}// fin for
 	insert+=&quot;COMMIT;\n&quot;;
