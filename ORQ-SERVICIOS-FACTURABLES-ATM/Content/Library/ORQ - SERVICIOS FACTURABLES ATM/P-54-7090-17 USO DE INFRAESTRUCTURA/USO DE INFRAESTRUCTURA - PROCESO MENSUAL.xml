@@ -3639,7 +3639,7 @@ FIN EXITOSO DEL PROCESO</value>
       <name>ACTUALIZAR TIPO DE CAMBIO</name>
       <bounds>
         <x>170.0</x>
-        <y>581.0</y>
+        <y>586.0</y>
       </bounds>
       <layer>-1</layer>
       <hideInbound>false</hideInbound>
@@ -4452,7 +4452,7 @@ WHERE B.UIT_IMPORTE_TARIFA_DLLS &lt;&gt; 0</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>DBPort</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>1533</value>
+          <value></value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="9917ff12-0df7-4a36-aa2d-94aec0fc0962">
@@ -4519,10 +4519,12 @@ WHERE B.UIT_IMPORTE_TARIFA_DLLS &lt;&gt; 0</value>
           <isPersisted>true</isPersisted>
           <inputSymbol>Command</inputSymbol>
           <listDelimiter>,</listDelimiter>
-          <value>SELECT CAMBIO_VENTA FROM VIEW_RED_TIPOS_CAMBIO 
-    WHERE 
-    ENT_NUMERO_PROSA=230 AND  
-    FECHA BETWEEN TO_DATE(&apos;${primerDia}&apos;,&apos;yyyy-mm-dd&apos;) AND TO_DATE(&apos;${ultimoDia}&apos;,&apos;yyyy-mm-dd&apos;) ORDER BY FECHA DESC</value>
+          <value>SELECT CAMBIO_VENTA FROM VIEW_RED_TIPOS_CAMBIO
+WHERE
+ENT_NUMERO_PROSA=230 AND
+FECHA &gt;= TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;) AND 
+FECHA &lt;= TO_DATE(&apos;${ultimoDia}&apos;,&apos;YYYY-MM-DD&apos;)+2
+ORDER BY FECHA ASC</value>
           <record>false</record>
         </staticBinding>
         <staticBinding id="999a3992-5514-49db-831e-c714810d8335">
@@ -4703,7 +4705,7 @@ WHERE B.UIT_IMPORTE_TARIFA_DLLS &lt;&gt; 0</value>
               <selectLineFilter id="6a9573fe-7b68-4104-b661-bc144fdb99e1">
                 <annotation></annotation>
                 <name>Select Line</name>
-                <text>0</text>
+                <text>1</text>
                 <type>LINE_NUMBER_(STARTING_FROM_0)</type>
                 <autoSelectLineEnding>false</autoSelectLineEnding>
                 <windowsLineEnding>false</windowsLineEnding>
